@@ -17,26 +17,10 @@
  * limitations under the License.
  */
 
-import { TextInput } from "@neo4j-ndl/react";
-
-export interface Props {
-    name: string;
-    label: string;
-    type: string;
-    testtag: string;
-    value?: string;
-    placeholder?: string;
-    defaultValue?: string;
-    autoComplete?: string;
-    required: boolean;
-    disabled?: boolean;
-    onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
-}
-
-export const FormInput = (props: Props) => {
-    const options = {};
-    if (props.testtag) {
-        options[props.testtag] = true;
-    }
-    return <TextInput aria-label={props.name} fluid {...props} {...options} />;
+export const getQueryOrMutationName = (query: string): string => {
+    if (!query) return "Unnamed";
+    const myRegexp = new RegExp("(query|mutation) (.*?|$)[ {(]", "g");
+    const matches = myRegexp.exec(query);
+    if (!matches || matches?.length < 3) return "Unnamed";
+    return matches[2].trim() || "Unnamed";
 };
