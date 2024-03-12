@@ -1,0 +1,91 @@
+name: "Pull Request"
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - "*.*.*"
+
+jobs:
+  reviewdog-eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        with:
+          node-version: 18.13.0
+          cache: yarn
+      - name: Install dependencies
+        run: yarn --immutable
+      - uses: reviewdog/action-eslint@b3c5aa2589ed06195b52faffd3afb108c02faaf5 # v1.23.0
+        with:
+          fail_on_error: true
+          eslint_flags: "."
+          node_options: "--max_old_space_size=4096"
+
+  code-scanning:
+    uses: ./.github/workflows/reusable-codeql-analysis.yml
+
+  typescript-changes:
+    runs-on: ubuntu-latest
+
+    outputs:
+      typescript: ${{ steps.filter.outputs.typescript }}
+      typescript_files: ${{ steps.filter.outputs.typescript_files }}
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: filter
+        with:
+          list-files: shell
+          filters: |
+            typescript:
+              - added|modified: 'src/**/*.ts'
+
+  license-header-check:
+    needs: typescript-changes
+    if: ${{ needs.typescript-changes.outputs.typescript == 'true' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491 # v5
+        with:
+          go-version: "^1.17.0"
+      - name: Install addlicense
+        run: go install github.com/google/addlicense@latest
+      - name: Run addlicense
+        run: addlicense -f ./addlicense -check ${{ needs.typescript-changes.outputs.typescript_files }}
+
+  toolbox-tests:
+    uses: ./.github/workflows/reusable-toolbox-tests.yml
+
+
+  quality-gate:
+    if: ${{ always() }}
+    needs:
+      - reviewdog-eslint
+      - code-scanning
+      - toolbox-tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Job Status
+        run: |
+          if [ ${{ needs.reviewdog-eslint.result }} != 'success' ] || 
+            [ ${{ needs.code-scanning.result }} != 'success' ] ||
+            [ ${{ needs.toolbox-tests.result }} != 'success' ] ||
+            [ ${{ needs.federation-tests.result }} != 'success' ]; then
+            echo "One or more jobs failed"
+            exit 1
+          else
+            echo "Passed!"
+          fi

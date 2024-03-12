@@ -1,0 +1,84 @@
+name: changesets
+
+on:
+  push:
+    branches:
+      - dev
+      - '*.*.*'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: npm
+
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
+      published-packages: ${{ steps.changesets.outputs.publishedPackages }}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        with:
+          node-version: lts/*
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Configure git
+        run: |
+          git config --global user.name 'Neo4j Team GraphQL'
+          git config --global user.email 'team-graphql@neotechnology.com'
+
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            @neo4j:registry https://registry.npmjs.org
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create release PR or release
+        id: changesets
+        uses: changesets/action@e2f8e964d080ae97c874b19e27b12e0a8620fb6c # v1.4.6
+        with:
+          title: changesets for branch `${{ github.ref_name }}`
+          version: yarn changeset-version-${{ github.ref_name }}
+          publish: yarn release
+          setupGitUser: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.NEO4J_TEAM_GRAPHQL_PERSONAL_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+
+  slack-notify:
+    needs:
+      - release
+
+    if: ${{ needs.release.outputs.published == 'true' }}
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.release.outputs.published-packages) }}
+
+    steps:
+      - name: Send Slack announcement of release
+        if: matrix.package.name == '@neo4j/graphql-toolbox'
+        uses: slackapi/slack-github-action@6c661ce58804a1a20f6dc5fbee7f0381b469e001 # v1.25.0
+        with:
+          payload: '{"version":"${{ matrix.package.version }}"}'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_RELEASE_ANNOUNCEMENT_WEBHOOK_URL }}
