@@ -1,0 +1,6 @@
+**/dist
+**/node_modules
+**/docs
+**/examples
+playwright.config.ts
+**/coverage/lcov-report
