@@ -1,17 +1,16 @@
 {
-    "extends": "../../../tsconfig.base.json",
+    "extends": "@tsconfig/node16/tsconfig.json",
     "compilerOptions": {
+        "composite": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "resolveJsonModule": true, // Required for package.json import in @neo4j/graphql
+        "experimentalDecorators": true,
+        "noImplicitAny": false, // TODO: Refactor so that this can be true for monorepo
         "rootDir": ".",
         "baseUrl": ".",
         "outDir": "dist",
-        "paths": {
-            "@neo4j/graphql": ["../../graphql/src"],
-            "@neo4j/introspector": ["../../introspector/src"]
-        }
-    },
-    "references": [
-        { "path": "../tsconfig.json" },
-        { "path": "../../graphql/src/tsconfig.production.json" },
-        { "path": "../../introspector/tsconfig.production.json" }
-    ]
+        "module": "ES2015",
+        "moduleResolution": "bundler"
+    }
 }

@@ -8,15 +8,7 @@
         "rootDir": "src",
         "baseUrl": ".",
         "outDir": "dist",
-        "noEmit": false,
-        "paths": {
-            "@neo4j/graphql": ["../graphql/src"],
-            "@neo4j/introspector": ["../introspector/src"]
-        }
+        "noEmit": false
     },
-    "include": ["src/**/*"],
-    "references": [
-        { "path": "../graphql/src/tsconfig.production.json" },
-        { "path": "../introspector/tsconfig.production.json" }
-    ]
+    "include": ["src/**/*", "src/modules/SchemaView/utils.test.ts"]
 }
