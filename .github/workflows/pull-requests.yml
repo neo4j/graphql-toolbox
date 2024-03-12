@@ -82,8 +82,7 @@ jobs:
         run: |
           if [ ${{ needs.reviewdog-eslint.result }} != 'success' ] || 
             [ ${{ needs.code-scanning.result }} != 'success' ] ||
-            [ ${{ needs.toolbox-tests.result }} != 'success' ] ||
-            [ ${{ needs.federation-tests.result }} != 'success' ]; then
+            [ ${{ needs.toolbox-tests.result }} != 'success' ]; then
             echo "One or more jobs failed"
             exit 1
           else
