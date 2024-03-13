@@ -11,27 +11,6 @@ body:
 
         We will confirm the bug as soon as possible, and then discuss it at a weekly bug triage session.
   - type: textarea
-    id: type-definitions
-    attributes:
-      label: Type definitions
-      description: Please provide us GraphQL type definitions we can use to reproduce the issue
-      placeholder: |
-        type Movie {
-          title: String!
-        }
-      render: GraphQL
-    validations:
-      required: true
-  - type: textarea
-    id: test-data
-    attributes:
-      label: Test data
-      description: If applicable, provide us Cypher or GraphQL Mutations we can use to generate test data
-      placeholder: 'CREATE (:Movie { title: "The Matrix" })'
-      render: Shell
-    validations:
-      required: false
-  - type: textarea
     id: steps-to-reproduce
     attributes:
       label: Steps to reproduce
@@ -55,14 +34,6 @@ body:
       description: If it might not be clear to us, what behaviour did you expect here?
     validations:
       required: false
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      placeholder: "3.13.1"
-    validations:
-      required: true
   - type: input
     id: database-version
     attributes:
