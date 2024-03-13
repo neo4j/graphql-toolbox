@@ -84,9 +84,14 @@ const linksResources: Links[] = [
 
 const linksGithub: Links[] = [
     {
+        href: "https://github.com/neo4j/graphql-toolbox",
+        icon: <DocumentTextIconOutline className="h-6 w-6 mr-2 stroke-1" />,
+        label: "GraphQL Toolbox Github repository",
+    },
+    {
         href: "https://github.com/neo4j/graphql",
         icon: <DocumentTextIconOutline className="h-6 w-6 mr-2 stroke-1" />,
-        label: "Github repository",
+        label: "GraphQL Library Github repository",
     },
     {
         href: "https://github.com/neo4j/graphql/issues",
