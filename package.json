@@ -42,6 +42,7 @@
     },
     "author": "Neo4j",
     "dependencies": {
+        "@changesets/cli": "2.27.1",
         "@codemirror/autocomplete": "6.13.0",
         "@codemirror/commands": "6.3.3",
         "@codemirror/lang-javascript": "6.2.2",
