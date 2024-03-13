@@ -15,9 +15,6 @@ body:
     attributes:
       label: Steps to reproduce
       description: Please provide us the steps necessary to reproduce the bug
-      placeholder: |
-        1. Start a server
-        2. Execute a query
     validations:
       required: true
   - type: textarea
