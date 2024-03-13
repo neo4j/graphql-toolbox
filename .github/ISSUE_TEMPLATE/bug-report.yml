@@ -1,5 +1,5 @@
-name: Bug report (`@neo4j/graphql-toolbox`)
-description: File a bug report for the Neo4j GraphQL Library. If you have a support agreement with Neo4j, please raise a bug report here, then link the GitHub issue to a new or existing Zendesk ticket.
+name: "\U0001F41B Bug report"
+description: File a bug report for the Neo4j GraphQL Toolbox.
 labels: ["bug report"]
 body:
   - type: markdown
