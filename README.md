@@ -16,11 +16,11 @@ Experiment with your Neo4j GraphQL API.
 
 1. [Documentation](https://neo4j.com/docs/graphql-manual/current/toolbox/)
 
-![Neo4j GraphQL Toolbox](https://github.com/neo4j/graphql/blob/dev/images/toolbox-schema-view-v2.png)
+![Neo4j GraphQL Toolbox](https://github.com/neo4j/graphql-toolbox/blob/dev/images/toolbox-schema-view-v2.png)
 
 ## Link
 
-Access the Neo4j GraphQL Toolbox here: <https://graphql-toolbox.neo4j.io/>
+Access the Neo4j GraphQL Toolbox here: <https://graphql-toolbox.neo4j.io/>s
 
 ## Usage
 
@@ -35,12 +35,6 @@ On the `root` of the project, install the dependencies.
 
 ```
 yarn
-```
-
-then `cd` into the graphql-toolbox package.
-
-```
-cd packages/graphql-toolbox
 ```
 
 Run this command to start the development server. See the output in the console & navigate to the default webpack server at: <http://localhost:4242>
@@ -69,4 +63,4 @@ Note: The plus symbol (+) in the connectURL needs to be URL encoded to become `%
 
 ## License
 
-[Apache 2.0](https://github.com/neo4j/graphql/blob/dev/packages/toolbox/LICENSE.txt)
+[Apache 2.0](https://github.com/neo4j/graphql-toolbox/blob/dev/LICENSE.txt)
