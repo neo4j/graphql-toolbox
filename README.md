@@ -20,7 +20,7 @@ Experiment with your Neo4j GraphQL API.
 
 ## Link
 
-Access the Neo4j GraphQL Toolbox here: <https://graphql-toolbox.neo4j.io/>s
+Access the Neo4j GraphQL Toolbox here: <https://graphql-toolbox.neo4j.io/>
 
 ## Usage
 
