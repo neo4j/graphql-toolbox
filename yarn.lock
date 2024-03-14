@@ -1851,8 +1851,8 @@ __metadata:
     "@types/prettier": "npm:2.7.3"
     "@types/react-dom": "npm:18.2.19"
     "@types/webpack": "npm:5.28.5"
-    "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
-    "@typescript-eslint/parser": "npm:^7.2.0"
+    "@typescript-eslint/eslint-plugin": "npm:7.2.0"
+    "@typescript-eslint/parser": "npm:7.2.0"
     autoprefixer: "npm:10.4.18"
     classnames: "npm:2.5.1"
     cm6-graphql: "npm:0.0.14"
@@ -4810,7 +4810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^7.2.0":
+"@typescript-eslint/eslint-plugin@npm:7.2.0":
   version: 7.2.0
   resolution: "@typescript-eslint/eslint-plugin@npm:7.2.0"
   dependencies:
@@ -4835,7 +4835,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^7.2.0":
+"@typescript-eslint/parser@npm:7.2.0":
   version: 7.2.0
   resolution: "@typescript-eslint/parser@npm:7.2.0"
   dependencies:
