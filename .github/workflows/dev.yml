@@ -6,10 +6,6 @@ on:
   push:
     branches:
       - dev
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  schedule:
-    - cron: "0 3 * * *"
 
 jobs:
   code-scanning:
@@ -17,3 +13,8 @@ jobs:
 
   toolbox-tests:
     uses: ./.github/workflows/reusable-toolbox-tests.yml
+
+  toolbox-deploy:
+    uses: ./.github/workflows/toolbox-deploy.yml
+    needs: 
+      - toolbox-tests

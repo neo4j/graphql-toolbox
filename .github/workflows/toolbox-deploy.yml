@@ -1,15 +1,10 @@
 name: "Toolbox Deploy"
 
 on:
-  release:
-    types:
-      - released
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   deploy:
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.name, '@neo4j/graphql-toolbox')
-
     runs-on: ubuntu-latest
 
     environment: aws
@@ -21,10 +16,6 @@ jobs:
           node-version: lts/*
       - name: Install dependencies
         run: yarn
-      # the introspector is a referenced project by the Toolbox.
-      # - name: Build the introspector
-      #   run: yarn build
-      #   working-directory: packages/introspector
       - name: Build graphql-toolbox
         run: yarn build
         env:
