@@ -40,11 +40,11 @@ export const Main = () => {
     const [schema, setSchema] = useState<GraphQLSchema | undefined>(undefined);
 
     useEffect(() => {
-        const segmentKey =
-            process.env.NODE_ENV === "production"
-                ? process.env.SEGMENT_GRAPHQL_TOOLBOX_PROD_SOURCE
-                : process.env.SEGMENT_GRAPHQL_TOOLBOX_DEV_SOURCE;
-        if (!segmentKey) return;
+        const segmentKey = process.env.SEGMENT_GRAPHQL_TOOLBOX_PROD_SOURCE;
+        if (!segmentKey) {
+            console.log("Did not find Segment key, will not initialize Segment");
+            return;
+        }
         invokeSegmentAnalytics(segmentKey);
         console.log("Initialized app.");
     }, []);
