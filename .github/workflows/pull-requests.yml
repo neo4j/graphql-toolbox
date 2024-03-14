@@ -46,7 +46,7 @@ jobs:
           list-files: shell
           filters: |
             typescript:
-              - added|modified: 'src/**/*.ts'
+              - added|modified: 'src/**/*.ts*'
 
   license-header-check:
     needs: typescript-changes
