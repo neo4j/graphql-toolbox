@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+import { Screen } from "../contexts/screen";
+import { Theme } from "../contexts/theme";
+import { useStore } from "../store";
+import { useSessionStore } from "../store/session";
 import type {
     TrackingTBAddQueryTab,
     TrackingTBBuildSchemaClick,
@@ -36,10 +40,6 @@ import type {
     TrackingTBSchemaDocsToggle,
     TrackingTBSchemaSettingsCheckbox,
 } from "./tracking-types";
-import { Screen } from "../contexts/screen";
-import { Theme } from "../contexts/theme";
-import { useStore } from "../store";
-import { useSessionStore } from "../store/session";
 
 class Tracking {
     public trackDatabaseIntrospection = (properties: TrackingTBIntrospect) => {
@@ -149,7 +149,6 @@ class Tracking {
         const enrichedEventProperties = {
             ...eventProperties,
             dbid: useSessionStore.getState().auraDbId || null,
-            graphQLToolboxVersion: process.env.VERSION,
             neo4jGraphQLLibraryVersion: process.env.NEO4J_GRAPHQL_VERSION,
         };
         window.analytics.track(`${eventCategory}_${eventLabel}`, enrichedEventProperties);
