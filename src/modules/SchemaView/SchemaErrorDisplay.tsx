@@ -17,30 +17,39 @@
  * limitations under the License.
  */
 
-import type { GraphQLError } from "graphql";
+import { Banner } from "@neo4j-ndl/react";
 
-interface Props {
-    error: string | GraphQLError;
-}
+import { useSessionStore } from "../../store/session";
 
-export const SchemaErrorDisplay = ({ error }: Props) => {
-    if (!error) return null;
+export const SchemaErrorDisplay = () => {
+    const schemaViewError = useSessionStore((state) => state.schemaViewError);
+
+    if (!schemaViewError) {
+        return null;
+    }
+
+    const errors = Array.isArray(schemaViewError) ? schemaViewError : [schemaViewError];
 
     return (
-        <div
-            className="mt-1 mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative"
-            role="alert"
+        <Banner
+            icon
+            closeable
+            onClose={() => useSessionStore.getState().setSchemaViewError(null)}
+            type="danger"
+            title="Errors"
         >
-            {typeof error === "string" ? (
-                <span className="block">{error}</span>
-            ) : (
-                <>
-                    <span className="block">{error.message}</span>
-                    {error.locations ? (
-                        <span className="block">Locations: {JSON.stringify(error.locations)}</span>
-                    ) : null}
-                </>
-            )}
-        </div>
+            <ol>
+                {errors.map((error, index) => (
+                    <li key={index}>
+                        {error.locations ? (
+                            <span>
+                                <code>{JSON.stringify(error.locations)}</code>:{" "}
+                            </span>
+                        ) : null}
+                        {error.message}
+                    </li>
+                ))}
+            </ol>
+        </Banner>
     );
 };

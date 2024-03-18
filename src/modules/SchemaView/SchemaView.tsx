@@ -34,6 +34,7 @@ import { AppSettingsContext } from "../../contexts/appsettings";
 import { AuthContext } from "../../contexts/auth";
 import { SettingsContext } from "../../contexts/settings";
 import { useStore } from "../../store";
+import { useSessionStore } from "../../store/session";
 import type { Favorite } from "../../types";
 import { ConstraintState } from "../../types";
 import { usePrevious } from "../../utils/utils";
@@ -54,7 +55,6 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     const auth = useContext(AuthContext);
     const settings = useContext(SettingsContext);
     const appSettings = useContext(AppSettingsContext);
-    const [error, setError] = useState<string | GraphQLError>("");
     const [showIntrospectionModal, setShowIntrospectionModal] = useState<boolean>(true);
     const [loading, setLoading] = useState<boolean>(false);
     const [isIntrospecting, setIsIntrospecting] = useState<boolean>(false);
@@ -65,9 +65,13 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     const showRightPanel = settings.isShowHelpDrawer || settings.isShowSettingsDrawer;
 
     useEffect(() => {
-        if (!prevSelectedDBName) return;
+        if (!prevSelectedDBName) {
+            return;
+        }
         if (prevSelectedDBName !== auth.selectedDatabaseName) {
-            if (!editorView) return;
+            if (!editorView) {
+                return;
+            }
             // the selected database has changed, clear the codemirror content.
             editorView.dispatch({
                 changes: { from: 0, to: editorView.state.doc.length, insert: "" },
@@ -76,13 +80,17 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     }, [auth.selectedDatabaseName]);
 
     const formatTheCode = (): void => {
-        if (!editorView) return;
+        if (!editorView) {
+            return;
+        }
         formatCode(editorView, ParserOptions.GRAPH_QL);
     };
 
     const saveAsFavorite = (): void => {
         const value = editorView?.state.doc.toString();
-        if (!value) return;
+        if (!value) {
+            return;
+        }
         const newFavorites: Favorite[] = [
             ...(favorites || []),
             { id: new Date().getTime().toString(), name: value.substring(0, 24), typeDefs: value },
@@ -92,7 +100,9 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     };
 
     const setTypeDefsFromFavorite = (typeDefs: string) => {
-        if (!editorView) return;
+        if (!editorView) {
+            return;
+        }
         editorView.dispatch({
             changes: { from: 0, to: editorView.state.doc.length, insert: typeDefs },
         });
@@ -146,7 +156,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
 
                 onSchemaChange(schema);
             } catch (error) {
-                setError(error as GraphQLError);
+                useSessionStore.getState().setSchemaViewError(error as GraphQLError);
             } finally {
                 setLoading(false);
             }
@@ -157,16 +167,22 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     const introspect = useCallback(
         async ({ screen }: { screen: "query editor" | "type definitions" | "initial modal" }) => {
             try {
-                if (!editorView) return;
+                if (!editorView) {
+                    return;
+                }
 
                 setLoading(true);
                 setIsIntrospecting(true);
 
-                const sessionFactory = () =>
-                    auth?.driver?.session({
+                const sessionFactory = () => {
+                    if (!auth.driver) {
+                        throw new Error("Driver not available");
+                    }
+                    return auth.driver.session({
                         defaultAccessMode: neo4j.session.READ,
                         database: auth.selectedDatabaseName || DEFAULT_DATABASE_NAME,
-                    }) as neo4j.Session;
+                    });
+                };
 
                 const typeDefs = await toGraphQLTypeDefs(sessionFactory);
                 editorView.dispatch({
@@ -175,8 +191,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
 
                 tracking.trackDatabaseIntrospection({ screen, status: "success" });
             } catch (error) {
-                const msg = (error as GraphQLError).message;
-                setError(msg);
+                useSessionStore.getState().setSchemaViewError(error as GraphQLError);
                 tracking.trackDatabaseIntrospection({ screen, status: "failure" });
             } finally {
                 setLoading(false);
@@ -231,8 +246,8 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                         </div>
                     </div>
                     <div className="flex-1 flex justify-start w-full p-4" style={{ height: "calc(100% - 3rem)" }}>
-                        <div className="flex flex-col w-full h-full">
-                            <SchemaErrorDisplay error={error} />
+                        <div className="flex flex-col w-full h-full n-gap-token-4">
+                            <SchemaErrorDisplay />
                             <SchemaEditor
                                 elementRef={elementRef}
                                 loading={loading}
