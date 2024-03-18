@@ -17,16 +17,21 @@
  * limitations under the License.
  */
 
+import type { GraphQLError } from "graphql";
 import { create } from "zustand";
 
 export interface SessionStore {
     auraDbId: string | null;
     setAuraDbId: (auraDbId: string | null) => void;
     clearAuraDbId: () => void;
+    schemaViewError: GraphQLError | null;
+    setSchemaViewError: (error: GraphQLError | null) => void;
 }
 
 export const useSessionStore = create<SessionStore>((set) => ({
     auraDbId: null,
+    schemaViewError: null,
     setAuraDbId: (auraDbId) => set({ auraDbId }),
     clearAuraDbId: () => set({ auraDbId: null }),
+    setSchemaViewError: (error) => set({ schemaViewError: error }),
 }));
