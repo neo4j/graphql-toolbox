@@ -57,7 +57,7 @@
         "classnames": "2.5.1",
         "cm6-graphql": "0.0.14",
         "codemirror": "6.0.1",
-        "dotenv-webpack": "8.0.1",
+        "dotenv-webpack": "8.1.0",
         "graphiql-explorer": "0.9.0",
         "graphql": "16.8.1",
         "graphql-query-complexity": "0.12.0",
