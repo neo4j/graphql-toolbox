@@ -1797,21 +1797,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/base@npm:2.7.7, @neo4j-ndl/base@npm:^2.7.7":
-  version: 2.7.7
-  resolution: "@neo4j-ndl/base@npm:2.7.7"
-  checksum: 10c0/667bf015bd505197b96a3a294f6105cdc44df38041eca298a162296a30f20cc064db7f4c7d10b1c956d0abc2ca1dd9c31f7b86f8e1672c1af15023854cb14f33
+"@neo4j-ndl/base@npm:2.7.9, @neo4j-ndl/base@npm:^2.7.9":
+  version: 2.7.9
+  resolution: "@neo4j-ndl/base@npm:2.7.9"
+  checksum: 10c0/0f922006f2f94522811507e5f0134245a59957e8b769696766b76b14bee78e590e9e3cee767e8564adc2808aaef86f20f79f26afe1a85d90913932275c7d8c66
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/react@npm:2.8.10":
-  version: 2.8.10
-  resolution: "@neo4j-ndl/react@npm:2.8.10"
+"@neo4j-ndl/react@npm:2.8.13":
+  version: 2.8.13
+  resolution: "@neo4j-ndl/react@npm:2.8.13"
   dependencies:
     "@floating-ui/react": "npm:0.25.1"
     "@heroicons/react": "npm:2.0.13"
     "@neo4j-cypher/react-codemirror": "npm:^1.0.1"
-    "@neo4j-ndl/base": "npm:^2.7.7"
+    "@neo4j-ndl/base": "npm:^2.7.9"
     "@table-nav/core": "npm:0.0.7"
     "@table-nav/react": "npm:0.0.7"
     "@tanstack/react-table": "npm:^8.9.3"
@@ -1822,7 +1822,7 @@ __metadata:
     react-aria: "npm:3.31.0"
     react-datepicker: "npm:^4.14.1"
     react-dropzone: "npm:^14.0.0"
-    react-focus-lock: "npm:^2.9.4"
+    react-focus-lock: "npm:2.11.2"
     react-select: "npm:5.7.0"
     react-stately: "npm:3.29.1"
     react-syntax-highlighter: "npm:^15.5.0"
@@ -1833,7 +1833,7 @@ __metadata:
   peerDependencies:
     "@heroicons/react": 2.0.13
     react: ">=16.8.0"
-  checksum: 10c0/ba60869e4bc88d3f6b892580d72d0c9f136332a79dfde22bd1de438ef5cc3f39a206a75117b86c512433b1ca77ad6850c3564ad98ab24974e07734405580caa3
+  checksum: 10c0/df8b8b0dd272d687942be3fc2cb08477407254dbdc2e2ecc7a28ba3b5163d6236e1e13fc127e055257194009c133c8a872e4839c94ea75066c4cbf13bc150fad
   languageName: node
   linkType: hard
 
@@ -1856,8 +1856,8 @@ __metadata:
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
     "@graphiql/react": "npm:0.20.3"
-    "@neo4j-ndl/base": "npm:2.7.7"
-    "@neo4j-ndl/react": "npm:2.8.10"
+    "@neo4j-ndl/base": "npm:2.7.9"
+    "@neo4j-ndl/react": "npm:2.8.13"
     "@neo4j/graphql": "npm:5.3.1"
     "@neo4j/introspector": "npm:3.0.0"
     "@playwright/test": "npm:1.42.1"
@@ -14495,7 +14495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-focus-lock@npm:^2.9.4":
+"react-focus-lock@npm:2.11.2":
   version: 2.11.2
   resolution: "react-focus-lock@npm:2.11.2"
   dependencies:
