@@ -1797,21 +1797,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/base@npm:2.7.10, @neo4j-ndl/base@npm:^2.7.10":
-  version: 2.7.10
-  resolution: "@neo4j-ndl/base@npm:2.7.10"
-  checksum: 10c0/34f2b377dfd84a9fc9750c7f1178b649c60b2cf04ebb47a9e06e082b0ed8ce4bea0153bcfafe6fcd5e76d75aa593756b2b53aa3182dd0eddf74b7e7d90813ece
+"@neo4j-ndl/base@npm:2.7.11, @neo4j-ndl/base@npm:^2.7.11":
+  version: 2.7.11
+  resolution: "@neo4j-ndl/base@npm:2.7.11"
+  checksum: 10c0/44f892379f6b3f5db08be686e0f70f0fae4d86e6a04f956aad4bc88b2a295ca0d1dda5f1f3314a9e9a043b9e713d8d468aa55567192b3cee5475b28f56f52160
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/react@npm:2.9.1":
-  version: 2.9.1
-  resolution: "@neo4j-ndl/react@npm:2.9.1"
+"@neo4j-ndl/react@npm:2.9.2":
+  version: 2.9.2
+  resolution: "@neo4j-ndl/react@npm:2.9.2"
   dependencies:
     "@floating-ui/react": "npm:0.25.1"
     "@heroicons/react": "npm:2.0.13"
     "@neo4j-cypher/react-codemirror": "npm:^1.0.1"
-    "@neo4j-ndl/base": "npm:^2.7.10"
+    "@neo4j-ndl/base": "npm:^2.7.11"
     "@table-nav/core": "npm:0.0.7"
     "@table-nav/react": "npm:0.0.7"
     "@tanstack/react-table": "npm:^8.9.3"
@@ -1833,7 +1833,8 @@ __metadata:
   peerDependencies:
     "@heroicons/react": 2.0.13
     react: ">=16.8.0"
-  checksum: 10c0/a0a2938ed00e8f4055fa8dd245f584ccfcf77705d07ca18cda796114824d62d8f6f4fc55fe1e9f569802ca0d1bba63ee7f059b10473aaa098f6f239945b03081
+    react-dom: ">=16.8.0"
+  checksum: 10c0/00ac14d28c4631f03fe16be576ffe6306fe09ae23c4fbd580a27942fab1225756812ba0be0d8e0c635e2c0985527624eed94727d028c282c8419c69fd376ed99
   languageName: node
   linkType: hard
 
@@ -1856,8 +1857,8 @@ __metadata:
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
     "@graphiql/react": "npm:0.20.4"
-    "@neo4j-ndl/base": "npm:2.7.10"
-    "@neo4j-ndl/react": "npm:2.9.1"
+    "@neo4j-ndl/base": "npm:2.7.11"
+    "@neo4j-ndl/react": "npm:2.9.2"
     "@neo4j/graphql": "npm:5.3.2"
     "@neo4j/introspector": "npm:3.0.0"
     "@playwright/test": "npm:1.42.1"
