@@ -87,7 +87,7 @@ export const Login = () => {
     };
 
     return (
-        <div data-test-login-form className="grid place-items-center h-screen bg-palette-neutral-bg-default login-bg">
+        <div data-test-login-form className="grid place-items-center h-screen bg-neutral-30 login-bg">
             <div className="w-[600px] min-h-[740px] flex flex-col justify-start shadow-overlay rounded-3xl py-8 px-24 bg-neutral-10">
                 <img src={neo4jIcon} alt="Neo4j Logo" className="mx-auto mt-4 h-14" />
 
