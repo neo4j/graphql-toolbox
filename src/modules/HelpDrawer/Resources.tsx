@@ -71,7 +71,7 @@ const linksResources: Links[] = [
         },
     },
     {
-        href: "https://neo4j.com/graphacademy/training-graphql-apis/enrollment/",
+        href: "https://graphacademy.neo4j.com/",
         icon: <AcademicCapIconOutline className="h-6 w-6 mr-2 stroke-1" />,
         label: "Neo4j Graph Academy",
     },
@@ -102,22 +102,22 @@ const linksGithub: Links[] = [
 
 const linksDocumentation: Links[] = [
     {
-        href: "https://neo4j.com/docs/graphql-manual/current/type-definitions/",
+        href: "https://neo4j.com/docs/graphql/current/type-definitions/types/",
         icon: <DocumentTextIconOutline className="h-6 w-6 mr-2 stroke-1" />,
         label: "Type definitions",
     },
     {
-        href: "https://neo4j.com/docs/graphql-manual/current/queries/",
+        href: "https://neo4j.com/docs/graphql/current/queries-aggregations/queries/",
         icon: <VariableIconOutline className="h-6 w-6 mr-2 stroke-1" />,
-        label: "Example queries",
+        label: "Queries",
     },
     {
-        href: "https://neo4j.com/docs/graphql-manual/current/directives/",
+        href: "https://neo4j.com/docs/graphql/current/type-definitions/directives/",
         icon: <AtSymbolIconOutline className="h-6 w-6 mr-2 stroke-1" />,
         label: "Directives",
     },
     {
-        href: "https://neo4j.com/docs/graphql-manual/current/filtering/",
+        href: "https://neo4j.com/docs/graphql/current/queries-aggregations/filtering/",
         icon: <FunnelIconOutline className="h-6 w-6 mr-2 stroke-1" />,
         label: "Filtering",
     },
