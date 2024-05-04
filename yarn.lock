@@ -1809,23 +1809,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/base@npm:2.8.0, @neo4j-ndl/base@npm:^2.8.0":
-  version: 2.8.0
-  resolution: "@neo4j-ndl/base@npm:2.8.0"
-  checksum: 10c0/90fc193eb11bd63516793b481fb487e081788dd7660edd8ca736c9b4dc7d833f337e627ed827d44987c29ff60205769eceb860876fc2243a4ab2b4036cd02cfa
+"@neo4j-ndl/base@npm:2.9.0, @neo4j-ndl/base@npm:^2.9.0":
+  version: 2.9.0
+  resolution: "@neo4j-ndl/base@npm:2.9.0"
+  checksum: 10c0/0dd98606622a5d983d3de8c7c14215d9c480f0fc0e46ff0ce9af209c1430c391a4e412d84a880f5c79f71272756bda61e673a565f2ebbcfbf86a6c6d90317a42
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/react@npm:2.11.0":
-  version: 2.11.0
-  resolution: "@neo4j-ndl/react@npm:2.11.0"
+"@neo4j-ndl/react@npm:2.13.0":
+  version: 2.13.0
+  resolution: "@neo4j-ndl/react@npm:2.13.0"
   dependencies:
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/sortable": "npm:8.0.0"
     "@floating-ui/react": "npm:0.25.1"
     "@heroicons/react": "npm:2.0.13"
     "@neo4j-cypher/react-codemirror": "npm:^1.0.1"
-    "@neo4j-ndl/base": "npm:^2.8.0"
+    "@neo4j-ndl/base": "npm:^2.9.0"
     "@table-nav/core": "npm:0.0.7"
     "@table-nav/react": "npm:0.0.7"
     "@tanstack/react-table": "npm:^8.9.3"
@@ -1848,7 +1848,7 @@ __metadata:
     "@heroicons/react": 2.0.13
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10c0/341ad4a981177281292f133e0868554f1b477ac50c6d5d04cfe4a416f9ec11888ba8c4409de4fd32c6fa5679f4bcecb2b52b21802bcbc67d8c4e990dab4adf39
+  checksum: 10c0/6d7bc7102d1a6b12727cfbc2512b843d74feb9e48b2fc7f61d2b13bc09763652a12514422801c93046ddfd2cfb4e99a42b10382351f6cac84d7a6df47332c89a
   languageName: node
   linkType: hard
 
@@ -1871,8 +1871,8 @@ __metadata:
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
     "@graphiql/react": "npm:0.21.0"
-    "@neo4j-ndl/base": "npm:2.8.0"
-    "@neo4j-ndl/react": "npm:2.11.0"
+    "@neo4j-ndl/base": "npm:2.9.0"
+    "@neo4j-ndl/react": "npm:2.13.0"
     "@neo4j/graphql": "npm:5.3.4"
     "@neo4j/introspector": "npm:3.0.1"
     "@playwright/test": "npm:1.43.1"
