@@ -1874,7 +1874,7 @@ __metadata:
     "@neo4j-ndl/base": "npm:2.8.0"
     "@neo4j-ndl/react": "npm:2.11.0"
     "@neo4j/graphql": "npm:5.3.4"
-    "@neo4j/introspector": "npm:3.0.0"
+    "@neo4j/introspector": "npm:3.0.1"
     "@playwright/test": "npm:1.43.1"
     "@tsconfig/create-react-app": "npm:2.0.4"
     "@types/codemirror": "npm:5.60.15"
@@ -1970,16 +1970,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j/introspector@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@neo4j/introspector@npm:3.0.0"
+"@neo4j/introspector@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@neo4j/introspector@npm:3.0.1"
   dependencies:
     camelcase: "npm:^6.3.0"
     debug: "npm:^4.3.4"
     pluralize: "npm:^8.0.0"
   peerDependencies:
     neo4j-driver: ^5.8.0
-  checksum: 10c0/ad59c325c0882acf1a1e5b54f7e52ebf0584e6e66f6fbaeb2811657cf0b0216d7a0dc196b4d7464033da81128a6417a7c0fdc38de00aa0888289fb87081e44ba
+  checksum: 10c0/1d69d910478d6dbda69acccc625bf250c80ff6c7c5add83b959d83e9b70b218cfbb80eafeb34d568d4ca6a3d13ea48a61ce57a9a3eb62da8cd9e207071b92ef0
   languageName: node
   linkType: hard
 
