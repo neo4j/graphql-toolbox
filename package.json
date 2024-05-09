@@ -122,5 +122,5 @@
         "webpack-dev-server": "5.0.4",
         "webpack-notifier": "1.15.0"
     },
-    "packageManager": "yarn@4.2.1"
+    "packageManager": "yarn@4.2.2"
 }
