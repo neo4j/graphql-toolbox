@@ -69,10 +69,13 @@ export const EditorTabs = () => {
                         data-test-query-editor-tab={tab.title}
                         key={idx.toString()}
                         tabId={idx.toString()}
-                        className={`${theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"}`}
+                        className={theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"}
                     >
                         <div className="flex justify-center items-center">
-                            <span style={{ maxWidth: "7rem" }}>{tab.title}</span>
+                            <span className="truncate" style={{ maxWidth: "7rem" }} title={tab.title}>
+                                {tab.title}
+                            </span>
+
                             {useStore.getState().tabs.length > 1 && (
                                 <XMarkIconOutline
                                     data-test-close-icon-query-editor-tab
