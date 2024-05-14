@@ -1852,10 +1852,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j/cypher-builder@npm:^1.13.0":
-  version: 1.14.0
-  resolution: "@neo4j/cypher-builder@npm:1.14.0"
-  checksum: 10c0/ea8582f1a20906b7c3de06dce99988fcfbeee96cbc9f6b144307e3aafc1a13964348e7258c7b02966600e1fea6a35440914dae55971ce2628a0a2c5251ea48c5
+"@neo4j/cypher-builder@npm:^1.16.0":
+  version: 1.16.0
+  resolution: "@neo4j/cypher-builder@npm:1.16.0"
+  checksum: 10c0/c87fdbf4ae096611e2484d4ea56a4886f837f2f12c675a69461ff1c2f09bd1060c180fb0cfe53770a54d5a40a291941ee54d5eb03620d9f55b86ca6c99374ef5
   languageName: node
   linkType: hard
 
@@ -1873,7 +1873,7 @@ __metadata:
     "@graphiql/react": "npm:0.22.1"
     "@neo4j-ndl/base": "npm:2.9.6"
     "@neo4j-ndl/react": "npm:2.13.7"
-    "@neo4j/graphql": "npm:5.3.5"
+    "@neo4j/graphql": "npm:5.3.6"
     "@neo4j/introspector": "npm:3.0.1"
     "@playwright/test": "npm:1.44.0"
     "@tsconfig/create-react-app": "npm:2.0.4"
@@ -1943,16 +1943,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@neo4j/graphql@npm:5.3.5":
-  version: 5.3.5
-  resolution: "@neo4j/graphql@npm:5.3.5"
+"@neo4j/graphql@npm:5.3.6":
+  version: 5.3.6
+  resolution: "@neo4j/graphql@npm:5.3.6"
   dependencies:
     "@apollo/subgraph": "npm:^2.2.3"
     "@graphql-tools/merge": "npm:^9.0.0"
     "@graphql-tools/resolvers-composition": "npm:^7.0.0"
     "@graphql-tools/schema": "npm:10.0.3"
     "@graphql-tools/utils": "npm:^10.0.0"
-    "@neo4j/cypher-builder": "npm:^1.13.0"
+    "@neo4j/cypher-builder": "npm:^1.16.0"
     camelcase: "npm:^6.3.0"
     debug: "npm:^4.3.4"
     dot-prop: "npm:^6.0.1"
@@ -1966,7 +1966,7 @@ __metadata:
   peerDependencies:
     graphql: ^16.0.0
     neo4j-driver: ^5.8.0
-  checksum: 10c0/31daab626428ed07f9d4eb0f1136445636c37b5435d58f72d5e3b4e0de96761f1d1d57a3a52dfc97c769b4f2acfd79a287406d4073ce9176bd939e55a5b1b5ec
+  checksum: 10c0/f111881042bbc006ca4b9fc32acd12ceb411eb3f664d38e74ad702b66762ed9b221eacc3aa605341d281557c9df2a38949a6156a028c2a8d6a5db62191e0052d
   languageName: node
   linkType: hard
 
