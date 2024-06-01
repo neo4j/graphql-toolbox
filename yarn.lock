@@ -1901,7 +1901,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:7.11.0"
     autoprefixer: "npm:10.4.19"
     classnames: "npm:2.5.1"
-    cm6-graphql: "npm:0.0.14"
+    cm6-graphql: "npm:0.0.15"
     codemirror: "npm:6.0.1"
     compression-webpack-plugin: "npm:11.1.0"
     copy-webpack-plugin: "npm:12.0.2"
@@ -6843,11 +6843,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cm6-graphql@npm:0.0.14":
-  version: 0.0.14
-  resolution: "cm6-graphql@npm:0.0.14"
+"cm6-graphql@npm:0.0.15":
+  version: 0.0.15
+  resolution: "cm6-graphql@npm:0.0.15"
   dependencies:
-    graphql-language-service: "npm:^5.2.0"
+    graphql-language-service: "npm:^5.2.1"
   peerDependencies:
     "@codemirror/autocomplete": 6.2.0
     "@codemirror/language": 6.2.1
@@ -6856,7 +6856,7 @@ __metadata:
     "@codemirror/view": 6.2.1
     "@lezer/highlight": ^1.0.0
     graphql: ^16.5.0
-  checksum: 10c0/eec25025c79b611b551f0b58c4006e0e0eb121e67fc1e4ad4d144a931c4e9935ebe396fbb69db27072d51e21f154e494d2747ccd38c0c8f84ba7de91ad32054e
+  checksum: 10c0/2891064bda43fa2e7932bbcc4b11b2c527f00d86c628944f4558bcc1f15cbc8dad15785d6a99933d3ed5caa90a01eab8fb08c8801a15b678224ae9d06a60b834
   languageName: node
   linkType: hard
 
@@ -9855,20 +9855,6 @@ __metadata:
   bin:
     graphql: dist/temp-bin.js
   checksum: 10c0/f69e16b11dabe132751c0d5aa702f262de2ea27af4d92e04ac6149d11efe132cde6ced15144db8d043b8479abf1db7ba4bc04f8370b175b8ed92bdef943ee785
-  languageName: node
-  linkType: hard
-
-"graphql-language-service@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "graphql-language-service@npm:5.2.0"
-  dependencies:
-    nullthrows: "npm:^1.0.0"
-    vscode-languageserver-types: "npm:^3.17.1"
-  peerDependencies:
-    graphql: ^15.5.0 || ^16.0.0
-  bin:
-    graphql: dist/temp-bin.js
-  checksum: 10c0/2a865d6a7a7fa44bdce12768f7f3b2840a295f9cd684f30bb54db1f3def5f44ea8719c9605b6334fa76798d664f58ed025f17d78199f6c5bc431a67af50190fc
   languageName: node
   linkType: hard
 
