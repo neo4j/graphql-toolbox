@@ -208,7 +208,7 @@ export const Login = () => {
 
                     <Button
                         data-test-login-button
-                        className="w-full mt-8"
+                        className="mr-2 ml-2 mt-8"
                         fill="filled"
                         type="submit"
                         size="large"
