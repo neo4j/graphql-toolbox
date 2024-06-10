@@ -31,8 +31,10 @@ import { AuthContext } from "../../contexts/auth";
 import { Screen, ScreenContext } from "../../contexts/screen";
 import { EditorView } from "../EditorView/EditorView";
 import { Login } from "../Login/Login";
+import { LoginPageCopy } from "../LoginPageCopy/LoginPageCopy";
 import { SchemaView } from "../SchemaView/SchemaView";
 import { TopBar } from "../TopBar/TopBar";
+
 
 export const Main = () => {
     const auth = useContext(AuthContext);
@@ -70,11 +72,14 @@ export const Main = () => {
 
     if (!auth.driver) {
         return (
-            <div className="flex">
-                <div className="flex w-full h-full flex-col">
-                    <Login />
+                <div className="flex h-screen bg-neutral-10 login-bg">
+                    <div className="flex flex-col basis-2/3">
+                        <LoginPageCopy />
+                    </div>
+                    <div className="flex flex-col basis-1/3">
+                        <Login />
+                    </div>
                 </div>
-            </div>
         );
     }
 
@@ -92,7 +97,7 @@ export const Main = () => {
                 role="button"
                 tabIndex={0}
             >
-                Want us to manage your <strong>Neo4j GraphQL API</strong>? Register your interest here!
+                Early Access Program for Aura GraphQL API now open
             </div>
         );
     };

@@ -173,3 +173,36 @@
 .favorite-entry:hover .show-on-hover {
     visibility: visible;
 }
+
+/*-----Login-------*/
+
+.login-screen {
+    display: flex;
+    flex-direction: column;
+    background-image: url(https://graphql-toolbox.neo4j.io/d3603f6….svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    --tw-bg-opacity: 1;
+    background-color: rgb(187 190 195 / var(--tw-bg-opacity));
+}
+
+.login-copy-box {
+    justify-content: center;
+    display: flex;
+    align-items: end;
+    max-width: 830px;
+}
+
+.login-credentials {
+    justify-content: center;
+    display: flex;
+    align-items: end;
+    width: fit-content;
+    height: fit-content;
+    --tw-shadow: var(--theme-shadow-overlay);
+    --tw-shadow-colored: var(--theme-shadow-overlay);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
