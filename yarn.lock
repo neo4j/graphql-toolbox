@@ -1129,9 +1129,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphiql/react@npm:0.22.2":
-  version: 0.22.2
-  resolution: "@graphiql/react@npm:0.22.2"
+"@graphiql/react@npm:0.22.3":
+  version: 0.22.3
+  resolution: "@graphiql/react@npm:0.22.3"
   dependencies:
     "@graphiql/toolkit": "npm:^0.9.1"
     "@headlessui/react": "npm:^1.7.15"
@@ -1152,7 +1152,7 @@ __metadata:
     graphql: ^15.5.0 || ^16.0.0
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 10c0/2484383cb57e71eb17985fe2cf56e014052531f02ccab97d30bae6746f772f7dbde68a92aa0bc42aa5f9ff24672234deefd9cbc6df147c5d672a7fbff1d3f1db
+  checksum: 10c0/75259f488675625cd9d2ae7544c383a0d00106a1d44a443030a7ba8355f3836bc53d91fa375cc4a431f3de265d820d5482ef1dba8ecba2c924d166316824558a
   languageName: node
   linkType: hard
 
@@ -1898,7 +1898,7 @@ __metadata:
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
-    "@graphiql/react": "npm:0.22.2"
+    "@graphiql/react": "npm:0.22.3"
     "@neo4j-ndl/base": "npm:2.10.1"
     "@neo4j-ndl/react": "npm:2.14.1"
     "@neo4j/graphql": "npm:5.4.3"
