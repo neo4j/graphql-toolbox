@@ -19,7 +19,12 @@
 
 import { Screen } from "./Screen";
 
-const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
+const {
+    NEO_USER = "neo4j",
+    NEO_PASSWORD = "password",
+    NEO_URL = "localhost:7687",
+    NEO_PROTOCOL = "neo4j://",
+} = process.env;
 
 export class Login extends Screen {
     public async setUsername(username: string) {
@@ -40,6 +45,11 @@ export class Login extends Screen {
     public async setURL(url: string) {
         await this.page.waitForSelector("[data-test-login-url]");
         await this.page.fill("[data-test-login-url]", url);
+    }
+
+    public async setProtocolValue(protocol: string) {
+        await this.page.waitForSelector("[id=Protocol]");
+        await this.page.fill("[id=Protocol]", protocol);
     }
 
     public async getURL(): Promise<string> {
@@ -82,19 +92,27 @@ export class Login extends Screen {
     public async loginDismissIntrospection(
         username: string = NEO_USER,
         password: string = NEO_PASSWORD,
+        protocol: string = NEO_PROTOCOL,
         url: string = NEO_URL
     ) {
         await this.setUsername(username);
         await this.setPassword(password);
+        await this.setProtocolValue(protocol);
         await this.setURL(url);
         await this.submit();
         await this.dismissIntrospectionPrompt();
         await this.awaitSuccess();
     }
 
-    public async login(username: string = NEO_USER, password: string = NEO_PASSWORD, url: string = NEO_URL) {
+    public async login(
+        username: string = NEO_USER,
+        password: string = NEO_PASSWORD,
+        protocol: string = NEO_PROTOCOL,
+        url: string = NEO_URL
+    ) {
         await this.setUsername(username);
         await this.setPassword(password);
+        await this.setProtocolValue(protocol);
         await this.setURL(url);
         await this.submit();
         await this.awaitSuccess();

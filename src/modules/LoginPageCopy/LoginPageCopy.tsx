@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { CheckCircleIconOutline  } from '@neo4j-ndl/react/icons';
+import { CheckCircleIconOutline } from '@neo4j-ndl/react/icons';
 
 // @ts-ignore - PNG Import
 import neo4jIcon from "../../assets/neo4j-full-color.png";

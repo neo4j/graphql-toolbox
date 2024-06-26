@@ -22,13 +22,19 @@ import { expect, test } from "./utils/pagemodel";
 
 dotenv.config();
 
-const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
+const {
+    NEO_USER = "neo4j",
+    NEO_PASSWORD = "password",
+    NEO_URL = "localhost:7687/neo4j",
+    NEO_PROTOCOL = "neo4j://",
+} = process.env;
 
 test.describe("login", () => {
     test("should be able to connect to database", async ({ loginPage }) => {
+        await loginPage.setProtocolValue(NEO_PROTOCOL);
+        await loginPage.setURL(NEO_URL);
         await loginPage.setUsername(NEO_USER);
         await loginPage.setPassword(NEO_PASSWORD);
-        await loginPage.setURL(NEO_URL);
         await loginPage.submit();
         await loginPage.dismissIntrospectionPrompt();
         await loginPage.awaitSuccess();

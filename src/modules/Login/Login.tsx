@@ -17,12 +17,16 @@
  * limitations under the License.
  */
 
+
+/* Look here for how the needle container component for login does this */
+/* https://github.com/neo4j-labs/neo4j-needle-starterkit/blob/2.0/src/templates/shared/components/ConnectionModal.tsx */
+
 import { useCallback, useContext, useState } from "react";
 
-import { Banner, Button,Dropdown,Label,Tooltip,Typography } from "@neo4j-ndl/react";
+import { Banner, Button, Dropdown, Tooltip, Typography } from "@neo4j-ndl/react";
 import { ExclamationTriangleIconOutline } from "@neo4j-ndl/react/icons";
 
-import {  DEFAULT_URL,DEFAULT_USERNAME } from "../../constants";
+import { DEFAULT_URL, DEFAULT_USERNAME } from "../../constants";
 import { AuthContext } from "../../contexts/auth";
 import { getConnectUrlSearchParamValue } from "../../contexts/utils";
 import { getURLProtocolFromText } from "../../utils/utils";
@@ -41,21 +45,13 @@ export const Login = () => {
     const showWarningToolTip =
         window.location.protocol.includes("https") && !getURLProtocolFromText(url).includes("+s");
     
-    const selectProtocolOptions = [
-        { value: 'neo4j://', label: 'neo4j://' },
-        { value: 'neo4j+s://', label: 'neo4j+s://' },
-        { value: 'bolt://', label: 'bolt://' },
-        { value: 'bolt+s://', label: 'bolt+s://' },
-    ]
-    const [selectProtocol, setProtocolValue] = useState<{value: string; label: string;} >(selectProtocolOptions[0]);
-
-
+    const protocols = ['neo4j://', 'neo4j+s://', 'bolt://', 'bolt+s://'];
+    const [protocol, setProtocol] = useState<string>('neo4j://');
 
     const onSubmit = useCallback(
         async (event: React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
             setLoading(true);
-            const protocol = selectProtocol.value;
             try {
                 await auth.login({
                     username,
@@ -69,7 +65,7 @@ export const Login = () => {
                 setLoading(false);
             }
         },
-        [selectProtocol, url, username, password]
+        [protocol, url, username, password]
     );
 
     const WarningToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
@@ -125,20 +121,18 @@ export const Login = () => {
                     className="grid"
                 >
                     <div className="flex flex-row ">
-                        <div className="basis-1/3">
+                        <div  className="basis-1/3">
                             <Dropdown
+                                id="data-test-login-protocol"
                                 className="bg-gray-50 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 label="Protocol"
                                 name="protocol"
                                 type="select"
                                 size="large"
-                                defaultValue={selectProtocol[0]}
                                 selectProps={{
-                                    value: selectProtocol,
-                                    options: selectProtocolOptions,
-                    
-                                    isMulti: false,
-                                    onChange: newValue => newValue && setProtocolValue(newValue),
+                                    onChange: (newValue) => newValue && setProtocol(newValue.value),
+                                    options: protocols.map((option) => ({ label: option, value: option })),
+                                    value: { label: protocol, value: protocol },
                                 }} 
                             />
                         </div>

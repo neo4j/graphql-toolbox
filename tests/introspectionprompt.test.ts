@@ -24,7 +24,13 @@ import { afterEach, beforeEach, expect, test } from "./utils/pagemodel";
 
 dotenv.config();
 
-const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
+const {
+    NEO_USER = "neo4j",
+    NEO_PASSWORD = "password",
+    NEO_PROTOCOL = "neo4j://",
+    NEO_URL = "localhost:7687/neo4j",
+    NEO_PROTOCOL_URL = "neo4j://localhost:7687/neo4j",
+} = process.env;
 
 test.describe("Introspection prompt", () => {
     let driver: neo4j.Driver;
@@ -35,7 +41,7 @@ test.describe("Introspection prompt", () => {
     const label = `TEST${randomString}`;
 
     beforeEach(async () => {
-        driver = neo4j.driver(NEO_URL, neo4j.auth.basic(NEO_USER, NEO_PASSWORD));
+        driver = neo4j.driver(NEO_PROTOCOL_URL, neo4j.auth.basic(NEO_USER, NEO_PASSWORD));
 
         const session = driver.session();
         try {
@@ -64,9 +70,10 @@ test.describe("Introspection prompt", () => {
         loginPage,
         schemaEditorPage,
     }) => {
+        await loginPage.setProtocolValue(NEO_PROTOCOL);
+        await loginPage.setURL(NEO_URL);
         await loginPage.setUsername(NEO_USER);
         await loginPage.setPassword(NEO_PASSWORD);
-        await loginPage.setURL(NEO_URL);
         await loginPage.submit();
         await loginPage.introspectionPromptIntrospect();
         await loginPage.awaitSuccess();
