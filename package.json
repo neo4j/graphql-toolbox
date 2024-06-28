@@ -51,8 +51,8 @@
         "@dnd-kit/sortable": "8.0.0",
         "@graphiql/react": "0.22.3",
         "@neo4j-ndl/base": "2.11.6",
-        "@neo4j-ndl/react": "2.15.9",
-        "@neo4j/graphql": "5.4.3",
+        "@neo4j-ndl/react": "2.15.10",
+        "@neo4j/graphql": "5.4.4",
         "@neo4j/introspector": "3.0.1",
         "classnames": "2.5.1",
         "cm6-graphql": "0.0.15",
@@ -61,13 +61,13 @@
         "graphiql-explorer": "0.9.0",
         "graphql": "16.9.0",
         "graphql-query-complexity": "0.12.0",
-        "neo4j-driver": "5.21.0",
+        "neo4j-driver": "5.22.0",
         "prettier": "3.3.2",
         "process": "0.11.10",
         "react": "18.3.1",
         "react-dom": "18.3.1",
         "thememirror": "2.0.1",
-        "zustand": "4.5.2"
+        "zustand": "4.5.4"
     },
     "devDependencies": {
         "@playwright/test": "1.45.0",
