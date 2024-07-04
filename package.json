@@ -52,7 +52,7 @@
         "@graphiql/react": "0.22.4",
         "@neo4j-ndl/base": "2.11.6",
         "@neo4j-ndl/react": "2.15.10",
-        "@neo4j/graphql": "5.4.4",
+        "@neo4j/graphql": "5.4.5",
         "@neo4j/introspector": "3.0.1",
         "classnames": "2.5.1",
         "cm6-graphql": "0.0.15",
