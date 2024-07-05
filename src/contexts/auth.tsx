@@ -37,6 +37,7 @@ import {
 interface LoginOptions {
     username: string;
     password: string;
+    protocol: string;
     url: string;
 }
 
@@ -66,12 +67,12 @@ export function AuthProvider(props: any) {
     const [value, setValue] = useState<State>({
         login: async (options: LoginOptions) => {
             const auth = neo4j.auth.basic(options.username, options.password);
-            const protocol = getURLProtocolFromText(options.url);
+            const protocol = options.protocol;
             sessionStore.setAuraDbId(getAuraDBIdFromText(options.url));
             // Manually set the encryption to off if it's not specified in the Connection URI to avoid implicit encryption in https domain
             const driver = protocol.includes("+s")
-                ? neo4j.driver(options.url, auth)
-                : neo4j.driver(options.url, auth, { encrypted: "ENCRYPTION_OFF" });
+                ? neo4j.driver(options.protocol + options.url, auth)
+                : neo4j.driver(options.protocol + options.url, auth, { encrypted: "ENCRYPTION_OFF" });
 
             await driver.verifyConnectivity();
 
@@ -86,7 +87,7 @@ export function AuthProvider(props: any) {
             }
 
             store.setConnectionUsername(options.username);
-            store.setConnectionUrl(options.url);
+            store.setConnectionUrl(options.protocol + options.url);
 
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
             intervalId = window.setInterval(async () => {
@@ -97,7 +98,7 @@ export function AuthProvider(props: any) {
                 ...values,
                 driver,
                 username: options.username,
-                connectUrl: options.url,
+                connectUrl: options.protocol + options.url,
                 isConnected: true,
                 showIntrospectionPrompt: isShowIntrospectionPrompt,
                 databases,
@@ -163,6 +164,7 @@ export function AuthProvider(props: any) {
                 .login({
                     username: loginPayload.username,
                     password: loginPayload.password,
+                    protocol: getURLProtocolFromText(loginPayload.url),
                     url: loginPayload.url,
                 })
                 .catch((error) => console.log(error));

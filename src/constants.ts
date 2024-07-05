@@ -46,6 +46,8 @@ query {
 `;
 
 export const DEFAULT_BOLT_URL = "bolt://localhost:7687";
+export const DEFAULT_URL = "localhost:7687";
+export const DEFAULT_PROTOCOL = "bolt://";
 export const DEFAULT_DATABASE_NAME = "neo4j";
 export const DEFAULT_USERNAME = "neo4j";
 

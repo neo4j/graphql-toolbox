@@ -38,5 +38,5 @@ export const FormInput = (props: Props) => {
     if (props.testtag) {
         options[props.testtag] = true;
     }
-    return <TextInput className="w-full" size="large" aria-label={props.name} fluid {...props} {...options} />;
+    return <TextInput className="bg-gray-50 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" size="large" aria-label={props.name} fluid {...props} {...options} />;
 };

@@ -25,7 +25,13 @@ import { afterAll, beforeAll, expect, test } from "./utils/pagemodel";
 
 dotenv.config();
 
-const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
+const {
+    NEO_USER = "neo4j",
+    NEO_PASSWORD = "password",
+    NEO_PROTOCOL = "neo4j://",
+    NEO_URL = "localhost:7687/neo4j",
+    NEO_PROTOCOL_URL = "neo4j://localhost:7687/neo4j",
+} = process.env;
 
 test.describe("URL query parameters", () => {
     const randomString = generate({
@@ -38,7 +44,7 @@ test.describe("URL query parameters", () => {
     let driver: neo4j.Driver;
 
     beforeAll(async () => {
-        driver = neo4j.driver(NEO_URL, neo4j.auth.basic(NEO_USER, NEO_PASSWORD));
+        driver = neo4j.driver(NEO_PROTOCOL_URL, neo4j.auth.basic(NEO_USER, NEO_PASSWORD));
         const session = driver.session();
         try {
             await session.run(`CREATE OR REPLACE DATABASE ${databaseName} WAIT`);
