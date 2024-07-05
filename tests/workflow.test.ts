@@ -27,8 +27,6 @@ dotenv.config();
 const {
     NEO_USER = "neo4j",
     NEO_PASSWORD = "password",
-    NEO_PROTOCOL = "neo4j://",
-    NEO_URL = "localhost:7687/neo4j",
     NEO_PROTOCOL_URL = "neo4j://localhost:7687/neo4j",
 } = process.env;
 
