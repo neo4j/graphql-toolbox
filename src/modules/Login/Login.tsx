@@ -98,8 +98,6 @@ export const Login = () => {
             <div className="place-items-center w-[500px]">
             <div className="inline-flex min-h-[145px] items-start">
             <Typography
-                as="a"
-                href="/index"
                 variant="h2"
                 >
                 Connect to Neo4j
