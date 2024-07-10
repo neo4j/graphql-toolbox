@@ -39,7 +39,7 @@ jobs:
           number=$(<prnumber)
           case "$number" in ''|*[!0-9]*) echo "Provided PR number is not an integer"; exit 1 ;; esac
           echo "pr-number=$number" >> "$GITHUB_OUTPUT"
-      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+      - uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4
         with:
           node-version: lts/*
       - name: Publish the Toolbox to surge.sh
