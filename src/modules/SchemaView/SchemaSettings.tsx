@@ -17,9 +17,7 @@
  * limitations under the License.
  */
 
-import { useState } from "react";
-
-import { Checkbox, Radio, Tooltip } from "@neo4j-ndl/react";
+import { Checkbox, Radio, Tip } from "@neo4j-ndl/react";
 import { QuestionMarkCircleIconOutline } from "@neo4j-ndl/react/icons";
 import type React from "react";
 
@@ -55,28 +53,16 @@ export const SchemaSettings = () => {
         tracking.trackSchemaConstraints({ screen: "type definitions", value: ConstraintState[nextConstraintState] });
     };
 
-    const InfoToolTip = ({ text, width }: { text: React.ReactNode; width: number }): JSX.Element => {
-        const [isHovering, setIsHovering] = useState<boolean>(false);
-
+    const InfoToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
         return (
-            <div
-                className="pr-2"
-                onMouseOver={() => setIsHovering(true)}
-                onFocus={() => setIsHovering(true)}
-                onMouseOut={() => setIsHovering(false)}
-                onBlur={() => setIsHovering(false)}
-            >
-                <QuestionMarkCircleIconOutline className="ml-1 h-4 w-4" />
-                {isHovering ? (
-                    <Tooltip
-                        arrowPosition="left"
-                        className="absolute mt-[-1.6rem] ml-[1.75rem] z-20"
-                        style={{ width: `${width || 200}px` }}
-                    >
-                        {text}
-                    </Tooltip>
-                ) : null}
-            </div>
+            <Tip type="toggletip" allowedPlacements={["right"]}>
+                <Tip.Trigger hasButtonWrapper>
+                    <QuestionMarkCircleIconOutline className="ml-1 h-4 w-4" />
+                </Tip.Trigger>
+                <Tip.Content>
+                    <Tip.Body>{text}</Tip.Body>
+                </Tip.Content>
+            </Tip>
         );
     };
 
@@ -94,18 +80,16 @@ export const SchemaSettings = () => {
                 <InfoToolTip
                     text={
                         <span>
-                            More information:{" "}
                             <a
                                 className="underline"
                                 href="https://neo4j.com/docs/graphql/current/queries-aggregations/filtering/#_regex_matching"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                here
+                                More information
                             </a>
                         </span>
                     }
-                    width={160}
                 />
             </div>
             <div className="mb-1 mt-2 flex items-baseline">
@@ -120,18 +104,17 @@ export const SchemaSettings = () => {
                 <InfoToolTip
                     text={
                         <span>
-                            Also enable &quot;verbose&quot; logging in web browser. Instructions:{" "}
+                            Also enable &quot;verbose&quot; logging in web browser.{" "}
                             <a
                                 className="underline"
                                 href="https://github.com/debug-js/debug#browser-support"
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                here
+                                See instructions
                             </a>
                         </span>
                     }
-                    width={390}
                 />
             </div>
             <div className="mt-3 flex flex-col">
@@ -140,18 +123,16 @@ export const SchemaSettings = () => {
                     <InfoToolTip
                         text={
                             <span>
-                                More information:{" "}
                                 <a
                                     className="underline"
                                     href="https://neo4j.com/docs/graphql/current/type-definitions/directives/indexes-and-constraints/#_asserting_constraints"
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    here
+                                    More information
                                 </a>
                             </span>
                         }
-                        width={160}
                     />
                 </div>
                 <div className="mt-2">

@@ -18,19 +18,10 @@
  */
 
 import { TextInput } from "@neo4j-ndl/react";
+import type { TextInputProperties } from "@neo4j-ndl/react/lib/types/text-input/TextInput";
 
-export interface Props {
-    name: string;
-    label: string;
-    type: string;
+export interface Props extends TextInputProperties {
     testtag: string;
-    value?: string;
-    placeholder?: string;
-    defaultValue?: string;
-    autoComplete?: string;
-    required: boolean;
-    disabled?: boolean;
-    onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
 export const FormInput = (props: Props) => {

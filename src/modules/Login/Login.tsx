@@ -19,7 +19,7 @@
 
 import { useCallback, useContext, useState } from "react";
 
-import { Banner, Button, Tooltip } from "@neo4j-ndl/react";
+import { Banner, Button, Tip } from "@neo4j-ndl/react";
 import { ExclamationTriangleIconOutline } from "@neo4j-ndl/react/icons";
 
 // @ts-ignore - PNG Import
@@ -62,27 +62,15 @@ export const Login = () => {
     );
 
     const WarningToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
-        const [isHovering, setIsHovering] = useState<boolean>(false);
-
         return (
-            <div
-                className="pr-2"
-                onMouseOver={() => setIsHovering(true)}
-                onFocus={() => setIsHovering(true)}
-                onMouseOut={() => setIsHovering(false)}
-                onBlur={() => setIsHovering(false)}
-            >
-                <ExclamationTriangleIconOutline className="text-lemon-55 h-7 w-7" />
-                {isHovering ? (
-                    <Tooltip
-                        arrowPosition="left"
-                        className="absolute mt-[-5.2rem] ml-[2.2rem] z-20"
-                        style={{ width: "20rem" }}
-                    >
-                        {text}
-                    </Tooltip>
-                ) : null}
-            </div>
+            <Tip type="toggletip" allowedPlacements={["right"]}>
+                <Tip.Trigger type="button" hasButtonWrapper>
+                    <ExclamationTriangleIconOutline className="text-lemon-55 h-7 w-7" />
+                </Tip.Trigger>
+                <Tip.Content style={{ width: "20rem" }}>
+                    <Tip.Body>{text}</Tip.Body>
+                </Tip.Content>
+            </Tip>
         );
     };
 
@@ -111,7 +99,7 @@ export const Login = () => {
                 >
                     <FormInput
                         testtag="data-test-login-url"
-                        label="Connection URL"
+                        label={"Connection URL"}
                         name="url"
                         value={url}
                         onChange={(event) => setUrl(event.currentTarget.value)}
@@ -126,22 +114,20 @@ export const Login = () => {
                                 text={
                                     <span>
                                         This protocol will not establish a secure connection. Please consider accessing
-                                        the Neo4j database using either the bolt+s or neo4j+s protocol. More
-                                        information:{" "}
+                                        the Neo4j database using either the bolt+s or neo4j+s protocol.{" "}
                                         <a
                                             className="underline"
                                             href="https://neo4j.com/developer/javascript/#driver-configuration"
                                             target="_blank"
                                             rel="noreferrer"
                                         >
-                                            here
+                                            More information
                                         </a>
                                     </span>
                                 }
                             />
                         </div>
                     ) : null}
-
                     <FormInput
                         testtag="data-test-login-username"
                         label="Database user"
