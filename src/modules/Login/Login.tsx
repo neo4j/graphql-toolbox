@@ -23,13 +23,11 @@
 
 import { useCallback, useContext, useState } from "react";
 
-import { Banner, Button, Dropdown, Tooltip, Typography } from "@neo4j-ndl/react";
-import { ExclamationTriangleIconOutline } from "@neo4j-ndl/react/icons";
+import { Banner, Button, Dropdown, Typography } from "@neo4j-ndl/react";
 
 import { DEFAULT_URL, DEFAULT_USERNAME } from "../../constants";
 import { AuthContext } from "../../contexts/auth";
 import { getConnectUrlSearchParamValue } from "../../contexts/utils";
-import { getURLProtocolFromText } from "../../utils/utils";
 import { FormInput } from "./FormInput";
 
 // @ts-ignore - PNG Import
@@ -42,8 +40,6 @@ export const Login = () => {
     const [url, setUrl] = useState<string>(searchParamUrl || DEFAULT_URL);
     const [username, setUsername] = useState<string>(searchParamUsername || DEFAULT_USERNAME);
     const [password, setPassword] = useState<string>("");
-    const showWarningToolTip =
-        window.location.protocol.includes("https") && !getURLProtocolFromText(url).includes("+s");
     
     const protocols = ['neo4j://', 'neo4j+s://', 'bolt://', 'bolt+s://'];
     const [protocol, setProtocol] = useState<string>('neo4j://');
@@ -67,31 +63,6 @@ export const Login = () => {
         },
         [protocol, url, username, password]
     );
-
-    const WarningToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
-        const [isHovering, setIsHovering] = useState<boolean>(false);
-
-        return (
-            <div
-                className="pr-2"
-                onMouseOver={() => setIsHovering(true)}
-                onFocus={() => setIsHovering(true)}
-                onMouseOut={() => setIsHovering(false)}
-                onBlur={() => setIsHovering(false)}
-            >
-                <ExclamationTriangleIconOutline className="text-lemon-55 h-7 w-7" />
-                {isHovering ? (
-                    <Tooltip
-                        arrowPosition="left"
-                        className="absolute mt-[-5.2rem] ml-[2.2rem] z-20"
-                        style={{ width: "20rem" }}
-                    >
-                        {text}
-                    </Tooltip>
-                ) : null}
-            </div>
-        );
-    };
 
     return (
         <div data-test-login-form className="grid place-items-center h-screen bg-neutral-10">
@@ -149,28 +120,6 @@ export const Login = () => {
                         </div>
 
                     </div>
-
-                    {showWarningToolTip ? (
-                        <div className="absolute ml-[-28rem] mt-[2.5rem]">
-                            <WarningToolTip
-                                text={
-                                    <span>
-                                        This protocol will not establish a secure connection. Please consider accessing
-                                        the Neo4j database using either the bolt+s or neo4j+s protocol. More
-                                        information:{" "}
-                                        <a
-                                            className="underline"
-                                            href="https://neo4j.com/developer/javascript/#driver-configuration"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            here
-                                        </a>
-                                    </span>
-                                }
-                            />
-                        </div>
-                    ) : null}
 
                     <FormInput
                         testtag="data-test-login-username"
