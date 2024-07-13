@@ -1904,10 +1904,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j/cypher-builder@npm:^1.16.0":
-  version: 1.16.0
-  resolution: "@neo4j/cypher-builder@npm:1.16.0"
-  checksum: 10c0/c87fdbf4ae096611e2484d4ea56a4886f837f2f12c675a69461ff1c2f09bd1060c180fb0cfe53770a54d5a40a291941ee54d5eb03620d9f55b86ca6c99374ef5
+"@neo4j/cypher-builder@npm:^1.17.1":
+  version: 1.17.1
+  resolution: "@neo4j/cypher-builder@npm:1.17.1"
+  checksum: 10c0/4a815c1388478cb039e7665f2ef1b3b1bf227cef41cceb0d2624ead2f84b5b7aeda0012eb9dac62361145e7ae3980870dc6ff3b9ec7755b13b4cb0569ef1d3c2
   languageName: node
   linkType: hard
 
@@ -1925,7 +1925,7 @@ __metadata:
     "@graphiql/react": "npm:0.22.4"
     "@neo4j-ndl/base": "npm:2.11.12"
     "@neo4j-ndl/react": "npm:2.15.16"
-    "@neo4j/graphql": "npm:5.4.5"
+    "@neo4j/graphql": "npm:5.5.1"
     "@neo4j/introspector": "npm:3.0.1"
     "@playwright/test": "npm:1.45.1"
     "@tsconfig/create-react-app": "npm:2.0.5"
@@ -1995,16 +1995,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@neo4j/graphql@npm:5.4.5":
-  version: 5.4.5
-  resolution: "@neo4j/graphql@npm:5.4.5"
+"@neo4j/graphql@npm:5.5.1":
+  version: 5.5.1
+  resolution: "@neo4j/graphql@npm:5.5.1"
   dependencies:
     "@apollo/subgraph": "npm:^2.2.3"
     "@graphql-tools/merge": "npm:^9.0.0"
     "@graphql-tools/resolvers-composition": "npm:^7.0.0"
     "@graphql-tools/schema": "npm:10.0.4"
     "@graphql-tools/utils": "npm:^10.0.0"
-    "@neo4j/cypher-builder": "npm:^1.16.0"
+    "@neo4j/cypher-builder": "npm:^1.17.1"
     camelcase: "npm:^6.3.0"
     debug: "npm:^4.3.4"
     dot-prop: "npm:^6.0.1"
@@ -2018,7 +2018,7 @@ __metadata:
   peerDependencies:
     graphql: ^16.0.0
     neo4j-driver: ^5.8.0
-  checksum: 10c0/a83edf6edfefc7c729e993e1f3f2817569666fc41e999401a40db331ebbf0c4d8979bfeed36be1b650cfee09201ddcfc747db8abc2de6498f638b5682ea2237e
+  checksum: 10c0/059004e2ad34e6d1a6ad4675f7721f042931378e9d2d8f0dbe2afa72dedd89eec84bd6d35daa5da1fc5b5d1c114d761650a921ddc9f857390506c8dd90a36f9d
   languageName: node
   linkType: hard
 
