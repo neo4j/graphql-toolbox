@@ -1859,16 +1859,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/base@npm:2.12.4, @neo4j-ndl/base@npm:^2.12.4":
-  version: 2.12.4
-  resolution: "@neo4j-ndl/base@npm:2.12.4"
-  checksum: 10c0/d2f16f6e5b567517528de617d01cca303199f6ef5dcee5f07d3598578a9c1b9304b5c3439247963fef64d677bbe56c93c97efb4907950846d4bdf1b2a99c001a
+"@neo4j-ndl/base@npm:2.12.5, @neo4j-ndl/base@npm:^2.12.5":
+  version: 2.12.5
+  resolution: "@neo4j-ndl/base@npm:2.12.5"
+  checksum: 10c0/1a9ecc989b20ee7f02675f11c7917b1525cbc36ea571fbaef83d2f4dcf174fe625209eea7b33e6b3ad623e694746898f1481bb414d279e0dbfcc3140c1f53f2a
   languageName: node
   linkType: hard
 
-"@neo4j-ndl/react@npm:2.16.6":
-  version: 2.16.6
-  resolution: "@neo4j-ndl/react@npm:2.16.6"
+"@neo4j-ndl/react@npm:2.16.7":
+  version: 2.16.7
+  resolution: "@neo4j-ndl/react@npm:2.16.7"
   dependencies:
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/sortable": "npm:8.0.0"
@@ -1876,7 +1876,7 @@ __metadata:
     "@floating-ui/react-dom": "npm:2.0.1"
     "@heroicons/react": "npm:2.0.18"
     "@neo4j-cypher/react-codemirror": "npm:^1.0.1"
-    "@neo4j-ndl/base": "npm:^2.12.4"
+    "@neo4j-ndl/base": "npm:^2.12.5"
     "@table-nav/core": "npm:0.0.7"
     "@table-nav/react": "npm:0.0.7"
     "@tanstack/react-table": "npm:8.11.8"
@@ -1900,7 +1900,7 @@ __metadata:
     "@heroicons/react": 2.0.18
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10c0/2ddbba6302890f2d63e2de89db57d52848732506d3676fdfb3fd517ff28849d15a43a756fd0a327ddc1ed6df49bec88a7bcc94e9acb284100fffd21b2587a4bb
+  checksum: 10c0/70fe521603eafa2334b43ff2b900f1b5b83bd98787eff02068a24447f6d31ea4a2cfced208fce3888dce64d85624e8fbbc171e3452a0640edc51645a31b33337
   languageName: node
   linkType: hard
 
@@ -1923,8 +1923,8 @@ __metadata:
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
     "@graphiql/react": "npm:0.22.4"
-    "@neo4j-ndl/base": "npm:2.12.4"
-    "@neo4j-ndl/react": "npm:2.16.6"
+    "@neo4j-ndl/base": "npm:2.12.5"
+    "@neo4j-ndl/react": "npm:2.16.7"
     "@neo4j/graphql": "npm:5.5.2"
     "@neo4j/introspector": "npm:3.0.1"
     "@playwright/test": "npm:1.45.3"
