@@ -7,7 +7,11 @@
         "automerge": false
     },
     "timezone": "Europe/London",
-    "schedule": ["after 10pm every weekday", "before 5am every weekday", "every weekend"],
+    "schedule": [
+        "after 10pm every weekday",
+        "before 5am every weekday",
+        "every weekend"
+    ],
     "ignorePaths": [
         "**/node_modules/**",
         "**/bower_components/**",
@@ -24,13 +28,12 @@
             "extends": [":pinAllExceptPeerDependencies"]
         },
         {
-            "matchPackagePatterns": ["*"],
-            "excludePackageNames": ["@neo4j/graphql-toolbox"],
-            "extends": [":pinOnlyDevDependencies"]
+            "extends": [":pinOnlyDevDependencies"],
+            "matchPackageNames": ["*", "!@neo4j/graphql-toolbox"]
         },
         {
             "groupName": "neo4j-ndl",
-            "matchPackagePatterns": ["^@neo4j-ndl/"]
+            "matchPackageNames": ["/^@neo4j-ndl//"]
         }
     ]
 }
