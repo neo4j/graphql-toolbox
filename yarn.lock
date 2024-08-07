@@ -1925,7 +1925,7 @@ __metadata:
     "@graphiql/react": "npm:0.23.0"
     "@neo4j-ndl/base": "npm:2.12.7"
     "@neo4j-ndl/react": "npm:2.16.9"
-    "@neo4j/graphql": "npm:5.5.2"
+    "@neo4j/graphql": "npm:5.5.3"
     "@neo4j/introspector": "npm:3.0.1"
     "@playwright/test": "npm:1.46.0"
     "@tsconfig/create-react-app": "npm:2.0.5"
@@ -1995,9 +1995,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@neo4j/graphql@npm:5.5.2":
-  version: 5.5.2
-  resolution: "@neo4j/graphql@npm:5.5.2"
+"@neo4j/graphql@npm:5.5.3":
+  version: 5.5.3
+  resolution: "@neo4j/graphql@npm:5.5.3"
   dependencies:
     "@apollo/subgraph": "npm:^2.2.3"
     "@graphql-tools/merge": "npm:^9.0.0"
@@ -2018,7 +2018,7 @@ __metadata:
   peerDependencies:
     graphql: ^16.0.0
     neo4j-driver: ^5.8.0
-  checksum: 10c0/e242a1048111f98f06084e17c6df3310952c50158baad03be5fe1a38b4093ff6e9957c760db45bdf5f5c0cbbb4b74fcda08a376f4f0dead44ef62f1011e50ca5
+  checksum: 10c0/991acd8915a9266efb054a0ec8c5d5e03d060f272e9140a7a2693cd6a4e1f244f597d16f9f19fd5a8750d9032ae29b17b05632a11a05f121c1da50a52aca4694
   languageName: node
   linkType: hard
 
