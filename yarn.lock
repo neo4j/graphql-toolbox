@@ -1946,7 +1946,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:8.1.0"
     autoprefixer: "npm:10.4.20"
     classnames: "npm:2.5.1"
-    cm6-graphql: "npm:0.0.15"
+    cm6-graphql: "npm:0.1.0"
     codemirror: "npm:6.0.1"
     compression-webpack-plugin: "npm:11.1.0"
     copy-webpack-plugin: "npm:12.0.2"
@@ -6890,11 +6890,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cm6-graphql@npm:0.0.15":
-  version: 0.0.15
-  resolution: "cm6-graphql@npm:0.0.15"
+"cm6-graphql@npm:0.1.0":
+  version: 0.1.0
+  resolution: "cm6-graphql@npm:0.1.0"
   dependencies:
-    graphql-language-service: "npm:^5.2.1"
+    graphql-language-service: "npm:^5.3.0"
   peerDependencies:
     "@codemirror/autocomplete": 6.2.0
     "@codemirror/language": 6.2.1
@@ -6902,8 +6902,8 @@ __metadata:
     "@codemirror/state": 6.2.0
     "@codemirror/view": 6.2.1
     "@lezer/highlight": ^1.0.0
-    graphql: ^16.5.0
-  checksum: 10c0/2891064bda43fa2e7932bbcc4b11b2c527f00d86c628944f4558bcc1f15cbc8dad15785d6a99933d3ed5caa90a01eab8fb08c8801a15b678224ae9d06a60b834
+    graphql: ^16.5.0 || ^17.0.0-alpha.2
+  checksum: 10c0/7d8b5f6e0fb01c4d7bb942da98a834ac034ed59f67c317a861838740b2e2ac5890ee0177930720fd22892cdde65094f5f05ef242d8c3f9742e8395a2ad3a57ff
   languageName: node
   linkType: hard
 
@@ -9963,17 +9963,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-language-service@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "graphql-language-service@npm:5.2.1"
+"graphql-language-service@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "graphql-language-service@npm:5.3.0"
   dependencies:
+    debounce-promise: "npm:^3.1.2"
     nullthrows: "npm:^1.0.0"
     vscode-languageserver-types: "npm:^3.17.1"
   peerDependencies:
-    graphql: ^15.5.0 || ^16.0.0
+    graphql: ^15.5.0 || ^16.0.0 || ^17.0.0-alpha.2
   bin:
     graphql: dist/temp-bin.js
-  checksum: 10c0/f69e16b11dabe132751c0d5aa702f262de2ea27af4d92e04ac6149d11efe132cde6ced15144db8d043b8479abf1db7ba4bc04f8370b175b8ed92bdef943ee785
+  checksum: 10c0/93bf543a6561c22ff4067fae00f7b3f30365fcf8d123ba9ca623693dc28272682df89c87bda74772cab353c906fb0a6942344a5809fd223df9ea3505a341065c
   languageName: node
   linkType: hard
 
