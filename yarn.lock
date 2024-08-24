@@ -1151,11 +1151,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphiql/react@npm:0.26.0":
-  version: 0.26.0
-  resolution: "@graphiql/react@npm:0.26.0"
+"@graphiql/react@npm:0.26.1":
+  version: 0.26.1
+  resolution: "@graphiql/react@npm:0.26.1"
   dependencies:
-    "@graphiql/toolkit": "npm:^0.10.0"
+    "@graphiql/toolkit": "npm:^0.11.0"
     "@headlessui/react": "npm:^1.7.15"
     "@radix-ui/react-dialog": "npm:^1.0.4"
     "@radix-ui/react-dropdown-menu": "npm:^2.0.5"
@@ -1175,13 +1175,13 @@ __metadata:
     graphql: ^15.5.0 || ^16.0.0 || ^17.0.0-alpha.2
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 10c0/ef808eafc92c5d18e19e8cc56440bfdf0480d4fd56c067f06a28d880664b9c54fa5335e88d00a70618bd340fb3fb32edb4c8ec14bb7e18eebf3c1eb62aefd2d3
+  checksum: 10c0/8052791ea5f788e16b38b984c17180465a11e58b3dd48fea63112a59b00c5867c7ea1d38d76ae9d036768bc05bae5e726250acd0d175127134c10dd06287dcac
   languageName: node
   linkType: hard
 
-"@graphiql/toolkit@npm:^0.10.0":
-  version: 0.10.0
-  resolution: "@graphiql/toolkit@npm:0.10.0"
+"@graphiql/toolkit@npm:^0.11.0":
+  version: 0.11.0
+  resolution: "@graphiql/toolkit@npm:0.11.0"
   dependencies:
     "@n1ru4l/push-pull-async-iterable-iterator": "npm:^3.1.0"
     meros: "npm:^1.1.4"
@@ -1191,7 +1191,7 @@ __metadata:
   peerDependenciesMeta:
     graphql-ws:
       optional: true
-  checksum: 10c0/d3386ce3bf5d578c1b77248e154f8f33184c3877c121b1beed8944ec7dfbba2235aec179e548a5abfd3467725cb408ca492ad0d6a719a9e3576a76fd93972460
+  checksum: 10c0/2a02e8de23bdf46d5c4a814f6651dd6bb69cbfef43ef672c67fb8081b795dc9d162b6e973e33074fab4e3f28f741569570a485fea5a0c6eaca76ff4cae284e1d
   languageName: node
   linkType: hard
 
@@ -1930,7 +1930,7 @@ __metadata:
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
-    "@graphiql/react": "npm:0.26.0"
+    "@graphiql/react": "npm:0.26.1"
     "@neo4j-ndl/base": "npm:2.12.9"
     "@neo4j-ndl/react": "npm:2.16.12"
     "@neo4j/graphql": "npm:5.6.0"
