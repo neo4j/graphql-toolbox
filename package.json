@@ -61,7 +61,7 @@
         "graphiql-explorer": "0.9.0",
         "graphql": "16.9.0",
         "graphql-query-complexity": "0.12.0",
-        "neo4j-driver": "5.23.0",
+        "neo4j-driver": "5.24.0",
         "prettier": "3.3.3",
         "process": "0.11.10",
         "react": "18.3.1",
