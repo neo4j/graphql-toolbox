@@ -500,15 +500,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/commands@npm:6.6.1":
-  version: 6.6.1
-  resolution: "@codemirror/commands@npm:6.6.1"
+"@codemirror/commands@npm:6.7.0":
+  version: 6.7.0
+  resolution: "@codemirror/commands@npm:6.7.0"
   dependencies:
     "@codemirror/language": "npm:^6.0.0"
     "@codemirror/state": "npm:^6.4.0"
     "@codemirror/view": "npm:^6.27.0"
     "@lezer/common": "npm:^1.1.0"
-  checksum: 10c0/94cdd70db4ff43f2e43ef0898a16cbb29ec26f35798eee6d56bd3802563b0ae242ca1a8d8ac52e5573077aaec27cd20ecb77b1f1ea6be5b5224439b3cb94601b
+  checksum: 10c0/a69b89c2c3a99c547dac93fe39e2fe6214a2cec10265ed7a16cb7d9f3117147974c509367261913ce8c80bbb7f78a94468d2c6b6dd919b9065a80136e4c7149a
   languageName: node
   linkType: hard
 
@@ -539,9 +539,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/language@npm:6.10.2":
-  version: 6.10.2
-  resolution: "@codemirror/language@npm:6.10.2"
+"@codemirror/language@npm:6.10.3":
+  version: 6.10.3
+  resolution: "@codemirror/language@npm:6.10.3"
   dependencies:
     "@codemirror/state": "npm:^6.0.0"
     "@codemirror/view": "npm:^6.23.0"
@@ -549,7 +549,7 @@ __metadata:
     "@lezer/highlight": "npm:^1.0.0"
     "@lezer/lr": "npm:^1.0.0"
     style-mod: "npm:^4.0.0"
-  checksum: 10c0/ac9b24dffb3aa6f502283dfe2bc4b4038f9fecbed9450fc4a72d408b9a09dc254f9af735b98091531829da163eb116e4cfa95aeacacff4fd36ef95cd9a54c4a6
+  checksum: 10c0/3cb1c05c9466deb5082470d0276c18a0445c25498de04622c4bd08e96487110d23a6dffb91913685a1f0f6c34159848fb61a32829b17b75fce1fe7429e377b6d
   languageName: node
   linkType: hard
 
@@ -1962,9 +1962,9 @@ __metadata:
   resolution: "@neo4j/graphql-toolbox@workspace:."
   dependencies:
     "@codemirror/autocomplete": "npm:6.18.1"
-    "@codemirror/commands": "npm:6.6.1"
+    "@codemirror/commands": "npm:6.7.0"
     "@codemirror/lang-javascript": "npm:6.2.2"
-    "@codemirror/language": "npm:6.10.2"
+    "@codemirror/language": "npm:6.10.3"
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
