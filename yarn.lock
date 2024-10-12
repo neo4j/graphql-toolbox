@@ -2015,7 +2015,7 @@ __metadata:
     jest-environment-jsdom: "npm:29.7.0"
     neo4j-driver: "npm:5.25.0"
     node-polyfill-webpack-plugin: "npm:3.0.0"
-    parse5: "npm:7.1.2"
+    parse5: "npm:7.2.0"
     postcss: "npm:8.4.47"
     postcss-loader: "npm:8.1.1"
     prettier: "npm:3.3.3"
@@ -8810,7 +8810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"entities@npm:^4.4.0":
+"entities@npm:^4.4.0, entities@npm:^4.5.0":
   version: 4.5.0
   resolution: "entities@npm:4.5.0"
   checksum: 10c0/5b039739f7621f5d1ad996715e53d964035f75ad3b9a4d38c6b3804bb226e282ffeae2443624d8fdd9c47d8e926ae9ac009c54671243f0c3294c26af7cc85250
@@ -14474,7 +14474,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse5@npm:7.1.2, parse5@npm:^7.0.0, parse5@npm:^7.1.1":
+"parse5@npm:7.2.0":
+  version: 7.2.0
+  resolution: "parse5@npm:7.2.0"
+  dependencies:
+    entities: "npm:^4.5.0"
+  checksum: 10c0/76d68684708befb41ff1d5e0e9835f566afb3950807d340941afc9dbe4c9c28db2414bda0c8503d459de863463869b8540c6abf8c9742cffa0b9b31eecd37951
+  languageName: node
+  linkType: hard
+
+"parse5@npm:^7.0.0, parse5@npm:^7.1.1":
   version: 7.1.2
   resolution: "parse5@npm:7.1.2"
   dependencies:
