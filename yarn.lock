@@ -2013,7 +2013,7 @@ __metadata:
     html-webpack-plugin: "npm:5.6.0"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
-    neo4j-driver: "npm:5.25.0"
+    neo4j-driver: "npm:5.26.0"
     node-polyfill-webpack-plugin: "npm:3.0.0"
     parse5: "npm:7.2.0"
     postcss: "npm:8.4.47"
@@ -13682,32 +13682,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"neo4j-driver-bolt-connection@npm:5.25.0":
-  version: 5.25.0
-  resolution: "neo4j-driver-bolt-connection@npm:5.25.0"
+"neo4j-driver-bolt-connection@npm:5.26.0":
+  version: 5.26.0
+  resolution: "neo4j-driver-bolt-connection@npm:5.26.0"
   dependencies:
     buffer: "npm:^6.0.3"
-    neo4j-driver-core: "npm:5.25.0"
+    neo4j-driver-core: "npm:5.26.0"
     string_decoder: "npm:^1.3.0"
-  checksum: 10c0/f1120ffb57d42e783ae973e3c3435f3c7e15dab1ed5ced65f6667015cd18cdb80d95ee66f68625a6951bdd354fecd13de08f6c9f96d56851dec57629d18c93f0
+  checksum: 10c0/fb9083040da296cbb375a9662063cb70b461e798f7d1778ddf84c4b6d89ad7dbadf14b7e276aec9350f1f87ade65554a5d71b3efdff1390dd70ce502df2062dc
   languageName: node
   linkType: hard
 
-"neo4j-driver-core@npm:5.25.0":
-  version: 5.25.0
-  resolution: "neo4j-driver-core@npm:5.25.0"
-  checksum: 10c0/282fe291a2fe61ff412c59820e8454fcfcfb269ac45b9ae1ba66873bcdf5e6148f8eb73016d0d8d6b24ffa0bd83ee331a175de386422f2940c961027efda3298
+"neo4j-driver-core@npm:5.26.0":
+  version: 5.26.0
+  resolution: "neo4j-driver-core@npm:5.26.0"
+  checksum: 10c0/ed5d0f43f42359693a7be4036b1d0362b99bf92031e2ddfbf8ea4064c4929a2bb55284013912070a53f1ffd5a1ae26ddb82844a0872fc8becd027e97331549b0
   languageName: node
   linkType: hard
 
-"neo4j-driver@npm:5.25.0":
-  version: 5.25.0
-  resolution: "neo4j-driver@npm:5.25.0"
+"neo4j-driver@npm:5.26.0":
+  version: 5.26.0
+  resolution: "neo4j-driver@npm:5.26.0"
   dependencies:
-    neo4j-driver-bolt-connection: "npm:5.25.0"
-    neo4j-driver-core: "npm:5.25.0"
+    neo4j-driver-bolt-connection: "npm:5.26.0"
+    neo4j-driver-core: "npm:5.26.0"
     rxjs: "npm:^7.8.1"
-  checksum: 10c0/78025002692ec0ea228ccfdef7d47dcd47cfc04017ea14e31c7aa3e0a3585be0669e4701cbd6dd51a8a3abd3d74a8aa6300e049af2d429aac66ca1aca717816d
+  checksum: 10c0/56c39c5fe61d2985d02c62d4c23f2d3da3bcb94a5b6594ad9f2cf55ea5399791769af31c29ef6618302a57a52b7a787e0e13eabbefb6e701877633bb56192f27
   languageName: node
   linkType: hard
 
