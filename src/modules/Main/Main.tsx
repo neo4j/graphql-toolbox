@@ -101,7 +101,7 @@ export const Main = () => {
         <div className="flex w-full h-full flex-col">
             <EditorContextProvider>
                 <StorageContextProvider>
-                    <Banner />
+                    
                     <NeedleThemeProvider theme="dark">
                         <TopBar />
                     </NeedleThemeProvider>
