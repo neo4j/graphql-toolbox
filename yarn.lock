@@ -2039,7 +2039,7 @@ __metadata:
     fork-ts-checker-webpack-plugin: "npm:9.0.2"
     graphiql-explorer: "npm:0.9.0"
     graphql: "npm:16.10.0"
-    graphql-query-complexity: "npm:0.12.0"
+    graphql-query-complexity: "npm:1.0.0"
     graphql-ws: "npm:5.16.0"
     html-inline-script-webpack-plugin: "npm:3.2.1"
     html-webpack-inline-source-plugin: "npm:0.0.10"
@@ -10716,14 +10716,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-query-complexity@npm:0.12.0":
-  version: 0.12.0
-  resolution: "graphql-query-complexity@npm:0.12.0"
+"graphql-query-complexity@npm:1.0.0":
+  version: 1.0.0
+  resolution: "graphql-query-complexity@npm:1.0.0"
   dependencies:
     lodash.get: "npm:^4.4.2"
   peerDependencies:
     graphql: ^14.6.0 || ^15.0.0 || ^16.0.0
-  checksum: 10c0/4ab22f7df6a250b6ef5aaf10115cb9bbbc0491790961e1be054d14dbaf621fb88a0293b0b42a265ce81e9ccf00e4d26f3dda82e6be6678961b5c2ef1cf62724d
+  checksum: 10c0/94b9e35eb6d504464cac25a077dc403b3c94666874748451b9175027e790216d8b52765f1d7b6a73bef80d8e0ba3a7fad52bf281080bf12be976f7edf1a3e5da
   languageName: node
   linkType: hard
 
