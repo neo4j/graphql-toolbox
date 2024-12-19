@@ -49,7 +49,7 @@
         "@dnd-kit/core": "6.3.1",
         "@dnd-kit/modifiers": "7.0.0",
         "@dnd-kit/sortable": "8.0.0",
-        "@graphiql/react": "0.28.1",
+        "@graphiql/react": "0.28.2",
         "@neo4j-ndl/base": "2.12.14",
         "@neo4j-ndl/react": "2.16.28",
         "@neo4j/graphql": "6.2.2",
