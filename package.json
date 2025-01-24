@@ -70,7 +70,7 @@
         "zustand": "4.5.6"
     },
     "devDependencies": {
-        "@playwright/test": "1.49.1",
+        "@playwright/test": "1.50.0",
         "@tsconfig/create-react-app": "2.0.5",
         "@types/codemirror": "5.60.15",
         "@types/jest": "29.5.14",
