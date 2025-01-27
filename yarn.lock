@@ -1279,7 +1279,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/utils@npm:^10.0.0, @graphql-tools/utils@npm:^10.0.13":
+"@graphql-tools/utils@npm:10.6.1":
+  version: 10.6.1
+  resolution: "@graphql-tools/utils@npm:10.6.1"
+  dependencies:
+    "@graphql-typed-document-node/core": "npm:^3.1.1"
+    cross-inspect: "npm:1.0.1"
+    dset: "npm:^3.1.2"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: 10c0/00cd131e34e0adf85c4b879fc301fcf0b51709d8b802efe0349d0207dbc64990b018f3588d8bc122de805c0759f96e145ec1f80083a2f95a37f4ea83ce0329ed
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/utils@npm:^10.0.13":
   version: 10.1.0
   resolution: "@graphql-tools/utils@npm:10.1.0"
   dependencies:
@@ -1983,10 +1997,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neo4j/cypher-builder@npm:2.0.2":
-  version: 2.0.2
-  resolution: "@neo4j/cypher-builder@npm:2.0.2"
-  checksum: 10c0/776f7204df4c226bf26c1e9e8db472b6498d85b7aacf4ca67ec210ca4c6e884a1c08e5bd7779dccadef4b79a22775c9f7d99b73cba9c8d38e518551792a38f03
+"@neo4j/cypher-builder@npm:2.2.1":
+  version: 2.2.1
+  resolution: "@neo4j/cypher-builder@npm:2.2.1"
+  checksum: 10c0/5d3af9a6b9bc7db5dc36ca7cfe6e0ec2d104a65538afca20aa47245cfb87681275e26d99e802f9ac80f2597b3535133c3be97cd3b5db35ba1495e6ef4f230dfb
   languageName: node
   linkType: hard
 
@@ -2004,7 +2018,7 @@ __metadata:
     "@graphiql/react": "npm:0.28.2"
     "@neo4j-ndl/base": "npm:2.12.14"
     "@neo4j-ndl/react": "npm:2.16.28"
-    "@neo4j/graphql": "npm:6.2.3"
+    "@neo4j/graphql": "npm:6.3.0"
     "@neo4j/introspector": "npm:4.0.1"
     "@playwright/test": "npm:1.50.0"
     "@tsconfig/create-react-app": "npm:2.0.5"
@@ -2074,16 +2088,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@neo4j/graphql@npm:6.2.3":
-  version: 6.2.3
-  resolution: "@neo4j/graphql@npm:6.2.3"
+"@neo4j/graphql@npm:6.3.0":
+  version: 6.3.0
+  resolution: "@neo4j/graphql@npm:6.3.0"
   dependencies:
     "@apollo/subgraph": "npm:^2.2.3"
     "@graphql-tools/merge": "npm:^9.0.0"
     "@graphql-tools/resolvers-composition": "npm:^7.0.0"
     "@graphql-tools/schema": "npm:^10.0.0"
-    "@graphql-tools/utils": "npm:^10.0.0"
-    "@neo4j/cypher-builder": "npm:2.0.2"
+    "@graphql-tools/utils": "npm:10.6.1"
+    "@neo4j/cypher-builder": "npm:2.2.1"
     camelcase: "npm:^6.3.0"
     debug: "npm:^4.3.4"
     dot-prop: "npm:^6.0.1"
@@ -2097,7 +2111,7 @@ __metadata:
   peerDependencies:
     graphql: ^16.0.0
     neo4j-driver: ^5.8.0
-  checksum: 10c0/31615ef86b7cb56466287e12361c7b056a3c4beb05450c4021355d9928f235d0bd5f3f0209c2bca22708daecdfed678a9c66805b51028a659e594659ae8d06a3
+  checksum: 10c0/b608f6933425c464fe3a049fe9a51f1866688014578823d866357fc9ae8e397dbf97d99af350bf7bb036d8dd17f0064c71ae1ff432767681ff4a338270bd68eb
   languageName: node
   linkType: hard
 
