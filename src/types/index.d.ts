@@ -28,7 +28,7 @@ type Analytics = {
     methods: string[];
     factory: (e: string) => void;
     push: (e: unknown) => void;
-    load: (key: string, e?: string | undefined) => void;
+    load: (key: string, e?: string) => void;
     page: () => void;
     track: (key: string, e: unknown) => void;
 };

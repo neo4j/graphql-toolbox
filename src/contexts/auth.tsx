@@ -58,7 +58,7 @@ export interface State {
 
 export const AuthContext = React.createContext({} as State);
 
-export function AuthProvider(props: any) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
     let intervalId: number;
     const store = useStore();
     const sessionStore = useSessionStore();
@@ -135,12 +135,15 @@ export function AuthProvider(props: any) {
         resolveNeo4jDesktopLoginPayload().then(processLoginPayload.bind(null, value)).catch(console.error);
     }, []);
 
-    const checkForDatabaseUpdates = async (driver: neo4j.Driver, setValue: any) => {
+    const checkForDatabaseUpdates = async (
+        driver: neo4j.Driver,
+        setValue: React.Dispatch<React.SetStateAction<State>>
+    ) => {
         try {
             await driver.verifyConnectivity();
             const databases = await getDatabases(driver);
             setValue((values) => ({ ...values, isConnected: true, databases: databases || [] }));
-        } catch (err) {
+        } catch {
             setValue((values) => ({ ...values, isConnected: false }));
         }
     };
@@ -169,5 +172,5 @@ export function AuthProvider(props: any) {
         }
     };
 
-    return <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

@@ -33,7 +33,6 @@ export enum ParserOptions {
 
 export const formatCode = (editorView: EditorView, parserOption: ParserOptions): void => {
     const selection = editorView.state.selection;
-    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     const value = editorView.state.doc.toString();
 
     let options = {};
@@ -80,7 +79,7 @@ export const safeParse = (str: string | null | undefined, fallback: Record<strin
     if (!str) return fallback;
     try {
         return JSON.parse(str);
-    } catch (e) {
+    } catch {
         return fallback;
     }
 };
@@ -96,7 +95,7 @@ export const calculateQueryComplexity = (schema: GraphQLSchema, query: string, v
 
         console.log("Query complexity: ", complexity);
         return complexity;
-    } catch (error) {
+    } catch {
         console.log("Query complexity calculation failed");
         return -1;
     }
