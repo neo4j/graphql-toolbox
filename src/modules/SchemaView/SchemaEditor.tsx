@@ -19,7 +19,13 @@
 
 import { useContext, useEffect, useState } from "react";
 
-import { autocompletion, closeBrackets, closeBracketsKeymap, completionKeymap } from "@codemirror/autocomplete";
+import {
+    acceptCompletion,
+    autocompletion,
+    closeBrackets,
+    closeBracketsKeymap,
+    completionKeymap,
+} from "@codemirror/autocomplete";
 import { defaultKeymap, history, historyKeymap, indentWithTab } from "@codemirror/commands";
 import { bracketMatching, foldGutter, foldKeymap, indentOnInput, syntaxTree } from "@codemirror/language";
 import type { Diagnostic } from "@codemirror/lint";
@@ -124,6 +130,7 @@ export const SchemaEditor = ({
                     },
                     preventDefault: true,
                 },
+                { key: "Tab", run: acceptCompletion },
             ])
         ),
         foldGutter({
