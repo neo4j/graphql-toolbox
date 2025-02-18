@@ -50,12 +50,12 @@ export function ThemeProvider(props: React.PropsWithChildren<any>) {
 
     // Automatically detect if the user changed the color scheme/theme, also on OS level.
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-        event.matches ? _setTheme(Theme.DARK) : _setTheme(Theme.LIGHT);
+        _setTheme(event.matches ? Theme.DARK : Theme.LIGHT);
     });
 
     useEffect(() => {
         if (!useStore.getState().editorTheme) {
-            window.matchMedia("(prefers-color-scheme: dark)").matches ? _setTheme(Theme.DARK) : _setTheme(Theme.LIGHT);
+            _setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.DARK : Theme.LIGHT);
         }
     }, []);
 
