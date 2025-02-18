@@ -70,14 +70,14 @@ export const Main = () => {
     const Banner = () => {
         return (
             <div className="h-8 w-full bg-lavender-45 text-neutral-10 text-center leading-8">
-                GraphQL for Neo4j AuraDB now in beta! See the{" "}
+                Win $250 by testing the GraphQL for Neo4j AuraDB.{` `}
                 <a
-                    href="https://neo4j.com/docs/graphql/6/aura-graphql/"
+                    href="https://neo4j.com/developer-blog/build-conways-game-of-life/"
                     className="underline"
                     target="_blank"
                     rel="noreferrer"
                 >
-                    Docs
+                    See Developer Blog for details
                 </a>
                 .
             </div>
