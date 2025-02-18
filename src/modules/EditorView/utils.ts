@@ -33,7 +33,6 @@ export enum ParserOptions {
 
 export const formatCode = (editorView: EditorView, parserOption: ParserOptions): void => {
     const selection = editorView.state.selection;
-    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     const value = editorView.state.doc.toString();
 
     let options = {};
