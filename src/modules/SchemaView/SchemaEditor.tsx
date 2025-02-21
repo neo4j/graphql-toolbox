@@ -26,7 +26,7 @@ import {
     closeBracketsKeymap,
     completionKeymap,
 } from "@codemirror/autocomplete";
-import { defaultKeymap, history, historyKeymap, indentWithTab } from "@codemirror/commands";
+import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
 import { bracketMatching, foldGutter, foldKeymap, indentOnInput, syntaxTree } from "@codemirror/language";
 import type { Diagnostic } from "@codemirror/lint";
 import { linter, lintGutter, lintKeymap } from "@codemirror/lint";
@@ -44,6 +44,7 @@ import { DEFAULT_TYPE_DEFS, SCHEMA_EDITOR_INPUT } from "../../constants";
 import { AppSettingsContext } from "../../contexts/appsettings";
 import { Theme, ThemeContext } from "../../contexts/theme";
 import { useStore } from "../../store";
+import { customKeybindings } from "../EditorView/customKeybindings";
 import { handleEditorDisableState } from "../EditorView/utils";
 import { getSchemaForLintAndAutocompletion, getUnsupportedDirective } from "./utils";
 
@@ -111,7 +112,7 @@ export const SchemaEditor = ({
         highlightSelectionMatches(),
         EditorView.lineWrapping,
         keymap.of([
-            indentWithTab,
+            ...customKeybindings,
             ...closeBracketsKeymap,
             ...defaultKeymap,
             ...searchKeymap,

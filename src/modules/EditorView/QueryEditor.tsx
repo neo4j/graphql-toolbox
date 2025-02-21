@@ -26,7 +26,7 @@ import {
     closeBracketsKeymap,
     completionKeymap,
 } from "@codemirror/autocomplete";
-import { defaultKeymap, history, historyKeymap, indentWithTab } from "@codemirror/commands";
+import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
 import { bracketMatching, foldGutter, foldKeymap, indentOnInput } from "@codemirror/language";
 import { lintGutter, lintKeymap } from "@codemirror/lint";
 import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
@@ -48,6 +48,7 @@ import { EDITOR_QUERY_INPUT } from "../../constants";
 import { AppSettingsContext } from "../../contexts/appsettings";
 import { Theme, ThemeContext } from "../../contexts/theme";
 import { useStore } from "../../store";
+import { customKeybindings } from "./customKeybindings";
 import { formatCode, handleEditorDisableState, ParserOptions } from "./utils";
 
 export interface Props {
@@ -98,7 +99,7 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
         highlightSelectionMatches(),
         EditorView.lineWrapping,
         keymap.of([
-            indentWithTab,
+            ...customKeybindings,
             ...closeBracketsKeymap,
             ...defaultKeymap,
             ...searchKeymap,
