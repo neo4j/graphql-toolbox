@@ -19,7 +19,13 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 
-import { autocompletion, closeBrackets, closeBracketsKeymap, completionKeymap } from "@codemirror/autocomplete";
+import {
+    acceptCompletion,
+    autocompletion,
+    closeBrackets,
+    closeBracketsKeymap,
+    completionKeymap,
+} from "@codemirror/autocomplete";
 import { defaultKeymap, history, historyKeymap, indentWithTab } from "@codemirror/commands";
 import { bracketMatching, foldGutter, foldKeymap, indentOnInput } from "@codemirror/language";
 import { lintGutter, lintKeymap } from "@codemirror/lint";
@@ -42,7 +48,7 @@ import { EDITOR_QUERY_INPUT } from "../../constants";
 import { AppSettingsContext } from "../../contexts/appsettings";
 import { Theme, ThemeContext } from "../../contexts/theme";
 import { useStore } from "../../store";
-import { formatCode, handleEditorDisableState,ParserOptions } from "./utils";
+import { formatCode, handleEditorDisableState, ParserOptions } from "./utils";
 
 export interface Props {
     loading: boolean;
@@ -118,6 +124,7 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
                     },
                     preventDefault: true,
                 },
+                { key: "Tab", run: acceptCompletion },
             ])
         ),
         foldGutter({
