@@ -28,12 +28,13 @@ import type { ViewUpdate } from "@codemirror/view";
 import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
 import { Button } from "@neo4j-ndl/react";
 import classNames from "classnames";
-import { dracula, tomorrow } from "thememirror";
 
 import type { Extension } from "../../components/Filename";
 import { FileName } from "../../components/Filename";
 import { Theme, ThemeContext } from "../../contexts/theme";
 import { useStore } from "../../store";
+import { dracula } from "../../theme/dracula";
+import { tomorrow } from "../../theme/tomorrow";
 import { formatCode, handleEditorDisableState, ParserOptions } from "./utils";
 
 export interface Props {

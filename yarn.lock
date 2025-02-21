@@ -2049,7 +2049,6 @@ __metadata:
     style-loader: "npm:4.0.0"
     tailwindcss: "npm:3.4.17"
     terser-webpack-plugin: "npm:5.3.10"
-    thememirror: "npm:2.0.1"
     ts-jest: "npm:29.2.5"
     ts-loader: "npm:9.5.2"
     ts-node: "npm:10.9.2"
@@ -18044,17 +18043,6 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: 10c0/02805740c12851ea5982686810702e2f14369a5f4c5c40a836821e3eefc65ffeec3131ba324692a37608294b0fd8c1e55a2dd571ffed4909822787668ddbee5c
-  languageName: node
-  linkType: hard
-
-"thememirror@npm:2.0.1":
-  version: 2.0.1
-  resolution: "thememirror@npm:2.0.1"
-  peerDependencies:
-    "@codemirror/language": ^6.0.0
-    "@codemirror/state": ^6.0.0
-    "@codemirror/view": ^6.0.0
-  checksum: 10c0/ab4e7b254aaa2d5db2e6503eae4153c32fc639d30dba1a5c24a5f08f6caef39436eebca9cee25fd3c000a3f40b2a1155af8515d350f19aabb625fee663873ce3
   languageName: node
   linkType: hard
 

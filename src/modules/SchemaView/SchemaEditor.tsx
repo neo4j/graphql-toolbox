@@ -37,13 +37,14 @@ import { Button, IconButton, Tip } from "@neo4j-ndl/react";
 import { StarIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
 import { graphql } from "cm6-graphql";
-import { dracula, tomorrow } from "thememirror";
 
 import { Extension, FileName } from "../../components/Filename";
 import { DEFAULT_TYPE_DEFS, SCHEMA_EDITOR_INPUT } from "../../constants";
 import { AppSettingsContext } from "../../contexts/appsettings";
 import { Theme, ThemeContext } from "../../contexts/theme";
 import { useStore } from "../../store";
+import { dracula } from "../../theme/dracula";
+import { tomorrow } from "../../theme/tomorrow";
 import { customKeybindings } from "../EditorView/customKeybindings";
 import { handleEditorDisableState } from "../EditorView/utils";
 import { getSchemaForLintAndAutocompletion, getUnsupportedDirective } from "./utils";

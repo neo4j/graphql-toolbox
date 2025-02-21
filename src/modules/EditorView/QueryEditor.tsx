@@ -41,13 +41,14 @@ import { graphql as graphqlExtension } from "cm6-graphql";
 import type { EditorView as CodeMirrorEditorView } from "codemirror";
 import { EditorView } from "codemirror";
 import type { GraphQLSchema } from "graphql";
-import { dracula, tomorrow } from "thememirror";
 
 import { Extension, FileName } from "../../components/Filename";
 import { EDITOR_QUERY_INPUT } from "../../constants";
 import { AppSettingsContext } from "../../contexts/appsettings";
 import { Theme, ThemeContext } from "../../contexts/theme";
 import { useStore } from "../../store";
+import { dracula } from "../../theme/dracula";
+import { tomorrow } from "../../theme/tomorrow";
 import { customKeybindings } from "./customKeybindings";
 import { formatCode, handleEditorDisableState, ParserOptions } from "./utils";
 

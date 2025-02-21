@@ -65,7 +65,6 @@
         "process": "0.11.10",
         "react": "18.3.1",
         "react-dom": "18.3.1",
-        "thememirror": "2.0.1",
         "zustand": "4.5.6"
     },
     "devDependencies": {
