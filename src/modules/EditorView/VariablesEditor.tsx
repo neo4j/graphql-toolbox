@@ -26,9 +26,9 @@ import { bracketMatching, foldGutter, indentOnInput } from "@codemirror/language
 import { Annotation, Prec, StateEffect } from "@codemirror/state";
 import type { ViewUpdate } from "@codemirror/view";
 import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
+import { dracula, tomorrow } from "@mjfwebb/thememirror";
 import { Button } from "@neo4j-ndl/react";
 import classNames from "classnames";
-import { dracula, tomorrow } from "thememirror";
 
 import type { Extension } from "../../components/Filename";
 import { FileName } from "../../components/Filename";
