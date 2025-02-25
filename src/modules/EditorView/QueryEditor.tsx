@@ -33,6 +33,7 @@ import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
 import { Annotation, EditorState, Prec, StateEffect } from "@codemirror/state";
 import type { ViewUpdate } from "@codemirror/view";
 import { drawSelection, dropCursor, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
+import { dracula, tomorrow } from "@mjfwebb/thememirror";
 import { tokens } from "@neo4j-ndl/base";
 import { Button, IconButton } from "@neo4j-ndl/react";
 import { PlayIconOutline } from "@neo4j-ndl/react/icons";
@@ -41,7 +42,6 @@ import { graphql as graphqlExtension } from "cm6-graphql";
 import type { EditorView as CodeMirrorEditorView } from "codemirror";
 import { EditorView } from "codemirror";
 import type { GraphQLSchema } from "graphql";
-import { dracula, tomorrow } from "thememirror";
 
 import { Extension, FileName } from "../../components/Filename";
 import { EDITOR_QUERY_INPUT } from "../../constants";
