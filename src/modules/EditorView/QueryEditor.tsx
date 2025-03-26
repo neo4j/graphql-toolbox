@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import {
     acceptCompletion,
@@ -86,57 +86,60 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
         }
     });
 
-    const extensions = [
-        lineNumbers(),
-        highlightSpecialChars(),
-        bracketMatching(),
-        closeBrackets(),
-        history(),
-        dropCursor(),
-        drawSelection(),
-        indentOnInput(),
-        autocompletion({ defaultKeymap: true, maxRenderedOptions: 5 }),
-        highlightSelectionMatches(),
-        EditorView.lineWrapping,
-        keymap.of([
-            ...customKeybindings,
-            ...closeBracketsKeymap,
-            ...defaultKeymap,
-            ...searchKeymap,
-            ...historyKeymap,
-            ...foldKeymap,
-            ...completionKeymap,
-            ...lintKeymap,
-        ]),
-        Prec.highest(
+    const extensions = useMemo(
+        () => [
+            lineNumbers(),
+            highlightSpecialChars(),
+            bracketMatching(),
+            closeBrackets(),
+            history(),
+            dropCursor(),
+            drawSelection(),
+            indentOnInput(),
+            autocompletion({ defaultKeymap: true, maxRenderedOptions: 5 }),
+            highlightSelectionMatches(),
+            EditorView.lineWrapping,
             keymap.of([
-                {
-                    key: "Mod-Enter",
-                    run: (view) => {
-                        onSubmit(view.state.doc.toString()).catch(() => null);
-                        return true;
+                ...customKeybindings,
+                ...closeBracketsKeymap,
+                ...defaultKeymap,
+                ...searchKeymap,
+                ...historyKeymap,
+                ...foldKeymap,
+                ...completionKeymap,
+                ...lintKeymap,
+            ]),
+            Prec.highest(
+                keymap.of([
+                    {
+                        key: "Mod-Enter",
+                        run: (view) => {
+                            onSubmit(view.state.doc.toString()).catch(() => null);
+                            return true;
+                        },
                     },
-                },
-                {
-                    key: "Mod-m",
-                    run: (view) => {
-                        formatCode(view, ParserOptions.GRAPH_QL);
-                        return true;
+                    {
+                        key: "Mod-m",
+                        run: (view) => {
+                            formatCode(view, ParserOptions.GRAPH_QL);
+                            return true;
+                        },
+                        preventDefault: true,
                     },
-                    preventDefault: true,
-                },
-                { key: "Tab", run: acceptCompletion },
-            ])
-        ),
-        foldGutter({
-            closedText: "▶",
-            openText: "▼",
-        }),
-        graphqlExtension(schema),
-        theme.theme === Theme.LIGHT ? tomorrow : dracula,
-        appSettings.showLintMarkers ? lintGutter() : [],
-        updateListener,
-    ];
+                    { key: "Tab", run: acceptCompletion },
+                ])
+            ),
+            foldGutter({
+                closedText: "▶",
+                openText: "▼",
+            }),
+            graphqlExtension(schema),
+            theme.theme === Theme.LIGHT ? tomorrow : dracula,
+            appSettings.showLintMarkers ? lintGutter() : [],
+            updateListener,
+        ],
+        [appSettings.showLintMarkers, onSubmit, schema, theme.theme, updateListener]
+    );
 
     useEffect(() => {
         if (elementRef.current === null) {
@@ -159,13 +162,13 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
             view.destroy();
             setEditorView(null);
         };
-    }, [elementRef.current]);
+    }, [extensions]);
 
     useEffect(() => {
         if (editorView) {
             editorView.dispatch({ effects: StateEffect.reconfigure.of(extensions) });
         }
-    }, [theme.theme, appSettings.showLintMarkers, extensions]);
+    }, [theme.theme, appSettings.showLintMarkers, extensions, editorView]);
 
     useEffect(() => {
         if (value === undefined) {
@@ -180,9 +183,11 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
         }
     }, [value, editorView]);
 
+    const activeTabQuery = useStore.getState().getActiveTab().query;
+
     useEffect(() => {
-        setValue(useStore.getState().getActiveTab().query);
-    }, [useStore.getState().getActiveTab().query]);
+        setValue(activeTabQuery);
+    }, [activeTabQuery]);
 
     useEffect(() => {
         handleEditorDisableState(elementRef.current, loading);
@@ -216,7 +221,6 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
                             className={classNames(theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}
                             color="primary"
                             clean
-                            // eslint-disable-next-line @typescript-eslint/no-misused-promises
                             onClick={() => onSubmit()}
                             disabled={!schema || loading}
                         >

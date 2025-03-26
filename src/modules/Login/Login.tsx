@@ -21,8 +21,9 @@ import { useCallback, useContext, useState } from "react";
 
 import { Banner, Button, Tip } from "@neo4j-ndl/react";
 import { ExclamationTriangleIconOutline } from "@neo4j-ndl/react/icons";
+import type { JSX } from "react";
 
-// @ts-ignore - PNG Import
+// @ts-expect-error - PNG Import
 import neo4jIcon from "../../assets/neo4j-full-color.png";
 import { DEFAULT_BOLT_URL, DEFAULT_USERNAME } from "../../constants";
 import { AuthContext } from "../../contexts/auth";
@@ -58,7 +59,7 @@ export const Login = () => {
                 setLoading(false);
             }
         },
-        [url, username, password]
+        [url, username, password, auth]
     );
 
     const WarningToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
@@ -92,11 +93,7 @@ export const Login = () => {
                     />
                 )}
 
-                <form
-                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-                    onSubmit={onSubmit}
-                    className="flex flex-col items-center gap-4 mt-auto mb-24"
-                >
+                <form onSubmit={onSubmit} className="flex flex-col items-center gap-4 mt-auto mb-24">
                     <FormInput
                         testtag="data-test-login-url"
                         label={"Connection URL"}

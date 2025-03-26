@@ -19,9 +19,9 @@
 
 import { useDragResize } from "@graphiql/react";
 
-// @ts-ignore - SVG Import
+// @ts-expect-error - SVG Import
 import unionHorizontal from "./union_horizontal.svg";
-// @ts-ignore - SVG Import
+// @ts-expect-error - SVG Import
 import unionVertical from "./union_vertical.svg";
 
 import "./grid.css";

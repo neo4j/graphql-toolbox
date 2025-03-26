@@ -96,7 +96,7 @@ export const EditorView = ({ schema }: Props) => {
                 setLoading(false);
             }, 500);
         },
-        [setLoading]
+        [auth.selectedDatabaseName, schema, store]
     );
 
     return (

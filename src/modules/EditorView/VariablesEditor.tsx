@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import { closeBrackets } from "@codemirror/autocomplete";
 import { indentWithTab } from "@codemirror/commands";
@@ -53,10 +53,10 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
     const [editorView, setEditorView] = useState<EditorView | null>(null);
     const [value, setValue] = useState<string>();
 
-    const formatTheCode = (): void => {
+    const formatTheCode = useCallback((): void => {
         if (!editorView) return;
         formatCode(editorView, ParserOptions.JSON);
-    };
+    }, [editorView]);
 
     // Taken from https://github.com/uiwjs/react-codemirror/blob/master/core/src/useCodeMirror.ts
     const updateListener = EditorView.updateListener.of((vu: ViewUpdate) => {
@@ -72,36 +72,39 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
         }
     });
 
-    const extensions = [
-        lineNumbers(),
-        highlightSpecialChars(),
-        bracketMatching(),
-        closeBrackets(),
-        drawSelection(),
-        indentOnInput(),
-        dropCursor(),
-        foldGutter({
-            closedText: "▶",
-            openText: "▼",
-        }),
-        javascript(),
-        EditorView.lineWrapping,
-        keymap.of([indentWithTab]),
-        Prec.highest(
-            keymap.of([
-                {
-                    key: "Mod-m",
-                    run: () => {
-                        formatTheCode();
-                        return true;
+    const extensions = useMemo(
+        () => [
+            lineNumbers(),
+            highlightSpecialChars(),
+            bracketMatching(),
+            closeBrackets(),
+            drawSelection(),
+            indentOnInput(),
+            dropCursor(),
+            foldGutter({
+                closedText: "▶",
+                openText: "▼",
+            }),
+            javascript(),
+            EditorView.lineWrapping,
+            keymap.of([indentWithTab]),
+            Prec.highest(
+                keymap.of([
+                    {
+                        key: "Mod-m",
+                        run: () => {
+                            formatTheCode();
+                            return true;
+                        },
+                        preventDefault: true,
                     },
-                    preventDefault: true,
-                },
-            ])
-        ),
-        theme.theme === Theme.LIGHT ? tomorrow : dracula,
-        updateListener,
-    ];
+                ])
+            ),
+            theme.theme === Theme.LIGHT ? tomorrow : dracula,
+            updateListener,
+        ],
+        [formatTheCode, theme.theme, updateListener]
+    );
 
     useEffect(() => {
         if (elementRef.current === null) {
@@ -120,13 +123,13 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
             view.destroy();
             setEditorView(null);
         };
-    }, [elementRef.current]);
+    }, [value]);
 
     useEffect(() => {
         if (editorView) {
             editorView.dispatch({ effects: StateEffect.reconfigure.of(extensions) });
         }
-    }, [theme.theme, extensions]);
+    }, [theme.theme, extensions, editorView]);
 
     useEffect(() => {
         if (value === undefined) {
@@ -141,9 +144,11 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
         }
     }, [value, editorView]);
 
+    const activeTabVariables = useStore.getState().getActiveTab().variables;
+
     useEffect(() => {
-        setValue(useStore.getState().getActiveTab().variables);
-    }, [useStore.getState().getActiveTab().variables]);
+        setValue(activeTabVariables);
+    }, [activeTabVariables]);
 
     useEffect(() => {
         handleEditorDisableState(elementRef.current, loading);

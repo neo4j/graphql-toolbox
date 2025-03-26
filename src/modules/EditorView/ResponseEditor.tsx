@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import { closeBrackets } from "@codemirror/autocomplete";
 import { indentWithTab } from "@codemirror/commands";
@@ -47,24 +47,27 @@ export const ResponseEditor = ({ id, loading, fileExtension, fileName, value, bo
     const elementRef = useRef<HTMLDivElement | null>(null);
     const [editorView, setEditorView] = useState<EditorView | null>(null);
 
-    const extensions = [
-        lineNumbers(),
-        highlightSpecialChars(),
-        bracketMatching(),
-        closeBrackets(),
-        drawSelection(),
-        indentOnInput(),
-        dropCursor(),
-        foldGutter({
-            closedText: "▶",
-            openText: "▼",
-        }),
-        javascript(),
-        EditorView.lineWrapping,
-        EditorView.editable.of(false), // make the editor read-only
-        keymap.of([indentWithTab]),
-        theme.theme === Theme.LIGHT ? tomorrow : dracula,
-    ];
+    const extensions = useMemo(
+        () => [
+            lineNumbers(),
+            highlightSpecialChars(),
+            bracketMatching(),
+            closeBrackets(),
+            drawSelection(),
+            indentOnInput(),
+            dropCursor(),
+            foldGutter({
+                closedText: "▶",
+                openText: "▼",
+            }),
+            javascript(),
+            EditorView.lineWrapping,
+            EditorView.editable.of(false), // make the editor read-only
+            keymap.of([indentWithTab]),
+            theme.theme === Theme.LIGHT ? tomorrow : dracula,
+        ],
+        [theme.theme]
+    );
 
     useEffect(() => {
         if (elementRef.current === null) {
@@ -84,13 +87,13 @@ export const ResponseEditor = ({ id, loading, fileExtension, fileName, value, bo
             view.destroy();
             setEditorView(null);
         };
-    }, [elementRef.current]);
+    }, [value]);
 
     useEffect(() => {
         if (editorView) {
             editorView.dispatch({ effects: StateEffect.reconfigure.of(extensions) });
         }
-    }, [theme.theme, extensions]);
+    }, [theme.theme, extensions, editorView]);
 
     useEffect(() => {
         if (editorView && value) {
@@ -101,7 +104,7 @@ export const ResponseEditor = ({ id, loading, fileExtension, fileName, value, bo
             });
             formatCode(editorView, ParserOptions.JSON);
         }
-    }, [value]);
+    }, [editorView, value]);
 
     useEffect(() => {
         handleEditorDisableState(elementRef.current, loading);

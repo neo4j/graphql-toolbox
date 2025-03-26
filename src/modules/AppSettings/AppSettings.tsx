@@ -33,7 +33,7 @@ export const AppSettings = ({ onClickClose }: Props) => {
     const theme = useContext(ThemeContext);
     const appSettings = useContext(AppSettingsContext);
 
-    const handleOnChangeEditorTheme = (event: any) => {
+    const handleOnChangeEditorTheme: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         const next = event?.target?.id === Theme.LIGHT.toString() ? Theme.LIGHT : Theme.DARK;
         theme.setTheme(next);
         tracking.trackChangeEditorTheme({ screen: "type definitions", theme: next });
@@ -121,7 +121,7 @@ export const AppSettings = ({ onClickClose }: Props) => {
                     <span data-test-copyright-information>Copyright &copy; 2002-2025</span>
                     <div className="flex">
                         <span>Neo4j GraphQL version:</span>&nbsp;
-                        <pre>{(process.env.NEO4J_GRAPHQL_VERSION || "").replace(/\^|~/g, "")}</pre>
+                        <pre>{(import.meta.env.NEO4J_GRAPHQL_VERSION || "").replace(/\^|~/g, "")}</pre>
                     </div>
                 </div>
             </div>

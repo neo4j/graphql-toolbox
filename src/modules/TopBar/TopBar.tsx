@@ -29,7 +29,7 @@ import {
 import classNames from "classnames";
 
 import { tracking } from "../../analytics/tracking";
-// @ts-ignore - SVG Import
+// @ts-expect-error - SVG Import
 import Neo4jLogoIcon from "../../assets/neo4j-logo-white.svg";
 import { cannySettings } from "../../common/canny";
 import { DEFAULT_BOLT_URL } from "../../constants";

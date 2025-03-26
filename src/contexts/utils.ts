@@ -18,9 +18,11 @@
  */
 
 import type * as neo4j from "neo4j-driver";
+
 import { CONNECT_URL_PARAM_NAME, DATABASE_PARAM_NAME, DEFAULT_DATABASE_NAME } from "../constants";
 import { useStore } from "../store";
 import type { LoginPayload, Neo4jDatabase, Neo4jDatabaseInfo } from "../types";
+import { hasOwnProperty } from "../utils/utils";
 
 const isMultiDbUnsupportedError = (e: Error) => {
     if (
@@ -40,21 +42,46 @@ export const resolveNeo4jDesktopLoginPayload = async (): Promise<LoginPayload | 
     }
 
     try {
-        const context = (await window.neo4jDesktopApi.getContext()) as Record<string, any>;
+        const context = await window.neo4jDesktopApi.getContext();
         if (!context) {
             return null;
         }
 
-        const graphsData = context.projects
+        if (hasOwnProperty(context, "projects") === false) {
+            return null;
+        }
+
+        if (Array.isArray(context.projects) === false) {
+            return null;
+        }
+
+        const graphsData: {
+            connection: {
+                configuration: {
+                    protocols: {
+                        bolt: {
+                            url: string;
+                            username: string;
+                            password: string;
+                        };
+                    };
+                };
+            };
+            status: string;
+        }[] = context.projects
             .map((project) => ({
-                graphs: project.graphs.filter((graph) => graph.status === "ACTIVE"),
+                graphs: project.graphs.filter((graph: { status: string }) => graph.status === "ACTIVE"),
             }))
             .reduce((acc, { graphs }) => acc.concat(graphs), []);
         if (!graphsData.length) {
             return null;
         }
 
-        const boltProtocolData = graphsData[0].connection.configuration.protocols.bolt;
+        const boltProtocolData: {
+            url: string;
+            username: string;
+            password: string;
+        } = graphsData[0].connection.configuration.protocols.bolt;
         if (!boltProtocolData) {
             return null;
         }

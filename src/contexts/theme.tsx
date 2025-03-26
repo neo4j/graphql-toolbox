@@ -33,7 +33,7 @@ export interface State {
 
 export const ThemeContext = React.createContext({} as State);
 
-export function ThemeProvider(props: React.PropsWithChildren<any>) {
+export function ThemeProvider(props: React.PropsWithChildren) {
     const loadEditorTheme = () => {
         const editorTheme = useStore.getState().editorTheme;
         if (editorTheme) {

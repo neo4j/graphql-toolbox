@@ -31,15 +31,19 @@ export const getURLProtocolFromText = (text: string | null | undefined): string 
     if (!text) return "";
     try {
         return new URL(text)?.protocol;
-    } catch (_) {
+    } catch {
         return "";
     }
 };
 
-export function usePrevious(value) {
-    const ref = useRef();
+export function usePrevious(value: string | undefined): string | undefined {
+    const ref = useRef<string | undefined>(undefined);
     useEffect(() => {
         ref.current = value;
     });
     return ref.current;
+}
+
+export function hasOwnProperty<T, K extends PropertyKey>(object: T, property: K): object is T & Record<K, unknown> {
+    return Object.prototype.hasOwnProperty.call(object, property);
 }

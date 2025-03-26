@@ -3,11 +3,11 @@
         "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
         "target": "ES2022",
         "lib": ["ES2023"],
-        "module": "NodeNext",
+        "module": "ESNext",
         "skipLibCheck": true,
 
         /* Bundler mode */
-        "moduleResolution": "nodenext",
+        "moduleResolution": "bundler",
         "allowImportingTsExtensions": true,
         "isolatedModules": true,
         "moduleDetection": "force",
@@ -20,5 +20,5 @@
         "noFallthroughCasesInSwitch": true,
         "noUncheckedSideEffectImports": true
     },
-    "include": ["."]
+    "include": ["vite.config.ts"]
 }

@@ -40,7 +40,7 @@ export const Main = () => {
     const [schema, setSchema] = useState<GraphQLSchema | undefined>(undefined);
 
     useEffect(() => {
-        const segmentKey = process.env.SEGMENT_GRAPHQL_TOOLBOX_PROD_SOURCE;
+        const segmentKey = import.meta.env.SEGMENT_GRAPHQL_TOOLBOX_PROD_SOURCE;
         if (!segmentKey) {
             console.log("Did not find Segment key, will not initialize Segment");
             return;
@@ -50,7 +50,7 @@ export const Main = () => {
     }, []);
 
     useEffect(() => {
-        const cannyAppId = process.env.CANNY_GRAPHQL_TOOLBOX_APP_ID;
+        const cannyAppId = import.meta.env.CANNY_GRAPHQL_TOOLBOX_APP_ID;
         if (!cannyAppId) {
             console.log("Did not find Canny App ID, will not initialize Canny");
             window.CannyIsLoaded = false;

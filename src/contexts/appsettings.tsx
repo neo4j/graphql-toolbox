@@ -34,7 +34,7 @@ export interface State {
 
 export const AppSettingsContext = React.createContext({} as State);
 
-export function AppSettingsProvider(props: React.PropsWithChildren<any>) {
+export function AppSettingsProvider(props: React.PropsWithChildren) {
     const [value, setValue]: [value: State | undefined, setValue: Dispatch<SetStateAction<State>>] = useState<State>({
         showLintMarkers: useStore.getState().showLintMarkers,
         enableProductUsageTracking: useStore.getState().enableProductUsageTracking,

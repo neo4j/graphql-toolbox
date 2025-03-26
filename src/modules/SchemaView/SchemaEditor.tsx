@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 import {
     acceptCompletion,
@@ -99,50 +99,53 @@ export const SchemaEditor = ({
     const storedTypeDefs = useStore.getState().typeDefinitions || DEFAULT_TYPE_DEFS;
     const [building, setBuilding] = useState<boolean>(false);
 
-    const extensions = [
-        lineNumbers(),
-        highlightSpecialChars(),
-        bracketMatching(),
-        closeBrackets(),
-        history(),
-        dropCursor(),
-        drawSelection(),
-        indentOnInput(),
-        autocompletion({ defaultKeymap: true, maxRenderedOptions: 5 }),
-        highlightSelectionMatches(),
-        EditorView.lineWrapping,
-        keymap.of([
-            ...customKeybindings,
-            ...closeBracketsKeymap,
-            ...defaultKeymap,
-            ...searchKeymap,
-            ...historyKeymap,
-            ...foldKeymap,
-            ...completionKeymap,
-            ...lintKeymap,
-        ]),
-        Prec.highest(
+    const extensions = useMemo(
+        () => [
+            lineNumbers(),
+            highlightSpecialChars(),
+            bracketMatching(),
+            closeBrackets(),
+            history(),
+            dropCursor(),
+            drawSelection(),
+            indentOnInput(),
+            autocompletion({ defaultKeymap: true, maxRenderedOptions: 5 }),
+            highlightSelectionMatches(),
+            EditorView.lineWrapping,
             keymap.of([
-                {
-                    key: "Mod-m",
-                    run: () => {
-                        formatTheCode();
-                        return true;
+                ...customKeybindings,
+                ...closeBracketsKeymap,
+                ...defaultKeymap,
+                ...searchKeymap,
+                ...historyKeymap,
+                ...foldKeymap,
+                ...completionKeymap,
+                ...lintKeymap,
+            ]),
+            Prec.highest(
+                keymap.of([
+                    {
+                        key: "Mod-m",
+                        run: () => {
+                            formatTheCode();
+                            return true;
+                        },
+                        preventDefault: true,
                     },
-                    preventDefault: true,
-                },
-                { key: "Tab", run: acceptCompletion },
-            ])
-        ),
-        foldGutter({
-            closedText: "▶",
-            openText: "▼",
-        }),
-        linter(unsupportedDirectivesLinter),
-        graphql(getSchemaForLintAndAutocompletion()),
-        theme.theme === Theme.LIGHT ? tomorrow : dracula,
-        appSettings.showLintMarkers ? lintGutter() : [],
-    ];
+                    { key: "Tab", run: acceptCompletion },
+                ])
+            ),
+            foldGutter({
+                closedText: "▶",
+                openText: "▼",
+            }),
+            linter(unsupportedDirectivesLinter),
+            graphql(getSchemaForLintAndAutocompletion()),
+            theme.theme === Theme.LIGHT ? tomorrow : dracula,
+            appSettings.showLintMarkers ? lintGutter() : [],
+        ],
+        [theme.theme, appSettings.showLintMarkers, formatTheCode]
+    );
 
     useEffect(() => {
         if (elementRef.current === null) {
@@ -165,17 +168,17 @@ export const SchemaEditor = ({
             view.destroy();
             setEditorView(null);
         };
-    }, [elementRef.current]);
+    }, [elementRef, extensions, setEditorView, storedTypeDefs]);
 
     useEffect(() => {
         if (editorView) {
             editorView.dispatch({ effects: StateEffect.reconfigure.of(extensions) });
         }
-    }, [theme.theme, appSettings.showLintMarkers, extensions]);
+    }, [theme.theme, appSettings.showLintMarkers, extensions, editorView]);
 
     useEffect(() => {
         handleEditorDisableState(elementRef.current, loading);
-    }, [loading]);
+    }, [elementRef, loading]);
 
     return (
         <div className="w-full h-full relative rounded-b-xl">
@@ -217,7 +220,6 @@ export const SchemaEditor = ({
                                     color="primary"
                                     fill="outlined"
                                     size="small"
-                                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
                                     onClick={introspect}
                                     disabled={loading}
                                     loading={isIntrospecting}

@@ -77,7 +77,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 changes: { from: 0, to: editorView.state.doc.length, insert: "" },
             });
         }
-    }, [auth.selectedDatabaseName]);
+    }, [auth.selectedDatabaseName, prevSelectedDBName, editorView]);
 
     const formatTheCode = (): void => {
         if (!editorView) {
@@ -161,7 +161,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 setLoading(false);
             }
         },
-        [auth.selectedDatabaseName]
+        [auth.driver, editorView, onSchemaChange]
     );
 
     const introspect = useCallback(
@@ -198,7 +198,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 setIsIntrospecting(false);
             }
         },
-        [buildSchema, editorView, auth.selectedDatabaseName]
+        [editorView, auth.selectedDatabaseName, auth.driver]
     );
 
     const onSubmit = () => {

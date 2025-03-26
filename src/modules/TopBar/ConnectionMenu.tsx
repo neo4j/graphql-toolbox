@@ -46,10 +46,10 @@ export const ConnectionMenu = ({
     const screen = useContext(ScreenContext);
 
     useEffect(() => {
-        function handleClickOutsideComponent(event) {
+        function handleClickOutsideComponent(event: MouseEvent) {
             if (
-                !menuButtonRef?.current?.contains(event.target) &&
-                !document.getElementById(CONNECTION_MENU_ID)?.contains(event.target)
+                !menuButtonRef?.current?.contains(event.target as Node) &&
+                !document.getElementById(CONNECTION_MENU_ID)?.contains(event.target as Node)
             ) {
                 setOpenConnectionMenu(false);
             }
@@ -59,7 +59,7 @@ export const ConnectionMenu = ({
         return () => {
             document.removeEventListener("mousedown", handleClickOutsideComponent);
         };
-    }, [menuButtonRef]);
+    }, [menuButtonRef, setOpenConnectionMenu]);
 
     return (
         <Menu

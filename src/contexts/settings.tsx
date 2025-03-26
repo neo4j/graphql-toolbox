@@ -28,7 +28,7 @@ export interface State {
 
 export const SettingsContext = React.createContext({} as State);
 
-export function SettingsProvider(props: React.PropsWithChildren<any>) {
+export function SettingsProvider(props: React.PropsWithChildren) {
     const [value, setValue] = useState<State>({
         isShowSettingsDrawer: false,
         isShowHelpDrawer: false,

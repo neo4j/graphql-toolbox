@@ -19,6 +19,7 @@
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
+
 import type { EditorTab, Favorite } from "../types";
 import { ConstraintState } from "../types";
 import { DEFAULT_QUERY, DEFAULT_TYPE_DEFS } from "./../constants";

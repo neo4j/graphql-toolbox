@@ -21,7 +21,7 @@ import { useContext } from "react";
 
 import classNames from "classnames";
 
-// @ts-ignore - SVG Import
+// @ts-expect-error - SVG Import
 import GraphQLIcon from "../assets/graphql-icon.svg";
 import { Theme, ThemeContext } from "../contexts/theme";
 
@@ -80,7 +80,12 @@ export const FileName = ({ extension, name, rightButtons, leftButtons, borderRad
             {leftButtons ? (
                 <div className="flex items-center">{leftButtons}</div>
             ) : (
-                <div className={classNames("text-sm", theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}>
+                <div
+                    className={classNames(
+                        "text-sm",
+                        theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
+                    )}
+                >
                     <Icon extension={extension}></Icon> <span className="pl-1">{name}</span>
                     <Ending extension={extension}></Ending>
                 </div>

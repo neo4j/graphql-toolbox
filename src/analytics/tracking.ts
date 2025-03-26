@@ -153,7 +153,7 @@ class Tracking {
         const enrichedEventProperties = {
             ...eventProperties,
             dbid: useSessionStore.getState().auraDbId || null,
-            neo4jGraphQLLibraryVersion: process.env.NEO4J_GRAPHQL_VERSION,
+            neo4jGraphQLLibraryVersion: import.meta.env.NEO4J_GRAPHQL_VERSION,
         };
         window.analytics.track(`${eventCategory}_${eventLabel}`, enrichedEventProperties);
     };

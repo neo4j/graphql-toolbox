@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import * as neo4j from "neo4j-driver";
 
@@ -88,7 +88,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             store.setConnectionUsername(options.username);
             store.setConnectionUrl(options.url);
 
-            // eslint-disable-next-line @typescript-eslint/no-misused-promises
             intervalId = window.setInterval(async () => {
                 await checkForDatabaseUpdates(driver, setValue);
             }, VERIFY_CONNECTION_INTERVAL_MS);
@@ -131,9 +130,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
     });
 
+    const processLoginPayload = useCallback(
+        (value: State | undefined, loginPayloadFromDesktop: LoginPayload | null) => {
+            let loginPayload: LoginPayload | null = null;
+            if (loginPayloadFromDesktop) {
+                loginPayload = loginPayloadFromDesktop;
+                setValue((values) => ({ ...values, isNeo4jDesktop: true }));
+            } else {
+                if (store.connectionUrl && store.connectionUsername) {
+                    loginPayload = {
+                        username: store.connectionUsername,
+                        url: store.connectionUrl,
+                    };
+                }
+            }
+            if (loginPayload?.password && value && !value.driver) {
+                value
+                    .login({
+                        username: loginPayload.username,
+                        password: loginPayload.password,
+                        url: loginPayload.url,
+                    })
+                    .catch((error) => console.log(error));
+            }
+        },
+        [store.connectionUrl, store.connectionUsername]
+    );
+
     useEffect(() => {
         resolveNeo4jDesktopLoginPayload().then(processLoginPayload.bind(null, value)).catch(console.error);
-    }, []);
+    }, [processLoginPayload, value]);
 
     const checkForDatabaseUpdates = async (
         driver: neo4j.Driver,
@@ -145,30 +171,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setValue((values) => ({ ...values, isConnected: true, databases: databases || [] }));
         } catch {
             setValue((values) => ({ ...values, isConnected: false }));
-        }
-    };
-
-    const processLoginPayload = (value: State | undefined, loginPayloadFromDesktop: LoginPayload | null) => {
-        let loginPayload: LoginPayload | null = null;
-        if (loginPayloadFromDesktop) {
-            loginPayload = loginPayloadFromDesktop;
-            setValue((values) => ({ ...values, isNeo4jDesktop: true }));
-        } else {
-            if (store.connectionUrl && store.connectionUsername) {
-                loginPayload = {
-                    username: store.connectionUsername,
-                    url: store.connectionUrl,
-                };
-            }
-        }
-        if (loginPayload?.password && value && !value.driver) {
-            value
-                .login({
-                    username: loginPayload.username,
-                    password: loginPayload.password,
-                    url: loginPayload.url,
-                })
-                .catch((error) => console.log(error));
         }
     };
 
