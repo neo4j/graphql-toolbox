@@ -37,7 +37,7 @@ test.describe("Switch database", () => {
     let driver: neo4j.Driver;
 
     const typeDefs = /* GraphQL */ `
-        type Movie {
+        type Movie @node {
             id: ID!
         }
     `;

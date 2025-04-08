@@ -24,7 +24,7 @@ dotenv.config();
 
 test.describe("query editor tabs", () => {
     const typeDefs = /* GraphQL */ `
-        type Movie {
+        type Movie @node {
             id: ID!
         }
     `;

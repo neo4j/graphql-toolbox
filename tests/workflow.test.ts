@@ -32,14 +32,14 @@ test.describe("workflow", () => {
     });
 
     const typeDefs = /* GraphQL */ `
-        type Movie {
+        type Movie @node {
             id: ID!
         }
     `;
 
     const query = /* GraphQL */ `
         query {
-            movies(where: { id: "${id}" }) {
+            movies(where: { id: { eq: "${id}" } }) {
                 id
             }
         }
@@ -56,7 +56,7 @@ test.describe("workflow", () => {
     const variables = /* GraphQL */ `
         {
             "moviesWhere": {
-                "id": "${id}"
+                "id": { "eq": "${id}" }
             }
         }
     `;

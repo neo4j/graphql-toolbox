@@ -24,7 +24,7 @@ dotenv.config();
 
 test.describe("drawer", () => {
     const typeDefs = /* GraphQL */ `
-        type Movie {
+        type Movie @node {
             name: String!
         }
     `;
