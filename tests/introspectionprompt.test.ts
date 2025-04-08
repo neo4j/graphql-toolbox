@@ -75,6 +75,6 @@ test.describe("Introspection prompt", () => {
         await page.waitForTimeout(4000);
 
         const generatedTypeDefs = await schemaEditorPage.getTypeDefs();
-        expect(generatedTypeDefs).toContain(`type ${label}`);
+        expect(generatedTypeDefs).toContain(`type ${label} @node`);
     });
 });

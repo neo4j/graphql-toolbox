@@ -31,7 +31,7 @@ export const DEFAULT_TYPE_DEFS = `# Write your own type definition in the editor
 # generate it automatically from the current Neo4j database (introspection)
 
 # Example type definition:
-type Movie {
+type Movie @node {
   title: String!
 }
 `;
