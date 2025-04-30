@@ -2072,7 +2072,7 @@ __metadata:
     webpack-cli: "npm:5.1.4"
     webpack-dev-server: "npm:5.2.0"
     webpack-notifier: "npm:1.15.0"
-    zustand: "npm:4.5.6"
+    zustand: "npm:5.0.3"
   languageName: unknown
   linkType: soft
 
@@ -18915,15 +18915,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.2.2":
-  version: 1.4.0
-  resolution: "use-sync-external-store@npm:1.4.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/ec011a5055962c0f6b509d6e78c0b143f8cd069890ae370528753053c55e3b360d3648e76cfaa854faa7a59eb08d6c5fb1015e60ffde9046d32f5b2a295acea5
-  languageName: node
-  linkType: hard
-
 "usehooks-ts@npm:2.9.1":
   version: 2.9.1
   resolution: "usehooks-ts@npm:2.9.1"
@@ -19829,15 +19820,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:4.5.6":
-  version: 4.5.6
-  resolution: "zustand@npm:4.5.6"
-  dependencies:
-    use-sync-external-store: "npm:^1.2.2"
+"zustand@npm:5.0.3":
+  version: 5.0.3
+  resolution: "zustand@npm:5.0.3"
   peerDependencies:
-    "@types/react": ">=16.8"
+    "@types/react": ">=18.0.0"
     immer: ">=9.0.6"
-    react: ">=16.8"
+    react: ">=18.0.0"
+    use-sync-external-store: ">=1.2.0"
   peerDependenciesMeta:
     "@types/react":
       optional: true
@@ -19845,6 +19835,8 @@ __metadata:
       optional: true
     react:
       optional: true
-  checksum: 10c0/5b39aff2ef57e5a8ada647261ec1115697d397be311c51461d9ea81b5b63c6d2c498b960477ad2db72dc21db6aa229a92bdf644f6a8ecf7b1d71df5b4a5e95d3
+    use-sync-external-store:
+      optional: true
+  checksum: 10c0/dad96c6c123fda088c583d5df6692e9245cd207583078dc15f93d255a67b0f346bad4535545c98852ecde93d254812a0c799579dfde2ab595016b99fbe20e4d5
   languageName: node
   linkType: hard
