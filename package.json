@@ -95,7 +95,7 @@
         "eslint-plugin-jsx-a11y": "6.10.2",
         "eslint-plugin-react": "7.37.5",
         "eslint-plugin-simple-import-sort": "12.1.1",
-        "fork-ts-checker-webpack-plugin": "9.0.2",
+        "fork-ts-checker-webpack-plugin": "9.1.0",
         "graphql-ws": "5.16.2",
         "html-inline-script-webpack-plugin": "3.2.1",
         "html-webpack-inline-source-plugin": "0.0.10",
