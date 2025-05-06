@@ -2073,7 +2073,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:8.21.0"
     autoprefixer: "npm:10.4.21"
     classnames: "npm:2.5.1"
-    cm6-graphql: "npm:0.2.0"
+    cm6-graphql: "npm:0.2.1"
     codemirror: "npm:6.0.1"
     compression-webpack-plugin: "npm:11.1.0"
     copy-webpack-plugin: "npm:12.0.2"
@@ -7931,9 +7931,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cm6-graphql@npm:0.2.0":
-  version: 0.2.0
-  resolution: "cm6-graphql@npm:0.2.0"
+"cm6-graphql@npm:0.2.1":
+  version: 0.2.1
+  resolution: "cm6-graphql@npm:0.2.1"
   dependencies:
     graphql-language-service: "npm:^5.3.0"
   peerDependencies:
@@ -7944,7 +7944,7 @@ __metadata:
     "@codemirror/view": ^6.0.0
     "@lezer/highlight": ^1.0.0
     graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
-  checksum: 10c0/bfb38e5267f4cd02fe6780c71504554952aadd8b969323a898e3da0010385c6e3e5b832cb1bc79de6dbd367ecc378a1d42dff6ad1a2b3f3b469eff2e158aa07a
+  checksum: 10c0/33b4d4634e25f67a126a8e0a9d4f4c927b4554f0fe7e0b512f494703ee0c600a332c7ad673c1968174e08f305c767c6d6cd6f59d88bceee10c7f16507504fca7
   languageName: node
   linkType: hard
 
