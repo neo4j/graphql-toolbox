@@ -24,7 +24,7 @@ import { SettingsProvider } from "./contexts/settings";
 import { ThemeProvider } from "./contexts/theme";
 import { Main } from "./modules/Main/Main";
 
-import "@graphiql/react/dist/style.css";
+import "@graphiql/react/style.css";
 import "@neo4j-ndl/base/lib/neo4j-ds-styles.css";
 import "./index.css";
 
