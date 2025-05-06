@@ -17,7 +17,8 @@
  * limitations under the License.
  */
 
-import { DocExplorer, ExplorerContextProvider, SchemaContextProvider } from "@graphiql/react";
+import { DocExplorer, ExplorerContextProvider } from "@graphiql/plugin-doc-explorer";
+import { SchemaContextProvider } from "@graphiql/react";
 import { createGraphiQLFetcher } from "@graphiql/toolkit";
 import classNames from "classnames";
 import type { GraphQLSchema } from "graphql";
