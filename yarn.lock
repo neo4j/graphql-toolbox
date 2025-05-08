@@ -1262,7 +1262,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphiql/react@npm:0.32.0, @graphiql/react@npm:^0.32.0":
+"@graphiql/react@npm:0.32.1":
+  version: 0.32.1
+  resolution: "@graphiql/react@npm:0.32.1"
+  dependencies:
+    "@graphiql/toolkit": "npm:^0.11.2"
+    "@radix-ui/react-dialog": "npm:^1.1"
+    "@radix-ui/react-dropdown-menu": "npm:^2.1"
+    "@radix-ui/react-tooltip": "npm:^1.2"
+    "@radix-ui/react-visually-hidden": "npm:^1.2"
+    "@types/codemirror": "npm:^5.60.8"
+    clsx: "npm:^1.2.1"
+    codemirror: "npm:^5.65.3"
+    codemirror-graphql: "npm:^2.2.1"
+    copy-to-clipboard: "npm:^3.2.0"
+    framer-motion: "npm:^12"
+    get-value: "npm:^3.0.1"
+    graphql-language-service: "npm:^5.3.1"
+    markdown-it: "npm:^14.1.0"
+    react-compiler-runtime: "npm:19.1.0-rc.1"
+    set-value: "npm:^4.1.0"
+  peerDependencies:
+    graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
+    react: ^18 || ^19
+    react-dom: ^18 || ^19
+  checksum: 10c0/73d2ccb4ef0f8663024df0841ac011fe8ef33c329c1936ff6209ed7e1bfcff57e30d012ffa891db95293c40b9c25b217252a4c9fb98dcda544956b91f1990e70
+  languageName: node
+  linkType: hard
+
+"@graphiql/react@npm:^0.32.0":
   version: 0.32.0
   resolution: "@graphiql/react@npm:0.32.0"
   dependencies:
@@ -2055,7 +2083,7 @@ __metadata:
     "@dnd-kit/modifiers": "npm:9.0.0"
     "@dnd-kit/sortable": "npm:10.0.0"
     "@graphiql/plugin-doc-explorer": "npm:^0.0.1"
-    "@graphiql/react": "npm:0.32.0"
+    "@graphiql/react": "npm:0.32.1"
     "@mjfwebb/thememirror": "npm:^2.0.2"
     "@neo4j-ndl/base": "npm:2.12.14"
     "@neo4j-ndl/react": "npm:2.16.28"
