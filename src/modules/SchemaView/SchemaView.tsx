@@ -144,11 +144,11 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 }
 
                 if (useStore.getState().constraint === ConstraintState.check.toString()) {
-                    await neoSchema.assertIndexesAndConstraints({ driver: auth.driver, options: { create: false } });
+                    await neoSchema.assertIndexesAndConstraints({ driver: auth.driver });
                 }
 
                 if (useStore.getState().constraint === ConstraintState.create.toString()) {
-                    await neoSchema.assertIndexesAndConstraints({ driver: auth.driver, options: { create: true } });
+                    await neoSchema.assertIndexesAndConstraints({ driver: auth.driver });
                 }
 
                 const analyticsResults = rudimentaryTypeDefinitionsAnalytics(typeDefs);

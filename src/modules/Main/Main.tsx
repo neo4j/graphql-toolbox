@@ -24,6 +24,7 @@ import { NeedleThemeProvider } from "@neo4j-ndl/react";
 import type { GraphQLSchema } from "graphql";
 
 import { invokeSegmentAnalytics } from "../../analytics/segment-snippet";
+import { tracking } from "../../analytics/tracking";
 import { CannySDK } from "../../common/canny";
 import { ViewSelector } from "../../components/ViewSelector";
 import { AuthContext } from "../../contexts/auth";
@@ -70,14 +71,17 @@ export const Main = () => {
     const Banner = () => {
         return (
             <div className="h-8 w-full bg-lavender-45 text-neutral-10 text-center leading-8">
-                Win $250 by testing the GraphQL for Neo4j AuraDB.{` `}
+                GraphQL for Neo4j AuraDB is now released.{` `}
                 <a
-                    href="https://neo4j.com/developer-blog/build-conways-game-of-life/"
+                    href="https://neo4j.com/docs/graphql/current/aura-graphql/"
                     className="underline"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => {
+                        tracking.trackBannerLinkClick();
+                    }}
                 >
-                    See Developer Blog for details
+                    See Developer documentation for details
                 </a>
                 .
             </div>
