@@ -138,6 +138,10 @@ class Tracking {
         });
     };
 
+    public trackBannerLinkClick = () => {
+        this.fireTrackingEvent("TB", "BANNER_LINK_CLICK", {});
+    };
+
     private getScreenValue = (screenValue: Screen): string => {
         return screenValue === Screen.EDITOR ? "query editor" : "type definitions";
     };
