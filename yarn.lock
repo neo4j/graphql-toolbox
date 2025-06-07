@@ -507,9 +507,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/lang-javascript@npm:6.2.3":
-  version: 6.2.3
-  resolution: "@codemirror/lang-javascript@npm:6.2.3"
+"@codemirror/lang-javascript@npm:6.2.4":
+  version: 6.2.4
+  resolution: "@codemirror/lang-javascript@npm:6.2.4"
   dependencies:
     "@codemirror/autocomplete": "npm:^6.0.0"
     "@codemirror/language": "npm:^6.6.0"
@@ -518,13 +518,13 @@ __metadata:
     "@codemirror/view": "npm:^6.17.0"
     "@lezer/common": "npm:^1.0.0"
     "@lezer/javascript": "npm:^1.0.0"
-  checksum: 10c0/6f7c2563325a4b9ea13aadf92e8d4fa0b4da6b6ea6f623e8a593732b7965b863bf66ca2273202954c70d4f9a2bdc74dcb03bb8100300f4c08d5834afe8f2aede
+  checksum: 10c0/af6faaa9566c57e233459d48e8afbdbf99b6d666695fa49b2d352cda15b6022edbe319e1b296f76526f48c313627bbcd2a340872e6627a17358edabc08e8e129
   languageName: node
   linkType: hard
 
-"@codemirror/language@npm:6.11.0":
-  version: 6.11.0
-  resolution: "@codemirror/language@npm:6.11.0"
+"@codemirror/language@npm:6.11.1":
+  version: 6.11.1
+  resolution: "@codemirror/language@npm:6.11.1"
   dependencies:
     "@codemirror/state": "npm:^6.0.0"
     "@codemirror/view": "npm:^6.23.0"
@@ -532,7 +532,7 @@ __metadata:
     "@lezer/highlight": "npm:^1.0.0"
     "@lezer/lr": "npm:^1.0.0"
     style-mod: "npm:^4.0.0"
-  checksum: 10c0/a8e45ef6dbccc5a7389f277b026412eeecc4ce3dfd806f77f34a8d85df20e257b3b5d0da26c59d9f024e7109542614c62cfa708158da447b0ae97b8fd8476fa9
+  checksum: 10c0/4d6959f66a8e23fc7d2710f39ac83b603fb91e339ae730a47fd73296ed7c38829491ac74f814b89ba075ae491ba820373fd91d77444d6c0a62c47ba494955e5f
   languageName: node
   linkType: hard
 
@@ -2049,8 +2049,8 @@ __metadata:
   resolution: "@neo4j/graphql-toolbox@workspace:."
   dependencies:
     "@codemirror/autocomplete": "npm:6.18.6"
-    "@codemirror/lang-javascript": "npm:6.2.3"
-    "@codemirror/language": "npm:6.11.0"
+    "@codemirror/lang-javascript": "npm:6.2.4"
+    "@codemirror/language": "npm:6.11.1"
     "@dnd-kit/core": "npm:6.3.1"
     "@dnd-kit/modifiers": "npm:9.0.0"
     "@dnd-kit/sortable": "npm:10.0.0"
