@@ -1,5 +1,12 @@
-@import 'tailwindcss';
 @config '../tailwind.config.js';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --color-dracula-dark: #282A36;
+}
 
 /* ----------------------*/
 

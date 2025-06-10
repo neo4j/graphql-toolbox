@@ -93,7 +93,7 @@ export const EditorTabs = () => {
                     </Tabs.Tab>
                 );
             })}
-            <Tabs.Tab key={"new"} tabId={"new"} className="pos-absolute pl-0">
+            <Tabs.Tab key="new" tabId="new" className="vertical-align-bottom">
                 <PlusIconOutline
                     data-test-new-query-editor-tab
                     className={classNames(

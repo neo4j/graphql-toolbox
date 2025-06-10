@@ -31,7 +31,7 @@ import { bracketMatching, foldGutter, foldKeymap, indentOnInput, syntaxTree } fr
 import type { Diagnostic } from "@codemirror/lint";
 import { linter, lintGutter, lintKeymap } from "@codemirror/lint";
 import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
-import { Prec, StateEffect } from "@codemirror/state";
+import { EditorState, Prec, StateEffect } from "@codemirror/state";
 import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
 import { dracula, tomorrow } from "@mjfwebb/thememirror";
 import { Button, IconButton, Tooltip } from "@neo4j-ndl/react";
@@ -40,9 +40,10 @@ import classNames from "classnames";
 import { graphql } from "cm6-graphql";
 
 import { Extension, FileName } from "../../components/Filename";
-import { SCHEMA_EDITOR_INPUT } from "../../constants";
+import { DEFAULT_TYPE_DEFS, SCHEMA_EDITOR_INPUT } from "../../constants";
 import { AppSettingsContext } from "../../contexts/appsettings";
 import { Theme, ThemeContext } from "../../contexts/theme";
+import { useStore } from "../../store";
 import { customKeybindings } from "../EditorView/customKeybindings";
 import { handleEditorDisableState } from "../EditorView/utils";
 import { getSchemaForLintAndAutocompletion, getUnsupportedDirective } from "./utils";
@@ -90,12 +91,12 @@ export const SchemaEditor = ({
     introspect,
     saveAsFavorite,
     onSubmit,
-    // setEditorView,
+    setEditorView,
     editorView,
 }: Props) => {
     const theme = useContext(ThemeContext);
     const appSettings = useContext(AppSettingsContext);
-    // const storedTypeDefs = useStore.getState().typeDefinitions || DEFAULT_TYPE_DEFS;
+    const storedTypeDefs = useStore.getState().typeDefinitions || DEFAULT_TYPE_DEFS;
     const [building, setBuilding] = useState<boolean>(false);
 
     const extensions = useMemo(
@@ -146,28 +147,28 @@ export const SchemaEditor = ({
         [theme.theme, appSettings.showLintMarkers, formatTheCode]
     );
 
-    // useEffect(() => {
-    //     if (elementRef.current === null) {
-    //         return;
-    //     }
+    useEffect(() => {
+        if (elementRef.current === null) {
+            return;
+        }
 
-    //     const state = EditorState.create({
-    //         doc: storedTypeDefs,
-    //         extensions,
-    //     });
+        const state = EditorState.create({
+            doc: storedTypeDefs,
+            extensions,
+        });
 
-    //     const view = new EditorView({
-    //         state,
-    //         parent: elementRef.current,
-    //     });
+        const view = new EditorView({
+            state,
+            parent: elementRef.current,
+        });
 
-    //     setEditorView(view);
+        setEditorView(view);
 
-    //     return () => {
-    //         view.destroy();
-    //         setEditorView(null);
-    //     };
-    // }, [elementRef, extensions, setEditorView, storedTypeDefs]);
+        return () => {
+            view.destroy();
+            setEditorView(null);
+        };
+    }, []);
 
     useEffect(() => {
         if (editorView) {
@@ -248,11 +249,10 @@ export const SchemaEditor = ({
                         </Button>
 
                         <Tooltip type="rich" placement="bottom">
-                            <Tooltip.Trigger>
+                            <Tooltip.Trigger hasButtonWrapper>
                                 <IconButton
                                     data-test-schema-editor-favourite-button
                                     ariaLabel="Save as favorite"
-                                    style={{ height: "1.7rem" }}
                                     className={classNames(
                                         theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                                     )}

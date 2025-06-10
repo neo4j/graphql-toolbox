@@ -123,7 +123,7 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
             view.destroy();
             setEditorView(null);
         };
-    }, [value]);
+    }, []);
 
     useEffect(() => {
         if (editorView) {

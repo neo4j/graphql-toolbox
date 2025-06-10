@@ -41,16 +41,19 @@ export const ViewSelector = ({ hasSchema }: Props) => {
                 <Tabs.Tab data-test-view-selector-type-defs tabId={Screen.TYPEDEFS.toString()}>
                     Type definitions
                 </Tabs.Tab>
-                <Tabs.Tab
-                    data-test-view-selector-editor
-                    tabId={Screen.EDITOR.toString()}
-                    htmlAttributes={{ disabled: !hasSchema }}
-                >
-                    <Tooltip placement="right" type="simple">
-                        <Tooltip.Trigger hasButtonWrapper>Query editor</Tooltip.Trigger>
-                        {!hasSchema && <Tooltip.Content>Build the schema to use the Query editor</Tooltip.Content>}
-                    </Tooltip>
-                </Tabs.Tab>
+                <Tooltip placement="right" type="simple">
+                    <Tooltip.Trigger>
+                        <Tabs.Tab
+                            data-test-view-selector-editor
+                            tabId={Screen.EDITOR.toString()}
+                            as="div"
+                            isDisabled={!hasSchema}
+                        >
+                            Query editor
+                        </Tabs.Tab>
+                    </Tooltip.Trigger>
+                    {!hasSchema && <Tooltip.Content>Build the schema to use the Query editor</Tooltip.Content>}
+                </Tooltip>
             </Tabs>
         </>
     );

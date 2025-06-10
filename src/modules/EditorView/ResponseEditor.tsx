@@ -87,7 +87,7 @@ export const ResponseEditor = ({ id, loading, fileExtension, fileName, value, bo
             view.destroy();
             setEditorView(null);
         };
-    }, [value]);
+    }, []);
 
     useEffect(() => {
         if (editorView) {

@@ -26,7 +26,7 @@ import { AuthContext } from "../../contexts/auth";
 import { Screen, ScreenContext } from "../../contexts/screen";
 
 interface Props {
-    menuButtonRef: React.RefObject<HTMLDivElement>;
+    menuButtonRef: React.RefObject<HTMLDivElement | null>;
     dbmsUrlWithUsername: string;
     openConnectionMenu: boolean;
     setOpenConnectionMenu: (v: boolean) => void;
@@ -66,6 +66,7 @@ export const ConnectionMenu = ({
             isOpen={openConnectionMenu}
             anchorRef={menuButtonRef}
             className="mt-2 ndl-theme-light"
+            // onClose={() => setOpenConnectionMenu(false)}
             // onClick={() => setOpenConnectionMenu(false)}
         >
             <Menu.Items>

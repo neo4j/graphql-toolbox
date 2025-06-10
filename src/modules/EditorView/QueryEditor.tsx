@@ -162,7 +162,7 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
             view.destroy();
             setEditorView(null);
         };
-    }, [extensions]);
+    }, []);
 
     useEffect(() => {
         if (editorView) {

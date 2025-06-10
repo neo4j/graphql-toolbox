@@ -72,7 +72,7 @@ export const FileName = ({ extension, name, rightButtons, leftButtons, borderRad
         <div
             className={classNames(
                 "w-full flex justify-between items-center h-12 m-0 py-3 px-4",
-                theme.theme === Theme.LIGHT ? "bg-neutral-10" : "bg-draculaDark",
+                theme.theme === Theme.LIGHT ? "bg-neutral-10" : "bg-dracula-dark",
                 borderRadiusTop && "rounded-t-xl"
             )}
         >

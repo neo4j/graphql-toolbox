@@ -18,6 +18,7 @@
  */
 
 import { Checkbox, Radio, Tooltip } from "@neo4j-ndl/react";
+import { QuestionMarkCircleIconOutline } from "@neo4j-ndl/react/icons";
 import type React from "react";
 
 import { tracking } from "../../analytics/tracking";
@@ -27,7 +28,9 @@ import { ConstraintState } from "../../types";
 const InfoToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
     return (
         <Tooltip type="simple" placement="right">
-            <Tooltip.Trigger>test</Tooltip.Trigger>
+            <Tooltip.Trigger>
+                <QuestionMarkCircleIconOutline />
+            </Tooltip.Trigger>
             <Tooltip.Content>
                 <Tooltip.Body>{text}</Tooltip.Body>
             </Tooltip.Content>
