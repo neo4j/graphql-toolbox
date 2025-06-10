@@ -111,7 +111,7 @@ export const EditorView = ({ schema }: Props) => {
                                         <Switch
                                             data-test-explorer-show-docs-switch
                                             label="Docs"
-                                            checked={showDocs}
+                                            isChecked={showDocs}
                                             onChange={handleShowDocs}
                                         />
                                     </div>

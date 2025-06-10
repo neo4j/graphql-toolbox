@@ -171,7 +171,7 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
                         fill="outlined"
                         size="small"
                         onClick={formatTheCode}
-                        disabled={loading}
+                        isDisabled={loading}
                     >
                         Prettify
                     </Button>

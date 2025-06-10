@@ -27,9 +27,9 @@ export const DragHandle = forwardRef<HTMLButtonElement>(function DragHandle(prop
 
     return (
         <IconButton
-            aria-label="Reorder favorite snippet"
+            ariaLabel="Reorder favorite snippet"
             ref={ref}
-            clean
+            isClean
             size="small"
             style={{ cursor: "grab" }}
             {...rest}

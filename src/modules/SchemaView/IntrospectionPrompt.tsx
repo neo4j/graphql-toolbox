@@ -29,7 +29,7 @@ interface Props {
 
 export const IntrospectionPrompt = ({ open, onClose, onDisconnect, onIntrospect }: Props) => {
     return (
-        <Dialog ndl-id="introspectioprompt" data-test-introspect-prompt open={open} onClose={() => onClose()}>
+        <Dialog ndl-id="introspectioprompt" data-test-introspect-prompt isOpen={open} onClose={() => onClose()}>
             <Dialog.Header className="h4">Generate type definitions</Dialog.Header>
             <Dialog.Description>
                 Your current connection already has data. Would you like to introspect this database to generate type

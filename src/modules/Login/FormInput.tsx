@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-import type { TextInputProperties } from "@neo4j-ndl/react";
+import type { TextInputProps } from "@neo4j-ndl/react";
 import { TextInput } from "@neo4j-ndl/react";
 
-export interface Props extends TextInputProperties {
+export interface Props extends TextInputProps {
     testtag: string;
 }
 
@@ -28,5 +28,14 @@ export const FormInput = (props: Props) => {
     const options = {
         [props.testtag]: !!props.testtag,
     };
-    return <TextInput className="w-full" size="large" aria-label={props.name} fluid {...props} {...options} />;
+    return (
+        <TextInput
+            className="w-full"
+            size="large"
+            aria-label={props.htmlAttributes?.name}
+            isFluid
+            {...props}
+            {...options}
+        />
+    );
 };

@@ -31,19 +31,18 @@ import { bracketMatching, foldGutter, foldKeymap, indentOnInput, syntaxTree } fr
 import type { Diagnostic } from "@codemirror/lint";
 import { linter, lintGutter, lintKeymap } from "@codemirror/lint";
 import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
-import { EditorState, Prec, StateEffect } from "@codemirror/state";
+import { Prec, StateEffect } from "@codemirror/state";
 import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
 import { dracula, tomorrow } from "@mjfwebb/thememirror";
-import { Button, IconButton, Tip } from "@neo4j-ndl/react";
+import { Button, IconButton, Tooltip } from "@neo4j-ndl/react";
 import { StarIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
 import { graphql } from "cm6-graphql";
 
 import { Extension, FileName } from "../../components/Filename";
-import { DEFAULT_TYPE_DEFS, SCHEMA_EDITOR_INPUT } from "../../constants";
+import { SCHEMA_EDITOR_INPUT } from "../../constants";
 import { AppSettingsContext } from "../../contexts/appsettings";
 import { Theme, ThemeContext } from "../../contexts/theme";
-import { useStore } from "../../store";
 import { customKeybindings } from "../EditorView/customKeybindings";
 import { handleEditorDisableState } from "../EditorView/utils";
 import { getSchemaForLintAndAutocompletion, getUnsupportedDirective } from "./utils";
@@ -91,12 +90,12 @@ export const SchemaEditor = ({
     introspect,
     saveAsFavorite,
     onSubmit,
-    setEditorView,
+    // setEditorView,
     editorView,
 }: Props) => {
     const theme = useContext(ThemeContext);
     const appSettings = useContext(AppSettingsContext);
-    const storedTypeDefs = useStore.getState().typeDefinitions || DEFAULT_TYPE_DEFS;
+    // const storedTypeDefs = useStore.getState().typeDefinitions || DEFAULT_TYPE_DEFS;
     const [building, setBuilding] = useState<boolean>(false);
 
     const extensions = useMemo(
@@ -147,28 +146,28 @@ export const SchemaEditor = ({
         [theme.theme, appSettings.showLintMarkers, formatTheCode]
     );
 
-    useEffect(() => {
-        if (elementRef.current === null) {
-            return;
-        }
+    // useEffect(() => {
+    //     if (elementRef.current === null) {
+    //         return;
+    //     }
 
-        const state = EditorState.create({
-            doc: storedTypeDefs,
-            extensions,
-        });
+    //     const state = EditorState.create({
+    //         doc: storedTypeDefs,
+    //         extensions,
+    //     });
 
-        const view = new EditorView({
-            state,
-            parent: elementRef.current,
-        });
+    //     const view = new EditorView({
+    //         state,
+    //         parent: elementRef.current,
+    //     });
 
-        setEditorView(view);
+    //     setEditorView(view);
 
-        return () => {
-            view.destroy();
-            setEditorView(null);
-        };
-    }, [elementRef, extensions, setEditorView, storedTypeDefs]);
+    //     return () => {
+    //         view.destroy();
+    //         setEditorView(null);
+    //     };
+    // }, [elementRef, extensions, setEditorView, storedTypeDefs]);
 
     useEffect(() => {
         if (editorView) {
@@ -200,16 +199,16 @@ export const SchemaEditor = ({
                                 setBuilding(false);
                             }, 0);
                         }}
-                        disabled={loading}
-                        loading={building}
+                        isDisabled={loading}
+                        isLoading={building}
                     >
                         Build schema
                     </Button>
                 }
                 leftButtons={
                     <>
-                        <Tip allowedPlacements={["bottom"]}>
-                            <Tip.Trigger>
+                        <Tooltip type="rich" placement="bottom">
+                            <Tooltip.Trigger>
                                 <Button
                                     data-test-schema-editor-introspect-button
                                     aria-label="Generate type definitions"
@@ -221,16 +220,16 @@ export const SchemaEditor = ({
                                     fill="outlined"
                                     size="small"
                                     onClick={introspect}
-                                    disabled={loading}
-                                    loading={isIntrospecting}
+                                    isDisabled={loading}
+                                    isLoading={isIntrospecting}
                                 >
                                     Introspect
                                 </Button>
-                            </Tip.Trigger>
-                            <Tip.Content style={{ width: "19rem" }}>
+                            </Tooltip.Trigger>
+                            <Tooltip.Content style={{ width: "19rem" }}>
                                 This will overwrite your current type definitions!
-                            </Tip.Content>
-                        </Tip>
+                            </Tooltip.Content>
+                        </Tooltip>
 
                         <Button
                             data-test-schema-editor-prettify-button
@@ -243,30 +242,30 @@ export const SchemaEditor = ({
                             fill="outlined"
                             size="small"
                             onClick={formatTheCode}
-                            disabled={loading}
+                            isDisabled={loading}
                         >
                             Prettify
                         </Button>
 
-                        <Tip allowedPlacements={["bottom"]}>
-                            <Tip.Trigger>
+                        <Tooltip type="rich" placement="bottom">
+                            <Tooltip.Trigger>
                                 <IconButton
                                     data-test-schema-editor-favourite-button
-                                    aria-label="Save as favorite"
+                                    ariaLabel="Save as favorite"
                                     style={{ height: "1.7rem" }}
                                     className={classNames(
                                         theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                                     )}
                                     size="small"
-                                    color="neutral"
+                                    // color="neutral"
                                     onClick={saveAsFavorite}
-                                    disabled={loading}
+                                    isDisabled={loading}
                                 >
                                     <StarIconOutline />
                                 </IconButton>
-                            </Tip.Trigger>
-                            <Tip.Content>Save as Favorite</Tip.Content>
-                        </Tip>
+                            </Tooltip.Trigger>
+                            <Tooltip.Content>Save as Favorite</Tooltip.Content>
+                        </Tooltip>
                     </>
                 }
             ></FileName>

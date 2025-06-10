@@ -88,14 +88,16 @@ export const FavoriteEntry = ({ dragHandle, onSelectFavorite, favorite, updateNa
                         value={nameValue}
                         ref={inputRef}
                         onChange={handleInputChange}
-                        onKeyDown={handleKeyDown}
+                        htmlAttributes={{
+                            onKeyDown: handleKeyDown,
+                        }}
                         size="small"
                         aria-label="Input for new name for the favorite snippet"
                     />
                 ) : (
                     <Checkbox
                         onChange={handleCheckboxChange}
-                        checked={useFavoritesStore.getState().selectedFavorites.includes(favorite.id)}
+                        isChecked={useFavoritesStore.getState().selectedFavorites.includes(favorite.id)}
                         className="w-full"
                         label={favorite.name}
                     />
@@ -103,8 +105,8 @@ export const FavoriteEntry = ({ dragHandle, onSelectFavorite, favorite, updateNa
             </div>
 
             <IconButton
-                aria-label="Delete favorite"
-                clean
+                ariaLabel="Delete favorite"
+                isClean
                 onClick={() => onSelectFavorite(favorite.typeDefs)}
                 onKeyDown={() => onSelectFavorite(favorite.typeDefs)}
                 className="show-on-hover"
@@ -114,18 +116,18 @@ export const FavoriteEntry = ({ dragHandle, onSelectFavorite, favorite, updateNa
 
             {editMode ? (
                 <IconButton
-                    aria-label="Finish editing favorite name"
+                    ariaLabel="Finish editing favorite name"
                     className={`show-on-hover border-none h-5 w-5`}
-                    clean
+                    isClean
                     onClick={() => finishEditingName()}
                 >
                     <CheckIconOutline />
                 </IconButton>
             ) : (
                 <IconButton
-                    aria-label="Edit favorite name"
+                    ariaLabel="Edit favorite name"
                     className={`show-on-hover border-none h-5 w-5`}
-                    clean
+                    isClean
                     onClick={() => setEditMode(true)}
                 >
                     <PencilIconOutline />

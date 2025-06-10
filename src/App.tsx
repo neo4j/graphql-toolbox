@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 
+import ErrorBoundary from "./components/ErrorBoundary";
 import { AppSettingsProvider } from "./contexts/appsettings";
 import { AuthProvider } from "./contexts/auth";
 import { ScreenProvider } from "./contexts/screen";
@@ -35,7 +36,9 @@ export const App = () => {
                 <ThemeProvider>
                     <SettingsProvider>
                         <AppSettingsProvider>
-                            <Main />
+                            <ErrorBoundary fallback={<div>Something went wrong</div>}>
+                                <Main />
+                            </ErrorBoundary>
                         </AppSettingsProvider>
                     </SettingsProvider>
                 </ThemeProvider>

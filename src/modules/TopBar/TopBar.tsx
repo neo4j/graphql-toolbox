@@ -19,7 +19,7 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 
-import { Button, IconButton, StatusIndicator, Tip, useNeedleTheme } from "@neo4j-ndl/react";
+import { Button, IconButton, StatusIndicator, Tooltip, useNeedleTheme } from "@neo4j-ndl/react";
 import {
     ChatBubbleOvalLeftEllipsisIconOutline,
     ChevronDownIconOutline,
@@ -29,7 +29,6 @@ import {
 import classNames from "classnames";
 
 import { tracking } from "../../analytics/tracking";
-// @ts-expect-error - SVG Import
 import Neo4jLogoIcon from "../../assets/neo4j-logo-white.svg";
 import { cannySettings } from "../../common/canny";
 import { DEFAULT_BOLT_URL } from "../../constants";
@@ -104,8 +103,8 @@ export const TopBar = () => {
                 </div>
             </div>
             <div className="flex-1 flex justify-center items-center">
-                <Tip allowedPlacements={["bottom"]}>
-                    <Tip.Trigger>
+                <Tooltip type="rich" placement="bottom">
+                    <Tooltip.Trigger>
                         <div
                             onClick={() => setOpenConnectionMenu(!openConnectionMenu)}
                             onKeyDown={() => setOpenConnectionMenu(!openConnectionMenu)}
@@ -131,16 +130,16 @@ export const TopBar = () => {
                             <div className="block lg:hidden">Connection</div>
                             <ChevronDownIconOutline className="ml-2 w-4 h-4" />
                         </div>
-                    </Tip.Trigger>
-                    <Tip.Content style={{ width: "16rem" }} className="shadow-raised">
+                    </Tooltip.Trigger>
+                    <Tooltip.Content style={{ width: "16rem" }} className="shadow-raised">
                         <>
                             <p>Username: {auth.username}</p>
                             <p>Connection Url: {auth.connectUrl}</p>
                             <p>Neo4j Database Version: {auth.databaseInformation?.version || "-"}</p>
                             <p>Neo4j Database Edition: {auth.databaseInformation?.edition || "-"}</p>
                         </>
-                    </Tip.Content>
-                </Tip>
+                    </Tooltip.Content>
+                </Tooltip>
                 <ConnectionMenu
                     menuButtonRef={menuButtonRef}
                     openConnectionMenu={openConnectionMenu}
@@ -168,10 +167,10 @@ export const TopBar = () => {
                     <IconButton
                         data-test-send-feedback-topbar
                         className={classNames(themeClassName, "flex lg:hidden")}
-                        aria-label="Send feedback"
+                        ariaLabel="Send feedback"
                         onClick={handleSendFeedbackClick}
                         size="large"
-                        clean
+                        isClean
                     >
                         <ChatBubbleOvalLeftEllipsisIconOutline />
                     </IconButton>
@@ -183,18 +182,18 @@ export const TopBar = () => {
                         <IconButton
                             data-test-topbar-help-button
                             className={themeClassName}
-                            aria-label="Help and learn drawer"
+                            ariaLabel="Help and learn drawer"
                             onClick={handleHelpClick}
                             size="large"
-                            clean
+                            isClean
                         >
                             <QuestionMarkCircleIconOutline />
                         </IconButton>
                         <IconButton
-                            clean
+                            isClean
                             data-test-topbar-settings-button
                             className={themeClassName}
-                            aria-label="Application settings"
+                            ariaLabel="Application settings"
                             onClick={handleSettingsClick}
                             size="large"
                         >

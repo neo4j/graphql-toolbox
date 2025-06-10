@@ -31,7 +31,7 @@ export const SwitchDatabasePrompt = ({ selectedDatabaseName, onClose, onSwitchDa
             ndl-id="switch-database-prompt"
             data-test-switch-database-prompt
             type="warning"
-            open={!!selectedDatabaseName}
+            isOpen={!!selectedDatabaseName}
             onClose={() => onClose()}
         >
             <Dialog.Header className="h4">Switch current database</Dialog.Header>

@@ -21,7 +21,6 @@ import { useContext } from "react";
 
 import classNames from "classnames";
 
-// @ts-expect-error - SVG Import
 import GraphQLIcon from "../assets/graphql-icon.svg";
 import { Theme, ThemeContext } from "../contexts/theme";
 

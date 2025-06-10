@@ -63,11 +63,10 @@ export const ConnectionMenu = ({
 
     return (
         <Menu
-            id={CONNECTION_MENU_ID}
-            open={openConnectionMenu}
-            anchorEl={menuButtonRef.current}
+            isOpen={openConnectionMenu}
+            anchorRef={menuButtonRef}
             className="mt-2 ndl-theme-light"
-            onClick={() => setOpenConnectionMenu(false)}
+            // onClick={() => setOpenConnectionMenu(false)}
         >
             <Menu.Items>
                 {auth.databases?.length ? (
@@ -79,7 +78,7 @@ export const ConnectionMenu = ({
                                     key={db.name}
                                     data-test-topbar-database={db.name}
                                     title={db.name.length > 50 ? `${db.name.substring(0, 48)}...` : db.name}
-                                    disabled={screen.view !== Screen.TYPEDEFS}
+                                    isDisabled={screen.view !== Screen.TYPEDEFS}
                                     icon={db.name === auth.selectedDatabaseName ? <CheckIconOutline /> : <span />}
                                     onClick={() => onNextSelectedDatabaseName(db.name)}
                                 />

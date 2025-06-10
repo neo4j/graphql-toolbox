@@ -262,7 +262,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                             {!appSettings.hideProductUsageMessage ? (
                                 <Banner
                                     className="absolute bottom-7 ml-4 w-[44rem] z-[60]"
-                                    closeable
+                                    isCloseable
                                     name="ProductUsageMessage"
                                     title={<strong>Product analytics</strong>}
                                     description={

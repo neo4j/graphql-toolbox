@@ -66,17 +66,17 @@ export const AppSettings = ({ onClickClose }: Props) => {
                 <span className="h6">Editors</span>
                 <div className="pt-3">
                     <Radio
-                        id={Theme.LIGHT.toString()}
+                        htmlAttributes={{ id: Theme.LIGHT.toString() }}
                         className="cursor-pointer"
                         label="Light theme"
-                        checked={theme.theme === Theme.LIGHT}
+                        isChecked={theme.theme === Theme.LIGHT}
                         onChange={handleOnChangeEditorTheme}
                     />
                     <Radio
-                        id={Theme.DARK.toString()}
+                        htmlAttributes={{ id: Theme.DARK.toString() }}
                         className="cursor-pointer"
                         label="Dark theme"
-                        checked={theme.theme === Theme.DARK}
+                        isChecked={theme.theme === Theme.DARK}
                         onChange={handleOnChangeEditorTheme}
                     />
                     <div className="mt-3">
@@ -85,7 +85,7 @@ export const AppSettings = ({ onClickClose }: Props) => {
                             className="m-0"
                             aria-label="Show lint markers"
                             label="Show lint markers"
-                            checked={appSettings.showLintMarkers}
+                            isChecked={appSettings.showLintMarkers}
                             onChange={onChangeShowLintMarkers}
                         />
                     </div>
@@ -102,7 +102,7 @@ export const AppSettings = ({ onClickClose }: Props) => {
                                 ? "data-test-enable-product-usage-tracking-checked"
                                 : ""
                         }`}
-                        checked={appSettings.enableProductUsageTracking}
+                        isChecked={appSettings.enableProductUsageTracking}
                         onChange={onChangeProductUsageTracking}
                     />
                     <div className="ml-3">

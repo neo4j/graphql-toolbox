@@ -151,10 +151,12 @@ const ResourceLinksBlock = ({ listBlockTitle, links, screen }: ResourceLinksBloc
                                     <TextLink
                                         data-canny-changelog
                                         className="flex justify-start items-center"
-                                        onClick={handleTrackCannyChangelogLink}
-                                        onKeyDown={handleTrackCannyChangelogLink}
-                                        role="link"
-                                        tabIndex={0}
+                                        htmlAttributes={{
+                                            onClick: handleTrackCannyChangelogLink,
+                                            onKeyDown: handleTrackCannyChangelogLink,
+                                            role: "link",
+                                            tabIndex: 0,
+                                        }}
                                     >
                                         <p className="p-0 m-0">{link.label}</p>
                                     </TextLink>
@@ -164,9 +166,11 @@ const ResourceLinksBlock = ({ listBlockTitle, links, screen }: ResourceLinksBloc
                                     {link.icon}
                                     <TextLink
                                         href={link.href}
-                                        rel="noreferrer"
-                                        onClick={() => handleTrackHelpLearnFeatureLinks(link.label)}
-                                        externalLink
+                                        htmlAttributes={{
+                                            rel: "noreferrer",
+                                            onClick: () => handleTrackHelpLearnFeatureLinks(link.label),
+                                        }}
+                                        type="external"
                                     >
                                         {link.label}
                                     </TextLink>

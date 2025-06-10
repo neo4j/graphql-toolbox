@@ -17,13 +17,23 @@
  * limitations under the License.
  */
 
-import { Checkbox, Radio, Tip } from "@neo4j-ndl/react";
-import { QuestionMarkCircleIconOutline } from "@neo4j-ndl/react/icons";
+import { Checkbox, Radio, Tooltip } from "@neo4j-ndl/react";
 import type React from "react";
 
 import { tracking } from "../../analytics/tracking";
 import { useStore } from "../../store";
 import { ConstraintState } from "../../types";
+
+const InfoToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
+    return (
+        <Tooltip type="simple" placement="right">
+            <Tooltip.Trigger>test</Tooltip.Trigger>
+            <Tooltip.Content>
+                <Tooltip.Body>{text}</Tooltip.Body>
+            </Tooltip.Content>
+        </Tooltip>
+    );
+};
 
 export const SchemaSettings = () => {
     const enableRegex = useStore((store) => store.enableRegex);
@@ -50,20 +60,10 @@ export const SchemaSettings = () => {
 
     const onChangeConstraintState = (nextConstraintState: string): void => {
         useStore.setState({ constraint: nextConstraintState });
-        tracking.trackSchemaConstraints({ screen: "type definitions", value: ConstraintState[nextConstraintState] });
-    };
-
-    const InfoToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
-        return (
-            <Tip type="toggletip" allowedPlacements={["right"]}>
-                <Tip.Trigger hasButtonWrapper>
-                    <QuestionMarkCircleIconOutline className="ml-1 h-4 w-4" />
-                </Tip.Trigger>
-                <Tip.Content>
-                    <Tip.Body>{text}</Tip.Body>
-                </Tip.Content>
-            </Tip>
-        );
+        tracking.trackSchemaConstraints({
+            screen: "type definitions",
+            value: String(ConstraintState[nextConstraintState as keyof typeof ConstraintState]),
+        });
     };
 
     return (
@@ -74,7 +74,7 @@ export const SchemaSettings = () => {
                     className="my-2"
                     aria-label="Enable Regex"
                     label="Enable Regex"
-                    checked={enableRegex}
+                    isChecked={enableRegex}
                     onChange={onChangeRegexCheckbox}
                 />
                 <InfoToolTip
@@ -98,7 +98,7 @@ export const SchemaSettings = () => {
                     className="my-2"
                     aria-label="Enable Debug"
                     label="Enable Debug"
-                    checked={enableDebug}
+                    isChecked={enableDebug}
                     onChange={onChangeDebugCheckbox}
                 />
                 <InfoToolTip
@@ -139,19 +139,19 @@ export const SchemaSettings = () => {
                     <Radio
                         label="Check"
                         className="my-3"
-                        checked={constraint === ConstraintState.check.toString()}
+                        isChecked={constraint === ConstraintState.check.toString()}
                         onChange={() => onChangeConstraintState(ConstraintState.check.toString())}
                     />
                     <Radio
                         label="Create"
                         className="my-3"
-                        checked={constraint === ConstraintState.create.toString()}
+                        isChecked={constraint === ConstraintState.create.toString()}
                         onChange={() => onChangeConstraintState(ConstraintState.create.toString())}
                     />
                     <Radio
                         label="Ignore"
                         className="my-3"
-                        checked={constraint === ConstraintState.ignore.toString()}
+                        isChecked={constraint === ConstraintState.ignore.toString()}
                         onChange={() => onChangeConstraintState(ConstraintState.ignore.toString())}
                     />
                 </div>

@@ -21,7 +21,6 @@ import { useContext } from "react";
 
 import type { JSX } from "react";
 
-// @ts-expect-error - SVG import
 import ArrowLeft from "../../assets/arrow-left.svg";
 import { Screen, ScreenContext } from "../../contexts/screen";
 

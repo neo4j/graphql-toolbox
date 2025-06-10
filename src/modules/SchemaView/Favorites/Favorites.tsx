@@ -201,19 +201,19 @@ export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
                     <span className="h5 pl-6">Favorites</span>{" "}
                     <div>
                         <IconButton
-                            aria-label="Download selected favorites"
+                            ariaLabel="Download selected favorites"
                             className="border-none h-5 w-5 ml-3"
-                            clean
-                            disabled={selectedFavorites.length === 0}
+                            isClean
+                            isDisabled={selectedFavorites.length === 0}
                             onClick={() => downloadSelectedFavorites()}
                         >
                             <ArrowDownTrayIconOutline />
                         </IconButton>
                         <IconButton
-                            aria-label="Delete selected favorites"
+                            ariaLabel="Delete selected favorites"
                             className="border-none h-5 w-5 text-hibiscus-45 ml-3"
-                            clean
-                            disabled={selectedFavorites.length === 0}
+                            isClean
+                            isDisabled={selectedFavorites.length === 0}
                             onClick={() => setShowConfirm(true)}
                         >
                             <TrashIconOutline />

@@ -210,19 +210,18 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
                             fill="outlined"
                             size="small"
                             onClick={formatTheCode}
-                            disabled={loading}
+                            isDisabled={loading}
                         >
                             Prettify
                         </Button>
                         <IconButton
                             data-test-editor-query-button
-                            aria-label="Execute query"
+                            ariaLabel="Execute query"
                             style={{ height: "1.7rem" }}
                             className={classNames(theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}
-                            color="primary"
-                            clean
+                            isClean
                             onClick={() => onSubmit()}
-                            disabled={!schema || loading}
+                            isDisabled={!schema || loading}
                         >
                             <PlayIconOutline
                                 style={{

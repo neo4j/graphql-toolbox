@@ -1,12 +1,14 @@
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 export default defineConfig({
-    // This ensures that the "graphql" package is resolved to the correct file, and not imported twice.
-    resolve: {
-        alias: {
-            graphql: "graphql/index.js",
-        },
-    },
-    plugins: [react()],
+    plugins: [
+        tailwindcss(),
+        react(),
+        nodePolyfills({
+            include: ["process"],
+        }),
+    ],
 });
