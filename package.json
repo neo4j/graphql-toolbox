@@ -34,7 +34,7 @@
     },
     "scripts": {
         "build": "cross-env NODE_ENV=production vite build",
-        "start": "cross-env NODE_ENV=development vite",
+        "dev": "cross-env NODE_ENV=development vite",
         "preview": "cross-env NODE_ENV=production vite preview",
         "test": "cross-env NODE_ENV=test playwright test",
         "test:debug": "cross-env NODE_ENV=test playwright test --headed --project=chromium",
@@ -45,13 +45,20 @@
     "author": "Neo4j",
     "dependencies": {
         "@codemirror/autocomplete": "6.18.6",
+        "@codemirror/commands": "^6.8.1",
         "@codemirror/lang-javascript": "6.2.4",
         "@codemirror/language": "6.11.1",
+        "@codemirror/lint": "^6.8.5",
+        "@codemirror/search": "^6.5.11",
+        "@codemirror/state": "^6.5.2",
+        "@codemirror/view": "^6.37.1",
         "@dnd-kit/core": "6.3.1",
         "@dnd-kit/modifiers": "9.0.0",
         "@dnd-kit/sortable": "10.0.0",
+        "@dnd-kit/utilities": "^3.2.2",
         "@graphiql/plugin-doc-explorer": "^0.0.1",
         "@graphiql/react": "0.32.1",
+        "@graphiql/toolkit": "^0.11.3",
         "@mjfwebb/thememirror": "^2.0.2",
         "@neo4j-ndl/base": "^3.7.5",
         "@neo4j-ndl/react": "3.8.7",
@@ -106,5 +113,5 @@
         "vite-plugin-node-polyfills": "^0.23.0",
         "vitest": "2.1.8"
     },
-    "packageManager": "yarn@4.9.2"
+    "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
 }
