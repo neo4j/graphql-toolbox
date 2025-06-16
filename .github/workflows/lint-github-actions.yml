@@ -8,7 +8,7 @@ on:
     branches:
       - dev
     paths:
-      - ".github/workflows/**"
+      - ".github/workflows/*.yml"
 
 jobs:
   lint:
