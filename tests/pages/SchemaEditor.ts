@@ -23,6 +23,7 @@ import { Screen } from "./Screen";
 export class SchemaEditor extends Screen {
     public async setTypeDefs(typeDefs: string) {
         await this.page.waitForSelector("[data-test-schema-editor-build-button]");
+        await this.page.locator(`#${SCHEMA_EDITOR_INPUT} .cm-content`).clear();
         await this.page.locator(`#${SCHEMA_EDITOR_INPUT} .cm-content`).fill(typeDefs);
     }
 
