@@ -22,13 +22,13 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
     webServer: {
         command: "pnpm dev",
-        url: "http://localhost:4242",
+        url: "http://localhost:5173",
         timeout: 120 * 1000,
         reuseExistingServer: !process.env.CI,
     },
     use: {
         trace: "retain-on-failure",
-        baseURL: "http://localhost:4242",
+        baseURL: "http://localhost:5173",
     },
     testDir: "tests",
     timeout: process.env.CI ? 120 * 1000 : 30 * 1000,
