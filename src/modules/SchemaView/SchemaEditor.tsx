@@ -74,7 +74,7 @@ function unsupportedDirectivesLinter(view: EditorView) {
 export interface Props {
     loading: boolean;
     isIntrospecting: boolean;
-    elementRef: React.MutableRefObject<HTMLDivElement | null>;
+    elementRef: React.RefObject<HTMLDivElement | null>;
     formatTheCode: () => void;
     introspect: () => Promise<void>;
     saveAsFavorite: () => void;
@@ -209,7 +209,7 @@ export const SchemaEditor = ({
                 leftButtons={
                     <>
                         <Tooltip type="rich" placement="bottom">
-                            <Tooltip.Trigger>
+                            <Tooltip.Trigger hasButtonWrapper>
                                 <Button
                                     data-test-schema-editor-introspect-button
                                     aria-label="Generate type definitions"
