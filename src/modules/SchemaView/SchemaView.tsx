@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 import type { EditorView } from "@codemirror/view";
 import { Neo4jGraphQL } from "@neo4j/graphql";
@@ -59,7 +59,6 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [isIntrospecting, setIsIntrospecting] = useState<boolean>(false);
     const [editorView, setEditorView] = useState<EditorView | null>(null);
-    const elementRef = useRef<HTMLDivElement | null>(null);
     const favorites = useStore((store) => store.favorites);
     const prevSelectedDBName = usePrevious(auth.selectedDatabaseName);
     const showRightPanel = settings.isShowHelpDrawer || settings.isShowSettingsDrawer;
@@ -249,7 +248,6 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                         <div className="flex flex-col w-full h-full n-gap-token-4">
                             <SchemaErrorDisplay />
                             <SchemaEditor
-                                elementRef={elementRef}
                                 loading={loading}
                                 isIntrospecting={isIntrospecting}
                                 formatTheCode={formatTheCode}

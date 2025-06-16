@@ -34,9 +34,9 @@ export class TopBar extends Screen {
         return text;
     }
 
-    public async clickConnectionInformation() {
-        await this.page.waitForSelector("[data-test-topbar-connection-information]");
-        await this.page.click("[data-test-topbar-connection-information]");
+    public async clickConnectionMenuButton() {
+        await this.page.waitForSelector("[data-test-topbar-connection-menu-button]");
+        await this.page.click("[data-test-topbar-connection-menu-button]");
     }
 
     public async selectDatabaseByName(name: string) {

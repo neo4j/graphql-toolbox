@@ -138,6 +138,7 @@ export const TopBar = () => {
                     </Tooltip.Content>
                 </Tooltip>
                 <div
+                    data-test-topbar-connection-menu-button
                     className="flex items-center text-dark-neutral-text-weaker cursor-pointer"
                     onClick={() => setOpenConnectionMenu(!openConnectionMenu)}
                     onKeyDown={() => setOpenConnectionMenu(!openConnectionMenu)}
@@ -159,7 +160,9 @@ export const TopBar = () => {
             <div className="flex-1 flex justify-end">
                 <div className="flex items-center text-sm">
                     <Button
-                        data-test-send-feedback-topbar
+                        htmlAttributes={{
+                            "data-test-send-feedback-topbar": "true",
+                        }}
                         className={classNames(themeClassName, "mr-2 hidden lg:block")}
                         color="primary"
                         fill="outlined"
@@ -168,7 +171,9 @@ export const TopBar = () => {
                         Send feedback
                     </Button>
                     <IconButton
-                        data-test-send-feedback-topbar
+                        htmlAttributes={{
+                            "data-test-send-feedback-topbar-icon": "true",
+                        }}
                         className={classNames(themeClassName, "flex lg:hidden")}
                         ariaLabel="Send feedback"
                         onClick={handleSendFeedbackClick}
@@ -183,7 +188,9 @@ export const TopBar = () => {
                             <span data-canny-changelog></span>
                         </div>
                         <IconButton
-                            data-test-topbar-help-button
+                            htmlAttributes={{
+                                "data-test-topbar-help-button": "true",
+                            }}
                             className={themeClassName}
                             ariaLabel="Help and learn drawer"
                             onClick={handleHelpClick}
@@ -194,7 +201,9 @@ export const TopBar = () => {
                         </IconButton>
                         <IconButton
                             isClean
-                            data-test-topbar-settings-button
+                            htmlAttributes={{
+                                "data-test-topbar-settings-button": "true",
+                            }}
                             className={themeClassName}
                             ariaLabel="Application settings"
                             onClick={handleSettingsClick}

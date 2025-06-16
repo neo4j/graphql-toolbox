@@ -27,10 +27,11 @@ export default [
     reactPlugin.configs.flat.recommended,
     prettierRecommended,
     {
-        files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+        files: ["**/*.{jsx,tsx}"],
         ...jsxA11y.flatConfigs.recommended,
         plugins: {
             "jsx-a11y": jsxA11y,
+            "react-hooks": hooksPlugin,
         },
         settings: {
             react: {
@@ -48,6 +49,8 @@ export default [
         },
         rules: {
             "jsx-a11y/no-autofocus": "off",
+            "react/react-in-jsx-scope": "off",
+            ...hooksPlugin.configs.recommended.rules,
         },
     },
     {
@@ -113,15 +116,6 @@ export default [
 
             // TypeScript
             "@typescript-eslint/no-unused-vars": "error",
-        },
-    },
-    {
-        plugins: {
-            "react-hooks": hooksPlugin,
-        },
-        rules: {
-            "react/react-in-jsx-scope": "off",
-            ...hooksPlugin.configs.recommended.rules,
         },
     },
     {

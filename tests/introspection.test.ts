@@ -38,7 +38,7 @@ test.describe("introspection", () => {
     });
 
     test("should introspect database and output result", async ({ page, loginPage, schemaEditorPage }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         const sessionFactory = () => driver?.session({ defaultAccessMode: neo4j.session.WRITE });
         const session = sessionFactory();

@@ -109,7 +109,9 @@ export const EditorView = ({ schema }: Props) => {
                                 <>
                                     <div className="flex justify-end">
                                         <Switch
-                                            data-test-explorer-show-docs-switch
+                                            htmlAttributes={{
+                                                "data-test-explorer-show-docs-switch": "true",
+                                            }}
                                             label="Docs"
                                             isChecked={showDocs}
                                             onChange={handleShowDocs}

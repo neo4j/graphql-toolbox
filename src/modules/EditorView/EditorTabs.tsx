@@ -66,7 +66,9 @@ export const EditorTabs = () => {
             {useStore.getState().tabs?.map((tab, idx) => {
                 return (
                     <Tabs.Tab
-                        data-test-query-editor-tab={tab.title}
+                        htmlAttributes={{
+                            "data-test-query-editor-tab": tab.title,
+                        }}
                         key={idx.toString()}
                         tabId={idx.toString()}
                         className={theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"}

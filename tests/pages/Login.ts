@@ -19,8 +19,6 @@
 
 import { Screen } from "./Screen";
 
-const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
-
 export class Login extends Screen {
     public async setUsername(username: string) {
         await this.page.waitForSelector("[data-test-login-username]");
@@ -79,11 +77,7 @@ export class Login extends Screen {
         return this.page.isVisible("[data-test-login-form]");
     }
 
-    public async loginDismissIntrospection(
-        username: string = NEO_USER,
-        password: string = NEO_PASSWORD,
-        url: string = NEO_URL
-    ) {
+    public async loginDismissIntrospection(username: string, password: string, url: string) {
         await this.setUsername(username);
         await this.setPassword(password);
         await this.setURL(url);
@@ -92,7 +86,7 @@ export class Login extends Screen {
         await this.awaitSuccess();
     }
 
-    public async login(username: string = NEO_USER, password: string = NEO_PASSWORD, url: string = NEO_URL) {
+    public async login(username: string, password: string, url: string) {
         await this.setUsername(username);
         await this.setPassword(password);
         await this.setURL(url);

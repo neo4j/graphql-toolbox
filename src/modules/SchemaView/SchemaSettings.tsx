@@ -19,13 +19,13 @@
 
 import { Checkbox, Radio, Tooltip } from "@neo4j-ndl/react";
 import { QuestionMarkCircleIconOutline } from "@neo4j-ndl/react/icons";
-import type React from "react";
+import type { JSX, ReactNode } from "react";
 
 import { tracking } from "../../analytics/tracking";
 import { useStore } from "../../store";
 import { ConstraintState } from "../../types";
 
-const InfoToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
+const InfoToolTip = ({ text }: { text: ReactNode }): JSX.Element => {
     return (
         <Tooltip type="simple" placement="right">
             <Tooltip.Trigger>
@@ -97,7 +97,7 @@ export const SchemaSettings = () => {
             </div>
             <div className="mb-1 mt-2 flex items-baseline">
                 <Checkbox
-                    data-test-schema-debug-checkbox
+                    htmlAttributes={{ "data-test-schema-debug-checkbox": "true" }}
                     className="my-2"
                     aria-label="Enable Debug"
                     label="Enable Debug"

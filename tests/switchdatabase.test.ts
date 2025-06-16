@@ -72,14 +72,14 @@ test.describe("Switch database", () => {
         schemaEditorPage,
         topBarPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await topBarPage.waitForTopBarVisibility();
         await schemaEditorPage.setTypeDefs(typeDefs);
         let currentTypeDefs = await schemaEditorPage.getTypeDefs();
         expect(currentTypeDefs.replaceAll(/\s+/g, "")).toEqual(typeDefs.replaceAll(/\s+/g, ""));
 
-        await topBarPage.clickConnectionInformation();
+        await topBarPage.clickConnectionMenuButton();
         await topBarPage.selectDatabaseByName(databaseName);
         await topBarPage.confirmDatabaseSelection();
 
@@ -93,14 +93,14 @@ test.describe("Switch database", () => {
         schemaEditorPage,
         topBarPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await topBarPage.waitForTopBarVisibility();
         await schemaEditorPage.setTypeDefs(typeDefs);
         let currentTypeDefs = await schemaEditorPage.getTypeDefs();
         expect(currentTypeDefs.replaceAll(/\s+/g, "")).toEqual(typeDefs.replaceAll(/\s+/g, ""));
 
-        await topBarPage.clickConnectionInformation();
+        await topBarPage.clickConnectionMenuButton();
         await topBarPage.selectDatabaseByName(databaseName);
         await topBarPage.cancelDatabaseSelection();
 

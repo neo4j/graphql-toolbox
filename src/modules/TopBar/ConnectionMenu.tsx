@@ -53,7 +53,9 @@ export const ConnectionMenu = ({
                             return (
                                 <Menu.Item
                                     key={db.name}
-                                    data-test-topbar-database={db.name}
+                                    htmlAttributes={{
+                                        "data-test-topbar-database": db.name,
+                                    }}
                                     title={db.name.length > 50 ? `${db.name.substring(0, 48)}...` : db.name}
                                     isDisabled={screen.view !== Screen.TYPEDEFS}
                                     icon={db.name === auth.selectedDatabaseName ? <CheckIconOutline /> : <span />}
@@ -67,7 +69,9 @@ export const ConnectionMenu = ({
                     <>
                         <Menu.Divider />
                         <Menu.Item
-                            data-test-topbar-disconnect
+                            htmlAttributes={{
+                                "data-test-topbar-disconnect": "true",
+                            }}
                             className="text-hibiscus-45"
                             title="Disconnect"
                             description={<span className="text-neutral-80">{dbmsUrlWithUsername}</span>}

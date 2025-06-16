@@ -81,7 +81,7 @@ test.describe("workflow", () => {
     });
 
     test("should perform workflow end-to-end", async ({ page, loginPage, schemaEditorPage, editorPage }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
         await schemaEditorPage.buildSchema();
@@ -120,7 +120,7 @@ test.describe("workflow", () => {
         schemaEditorPage,
         editorPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
         await schemaEditorPage.buildSchema();

@@ -29,7 +29,14 @@ interface Props {
 
 export const IntrospectionPrompt = ({ open, onClose, onDisconnect, onIntrospect }: Props) => {
     return (
-        <Dialog ndl-id="introspectioprompt" data-test-introspect-prompt isOpen={open} onClose={() => onClose()}>
+        <Dialog
+            ndl-id="introspectioprompt"
+            htmlAttributes={{
+                "data-test-introspect-prompt": "true",
+            }}
+            isOpen={open}
+            onClose={() => onClose()}
+        >
             <Dialog.Header className="h4">Generate type definitions</Dialog.Header>
             <Dialog.Description>
                 Your current connection already has data. Would you like to introspect this database to generate type
@@ -37,7 +44,9 @@ export const IntrospectionPrompt = ({ open, onClose, onDisconnect, onIntrospect 
             </Dialog.Description>
             <Dialog.Actions className="flex w-full">
                 <Button
-                    data-test-introspect-prompt-cancel
+                    htmlAttributes={{
+                        "data-test-introspect-prompt-cancel": "true",
+                    }}
                     fill="outlined"
                     color="neutral"
                     aria-label="Close introspection prompt"
@@ -47,7 +56,9 @@ export const IntrospectionPrompt = ({ open, onClose, onDisconnect, onIntrospect 
                 </Button>
                 <div className="mr-0 ml-auto">
                     <Button
-                        data-test-introspect-prompt-logout
+                        htmlAttributes={{
+                            "data-test-introspect-prompt-logout": "true",
+                        }}
                         className="mr-3"
                         fill="outlined"
                         color="primary"
@@ -57,7 +68,9 @@ export const IntrospectionPrompt = ({ open, onClose, onDisconnect, onIntrospect 
                         Switch connection
                     </Button>
                     <Button
-                        data-test-introspect-prompt-introspect
+                        htmlAttributes={{
+                            "data-test-introspect-prompt-introspect": "true",
+                        }}
                         style={{ backgroundColor: tokens.colors.baltic[50] }}
                         fill="filled"
                         color="primary"

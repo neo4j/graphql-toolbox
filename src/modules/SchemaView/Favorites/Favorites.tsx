@@ -36,6 +36,7 @@ import { tokens } from "@neo4j-ndl/base";
 import { IconButton } from "@neo4j-ndl/react";
 import { ArrowDownTrayIconOutline, StarIconOutline, TrashIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
+import type { JSX } from "react";
 
 import { tracking } from "../../../analytics/tracking";
 import { Screen } from "../../../contexts/screen";

@@ -23,6 +23,8 @@ import { expect, test } from "./utils/pagemodel";
 
 dotenv.config();
 
+const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
+
 test.describe("query editor tabs", () => {
     const typeDefs = /* GraphQL */ `
         type Movie @node {
@@ -52,7 +54,7 @@ test.describe("query editor tabs", () => {
         schemaEditorPage,
         editorPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
         await schemaEditorPage.buildSchema();
@@ -71,7 +73,7 @@ test.describe("query editor tabs", () => {
         schemaEditorPage,
         editorPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
         await schemaEditorPage.buildSchema();

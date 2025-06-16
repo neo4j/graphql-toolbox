@@ -22,6 +22,7 @@ import { useEffect, useRef, useState } from "react";
 import { tokens } from "@neo4j-ndl/base";
 import { Checkbox, IconButton, TextInput } from "@neo4j-ndl/react";
 import { CheckIconOutline, PencilIconOutline, PlayCircleIconOutline } from "@neo4j-ndl/react/icons";
+import type { JSX } from "react";
 
 import { useFavoritesStore } from "../../../store/favorites";
 import type { Favorite } from "../../../types";

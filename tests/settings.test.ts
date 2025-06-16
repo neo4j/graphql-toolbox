@@ -23,12 +23,14 @@ import { test } from "./utils/pagemodel";
 
 dotenv.config();
 
+const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
+
 test.describe("settings", () => {
     test("should be able to enable and disable product usage tracking", async ({
         loginPage,
         applicationSettingsPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await applicationSettingsPage.openSettingsDrawer();
 
@@ -44,7 +46,7 @@ test.describe("settings", () => {
         loginPage,
         applicationSettingsPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await applicationSettingsPage.openSettingsDrawer();
         await applicationSettingsPage.verifyCopyrightCurrentYear();

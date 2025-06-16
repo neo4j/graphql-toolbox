@@ -38,13 +38,20 @@ export const ViewSelector = ({ hasSchema }: Props) => {
     return (
         <>
             <Tabs className="h-12 pl-4" fill="underline" onChange={handleOnScreenChange} value={screen.view.toString()}>
-                <Tabs.Tab data-test-view-selector-type-defs tabId={Screen.TYPEDEFS.toString()}>
+                <Tabs.Tab
+                    htmlAttributes={{
+                        "data-test-view-selector-type-defs": "true",
+                    }}
+                    tabId={Screen.TYPEDEFS.toString()}
+                >
                     Type definitions
                 </Tabs.Tab>
                 <Tooltip placement="right" type="simple">
                     <Tooltip.Trigger>
                         <Tabs.Tab
-                            data-test-view-selector-editor
+                            htmlAttributes={{
+                                "data-test-view-selector-editor": "true",
+                            }}
                             tabId={Screen.EDITOR.toString()}
                             as="div"
                             isDisabled={!hasSchema}

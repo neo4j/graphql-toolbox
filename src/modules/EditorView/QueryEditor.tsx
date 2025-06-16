@@ -215,7 +215,9 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
                             Prettify
                         </Button>
                         <IconButton
-                            data-test-editor-query-button
+                            htmlAttributes={{
+                                "data-test-editor-query-button": "true",
+                            }}
                             ariaLabel="Execute query"
                             style={{ height: "1.7rem" }}
                             className={classNames(theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}

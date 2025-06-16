@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import {
     acceptCompletion,
@@ -38,6 +38,7 @@ import { Button, IconButton, Tooltip } from "@neo4j-ndl/react";
 import { StarIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
 import { graphql } from "cm6-graphql";
+import { useMount } from "react-use";
 
 import { Extension, FileName } from "../../components/Filename";
 import { DEFAULT_TYPE_DEFS, SCHEMA_EDITOR_INPUT } from "../../constants";
@@ -74,7 +75,6 @@ function unsupportedDirectivesLinter(view: EditorView) {
 export interface Props {
     loading: boolean;
     isIntrospecting: boolean;
-    elementRef: React.RefObject<HTMLDivElement | null>;
     formatTheCode: () => void;
     introspect: () => Promise<void>;
     saveAsFavorite: () => void;
@@ -86,7 +86,6 @@ export interface Props {
 export const SchemaEditor = ({
     loading,
     isIntrospecting,
-    elementRef,
     formatTheCode,
     introspect,
     saveAsFavorite,
@@ -98,6 +97,7 @@ export const SchemaEditor = ({
     const appSettings = useContext(AppSettingsContext);
     const storedTypeDefs = useStore.getState().typeDefinitions || DEFAULT_TYPE_DEFS;
     const [building, setBuilding] = useState<boolean>(false);
+    const elementRef = useRef<HTMLDivElement | null>(null);
 
     const extensions = useMemo(
         () => [
@@ -147,7 +147,7 @@ export const SchemaEditor = ({
         [theme.theme, appSettings.showLintMarkers, formatTheCode]
     );
 
-    useEffect(() => {
+    useMount(() => {
         if (elementRef.current === null) {
             return;
         }
@@ -168,7 +168,7 @@ export const SchemaEditor = ({
             view.destroy();
             setEditorView(null);
         };
-    }, []);
+    });
 
     useEffect(() => {
         if (editorView) {
@@ -187,7 +187,9 @@ export const SchemaEditor = ({
                 name="type-definitions"
                 rightButtons={
                     <Button
-                        data-test-schema-editor-build-button
+                        htmlAttributes={{
+                            "data-test-schema-editor-build-button": "true",
+                        }}
                         aria-label="Build schema"
                         className={classNames(theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}
                         color="primary"
@@ -211,7 +213,9 @@ export const SchemaEditor = ({
                         <Tooltip type="simple" placement="bottom">
                             <Tooltip.Trigger hasButtonWrapper>
                                 <Button
-                                    data-test-schema-editor-introspect-button
+                                    htmlAttributes={{
+                                        "data-test-schema-editor-introspect-button": "true",
+                                    }}
                                     aria-label="Generate type definitions"
                                     className={classNames(
                                         "mr-2",
@@ -233,7 +237,9 @@ export const SchemaEditor = ({
                         </Tooltip>
 
                         <Button
-                            data-test-schema-editor-prettify-button
+                            htmlAttributes={{
+                                "data-test-schema-editor-prettify-button": "true",
+                            }}
                             aria-label="Prettify code"
                             className={classNames(
                                 "mr-2",
@@ -251,7 +257,9 @@ export const SchemaEditor = ({
                         <Tooltip type="rich" placement="bottom">
                             <Tooltip.Trigger hasButtonWrapper>
                                 <IconButton
-                                    data-test-schema-editor-favourite-button
+                                    htmlAttributes={{
+                                        "data-test-schema-editor-favourite-button": "true",
+                                    }}
                                     ariaLabel="Save as favorite"
                                     className={classNames(
                                         theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"

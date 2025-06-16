@@ -81,9 +81,11 @@ export const AppSettings = ({ onClickClose }: Props) => {
                     />
                     <div className="mt-3">
                         <Checkbox
-                            data-test-show-lint-markers
+                            htmlAttributes={{
+                                "data-test-show-lint-markers": "true",
+                            }}
                             className="m-0"
-                            aria-label="Show lint markers"
+                            ariaLabel="Show lint markers"
                             label="Show lint markers"
                             isChecked={appSettings.showLintMarkers}
                             onChange={onChangeShowLintMarkers}
@@ -95,13 +97,11 @@ export const AppSettings = ({ onClickClose }: Props) => {
                 <span className="h6">Product Analytics</span>
                 <div className="pt-3 flex">
                     <Checkbox
-                        data-test-enable-product-usage-tracking
-                        aria-label="Product usage tracking toggle"
-                        className={`mt-1 ${
-                            appSettings.enableProductUsageTracking
-                                ? "data-test-enable-product-usage-tracking-checked"
-                                : ""
-                        }`}
+                        htmlAttributes={{
+                            "data-test-enable-product-usage-tracking": "true",
+                        }}
+                        ariaLabel="Product usage tracking toggle"
+                        className="mt-1"
                         isChecked={appSettings.enableProductUsageTracking}
                         onChange={onChangeProductUsageTracking}
                     />

@@ -29,7 +29,9 @@ export const SwitchDatabasePrompt = ({ selectedDatabaseName, onClose, onSwitchDa
     return (
         <Dialog
             ndl-id="switch-database-prompt"
-            data-test-switch-database-prompt
+            htmlAttributes={{
+                "data-test-switch-database-prompt": "true",
+            }}
             type="warning"
             isOpen={!!selectedDatabaseName}
             onClose={() => onClose()}
@@ -42,7 +44,9 @@ export const SwitchDatabasePrompt = ({ selectedDatabaseName, onClose, onSwitchDa
             </Dialog.Description>
             <Dialog.Actions className="flex w-full">
                 <Button
-                    data-test-switch-database-prompt-cancel
+                    htmlAttributes={{
+                        "data-test-switch-database-prompt-cancel": "true",
+                    }}
                     fill="outlined"
                     color="neutral"
                     aria-label="Close switch database prompt"
@@ -51,7 +55,9 @@ export const SwitchDatabasePrompt = ({ selectedDatabaseName, onClose, onSwitchDa
                     Cancel
                 </Button>
                 <Button
-                    data-test-switch-database-prompt-switch-db
+                    htmlAttributes={{
+                        "data-test-switch-database-prompt-switch-db": "true",
+                    }}
                     fill="outlined"
                     color="neutral"
                     aria-label="Switch database"

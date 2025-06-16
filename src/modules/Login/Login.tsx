@@ -95,7 +95,7 @@ export const Login = () => {
                 <form onSubmit={onSubmit} className="flex flex-col items-center gap-4 mt-auto mb-24">
                     <FormInput
                         label={"Connection URL"}
-                        htmlAttributes={{ name: "url", type: "text", ["data-test-login-url"]: "true" }}
+                        htmlAttributes={{ name: "url", type: "text", "data-test-login-url": "true" }}
                         value={url}
                         onChange={(event) => setUrl(event.currentTarget.value)}
                         placeholder={DEFAULT_BOLT_URL}
@@ -128,7 +128,7 @@ export const Login = () => {
                             name: "username",
                             type: "text",
                             autoComplete: "username",
-                            ["data-test-login-username"]: "true",
+                            "data-test-login-username": "true",
                         }}
                         placeholder="neo4j"
                         value={username}
@@ -145,7 +145,7 @@ export const Login = () => {
                             autoCorrect: "off",
                             spellCheck: "false",
                             type: "password",
-                            ["data-test-login-password"]: "true",
+                            "data-test-login-password": "true",
                         }}
                         placeholder="password"
                         value={password}
@@ -155,7 +155,9 @@ export const Login = () => {
                     />
 
                     <Button
-                        data-test-login-button
+                        htmlAttributes={{
+                            "data-test-login-button": "true",
+                        }}
                         className="w-60 mt-8"
                         fill="filled"
                         type="submit"

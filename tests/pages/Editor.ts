@@ -23,11 +23,13 @@ import { Screen } from "./Screen";
 export class Editor extends Screen {
     public async setQuery(query: string) {
         await this.page.waitForSelector("[data-test-editor-query-button]");
+        await this.page.locator(`#${EDITOR_QUERY_INPUT} .cm-content`).clear();
         await this.page.locator(`#${EDITOR_QUERY_INPUT} .cm-content`).fill(query);
     }
 
     public async setParams(params: string) {
         await this.page.waitForSelector("[data-test-editor-query-button]");
+        await this.page.locator(`#${EDITOR_PARAMS_INPUT} .cm-content`).clear();
         await this.page.locator(`#${EDITOR_PARAMS_INPUT} .cm-content`).fill(params);
     }
 
