@@ -42,6 +42,7 @@ import { graphql as graphqlExtension } from "cm6-graphql";
 import type { EditorView as CodeMirrorEditorView } from "codemirror";
 import { EditorView } from "codemirror";
 import type { GraphQLSchema } from "graphql";
+import { useMount } from "react-use";
 
 import { Extension, FileName } from "../../components/Filename";
 import { EDITOR_QUERY_INPUT } from "../../constants";
@@ -141,7 +142,7 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
         [appSettings.showLintMarkers, onSubmit, schema, theme.theme, updateListener]
     );
 
-    useEffect(() => {
+    useMount(() => {
         if (elementRef.current === null) {
             return;
         }
@@ -162,7 +163,7 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
             view.destroy();
             setEditorView(null);
         };
-    }, []);
+    });
 
     useEffect(() => {
         if (editorView) {
