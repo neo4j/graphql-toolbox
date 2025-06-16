@@ -33,19 +33,24 @@ jobs:
             });
             var fs = require('fs');
             fs.writeFileSync('${{ github.workspace }}/graphqltoolbox.zip', Buffer.from(download.data));
+
       - run: unzip graphqltoolbox.zip
+
       - id: get-pr-number
         run: |
           number=$(<prnumber)
           case "$number" in ''|*[!0-9]*) echo "Provided PR number is not an integer"; exit 1 ;; esac
           echo "pr-number=$number" >> "$GITHUB_OUTPUT"
+
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: lts/*
+
       - name: Publish the Toolbox to surge.sh
         run: |
           npm install -g surge
           surge . neo4j-graphql-toolbox-${{ steps.get-pr-number.outputs.pr-number }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+
       - name: Comment on PR
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
         with:
