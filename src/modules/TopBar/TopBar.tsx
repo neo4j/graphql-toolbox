@@ -103,11 +103,9 @@ export const TopBar = () => {
                 </div>
             </div>
             <div className="flex-1 flex justify-center items-center">
-                <Tooltip type="rich" placement="bottom">
+                <Tooltip type="simple" placement="bottom">
                     <Tooltip.Trigger>
                         <div
-                            onClick={() => setOpenConnectionMenu(!openConnectionMenu)}
-                            onKeyDown={() => setOpenConnectionMenu(!openConnectionMenu)}
                             data-test-topbar-connection-information
                             className="flex items-center text-dark-neutral-text-weaker cursor-pointer"
                             role="button"
@@ -128,7 +126,6 @@ export const TopBar = () => {
                                 </span>
                             </div>
                             <div className="block lg:hidden">Connection</div>
-                            <ChevronDownIconOutline className="ml-2 w-4 h-4" />
                         </div>
                     </Tooltip.Trigger>
                     <Tooltip.Content style={{ width: "16rem" }} className="shadow-raised">
@@ -140,10 +137,16 @@ export const TopBar = () => {
                         </>
                     </Tooltip.Content>
                 </Tooltip>
+                <div
+                    className="flex items-center text-dark-neutral-text-weaker cursor-pointer"
+                    onClick={() => setOpenConnectionMenu(!openConnectionMenu)}
+                    onKeyDown={() => setOpenConnectionMenu(!openConnectionMenu)}
+                >
+                    <ChevronDownIconOutline className="ml-2 w-4 h-4" />
+                </div>
                 <ConnectionMenu
                     menuButtonRef={menuButtonRef}
                     openConnectionMenu={openConnectionMenu}
-                    setOpenConnectionMenu={setOpenConnectionMenu}
                     dbmsUrlWithUsername={constructDbmsUrlWithUsername()}
                     onNextSelectedDatabaseName={setNextSelectedDatabaseName}
                 />

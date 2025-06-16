@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import { Menu } from "@neo4j-ndl/react";
 import { CheckIconOutline } from "@neo4j-ndl/react/icons";
@@ -29,46 +29,22 @@ interface Props {
     menuButtonRef: React.RefObject<HTMLDivElement | null>;
     dbmsUrlWithUsername: string;
     openConnectionMenu: boolean;
-    setOpenConnectionMenu: (v: boolean) => void;
     onNextSelectedDatabaseName: (databaseName: string) => void;
 }
 
-const CONNECTION_MENU_ID = "connection-menu";
+// const CONNECTION_MENU_ID = "connection-menu";
 
 export const ConnectionMenu = ({
     menuButtonRef,
     dbmsUrlWithUsername,
     openConnectionMenu,
-    setOpenConnectionMenu,
     onNextSelectedDatabaseName,
 }: Props) => {
     const auth = useContext(AuthContext);
     const screen = useContext(ScreenContext);
 
-    useEffect(() => {
-        function handleClickOutsideComponent(event: MouseEvent) {
-            if (
-                !menuButtonRef?.current?.contains(event.target as Node) &&
-                !document.getElementById(CONNECTION_MENU_ID)?.contains(event.target as Node)
-            ) {
-                setOpenConnectionMenu(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutsideComponent);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutsideComponent);
-        };
-    }, [menuButtonRef, setOpenConnectionMenu]);
-
     return (
-        <Menu
-            isOpen={openConnectionMenu}
-            anchorRef={menuButtonRef}
-            className="mt-2 ndl-theme-light"
-            // onClose={() => setOpenConnectionMenu(false)}
-            // onClick={() => setOpenConnectionMenu(false)}
-        >
+        <Menu isOpen={openConnectionMenu} anchorRef={menuButtonRef} className="mt-2 ndl-theme-light">
             <Menu.Items>
                 {auth.databases?.length ? (
                     <>
