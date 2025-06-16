@@ -21,7 +21,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - uses: ./.github/workflows/composites/reusable-setup/
+      - uses: ./.github/actions/reusable-setup/
 
       - name: Install Playwright
         run: npx playwright install --with-deps
