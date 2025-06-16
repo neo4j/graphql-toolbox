@@ -208,7 +208,7 @@ export const SchemaEditor = ({
                 }
                 leftButtons={
                     <>
-                        <Tooltip type="rich" placement="bottom">
+                        <Tooltip type="simple" placement="bottom">
                             <Tooltip.Trigger hasButtonWrapper>
                                 <Button
                                     data-test-schema-editor-introspect-button
