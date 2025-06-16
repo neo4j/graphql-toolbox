@@ -21,7 +21,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
     webServer: {
-        command: "yarn start",
+        command: "pnpm dev",
         url: "http://localhost:4242",
         timeout: 120 * 1000,
         reuseExistingServer: !process.env.CI,
