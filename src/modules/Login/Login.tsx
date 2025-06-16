@@ -94,9 +94,8 @@ export const Login = () => {
 
                 <form onSubmit={onSubmit} className="flex flex-col items-center gap-4 mt-auto mb-24">
                     <FormInput
-                        testtag="data-test-login-url"
                         label={"Connection URL"}
-                        htmlAttributes={{ name: "url", type: "text" }}
+                        htmlAttributes={{ name: "url", type: "text", ["data-test-login-url"]: "true" }}
                         value={url}
                         onChange={(event) => setUrl(event.currentTarget.value)}
                         placeholder={DEFAULT_BOLT_URL}
@@ -124,9 +123,13 @@ export const Login = () => {
                         </div>
                     ) : null}
                     <FormInput
-                        testtag="data-test-login-username"
                         label="Database user"
-                        htmlAttributes={{ name: "username", type: "text", autoComplete: "username" }}
+                        htmlAttributes={{
+                            name: "username",
+                            type: "text",
+                            autoComplete: "username",
+                            ["data-test-login-username"]: "true",
+                        }}
                         placeholder="neo4j"
                         value={username}
                         onChange={(event) => setUsername(event.currentTarget.value)}
@@ -135,7 +138,6 @@ export const Login = () => {
                     />
 
                     <FormInput
-                        testtag="data-test-login-password"
                         label="Password"
                         htmlAttributes={{
                             name: "password",
@@ -143,6 +145,7 @@ export const Login = () => {
                             autoCorrect: "off",
                             spellCheck: "false",
                             type: "password",
+                            ["data-test-login-password"]: "true",
                         }}
                         placeholder="password"
                         value={password}
