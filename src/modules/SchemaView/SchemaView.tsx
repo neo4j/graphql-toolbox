@@ -282,7 +282,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 </div>
             </div>
             {showRightPanel ? (
-                <div className="h-content-container flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-50">
+                <div className="h-content-container flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-40">
                     {settings.isShowHelpDrawer ? (
                         <HelpDrawer onClickClose={() => settings.setIsShowHelpDrawer(false)} />
                     ) : null}

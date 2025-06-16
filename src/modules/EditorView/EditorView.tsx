@@ -147,7 +147,7 @@ export const EditorView = ({ schema }: Props) => {
                     </div>
 
                     {showDocs ? (
-                        <div className="h-content-docs-container w-96 absolute left-[388px] my-1 mx-0 z-50 bg-neutral-10 shadow-raised rounded">
+                        <div className="h-content-docs-container w-96 absolute left-[388px] my-1 mx-0 z-40 bg-neutral-10 shadow-raised rounded">
                             <DocExplorerComponent
                                 schema={schema}
                                 isEmbedded={false}
@@ -186,7 +186,7 @@ export const EditorView = ({ schema }: Props) => {
             </div>
 
             {showRightPanel ? (
-                <div className="h-full flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-50">
+                <div className="h-full flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-40">
                     {settings.isShowHelpDrawer ? (
                         <HelpDrawer onClickClose={() => settings.setIsShowHelpDrawer(false)} schema={schema} />
                     ) : null}
