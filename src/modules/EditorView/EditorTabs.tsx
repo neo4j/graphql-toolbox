@@ -95,9 +95,15 @@ export const EditorTabs = () => {
                     </Tabs.Tab>
                 );
             })}
-            <Tabs.Tab key="new" tabId="new" className="vertical-align-bottom">
+            <Tabs.Tab
+                htmlAttributes={{
+                    "data-test-new-query-editor-tab": "true",
+                }}
+                key="new"
+                tabId="new"
+                className="vertical-align-bottom"
+            >
                 <PlusIconOutline
-                    data-test-new-query-editor-tab
                     className={classNames(
                         "h-5 w-5",
                         theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "text-neutral-10 hover:bg-neutral-50"
