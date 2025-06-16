@@ -18,6 +18,7 @@
  */
 
 import { expect } from "@playwright/test";
+
 import { Screen } from "./Screen";
 
 export class ApplicationSettings extends Screen {
