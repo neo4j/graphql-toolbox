@@ -34,13 +34,13 @@ Access the Neo4j GraphQL Toolbox here: <https://graphql-toolbox.neo4j.io/>
 On the `root` of the project, install the dependencies.
 
 ```
-yarn
+pnpm
 ```
 
-Run this command to start the development server. See the output in the console & navigate to the default webpack server at: <http://localhost:4242>
+Run this command to start the development server. See the output in the console & navigate to the default vite server at: <http://localhost:5173>
 
 ```
-yarn start
+pnpm start
 ```
 
 ## GraphQL Toolbox URL parameters
