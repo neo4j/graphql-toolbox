@@ -79,8 +79,6 @@ oclif.manifest.json
 e2e/fixtures/data/
 e2e/fixtures/cache/
 
-test-api.ts
-packages/package-tests/**/package-lock.json
 scratchpad/
 
 .yarn/*
@@ -98,5 +96,5 @@ tsconfig.*.tsbuildinfo.gz
 performance.json
 .history
 
-packages/graphql-toolbox/tests/artifacts
+tests/artifacts
 package-lock.json
