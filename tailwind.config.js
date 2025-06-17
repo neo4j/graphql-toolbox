@@ -1,4 +1,5 @@
 module.exports = {
+    content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
     theme: {
         extend: {
             height: {
@@ -9,9 +10,6 @@ module.exports = {
             width: {
                 "content-container": "calc(100% - 24rem)",
                 "editor-container": "calc(100% - (24rem + 24rem))",
-            },
-            colors: {
-                draculaDark: "#282A36",
             },
         },
     },

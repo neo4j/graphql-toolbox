@@ -37,7 +37,7 @@ export const CannySDK = {
                     // eslint-disable-next-line prefer-rest-params
                     c.q.push(arguments);
                 };
-                c.q = [];
+                c.q = [] as IArguments[];
                 w.Canny = c;
                 function l() {
                     if (d.getElementById(i)) {
@@ -56,7 +56,7 @@ export const CannySDK = {
                 }
                 if (d.readyState === "complete") {
                     l();
-                } else if (w.attachEvent) {
+                } else if (w.attachEvent && typeof w.attachEvent === "function") {
                     w.attachEvent("onload", l);
                 } else {
                     w.addEventListener("load", l, false);

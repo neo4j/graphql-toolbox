@@ -61,15 +61,14 @@ export enum ConstraintState {
     ignore,
 }
 
-export {};
 declare global {
     interface Window {
         neo4jDesktopApi: {
             getContext: () => Promise<unknown>;
         };
-        Canny: any;
+        Canny: (event: string, data?: Record<string, unknown>) => void;
         CannyIsLoaded: boolean;
-        attachEvent: any;
+        attachEvent: unknown;
     }
 }
 window.neo4jDesktopApi = window.neo4jDesktopApi || {};

@@ -22,8 +22,8 @@ import { SchemaContextProvider } from "@graphiql/react";
 import { createGraphiQLFetcher } from "@graphiql/toolkit";
 import classNames from "classnames";
 import type { GraphQLSchema } from "graphql";
+import type { JSX } from "react";
 
-// @ts-ignore - SVG import
 import ArrowLeft from "../../assets/arrow-left.svg";
 
 interface Props {

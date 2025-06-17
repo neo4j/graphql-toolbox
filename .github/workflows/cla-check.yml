@@ -16,13 +16,16 @@ jobs:
         with:
           repository: neo-technology/whitelist-check
           token: ${{ secrets.NEO4J_TEAM_GRAPHQL_PERSONAL_ACCESS_TOKEN }}
+
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: 3
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
       - run: |
           owner=$(echo "$GITHUB_REPOSITORY" | cut -d/ -f1)
           repository=$(echo "$GITHUB_REPOSITORY" | cut -d/ -f2)

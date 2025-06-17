@@ -21,7 +21,7 @@ import { useState } from "react";
 
 import { ComputerDesktopIconOutline, SwatchIconOutline } from "@neo4j-ndl/react/icons";
 import type { GraphQLSchema } from "graphql";
-import type { Dispatch, SetStateAction } from "react";
+import type { Dispatch, JSX, SetStateAction } from "react";
 
 import { tracking } from "../../analytics/tracking";
 import type { Screen } from "../../contexts/screen";

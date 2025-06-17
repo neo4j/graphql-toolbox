@@ -18,6 +18,7 @@
  */
 
 import { expect } from "@playwright/test";
+
 import { Screen } from "./Screen";
 
 export class ApplicationSettings extends Screen {
@@ -39,11 +40,9 @@ export class ApplicationSettings extends Screen {
 
     public async isProductUsageTrackingChecked() {
         await this.page.waitForSelector("[data-test-enable-product-usage-tracking]");
-        expect(
-            await this.page.$eval("[data-test-enable-product-usage-tracking]", (el) =>
-                el.classList.contains("data-test-enable-product-usage-tracking-checked")
-            )
-        ).toBeTruthy();
+        // check that the checkbox is checked
+        const isChecked = await this.page.locator("[data-test-enable-product-usage-tracking]").isChecked();
+        expect(isChecked).toBeTruthy();
     }
 
     public async disableProductUsageTracking() {
@@ -53,11 +52,9 @@ export class ApplicationSettings extends Screen {
 
     public async isProductUsageTrackingNotChecked() {
         await this.page.waitForSelector("[data-test-enable-product-usage-tracking]");
-        expect(
-            await this.page.$eval("[data-test-enable-product-usage-tracking]", (el) =>
-                el.classList.contains("data-test-enable-product-usage-tracking-checked")
-            )
-        ).toBeFalsy();
+        // check that the checkbox is not checked
+        const isChecked = await this.page.locator("[data-test-enable-product-usage-tracking]").isChecked();
+        expect(isChecked).toBeFalsy();
     }
 
     public async verifyCopyrightCurrentYear() {

@@ -33,7 +33,7 @@ export const AppSettings = ({ onClickClose }: Props) => {
     const theme = useContext(ThemeContext);
     const appSettings = useContext(AppSettingsContext);
 
-    const handleOnChangeEditorTheme = (event: any) => {
+    const handleOnChangeEditorTheme: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         const next = event?.target?.id === Theme.LIGHT.toString() ? Theme.LIGHT : Theme.DARK;
         theme.setTheme(next);
         tracking.trackChangeEditorTheme({ screen: "type definitions", theme: next });
@@ -66,26 +66,28 @@ export const AppSettings = ({ onClickClose }: Props) => {
                 <span className="h6">Editors</span>
                 <div className="pt-3">
                     <Radio
-                        id={Theme.LIGHT.toString()}
+                        htmlAttributes={{ id: Theme.LIGHT.toString() }}
                         className="cursor-pointer"
                         label="Light theme"
-                        checked={theme.theme === Theme.LIGHT}
+                        isChecked={theme.theme === Theme.LIGHT}
                         onChange={handleOnChangeEditorTheme}
                     />
                     <Radio
-                        id={Theme.DARK.toString()}
+                        htmlAttributes={{ id: Theme.DARK.toString() }}
                         className="cursor-pointer"
                         label="Dark theme"
-                        checked={theme.theme === Theme.DARK}
+                        isChecked={theme.theme === Theme.DARK}
                         onChange={handleOnChangeEditorTheme}
                     />
                     <div className="mt-3">
                         <Checkbox
-                            data-test-show-lint-markers
+                            htmlAttributes={{
+                                "data-test-show-lint-markers": "true",
+                            }}
                             className="m-0"
-                            aria-label="Show lint markers"
+                            ariaLabel="Show lint markers"
                             label="Show lint markers"
-                            checked={appSettings.showLintMarkers}
+                            isChecked={appSettings.showLintMarkers}
                             onChange={onChangeShowLintMarkers}
                         />
                     </div>
@@ -95,14 +97,12 @@ export const AppSettings = ({ onClickClose }: Props) => {
                 <span className="h6">Product Analytics</span>
                 <div className="pt-3 flex">
                     <Checkbox
-                        data-test-enable-product-usage-tracking
-                        aria-label="Product usage tracking toggle"
-                        className={`mt-1 ${
-                            appSettings.enableProductUsageTracking
-                                ? "data-test-enable-product-usage-tracking-checked"
-                                : ""
-                        }`}
-                        checked={appSettings.enableProductUsageTracking}
+                        htmlAttributes={{
+                            "data-test-enable-product-usage-tracking": "true",
+                        }}
+                        ariaLabel="Product usage tracking toggle"
+                        className="mt-1"
+                        isChecked={appSettings.enableProductUsageTracking}
                         onChange={onChangeProductUsageTracking}
                     />
                     <div className="ml-3">
@@ -121,7 +121,7 @@ export const AppSettings = ({ onClickClose }: Props) => {
                     <span data-test-copyright-information>Copyright &copy; 2002-2025</span>
                     <div className="flex">
                         <span>Neo4j GraphQL version:</span>&nbsp;
-                        <pre>{(process.env.NEO4J_GRAPHQL_VERSION || "").replace(/\^|~/g, "")}</pre>
+                        <pre>{(import.meta.env.NEO4J_GRAPHQL_VERSION || "").replace(/\^|~/g, "")}</pre>
                     </div>
                 </div>
             </div>

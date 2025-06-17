@@ -21,6 +21,7 @@ import { useContext, useState } from "react";
 
 import { ChatBubbleOvalLeftEllipsisIconOutline } from "@neo4j-ndl/react/icons";
 import type { GraphQLSchema } from "graphql";
+import type { JSX } from "react";
 
 import { tracking } from "../../analytics/tracking";
 import { Screen, ScreenContext } from "../../contexts/screen";

@@ -16,10 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import ReactDOM from "react-dom/client";
 
 import { App } from "./App";
+
+import "@neo4j-ndl/base/lib/neo4j-ds-styles.css";
 
 const container = document.getElementById("root");
 

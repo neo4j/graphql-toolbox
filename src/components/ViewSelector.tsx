@@ -19,7 +19,7 @@
 
 import { useContext } from "react";
 
-import { Tabs, Tip } from "@neo4j-ndl/react";
+import { Tabs, Tooltip } from "@neo4j-ndl/react";
 
 import { Screen, ScreenContext } from "../contexts/screen";
 
@@ -38,15 +38,29 @@ export const ViewSelector = ({ hasSchema }: Props) => {
     return (
         <>
             <Tabs className="h-12 pl-4" fill="underline" onChange={handleOnScreenChange} value={screen.view.toString()}>
-                <Tabs.Tab data-test-view-selector-type-defs tabId={Screen.TYPEDEFS.toString()}>
+                <Tabs.Tab
+                    htmlAttributes={{
+                        "data-test-view-selector-type-defs": "true",
+                    }}
+                    tabId={Screen.TYPEDEFS.toString()}
+                >
                     Type definitions
                 </Tabs.Tab>
-                <Tabs.Tab data-test-view-selector-editor tabId={Screen.EDITOR.toString()} disabled={!hasSchema}>
-                    <Tip allowedPlacements={["right"]}>
-                        <Tip.Trigger>Query editor</Tip.Trigger>
-                        {!hasSchema && <Tip.Content>Build the schema to use the Query editor</Tip.Content>}
-                    </Tip>
-                </Tabs.Tab>
+                <Tooltip placement="right" type="simple">
+                    <Tooltip.Trigger>
+                        <Tabs.Tab
+                            htmlAttributes={{
+                                "data-test-view-selector-editor": "true",
+                            }}
+                            tabId={Screen.EDITOR.toString()}
+                            as="div"
+                            isDisabled={!hasSchema}
+                        >
+                            Query editor
+                        </Tabs.Tab>
+                    </Tooltip.Trigger>
+                    {!hasSchema && <Tooltip.Content>Build the schema to use the Query editor</Tooltip.Content>}
+                </Tooltip>
             </Tabs>
         </>
     );

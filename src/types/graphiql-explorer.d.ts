@@ -17,24 +17,21 @@
  * limitations under the License.
  */
 
-import { forwardRef } from "react";
+declare module "graphiql-explorer" {
+    import type { GraphQLSchema } from "graphql";
 
-import { IconButton } from "@neo4j-ndl/react";
-import { DragIcon } from "@neo4j-ndl/react/icons";
+    interface GraphiQLExplorerProps {
+        schema: GraphQLSchema;
+        query: string;
+        onEdit: (query: string) => void;
+        onRunOperation: () => void;
+        explorerIsOpen: boolean;
+        styles?: {
+            buttonStyle?: React.CSSProperties;
+            explorerActionsStyle?: React.CSSProperties;
+        };
+    }
 
-export const DragHandle = forwardRef<HTMLButtonElement>(function DragHandle(props, ref) {
-    const { ...rest } = props;
-
-    return (
-        <IconButton
-            ariaLabel="Reorder favorite snippet"
-            ref={ref}
-            isClean
-            size="small"
-            style={{ cursor: "grab" }}
-            {...rest}
-        >
-            <DragIcon />
-        </IconButton>
-    );
-});
+    const GraphiQLExplorer: React.FC<GraphiQLExplorerProps>;
+    export default GraphiQLExplorer;
+}

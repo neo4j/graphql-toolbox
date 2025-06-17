@@ -17,24 +17,14 @@
  * limitations under the License.
  */
 
-import { forwardRef } from "react";
+/// <reference types="vite/client" />
 
-import { IconButton } from "@neo4j-ndl/react";
-import { DragIcon } from "@neo4j-ndl/react/icons";
+interface ImportMetaEnv {
+    readonly NEO4J_GRAPHQL_VERSION: string;
+    readonly SEGMENT_GRAPHQL_TOOLBOX_PROD_SOURCE: string;
+    readonly CANNY_GRAPHQL_TOOLBOX_APP_ID: string;
+}
 
-export const DragHandle = forwardRef<HTMLButtonElement>(function DragHandle(props, ref) {
-    const { ...rest } = props;
-
-    return (
-        <IconButton
-            ariaLabel="Reorder favorite snippet"
-            ref={ref}
-            isClean
-            size="small"
-            style={{ cursor: "grab" }}
-            {...rest}
-        >
-            <DragIcon />
-        </IconButton>
-    );
-});
+interface ImportMeta {
+    readonly env: ImportMetaEnv;
+}

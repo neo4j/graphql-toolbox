@@ -20,6 +20,7 @@
 import * as dotenv from "dotenv";
 import * as neo4j from "neo4j-driver";
 import { generate } from "randomstring";
+
 import { Login } from "./pages/Login";
 import { afterAll, beforeAll, expect, test } from "./utils/pagemodel";
 
@@ -91,7 +92,7 @@ test.describe("URL query parameters", () => {
         await page.goto(`/?db=${databaseName}`);
 
         const login = new Login(page);
-        await login.login();
+        await login.login(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await topBarPage.waitForTopBarVisibility();
 
@@ -107,14 +108,14 @@ test.describe("URL query parameters", () => {
         await page.goto(`/?db=${databaseName}`);
 
         const login = new Login(page);
-        await login.login();
+        await login.login(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await topBarPage.waitForTopBarVisibility();
 
         let selectedDatabase = await topBarPage.getSelectedDatabase();
         expect(selectedDatabase).toEqual(databaseName);
 
-        await topBarPage.clickConnectionInformation();
+        await topBarPage.clickConnectionMenuButton();
         await topBarPage.selectDatabaseByName("neo4j");
         await topBarPage.confirmDatabaseSelection();
 

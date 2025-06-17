@@ -19,10 +19,10 @@
 
 import { useCallback, useContext, useState } from "react";
 
-import { Banner, Button, Tip } from "@neo4j-ndl/react";
+import { Banner, Button, Tooltip } from "@neo4j-ndl/react";
 import { ExclamationTriangleIconOutline } from "@neo4j-ndl/react/icons";
+import type { JSX } from "react";
 
-// @ts-ignore - PNG Import
 import neo4jIcon from "../../assets/neo4j-full-color.png";
 import { DEFAULT_BOLT_URL, DEFAULT_USERNAME } from "../../constants";
 import { AuthContext } from "../../contexts/auth";
@@ -58,19 +58,19 @@ export const Login = () => {
                 setLoading(false);
             }
         },
-        [url, username, password]
+        [url, username, password, auth]
     );
 
     const WarningToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
         return (
-            <Tip type="toggletip" allowedPlacements={["right"]}>
-                <Tip.Trigger type="button" hasButtonWrapper>
+            <Tooltip type="rich" placement="right">
+                <Tooltip.Trigger hasButtonWrapper>
                     <ExclamationTriangleIconOutline className="text-lemon-55 h-7 w-7" />
-                </Tip.Trigger>
-                <Tip.Content style={{ width: "20rem" }}>
-                    <Tip.Body>{text}</Tip.Body>
-                </Tip.Content>
-            </Tip>
+                </Tooltip.Trigger>
+                <Tooltip.Content style={{ width: "20rem" }}>
+                    <Tooltip.Body>{text}</Tooltip.Body>
+                </Tooltip.Content>
+            </Tooltip>
         );
     };
 
@@ -86,27 +86,21 @@ export const Login = () => {
                         className="mb-8"
                         title="Neo4j Error"
                         description={error}
-                        icon
+                        hasIcon
                         type="danger"
-                        closeable={false}
+                        isCloseable={false}
                     />
                 )}
 
-                <form
-                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-                    onSubmit={onSubmit}
-                    className="flex flex-col items-center gap-4 mt-auto mb-24"
-                >
+                <form onSubmit={onSubmit} className="flex flex-col items-center gap-4 mt-auto mb-24">
                     <FormInput
-                        testtag="data-test-login-url"
                         label={"Connection URL"}
-                        name="url"
+                        htmlAttributes={{ name: "url", type: "text", "data-test-login-url": "true" }}
                         value={url}
                         onChange={(event) => setUrl(event.currentTarget.value)}
                         placeholder={DEFAULT_BOLT_URL}
-                        required={true}
-                        type="text"
-                        disabled={loading}
+                        isRequired={true}
+                        isDisabled={loading}
                     />
                     {showWarningToolTip ? (
                         <div className="absolute ml-[-28rem] mt-[2.5rem]">
@@ -129,39 +123,47 @@ export const Login = () => {
                         </div>
                     ) : null}
                     <FormInput
-                        testtag="data-test-login-username"
                         label="Database user"
-                        name="username"
+                        htmlAttributes={{
+                            name: "username",
+                            type: "text",
+                            autoComplete: "username",
+                            "data-test-login-username": "true",
+                        }}
                         placeholder="neo4j"
                         value={username}
                         onChange={(event) => setUsername(event.currentTarget.value)}
-                        required={true}
-                        type="text"
-                        disabled={loading}
-                        autoComplete="username"
+                        isRequired={true}
+                        isDisabled={loading}
                     />
 
                     <FormInput
-                        testtag="data-test-login-password"
                         label="Password"
-                        name="password"
+                        htmlAttributes={{
+                            name: "password",
+                            autoComplete: "current-password",
+                            autoCorrect: "off",
+                            spellCheck: "false",
+                            type: "password",
+                            "data-test-login-password": "true",
+                        }}
                         placeholder="password"
                         value={password}
                         onChange={(event) => setPassword(event.currentTarget.value)}
-                        required={true}
-                        type="password"
-                        disabled={loading}
-                        autoComplete="current-password"
+                        isRequired={true}
+                        isDisabled={loading}
                     />
 
                     <Button
-                        data-test-login-button
+                        htmlAttributes={{
+                            "data-test-login-button": "true",
+                        }}
                         className="w-60 mt-8"
                         fill="filled"
                         type="submit"
                         size="large"
-                        loading={loading}
-                        disabled={loading || !url || !username || !password}
+                        isLoading={loading}
+                        isDisabled={loading || !url || !username || !password}
                     >
                         Connect
                     </Button>

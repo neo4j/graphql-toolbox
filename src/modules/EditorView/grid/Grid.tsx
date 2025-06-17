@@ -19,9 +19,7 @@
 
 import { useDragResize } from "@graphiql/react";
 
-// @ts-ignore - SVG Import
 import unionHorizontal from "./union_horizontal.svg";
-// @ts-ignore - SVG Import
 import unionVertical from "./union_vertical.svg";
 
 import "./grid.css";
@@ -51,23 +49,23 @@ export const Grid = ({ queryEditor, resultView, variablesEditor }: Props) => {
     return (
         <div className="flex w-full h-full">
             <div className="flex flex-1">
-                <div ref={editorResize.firstRef}>
+                <div ref={editorResize.firstRef as React.RefObject<HTMLDivElement>}>
                     <div className="flex flex-1 flex-col">
-                        <div ref={editorToolsResize.firstRef}>
+                        <div ref={editorToolsResize.firstRef as React.RefObject<HTMLDivElement>}>
                             <div className="w-full h-full">{queryEditor}</div>
                         </div>
-                        <div ref={editorToolsResize.dragBarRef}>
+                        <div ref={editorToolsResize.dragBarRef as React.RefObject<HTMLDivElement>}>
                             <div className="vertical-drag-bar" style={{ backgroundImage: `url(${unionHorizontal})` }} />
                         </div>
-                        <div ref={editorToolsResize.secondRef}>
+                        <div ref={editorToolsResize.secondRef as React.RefObject<HTMLDivElement>}>
                             <div className="w-full h-full">{variablesEditor}</div>
                         </div>
                     </div>
                 </div>
-                <div ref={editorResize.dragBarRef}>
+                <div ref={editorResize.dragBarRef as React.RefObject<HTMLDivElement>}>
                     <div className="horizontal-drag-bar" style={{ backgroundImage: `url(${unionVertical})` }} />
                 </div>
-                <div ref={editorResize.secondRef}>
+                <div ref={editorResize.secondRef as React.RefObject<HTMLDivElement>}>
                     <div className="w-full h-full">{resultView}</div>
                 </div>
             </div>

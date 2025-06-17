@@ -1,14 +1,4 @@
 {
-    "extends": "@tsconfig/create-react-app/tsconfig.json",
-    "compilerOptions": {
-        "declarationMap": false,
-        "sourceMap": false,
-        "noImplicitAny": false,
-        "moduleResolution": "node",
-        "rootDir": "src",
-        "baseUrl": ".",
-        "outDir": "dist",
-        "noEmit": false
-    },
-    "include": ["src/**/*", "src/modules/SchemaView/utils.test.ts"]
+    "files": [],
+    "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }

@@ -20,6 +20,7 @@
 import * as dotenv from "dotenv";
 import * as neo4j from "neo4j-driver";
 import { generate } from "randomstring";
+
 import { afterAll, beforeAll, expect, test } from "./utils/pagemodel";
 
 dotenv.config();
@@ -80,7 +81,7 @@ test.describe("workflow", () => {
     });
 
     test("should perform workflow end-to-end", async ({ page, loginPage, schemaEditorPage, editorPage }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
         await schemaEditorPage.buildSchema();
@@ -119,7 +120,7 @@ test.describe("workflow", () => {
         schemaEditorPage,
         editorPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
         await schemaEditorPage.buildSchema();

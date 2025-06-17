@@ -19,7 +19,7 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 
-import { Button, IconButton, StatusIndicator, Tip, useNeedleTheme } from "@neo4j-ndl/react";
+import { Button, IconButton, StatusIndicator, Tooltip, useNeedleTheme } from "@neo4j-ndl/react";
 import {
     ChatBubbleOvalLeftEllipsisIconOutline,
     ChevronDownIconOutline,
@@ -29,7 +29,6 @@ import {
 import classNames from "classnames";
 
 import { tracking } from "../../analytics/tracking";
-// @ts-ignore - SVG Import
 import Neo4jLogoIcon from "../../assets/neo4j-logo-white.svg";
 import { cannySettings } from "../../common/canny";
 import { DEFAULT_BOLT_URL } from "../../constants";
@@ -104,11 +103,9 @@ export const TopBar = () => {
                 </div>
             </div>
             <div className="flex-1 flex justify-center items-center">
-                <Tip allowedPlacements={["bottom"]}>
-                    <Tip.Trigger>
+                <Tooltip type="simple" placement="bottom">
+                    <Tooltip.Trigger>
                         <div
-                            onClick={() => setOpenConnectionMenu(!openConnectionMenu)}
-                            onKeyDown={() => setOpenConnectionMenu(!openConnectionMenu)}
                             data-test-topbar-connection-information
                             className="flex items-center text-dark-neutral-text-weaker cursor-pointer"
                             role="button"
@@ -129,22 +126,28 @@ export const TopBar = () => {
                                 </span>
                             </div>
                             <div className="block lg:hidden">Connection</div>
-                            <ChevronDownIconOutline className="ml-2 w-4 h-4" />
                         </div>
-                    </Tip.Trigger>
-                    <Tip.Content style={{ width: "16rem" }} className="shadow-raised">
+                    </Tooltip.Trigger>
+                    <Tooltip.Content style={{ width: "16rem" }} className="shadow-raised">
                         <>
                             <p>Username: {auth.username}</p>
                             <p>Connection Url: {auth.connectUrl}</p>
                             <p>Neo4j Database Version: {auth.databaseInformation?.version || "-"}</p>
                             <p>Neo4j Database Edition: {auth.databaseInformation?.edition || "-"}</p>
                         </>
-                    </Tip.Content>
-                </Tip>
+                    </Tooltip.Content>
+                </Tooltip>
+                <div
+                    data-test-topbar-connection-menu-button
+                    className="flex items-center text-dark-neutral-text-weaker cursor-pointer"
+                    onClick={() => setOpenConnectionMenu(!openConnectionMenu)}
+                    onKeyDown={() => setOpenConnectionMenu(!openConnectionMenu)}
+                >
+                    <ChevronDownIconOutline className="ml-2 w-4 h-4" />
+                </div>
                 <ConnectionMenu
                     menuButtonRef={menuButtonRef}
                     openConnectionMenu={openConnectionMenu}
-                    setOpenConnectionMenu={setOpenConnectionMenu}
                     dbmsUrlWithUsername={constructDbmsUrlWithUsername()}
                     onNextSelectedDatabaseName={setNextSelectedDatabaseName}
                 />
@@ -157,7 +160,9 @@ export const TopBar = () => {
             <div className="flex-1 flex justify-end">
                 <div className="flex items-center text-sm">
                     <Button
-                        data-test-send-feedback-topbar
+                        htmlAttributes={{
+                            "data-test-send-feedback-topbar": "true",
+                        }}
                         className={classNames(themeClassName, "mr-2 hidden lg:block")}
                         color="primary"
                         fill="outlined"
@@ -166,12 +171,14 @@ export const TopBar = () => {
                         Send feedback
                     </Button>
                     <IconButton
-                        data-test-send-feedback-topbar
+                        htmlAttributes={{
+                            "data-test-send-feedback-topbar-icon": "true",
+                        }}
                         className={classNames(themeClassName, "flex lg:hidden")}
-                        aria-label="Send feedback"
+                        ariaLabel="Send feedback"
                         onClick={handleSendFeedbackClick}
                         size="large"
-                        clean
+                        isClean
                     >
                         <ChatBubbleOvalLeftEllipsisIconOutline />
                     </IconButton>
@@ -181,20 +188,24 @@ export const TopBar = () => {
                             <span data-canny-changelog></span>
                         </div>
                         <IconButton
-                            data-test-topbar-help-button
+                            htmlAttributes={{
+                                "data-test-topbar-help-button": "true",
+                            }}
                             className={themeClassName}
-                            aria-label="Help and learn drawer"
+                            ariaLabel="Help and learn drawer"
                             onClick={handleHelpClick}
                             size="large"
-                            clean
+                            isClean
                         >
                             <QuestionMarkCircleIconOutline />
                         </IconButton>
                         <IconButton
-                            clean
-                            data-test-topbar-settings-button
+                            isClean
+                            htmlAttributes={{
+                                "data-test-topbar-settings-button": "true",
+                            }}
                             className={themeClassName}
-                            aria-label="Application settings"
+                            ariaLabel="Application settings"
                             onClick={handleSettingsClick}
                             size="large"
                         >

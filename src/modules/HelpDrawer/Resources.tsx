@@ -30,7 +30,7 @@ import {
     SpeakerWaveIconOutline,
     VariableIconOutline,
 } from "@neo4j-ndl/react/icons";
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 import { tracking } from "../../analytics/tracking";
 import { cannySettings } from "../../common/canny";
@@ -149,12 +149,14 @@ const ResourceLinksBlock = ({ listBlockTitle, links, screen }: ResourceLinksBloc
                                 <div className="flex justify-start items-center">
                                     {link.icon}
                                     <TextLink
-                                        data-canny-changelog
                                         className="flex justify-start items-center"
-                                        onClick={handleTrackCannyChangelogLink}
-                                        onKeyDown={handleTrackCannyChangelogLink}
-                                        role="link"
-                                        tabIndex={0}
+                                        htmlAttributes={{
+                                            onClick: handleTrackCannyChangelogLink,
+                                            onKeyDown: handleTrackCannyChangelogLink,
+                                            role: "link",
+                                            tabIndex: 0,
+                                            "data-canny-changelog": "true",
+                                        }}
                                     >
                                         <p className="p-0 m-0">{link.label}</p>
                                     </TextLink>
@@ -164,9 +166,11 @@ const ResourceLinksBlock = ({ listBlockTitle, links, screen }: ResourceLinksBloc
                                     {link.icon}
                                     <TextLink
                                         href={link.href}
-                                        rel="noreferrer"
-                                        onClick={() => handleTrackHelpLearnFeatureLinks(link.label)}
-                                        externalLink
+                                        htmlAttributes={{
+                                            rel: "noreferrer",
+                                            onClick: () => handleTrackHelpLearnFeatureLinks(link.label),
+                                        }}
+                                        type="external"
                                     >
                                         {link.label}
                                     </TextLink>

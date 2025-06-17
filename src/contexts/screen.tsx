@@ -31,7 +31,7 @@ export interface State {
 
 export const ScreenContext = React.createContext({} as State);
 
-export function ScreenProvider(props: React.PropsWithChildren<any>) {
+export function ScreenProvider(props: React.PropsWithChildren) {
     const [value, setValue] = useState<State>({
         view: Screen.TYPEDEFS,
         setScreen: (view: Screen) => {

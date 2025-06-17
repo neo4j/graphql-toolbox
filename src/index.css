@@ -1,6 +1,12 @@
+@config '../tailwind.config.js';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@theme {
+  --color-dracula-dark: #282A36;
+}
 
 /* ----------------------*/
 
@@ -78,7 +84,317 @@
     display: none;
 }
 
+.graphiql-doc-explorer-default-value {
+    color: hsl(var(--color-success));
+}
+
+a.graphiql-doc-explorer-type-name {
+    color: hsl(var(--color-warning));
+    text-decoration: none;
+}
+
+a.graphiql-doc-explorer-type-name:hover {
+    text-decoration: underline;
+}
+
+a.graphiql-doc-explorer-type-name:focus {
+    outline: hsl(var(--color-warning)) auto 1px;
+}
+
+.graphiql-doc-explorer-argument > * + * {
+    margin-top: var(--px-12);
+}
+
+.graphiql-doc-explorer-argument-name {
+    color: hsl(var(--color-secondary));
+}
+
+.graphiql-doc-explorer-argument-deprecation {
+    background-color: hsla(var(--color-warning), var(--alpha-background-light));
+    border: 1px solid hsl(var(--color-warning));
+    border-radius: var(--border-radius-4);
+    color: hsl(var(--color-warning));
+    padding: var(--px-8);
+}
+
+.graphiql-doc-explorer-argument-deprecation-label {
+    font-size: var(--font-size-hint);
+    font-weight: var(--font-weight-medium);
+}
+
+.graphiql-doc-explorer-deprecation {
+    background-color: hsla(var(--color-warning), var(--alpha-background-light));
+    border: 1px solid hsl(var(--color-warning));
+    border-radius: var(--px-4);
+    color: hsl(var(--color-warning));
+    padding: var(--px-8);
+}
+
+.graphiql-doc-explorer-deprecation-label {
+    font-size: var(--font-size-hint);
+    font-weight: var(--font-weight-medium);
+}
+
+.graphiql-doc-explorer-directive {
+    color: hsl(var(--color-secondary));
+}
+
+.graphiql-doc-explorer-section-title {
+    font-size: var(--font-size-hint);
+    font-weight: var(--font-weight-medium);
+    align-items: center;
+    line-height: 1;
+    display: flex;
+}
+
+.graphiql-doc-explorer-section-title > svg {
+    height: var(--px-16);
+    margin-right: var(--px-8);
+    width: var(--px-16);
+}
+
+.graphiql-doc-explorer-section-content {
+    margin-left: var(--px-8);
+    margin-top: var(--px-16);
+}
+
+.graphiql-doc-explorer-section-content > * + * {
+    margin-top: var(--px-16);
+}
+
+.graphiql-doc-explorer-root-type {
+    color: hsl(var(--color-info));
+}
+
+.graphiql-doc-explorer-search {
+    color: hsla(var(--color-neutral), var(--alpha-secondary));
+}
+
+.graphiql-doc-explorer-search:not([data-state="idle"]) {
+    border: var(--popover-border);
+    border-radius: var(--border-radius-4);
+    box-shadow: var(--popover-box-shadow);
+    color: hsl(var(--color-neutral));
+}
+
+.graphiql-doc-explorer-search:not([data-state="idle"]) .graphiql-doc-explorer-search-input {
+    background: hsl(var(--color-base));
+}
+
+.graphiql-doc-explorer-search-input {
+    background-color: hsla(var(--color-neutral), var(--alpha-background-light));
+    border-radius: var(--border-radius-4);
+    padding: var(--px-8) var(--px-12);
+    align-items: center;
+    display: flex;
+}
+
+.graphiql-doc-explorer-search [role="combobox"] {
+    margin-left: var(--px-4);
+    background-color: #0000;
+    border: none;
+    width: 100%;
+}
+
+.graphiql-doc-explorer-search [role="combobox"]:focus {
+    outline: none;
+}
+
+.graphiql-doc-explorer-search [role="listbox"] {
+    background-color: hsl(var(--color-base));
+    border-bottom-left-radius: var(--border-radius-4);
+    border-bottom-right-radius: var(--border-radius-4);
+    border: none;
+    border-top: 1px solid hsla(var(--color-neutral), var(--alpha-background-heavy));
+    max-height: 400px;
+    font-size: var(--font-size-body);
+    padding: var(--px-4);
+    margin: 0;
+    position: relative;
+    overflow-y: auto;
+}
+
+.graphiql-doc-explorer-search [role="option"] {
+    border-radius: var(--border-radius-4);
+    color: hsla(var(--color-neutral), var(--alpha-secondary));
+    padding: var(--px-8) var(--px-12);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow-x: hidden;
+}
+
+.graphiql-doc-explorer-search [role="option"][data-headlessui-state="active"] {
+    background-color: hsla(var(--color-neutral), var(--alpha-background-light));
+}
+
+.graphiql-doc-explorer-search [role="option"]:hover {
+    background-color: hsla(var(--color-neutral), var(--alpha-background-medium));
+}
+
+.graphiql-doc-explorer-search [role="option"][data-headlessui-state="active"]:hover {
+    background-color: hsla(var(--color-neutral), var(--alpha-background-heavy));
+}
+
+.graphiql-doc-explorer-search [role="option"] + :is(.graphiql-doc-explorer-search [role="option"]) {
+    margin-top: var(--px-4);
+}
+
+.graphiql-doc-explorer-search-type {
+    color: hsl(var(--color-info));
+}
+
+.graphiql-doc-explorer-search-field {
+    color: hsl(var(--color-warning));
+}
+
+.graphiql-doc-explorer-search-argument {
+    color: hsl(var(--color-secondary));
+}
+
+.graphiql-doc-explorer-search-divider {
+    color: hsla(var(--color-neutral), var(--alpha-secondary));
+    font-size: var(--font-size-hint);
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--px-8);
+    padding: var(--px-8) var(--px-12);
+}
+
+.graphiql-doc-explorer-search-empty {
+    color: hsla(var(--color-neutral), var(--alpha-secondary));
+    padding: var(--px-8) var(--px-12);
+}
+
+a.graphiql-doc-explorer-field-name {
+    color: hsl(var(--color-info));
+    text-decoration: none;
+}
+
+a.graphiql-doc-explorer-field-name:hover {
+    text-decoration: underline;
+}
+
+a.graphiql-doc-explorer-field-name:focus {
+    outline: hsl(var(--color-info)) auto 1px;
+}
+
+.graphiql-doc-explorer-item > :not(:first-child) {
+    margin-top: var(--px-12);
+}
+
+.graphiql-doc-explorer-argument-multiple {
+    margin-left: var(--px-8);
+}
+
+.graphiql-doc-explorer-enum-value {
+    color: hsl(var(--color-info));
+}
+
+.graphiql-doc-explorer-header {
+    justify-content: space-between;
+    display: flex;
+    position: relative;
+}
+
+.graphiql-doc-explorer-header:focus-within .graphiql-doc-explorer-title {
+    visibility: hidden;
+}
+
+.graphiql-doc-explorer-header:focus-within .graphiql-doc-explorer-back:not(:focus) {
+    color: #0000;
+}
+
+.graphiql-doc-explorer-header-content {
+    flex-direction: column;
+    min-width: 0;
+    display: flex;
+}
+
+.graphiql-doc-explorer-search {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.graphiql-doc-explorer-search:focus-within {
+    left: 0;
+}
+
+.graphiql-doc-explorer-search:not(:focus-within) [role="combobox"] {
+    width: 5ch;
+    height: 24px;
+}
+
+.graphiql-doc-explorer-search [role="combobox"]:focus {
+    width: 100%;
+}
+
+a.graphiql-doc-explorer-back {
+    color: hsla(var(--color-neutral), var(--alpha-secondary));
+    align-items: center;
+    text-decoration: none;
+    display: flex;
+}
+
+a.graphiql-doc-explorer-back:hover {
+    text-decoration: underline;
+}
+
+a.graphiql-doc-explorer-back:focus {
+    outline: hsla(var(--color-neutral), var(--alpha-secondary)) auto 1px;
+}
+
+a.graphiql-doc-explorer-back:focus + .graphiql-doc-explorer-title {
+    visibility: unset;
+}
+
+a.graphiql-doc-explorer-back > svg {
+    height: var(--px-8);
+    margin-right: var(--px-8);
+    width: var(--px-8);
+}
+
+.graphiql-doc-explorer-title {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-h2);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.graphiql-doc-explorer-title:not(:first-child) {
+    font-size: var(--font-size-h3);
+    margin-top: var(--px-8);
+}
+
+.graphiql-doc-explorer-content > * {
+    color: hsla(var(--color-neutral), var(--alpha-secondary));
+    margin-top: var(--px-20);
+}
+
+.graphiql-doc-explorer-error {
+    background-color: hsla(var(--color-error), var(--alpha-background-heavy));
+    border: 1px solid hsl(var(--color-error));
+    border-radius: var(--border-radius-8);
+    color: hsl(var(--color-error));
+    padding: var(--px-8) var(--px-12);
+}
+
+.graphiql-explorer-where span,
+.graphiql-explorer-options span,
+.graphiql-explorer-first span,
+.graphiql-explorer-after span,
+.graphiql-explorer-directed span,
+.graphiql-explorer-edge span,
+.graphiql-explorer-node span,
+.graphiql-explorer-input span,
+.graphiql-explorer-sort span {
+    display: inline-flex;
+    align-items: center;
+}
+
 /* ----------------------*/
+
 
 /* Query Explorer (OneGraph) */
 .docExplorerWrap {
@@ -116,19 +432,6 @@
 
 .docExplorerWrap .doc-explorer-rhs {
     display: none !important;
-}
-
-.graphiql-explorer-where span,
-.graphiql-explorer-options span,
-.graphiql-explorer-first span,
-.graphiql-explorer-after span,
-.graphiql-explorer-directed span,
-.graphiql-explorer-edge span,
-.graphiql-explorer-node span,
-.graphiql-explorer-input span,
-.graphiql-explorer-sort span {
-    display: inline-flex;
-    align-items: center;
 }
 
 /* ----------------------*/

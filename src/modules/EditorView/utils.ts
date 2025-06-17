@@ -22,7 +22,7 @@ import type { GraphQLSchema } from "graphql";
 import { parse } from "graphql";
 import { getComplexity, simpleEstimator } from "graphql-query-complexity";
 import pluginBabel from "prettier/plugins/babel";
-import pluginEstree from "prettier/plugins/estree.mjs"; // Explicitly import .mjs file
+import pluginEstree from "prettier/plugins/estree";
 import pluginGraphQL from "prettier/plugins/graphql";
 import prettier from "prettier/standalone";
 
@@ -75,7 +75,10 @@ export const handleEditorDisableState = (editorViewRef: HTMLDivElement | null, l
     }
 };
 
-export const safeParse = (str: string | null | undefined, fallback: Record<string, any>): Record<string, any> => {
+export const safeParse = (
+    str: string | null | undefined,
+    fallback: Record<string, unknown>
+): Record<string, unknown> => {
     if (!str) return fallback;
     try {
         return JSON.parse(str);

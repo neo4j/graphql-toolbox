@@ -13,11 +13,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: lts/*
+
       - name: Install markdownlint
         run: npm install -g markdownlint-cli
+
       - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
         id: filter
         with:
@@ -25,6 +28,8 @@ jobs:
           filters: |
             markdown:
               - added|modified: '*.md'
+
       - uses: xt0rted/markdownlint-problem-matcher@1a5fabfb577370cfdf5af944d418e4be3ea06f27 # v3.0.0
+
       - name: Run markdownlint
         run: markdownlint --config ./.markdownlint.json ${{ steps.filter.outputs.markdown_files }}

@@ -13,17 +13,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          node-version: lts/*
-      - name: Install dependencies
-        run: yarn
+
+      - uses: ./.github/actions/reusable-setup/
+
       - name: Build the Toolbox
         env:
           PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          yarn build
+          pnpm build
           echo "$PULL_REQUEST_NUMBER" > ./dist/prnumber
+
       - name: Archive Toolbox build
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

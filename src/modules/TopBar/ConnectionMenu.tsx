@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import { Menu } from "@neo4j-ndl/react";
 import { CheckIconOutline } from "@neo4j-ndl/react/icons";
@@ -26,49 +26,23 @@ import { AuthContext } from "../../contexts/auth";
 import { Screen, ScreenContext } from "../../contexts/screen";
 
 interface Props {
-    menuButtonRef: React.RefObject<HTMLDivElement>;
+    menuButtonRef: React.RefObject<HTMLDivElement | null>;
     dbmsUrlWithUsername: string;
     openConnectionMenu: boolean;
-    setOpenConnectionMenu: (v: boolean) => void;
     onNextSelectedDatabaseName: (databaseName: string) => void;
 }
-
-const CONNECTION_MENU_ID = "connection-menu";
 
 export const ConnectionMenu = ({
     menuButtonRef,
     dbmsUrlWithUsername,
     openConnectionMenu,
-    setOpenConnectionMenu,
     onNextSelectedDatabaseName,
 }: Props) => {
     const auth = useContext(AuthContext);
     const screen = useContext(ScreenContext);
 
-    useEffect(() => {
-        function handleClickOutsideComponent(event) {
-            if (
-                !menuButtonRef?.current?.contains(event.target) &&
-                !document.getElementById(CONNECTION_MENU_ID)?.contains(event.target)
-            ) {
-                setOpenConnectionMenu(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutsideComponent);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutsideComponent);
-        };
-    }, [menuButtonRef]);
-
     return (
-        <Menu
-            id={CONNECTION_MENU_ID}
-            open={openConnectionMenu}
-            anchorEl={menuButtonRef.current}
-            className="mt-2 ndl-theme-light"
-            onClick={() => setOpenConnectionMenu(false)}
-        >
+        <Menu isOpen={openConnectionMenu} anchorRef={menuButtonRef} className="mt-2 ndl-theme-light">
             <Menu.Items>
                 {auth.databases?.length ? (
                     <>
@@ -77,9 +51,11 @@ export const ConnectionMenu = ({
                             return (
                                 <Menu.Item
                                     key={db.name}
-                                    data-test-topbar-database={db.name}
+                                    htmlAttributes={{
+                                        "data-test-topbar-database": db.name,
+                                    }}
                                     title={db.name.length > 50 ? `${db.name.substring(0, 48)}...` : db.name}
-                                    disabled={screen.view !== Screen.TYPEDEFS}
+                                    isDisabled={screen.view !== Screen.TYPEDEFS}
                                     icon={db.name === auth.selectedDatabaseName ? <CheckIconOutline /> : <span />}
                                     onClick={() => onNextSelectedDatabaseName(db.name)}
                                 />
@@ -91,7 +67,9 @@ export const ConnectionMenu = ({
                     <>
                         <Menu.Divider />
                         <Menu.Item
-                            data-test-topbar-disconnect
+                            htmlAttributes={{
+                                "data-test-topbar-disconnect": "true",
+                            }}
                             className="text-hibiscus-45"
                             title="Disconnect"
                             description={<span className="text-neutral-80">{dbmsUrlWithUsername}</span>}

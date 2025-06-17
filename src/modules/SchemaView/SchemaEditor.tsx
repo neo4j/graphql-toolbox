@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import {
     acceptCompletion,
@@ -34,10 +34,11 @@ import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
 import { EditorState, Prec, StateEffect } from "@codemirror/state";
 import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
 import { dracula, tomorrow } from "@mjfwebb/thememirror";
-import { Button, IconButton, Tip } from "@neo4j-ndl/react";
+import { Button, IconButton, Tooltip } from "@neo4j-ndl/react";
 import { StarIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
 import { graphql } from "cm6-graphql";
+import { useMount } from "react-use";
 
 import { Extension, FileName } from "../../components/Filename";
 import { DEFAULT_TYPE_DEFS, SCHEMA_EDITOR_INPUT } from "../../constants";
@@ -74,7 +75,6 @@ function unsupportedDirectivesLinter(view: EditorView) {
 export interface Props {
     loading: boolean;
     isIntrospecting: boolean;
-    elementRef: React.MutableRefObject<HTMLDivElement | null>;
     formatTheCode: () => void;
     introspect: () => Promise<void>;
     saveAsFavorite: () => void;
@@ -86,7 +86,6 @@ export interface Props {
 export const SchemaEditor = ({
     loading,
     isIntrospecting,
-    elementRef,
     formatTheCode,
     introspect,
     saveAsFavorite,
@@ -98,53 +97,57 @@ export const SchemaEditor = ({
     const appSettings = useContext(AppSettingsContext);
     const storedTypeDefs = useStore.getState().typeDefinitions || DEFAULT_TYPE_DEFS;
     const [building, setBuilding] = useState<boolean>(false);
+    const elementRef = useRef<HTMLDivElement | null>(null);
 
-    const extensions = [
-        lineNumbers(),
-        highlightSpecialChars(),
-        bracketMatching(),
-        closeBrackets(),
-        history(),
-        dropCursor(),
-        drawSelection(),
-        indentOnInput(),
-        autocompletion({ defaultKeymap: true, maxRenderedOptions: 5 }),
-        highlightSelectionMatches(),
-        EditorView.lineWrapping,
-        keymap.of([
-            ...customKeybindings,
-            ...closeBracketsKeymap,
-            ...defaultKeymap,
-            ...searchKeymap,
-            ...historyKeymap,
-            ...foldKeymap,
-            ...completionKeymap,
-            ...lintKeymap,
-        ]),
-        Prec.highest(
+    const extensions = useMemo(
+        () => [
+            lineNumbers(),
+            highlightSpecialChars(),
+            bracketMatching(),
+            closeBrackets(),
+            history(),
+            dropCursor(),
+            drawSelection(),
+            indentOnInput(),
+            autocompletion({ defaultKeymap: true, maxRenderedOptions: 5 }),
+            highlightSelectionMatches(),
+            EditorView.lineWrapping,
             keymap.of([
-                {
-                    key: "Mod-m",
-                    run: () => {
-                        formatTheCode();
-                        return true;
+                ...customKeybindings,
+                ...closeBracketsKeymap,
+                ...defaultKeymap,
+                ...searchKeymap,
+                ...historyKeymap,
+                ...foldKeymap,
+                ...completionKeymap,
+                ...lintKeymap,
+            ]),
+            Prec.highest(
+                keymap.of([
+                    {
+                        key: "Mod-m",
+                        run: () => {
+                            formatTheCode();
+                            return true;
+                        },
+                        preventDefault: true,
                     },
-                    preventDefault: true,
-                },
-                { key: "Tab", run: acceptCompletion },
-            ])
-        ),
-        foldGutter({
-            closedText: "▶",
-            openText: "▼",
-        }),
-        linter(unsupportedDirectivesLinter),
-        graphql(getSchemaForLintAndAutocompletion()),
-        theme.theme === Theme.LIGHT ? tomorrow : dracula,
-        appSettings.showLintMarkers ? lintGutter() : [],
-    ];
+                    { key: "Tab", run: acceptCompletion },
+                ])
+            ),
+            foldGutter({
+                closedText: "▶",
+                openText: "▼",
+            }),
+            linter(unsupportedDirectivesLinter),
+            graphql(getSchemaForLintAndAutocompletion()),
+            theme.theme === Theme.LIGHT ? tomorrow : dracula,
+            appSettings.showLintMarkers ? lintGutter() : [],
+        ],
+        [theme.theme, appSettings.showLintMarkers, formatTheCode]
+    );
 
-    useEffect(() => {
+    useMount(() => {
         if (elementRef.current === null) {
             return;
         }
@@ -165,17 +168,17 @@ export const SchemaEditor = ({
             view.destroy();
             setEditorView(null);
         };
-    }, [elementRef.current]);
+    });
 
     useEffect(() => {
         if (editorView) {
             editorView.dispatch({ effects: StateEffect.reconfigure.of(extensions) });
         }
-    }, [theme.theme, appSettings.showLintMarkers, extensions]);
+    }, [theme.theme, appSettings.showLintMarkers, extensions, editorView]);
 
     useEffect(() => {
         handleEditorDisableState(elementRef.current, loading);
-    }, [loading]);
+    }, [elementRef, loading]);
 
     return (
         <div className="w-full h-full relative rounded-b-xl">
@@ -184,7 +187,9 @@ export const SchemaEditor = ({
                 name="type-definitions"
                 rightButtons={
                     <Button
-                        data-test-schema-editor-build-button
+                        htmlAttributes={{
+                            "data-test-schema-editor-build-button": "true",
+                        }}
                         aria-label="Build schema"
                         className={classNames(theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}
                         color="primary"
@@ -197,18 +202,20 @@ export const SchemaEditor = ({
                                 setBuilding(false);
                             }, 0);
                         }}
-                        disabled={loading}
-                        loading={building}
+                        isDisabled={loading}
+                        isLoading={building}
                     >
                         Build schema
                     </Button>
                 }
                 leftButtons={
                     <>
-                        <Tip allowedPlacements={["bottom"]}>
-                            <Tip.Trigger>
+                        <Tooltip type="simple" placement="bottom">
+                            <Tooltip.Trigger hasButtonWrapper>
                                 <Button
-                                    data-test-schema-editor-introspect-button
+                                    htmlAttributes={{
+                                        "data-test-schema-editor-introspect-button": "true",
+                                    }}
                                     aria-label="Generate type definitions"
                                     className={classNames(
                                         "mr-2",
@@ -217,21 +224,22 @@ export const SchemaEditor = ({
                                     color="primary"
                                     fill="outlined"
                                     size="small"
-                                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
                                     onClick={introspect}
-                                    disabled={loading}
-                                    loading={isIntrospecting}
+                                    isDisabled={loading}
+                                    isLoading={isIntrospecting}
                                 >
                                     Introspect
                                 </Button>
-                            </Tip.Trigger>
-                            <Tip.Content style={{ width: "19rem" }}>
+                            </Tooltip.Trigger>
+                            <Tooltip.Content style={{ width: "19rem" }}>
                                 This will overwrite your current type definitions!
-                            </Tip.Content>
-                        </Tip>
+                            </Tooltip.Content>
+                        </Tooltip>
 
                         <Button
-                            data-test-schema-editor-prettify-button
+                            htmlAttributes={{
+                                "data-test-schema-editor-prettify-button": "true",
+                            }}
                             aria-label="Prettify code"
                             className={classNames(
                                 "mr-2",
@@ -241,30 +249,31 @@ export const SchemaEditor = ({
                             fill="outlined"
                             size="small"
                             onClick={formatTheCode}
-                            disabled={loading}
+                            isDisabled={loading}
                         >
                             Prettify
                         </Button>
 
-                        <Tip allowedPlacements={["bottom"]}>
-                            <Tip.Trigger>
+                        <Tooltip type="rich" placement="bottom">
+                            <Tooltip.Trigger hasButtonWrapper>
                                 <IconButton
-                                    data-test-schema-editor-favourite-button
-                                    aria-label="Save as favorite"
-                                    style={{ height: "1.7rem" }}
+                                    htmlAttributes={{
+                                        "data-test-schema-editor-favourite-button": "true",
+                                    }}
+                                    ariaLabel="Save as favorite"
                                     className={classNames(
                                         theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                                     )}
                                     size="small"
-                                    color="neutral"
+                                    // color="neutral"
                                     onClick={saveAsFavorite}
-                                    disabled={loading}
+                                    isDisabled={loading}
                                 >
                                     <StarIconOutline />
                                 </IconButton>
-                            </Tip.Trigger>
-                            <Tip.Content>Save as Favorite</Tip.Content>
-                        </Tip>
+                            </Tooltip.Trigger>
+                            <Tooltip.Content>Save as Favorite</Tooltip.Content>
+                        </Tooltip>
                     </>
                 }
             ></FileName>

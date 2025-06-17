@@ -66,7 +66,9 @@ export const EditorTabs = () => {
             {useStore.getState().tabs?.map((tab, idx) => {
                 return (
                     <Tabs.Tab
-                        data-test-query-editor-tab={tab.title}
+                        htmlAttributes={{
+                            "data-test-query-editor-tab": tab.title,
+                        }}
                         key={idx.toString()}
                         tabId={idx.toString()}
                         className={theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"}
@@ -93,9 +95,15 @@ export const EditorTabs = () => {
                     </Tabs.Tab>
                 );
             })}
-            <Tabs.Tab key={"new"} tabId={"new"} className="pos-absolute pl-0">
+            <Tabs.Tab
+                htmlAttributes={{
+                    "data-test-new-query-editor-tab": "true",
+                }}
+                key="new"
+                tabId="new"
+                className="vertical-align-bottom"
+            >
                 <PlusIconOutline
-                    data-test-new-query-editor-tab
                     className={classNames(
                         "h-5 w-5",
                         theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "text-neutral-10 hover:bg-neutral-50"

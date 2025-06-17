@@ -18,6 +18,7 @@
  */
 
 import * as base from "@playwright/test";
+
 import { ApplicationSettings } from "../pages/ApplicationSettings";
 import { Editor } from "../pages/Editor";
 import { HelpDrawer } from "../pages/HelpDrawer";
@@ -66,7 +67,7 @@ const test = base.test.extend<Pages>({
 });
 
 const { expect } = base;
-// eslint-disable-next-line @typescript-eslint/unbound-method
+
 const { beforeAll, beforeEach, afterAll, afterEach } = test;
 
 export { afterAll, afterEach, beforeAll, beforeEach, expect, test };

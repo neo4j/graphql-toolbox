@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 import type { EditorView } from "@codemirror/view";
 import { Neo4jGraphQL } from "@neo4j/graphql";
@@ -59,7 +59,6 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [isIntrospecting, setIsIntrospecting] = useState<boolean>(false);
     const [editorView, setEditorView] = useState<EditorView | null>(null);
-    const elementRef = useRef<HTMLDivElement | null>(null);
     const favorites = useStore((store) => store.favorites);
     const prevSelectedDBName = usePrevious(auth.selectedDatabaseName);
     const showRightPanel = settings.isShowHelpDrawer || settings.isShowSettingsDrawer;
@@ -77,7 +76,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 changes: { from: 0, to: editorView.state.doc.length, insert: "" },
             });
         }
-    }, [auth.selectedDatabaseName]);
+    }, [auth.selectedDatabaseName, prevSelectedDBName, editorView]);
 
     const formatTheCode = (): void => {
         if (!editorView) {
@@ -161,7 +160,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 setLoading(false);
             }
         },
-        [auth.selectedDatabaseName]
+        [auth.driver, editorView, onSchemaChange]
     );
 
     const introspect = useCallback(
@@ -198,7 +197,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 setIsIntrospecting(false);
             }
         },
-        [buildSchema, editorView, auth.selectedDatabaseName]
+        [editorView, auth.selectedDatabaseName, auth.driver]
     );
 
     const onSubmit = () => {
@@ -249,7 +248,6 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                         <div className="flex flex-col w-full h-full n-gap-token-4">
                             <SchemaErrorDisplay />
                             <SchemaEditor
-                                elementRef={elementRef}
                                 loading={loading}
                                 isIntrospecting={isIntrospecting}
                                 formatTheCode={formatTheCode}
@@ -262,7 +260,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                             {!appSettings.hideProductUsageMessage ? (
                                 <Banner
                                     className="absolute bottom-7 ml-4 w-[44rem] z-[60]"
-                                    closeable
+                                    isCloseable
                                     name="ProductUsageMessage"
                                     title={<strong>Product analytics</strong>}
                                     description={
@@ -282,7 +280,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                 </div>
             </div>
             {showRightPanel ? (
-                <div className="h-content-container flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-50">
+                <div className="h-content-container flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-40">
                     {settings.isShowHelpDrawer ? (
                         <HelpDrawer onClickClose={() => settings.setIsShowHelpDrawer(false)} />
                     ) : null}

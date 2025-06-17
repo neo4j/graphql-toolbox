@@ -18,6 +18,7 @@
  */
 
 import * as dotenv from "dotenv";
+
 import { expect, test } from "./utils/pagemodel";
 
 dotenv.config();
@@ -35,9 +36,9 @@ test.describe("login", () => {
     });
 
     test("should be able to disconnect from a database", async ({ loginPage, topBarPage }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
-        await topBarPage.clickConnectionInformation();
+        await topBarPage.clickConnectionMenuButton();
         await topBarPage.clickDisconnect();
 
         const isVisible = await loginPage.getIsLoginWindowVisible();

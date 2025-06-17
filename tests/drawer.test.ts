@@ -18,9 +18,12 @@
  */
 
 import * as dotenv from "dotenv";
+
 import { test } from "./utils/pagemodel";
 
 dotenv.config();
+
+const { NEO_USER = "admin", NEO_PASSWORD = "password", NEO_URL = "neo4j://localhost:7687/neo4j" } = process.env;
 
 test.describe("drawer", () => {
     const typeDefs = /* GraphQL */ `
@@ -34,7 +37,7 @@ test.describe("drawer", () => {
         helpDrawerPage,
         schemaEditorPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await helpDrawerPage.openHelpDrawer();
         await helpDrawerPage.displaysSchemaViewContent();
@@ -54,7 +57,7 @@ test.describe("drawer", () => {
         editorPage,
         schemaEditorPage,
     }) => {
-        await loginPage.loginDismissIntrospection();
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
         await schemaEditorPage.buildSchema();
