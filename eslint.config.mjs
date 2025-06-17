@@ -22,6 +22,13 @@ const ignores = [
 
 export default [
     { ignores },
+    {
+        settings: {
+            react: {
+                version: "detect",
+            },
+        },
+    },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     reactPlugin.configs.flat.recommended,
@@ -32,11 +39,6 @@ export default [
         plugins: {
             "jsx-a11y": jsxA11y,
             "react-hooks": hooksPlugin,
-        },
-        settings: {
-            react: {
-                version: "18",
-            },
         },
         languageOptions: {
             ...jsxA11y.flatConfigs.recommended.languageOptions,
