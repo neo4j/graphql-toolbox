@@ -32,8 +32,6 @@ interface Props {
     onNextSelectedDatabaseName: (databaseName: string) => void;
 }
 
-// const CONNECTION_MENU_ID = "connection-menu";
-
 export const ConnectionMenu = ({
     menuButtonRef,
     dbmsUrlWithUsername,
