@@ -83,7 +83,7 @@
     },
     "devDependencies": {
         "@eslint/js": "9.23.0",
-        "@playwright/test": "1.50.0",
+        "@playwright/test": "1.53.1",
         "@stylistic/eslint-plugin": "3.1.0",
         "@tailwindcss/vite": "4.1.10",
         "@types/codemirror": "5.60.15",
