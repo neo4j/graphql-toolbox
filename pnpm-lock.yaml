@@ -172,8 +172,8 @@ importers:
         specifier: 6.10.2
         version: 6.10.2(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-prettier:
-        specifier: 5.2.4
-        version: 5.2.4(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(prettier@3.5.3)
+        specifier: 5.5.0
+        version: 5.5.0(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(prettier@3.5.3)
       eslint-plugin-react:
         specifier: 7.37.4
         version: 7.37.4(eslint@9.22.0(jiti@2.4.2))
@@ -2988,13 +2988,13 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-prettier@5.2.4:
-    resolution: {integrity: sha512-SFtuYmnhwYCtuCDTKPoK+CEzCnEgKTU2qTLwoCxvrC0MFBTIXo1i6hDYOI4cwHaE5GZtlWmTN3YfucYi7KJwPw==}
+  eslint-plugin-prettier@5.5.0:
+    resolution: {integrity: sha512-8qsOYwkkGrahrgoUv76NZi23koqXOGiiEzXMrT8Q7VcYaUISR+5MorIUxfWqYXN0fN/31WbSrxCxFkVQ43wwrA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       '@types/eslint': '>=8.0.0'
       eslint: '>=8.0.0'
-      eslint-config-prettier: '*'
+      eslint-config-prettier: '>= 7.0.0 <10.0.0 || >=10.1.0'
       prettier: '>=3.0.0'
     peerDependenciesMeta:
       '@types/eslint':
@@ -4580,8 +4580,8 @@ packages:
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
-  synckit@0.10.4:
-    resolution: {integrity: sha512-2SG1TnJGjMkD4+gblONMGYSrwAzYi+ymOitD+Jb/iMYm57nH20PlkVeMQRah3yDMKEa0QQYUF/QPWpdW7C6zNg==}
+  synckit@0.11.8:
+    resolution: {integrity: sha512-+XZ+r1XGIJGeQk3VvXhT6xx/VpbHsRzsTkGgF6E5RX9TTXD0118l87puaEBZ566FhqblC6U0d4XnubznJDm30A==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
   tabbable@6.2.0:
@@ -8583,12 +8583,12 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-prettier@5.2.4(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(prettier@3.5.3):
+  eslint-plugin-prettier@5.5.0(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(prettier@3.5.3):
     dependencies:
       eslint: 9.22.0(jiti@2.4.2)
       prettier: 3.5.3
       prettier-linter-helpers: 1.0.0
-      synckit: 0.10.4
+      synckit: 0.11.8
     optionalDependencies:
       eslint-config-prettier: 10.1.1(eslint@9.22.0(jiti@2.4.2))
 
@@ -10376,10 +10376,9 @@ snapshots:
 
   symbol-tree@3.2.4: {}
 
-  synckit@0.10.4:
+  synckit@0.11.8:
     dependencies:
       '@pkgr/core': 0.2.7
-      tslib: 2.8.1
 
   tabbable@6.2.0: {}
 
