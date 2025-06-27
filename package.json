@@ -85,7 +85,7 @@
         "@eslint/js": "9.29.0",
         "@playwright/test": "1.53.1",
         "@stylistic/eslint-plugin": "3.1.0",
-        "@tailwindcss/vite": "4.1.10",
+        "@tailwindcss/vite": "4.1.11",
         "@types/codemirror": "5.60.15",
         "@types/node": "22.15.33",
         "@types/prettier": "3.0.0",
