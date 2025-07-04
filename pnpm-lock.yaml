@@ -63,8 +63,8 @@ importers:
         specifier: 3.8.28
         version: 3.8.28(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.8)(neo4j-driver@5.28.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@neo4j/graphql':
-        specifier: 7.2.1
-        version: 7.2.1(graphql@16.11.0)(neo4j-driver@5.28.1)
+        specifier: 7.2.3
+        version: 7.2.3(graphql@16.11.0)(neo4j-driver@5.28.1)
       '@neo4j/introspector':
         specifier: 5.0.0
         version: 5.0.0(neo4j-driver@5.28.1)
@@ -879,12 +879,12 @@ packages:
   '@neo4j-nvl/react@0.3.8-859d66de':
     resolution: {integrity: sha512-X9nfFelB3uJWuFJx7wAQoBSlFZETqIebbkQ725+m/xazp6FMOrLcHGWrhfOZPN6MwAsiKffNfxxoxWfs1lArKA==}
 
-  '@neo4j/cypher-builder@2.7.0':
-    resolution: {integrity: sha512-9BIjlwEKJetSjplB1ntTsBqV8c0inaShZE6hNQDJZ8Hwu1qjRrbZaI/e92mZ2GbhAUOK03yZqK0MziTqHJ3b0A==}
+  '@neo4j/cypher-builder@2.7.1':
+    resolution: {integrity: sha512-EhRhPWiF1PUJJ4Q+UQzt6Y+WRhX6OfbIbHxBvY8bJ5VfSeg5sdQOThgSLC2Lgz8pL9E9TVxEy3R8MbAs0PPl/Q==}
     engines: {node: '>=16.0.0'}
 
-  '@neo4j/graphql@7.2.1':
-    resolution: {integrity: sha512-qqZNCY5PPTWQEwHJfBaxbi2WfkMM7323MUAkbQzl7FZzHhI5TiZS7GpJyBHFrfC7WwyyN4htbBVQGPavfRxVvw==}
+  '@neo4j/graphql@7.2.3':
+    resolution: {integrity: sha512-49xas+TG0tYEt3Lr3KYmi5PSR7udXv7xLB6DV7D9TFwQu7RB9K5vg5sQc4lo2CTnw5wrOp8BkHZDCy6aka0EQQ==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       graphql: ^16.0.0
@@ -5716,16 +5716,16 @@ snapshots:
       - encoding
       - neo4j-driver
 
-  '@neo4j/cypher-builder@2.7.0': {}
+  '@neo4j/cypher-builder@2.7.1': {}
 
-  '@neo4j/graphql@7.2.1(graphql@16.11.0)(neo4j-driver@5.28.1)':
+  '@neo4j/graphql@7.2.3(graphql@16.11.0)(neo4j-driver@5.28.1)':
     dependencies:
       '@apollo/subgraph': 2.11.0(graphql@16.11.0)
       '@graphql-tools/merge': 9.0.24(graphql@16.11.0)
       '@graphql-tools/resolvers-composition': 7.0.18(graphql@16.11.0)
       '@graphql-tools/schema': 10.0.23(graphql@16.11.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.11.0)
-      '@neo4j/cypher-builder': 2.7.0
+      '@neo4j/cypher-builder': 2.7.1
       camelcase: 6.3.0
       debug: 4.4.1
       dot-prop: 6.0.1
