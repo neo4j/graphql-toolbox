@@ -151,8 +151,8 @@ importers:
         specifier: 8.35.1
         version: 8.35.1(eslint@9.30.1(jiti@2.4.2))(typescript@5.8.3)
       '@vitejs/plugin-basic-ssl':
-        specifier: 2.0.0
-        version: 2.0.0(vite@7.0.0(@types/node@22.16.0)(jiti@2.4.2)(lightningcss@1.30.1))
+        specifier: 2.1.0
+        version: 2.1.0(vite@7.0.0(@types/node@22.16.0)(jiti@2.4.2)(lightningcss@1.30.1))
       '@vitejs/plugin-react':
         specifier: 4.6.0
         version: 4.6.0(vite@7.0.0(@types/node@22.16.0)(jiti@2.4.2)(lightningcss@1.30.1))
@@ -2283,11 +2283,11 @@ packages:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
 
-  '@vitejs/plugin-basic-ssl@2.0.0':
-    resolution: {integrity: sha512-gc9Tjg8bUxBVSTzeWT3Njc0Cl3PakHFKdNfABnZWiUgbxqmHDEn7uECv3fHVylxoYgNzAcmU7ZrILz+BwSo3sA==}
+  '@vitejs/plugin-basic-ssl@2.1.0':
+    resolution: {integrity: sha512-dOxxrhgyDIEUADhb/8OlV9JIqYLgos03YorAueTIeOUskLJSEsfwCByjbu98ctXitUN3znXKp0bYD/WHSudCeA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     peerDependencies:
-      vite: ^6.0.0
+      vite: ^6.0.0 || ^7.0.0
 
   '@vitejs/plugin-react@4.6.0':
     resolution: {integrity: sha512-5Kgff+m8e2PB+9j51eGHEpn5kUzRKH2Ry0qGoe8ItJg7pqnkPrYPkDQZGgGmTa0EGarHrkjLvOdU3b1fzI8otQ==}
@@ -7568,7 +7568,7 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@vitejs/plugin-basic-ssl@2.0.0(vite@7.0.0(@types/node@22.16.0)(jiti@2.4.2)(lightningcss@1.30.1))':
+  '@vitejs/plugin-basic-ssl@2.1.0(vite@7.0.0(@types/node@22.16.0)(jiti@2.4.2)(lightningcss@1.30.1))':
     dependencies:
       vite: 7.0.0(@types/node@22.16.0)(jiti@2.4.2)(lightningcss@1.30.1)
 
