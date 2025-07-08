@@ -21,7 +21,11 @@
         "**/tests/**",
         "**/__fixtures__/**"
     ],
-    "ignoreDeps": ["neo4j"],
+    "ignoreDeps": [
+        "neo4j",
+        "@graphiql/plugin-doc-explorer",
+        "@​graphiql/react"
+    ],
     "packageRules": [
         {
             "matchPackageNames": ["@neo4j/graphql-toolbox"],
