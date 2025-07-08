@@ -34,7 +34,7 @@ Access the Neo4j GraphQL Toolbox here: <https://graphql-toolbox.neo4j.io/>
 On the `root` of the project, install the dependencies.
 
 ```bash
-pnpm
+pnpm install
 ```
 
 Run this command to start the development server. See the output in the console & navigate to the default vite server at: <http://localhost:5173>
