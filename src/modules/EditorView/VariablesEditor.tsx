@@ -164,6 +164,7 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
                 rightButtons={
                     <Button
                         aria-label="Prettify code"
+                        data-testid="variables-editor-prettify-button"
                         className={classNames(
                             "mr-2",
                             theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"

@@ -87,4 +87,26 @@ test.describe("query editor tabs", () => {
         await expect(page.getByRole("tab", { name: "MyTest1" })).toBeVisible();
         await expect(page.getByRole("tab", { name: "MyTest2" })).not.toBeVisible();
     });
+
+    test("should display typed query in the editor", async ({ loginPage, schemaEditorPage, editorPage }) => {
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
+
+        await schemaEditorPage.setTypeDefs(typeDefs);
+        await schemaEditorPage.buildSchema();
+
+        await editorPage.addNewTab();
+
+        const testQuery = `
+            query TestQuery {
+                movies {
+                    id
+                }
+            }
+        `;
+
+        await editorPage.setQuery(testQuery);
+
+        const currentQuery = await editorPage.getQuery();
+        expect(currentQuery.replace(/\s/g, "")).toContain("queryTestQuery{movies{id}}");
+    });
 });
