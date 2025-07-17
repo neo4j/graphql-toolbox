@@ -52,7 +52,7 @@ jobs:
           surge . neo4j-graphql-toolbox-${{ steps.get-pr-number.outputs.pr-number }}.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
       - name: Comment on PR
-        uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2.9.4
         with:
           number: ${{ steps.get-pr-number.outputs.pr-number }}
           header: toolbox
