@@ -29,6 +29,7 @@ import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, l
 import { dracula, tomorrow } from "@mjfwebb/thememirror";
 import { Button } from "@neo4j-ndl/react";
 import classNames from "classnames";
+import { useMount } from "react-use";
 
 import type { Extension } from "../../components/Filename";
 import { FileName } from "../../components/Filename";
@@ -106,7 +107,7 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
         [formatTheCode, theme.theme, updateListener]
     );
 
-    useEffect(() => {
+    useMount(() => {
         if (elementRef.current === null) {
             return;
         }
@@ -123,7 +124,7 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
             view.destroy();
             setEditorView(null);
         };
-    }, [value]);
+    });
 
     useEffect(() => {
         if (editorView) {
@@ -163,6 +164,7 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
                 rightButtons={
                     <Button
                         aria-label="Prettify code"
+                        data-testid="variables-editor-prettify-button"
                         className={classNames(
                             "mr-2",
                             theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
