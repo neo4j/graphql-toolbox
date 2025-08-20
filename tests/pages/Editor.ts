@@ -27,10 +27,20 @@ export class Editor extends Screen {
         await this.page.locator(`#${EDITOR_QUERY_INPUT} .cm-content`).fill(query);
     }
 
+    public async getQuery(): Promise<string> {
+        const text = (await this.page.locator(`#${EDITOR_QUERY_INPUT} .cm-content`).innerText()).valueOf();
+        return text;
+    }
+
     public async setParams(params: string) {
         await this.page.waitForSelector("[data-test-editor-query-button]");
         await this.page.locator(`#${EDITOR_PARAMS_INPUT} .cm-content`).clear();
         await this.page.locator(`#${EDITOR_PARAMS_INPUT} .cm-content`).fill(params);
+    }
+
+    public async getParams(): Promise<string> {
+        const text = (await this.page.locator(`#${EDITOR_PARAMS_INPUT} .cm-content`).innerText()).valueOf();
+        return text;
     }
 
     public async submitQuery() {
@@ -76,5 +86,18 @@ export class Editor extends Screen {
     public async selectTabByTabName(tabName: string) {
         await this.page.waitForSelector(`[data-test-query-editor-tab="${tabName}"]`);
         await this.page.click(`[data-test-query-editor-tab="${tabName}"]`);
+    }
+
+    public async isVariablesEditorDisabled(): Promise<boolean> {
+        const isDisabled = await this.page.evaluate(() => {
+            const editor = document.querySelector(`#${EDITOR_PARAMS_INPUT}`);
+            return editor ? editor.classList.contains("cm-disabled") : false;
+        });
+        return isDisabled;
+    }
+
+    public async prettifyVariables() {
+        await this.page.waitForSelector("[data-testid='variables-editor-prettify-button']");
+        await this.page.click("[data-testid='variables-editor-prettify-button']");
     }
 }
