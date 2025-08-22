@@ -60,8 +60,8 @@ importers:
         specifier: ^3.7.5
         version: 3.7.6
       '@neo4j-ndl/react':
-        specifier: 3.9.5
-        version: 3.9.5(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.10)(neo4j-driver@5.28.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: 3.9.6
+        version: 3.9.6(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.10)(neo4j-driver@5.28.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@neo4j/graphql':
         specifier: 7.2.10
         version: 7.2.10(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.1)
@@ -952,11 +952,11 @@ packages:
   '@neo4j-ndl/base@3.7.6':
     resolution: {integrity: sha512-SKrsnCH1Cmdn+AtS91ZRxBXqsQ7W3UliPQJh9//mcJVgqlQKmKXk9XlhAK0uAAvhuG77rqWftDP4Zi5oT16ApA==}
 
-  '@neo4j-ndl/react@3.9.5':
-    resolution: {integrity: sha512-8dfcYQvXSyS6nMeGkvnqNyS0LyPzjAq8l2bs8CxB/tejQE3BsQqKk/68Mch9fcieRorlhw+xG18Lc7rIYpPUjw==}
+  '@neo4j-ndl/react@3.9.6':
+    resolution: {integrity: sha512-YUoGqnfyIjiBY++mXIWhFGSUdb/pmsi3Gvn2SG1fb52Xjybh8qaGctJah/I1wc1qcdKI50omd/uhJ57RQA/c0g==}
     peerDependencies:
       '@neo4j-ndl/base': ^3.7.23
-      '@tanstack/react-table': 8.20.5
+      '@tanstack/react-table': 8.21.3
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
@@ -4433,11 +4433,11 @@ packages:
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
 
-  react-focus-lock@2.13.2:
-    resolution: {integrity: sha512-T/7bsofxYqnod2xadvuwjGKHOoL5GH7/EIPI5UyEvaU/c2CcphvGI371opFtuY/SYdbMsNiuF4HsHQ50nA/TKQ==}
+  react-focus-lock@2.13.6:
+    resolution: {integrity: sha512-ehylFFWyYtBKXjAO9+3v8d0i+cnc1trGS0vlTGhzFW1vbFXVUTmR8s2tt/ZQG8x5hElg6rhENlLG1H3EZK0Llg==}
     peerDependencies:
-      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -5053,11 +5053,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  usehooks-ts@3.1.0:
-    resolution: {integrity: sha512-bBIa7yUyPhE1BCc0GmR96VU/15l/9gP1Ch5mYdLcFBaFGQsdmXkvjV0TtOqW1yUd6VjIwDunm+flSciCQXujiw==}
+  usehooks-ts@3.1.1:
+    resolution: {integrity: sha512-I4diPp9Cq6ieSUH2wu+fDAVQO43xwtulo+fKEidHUwZPnYImbtkTjzIJYcDcJqxgmX31GVqNFURodvcgHcW0pA==}
     engines: {node: '>=16.15.0'}
     peerDependencies:
-      react: ^16.8.0  || ^17 || ^18
+      react: ^16.8.0  || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -6123,7 +6123,7 @@ snapshots:
 
   '@neo4j-ndl/base@3.7.6': {}
 
-  '@neo4j-ndl/react@3.9.5(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.10)(neo4j-driver@5.28.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@neo4j-ndl/react@3.9.6(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.10)(neo4j-driver@5.28.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
@@ -6147,14 +6147,14 @@ snapshots:
       react-datepicker: 6.9.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react-dom: 19.1.1(react@19.1.1)
       react-dropzone: 14.2.9(react@19.1.1)
-      react-focus-lock: 2.13.2(@types/react@19.1.10)(react@19.1.1)
+      react-focus-lock: 2.13.6(@types/react@19.1.10)(react@19.1.1)
       react-select: 5.9.0(@types/react@19.1.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react-stately: 3.33.0(react@19.1.1)
       react-syntax-highlighter: 15.5.0(react@19.1.1)
       react-use: 17.5.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       sonner: 1.7.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       tinycolor2: 1.6.0
-      usehooks-ts: 3.1.0(react@19.1.1)
+      usehooks-ts: 3.1.1(react@19.1.1)
     transitivePeerDependencies:
       - '@babel/runtime'
       - '@types/react'
@@ -10369,7 +10369,7 @@ snapshots:
       prop-types: 15.8.1
       react: 19.1.1
 
-  react-focus-lock@2.13.2(@types/react@19.1.10)(react@19.1.1):
+  react-focus-lock@2.13.6(@types/react@19.1.10)(react@19.1.1):
     dependencies:
       '@babel/runtime': 7.27.6
       focus-lock: 1.3.6
@@ -11139,7 +11139,7 @@ snapshots:
     dependencies:
       react: 19.1.1
 
-  usehooks-ts@3.1.0(react@19.1.1):
+  usehooks-ts@3.1.1(react@19.1.1):
     dependencies:
       lodash.debounce: 4.0.8
       react: 19.1.1
