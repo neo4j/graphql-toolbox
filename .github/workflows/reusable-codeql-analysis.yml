@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ./github/actions/reusable-setup
+      - uses: ./github/actions/reusable-setup/
         with:
           install-packages: 'false'
       - name: Initialize CodeQL

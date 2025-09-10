@@ -42,7 +42,7 @@ jobs:
           case "$number" in ''|*[!0-9]*) echo "Provided PR number is not an integer"; exit 1 ;; esac
           echo "pr-number=$number" >> "$GITHUB_OUTPUT"
 
-      - uses: ./github/actions/reusable-setup
+      - uses: ./github/actions/reusable-setup/
         with:
           install-packages: 'false'
 
