@@ -1,5 +1,9 @@
 name: 'Reusable Setup'
 description: 'Install node, pnpm and local node packages'
+inputs:
+  install-packages:
+    description: 'Whether to run pnpm install'
+    default: 'true'
 runs:
   using: 'composite'
   steps:
@@ -14,5 +18,6 @@ runs:
         cache: 'pnpm'
 
     - name: Install Packages
+      if: ${{ inputs.install-packages == 'true' }}
       shell: bash
       run: pnpm install

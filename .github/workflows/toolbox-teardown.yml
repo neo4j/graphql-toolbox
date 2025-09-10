@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: ./github/actions/reusable-setup
         with:
-          node-version: lts/*
+          install-packages: 'false'
 
       - name: Teardown graphql-toolbox
         run: |
