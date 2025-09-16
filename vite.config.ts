@@ -15,7 +15,7 @@ export default defineConfig({
         }),
     ],
     define: {
-        "process.env.NEO4J_GRAPHQL_VERSION": JSON.stringify(
+        "import.meta.env.NEO4J_GRAPHQL_VERSION": JSON.stringify(
             packageJson.dependencies?.["@neo4j/graphql"] ?? packageJson.devDependencies?.["@neo4j/graphql"]
         ),
     },
