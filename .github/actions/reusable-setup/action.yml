@@ -10,14 +10,14 @@ runs:
     - name: Install pnpm
       uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
 
+    - name: Install Packages
+      if: ${{ inputs.install-packages == 'true' }}
+      shell: bash
+      run: pnpm install
+
     - name: Install Node.js
       uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
       with:
         node-version-file: 'package.json'
         registry-url: 'https://registry.npmjs.org'
         cache: 'pnpm'
-
-    - name: Install Packages
-      if: ${{ inputs.install-packages == 'true' }}
-      shell: bash
-      run: pnpm install
