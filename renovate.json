@@ -7,11 +7,7 @@
         "automerge": false
     },
     "timezone": "Europe/London",
-    "schedule": [
-        "after 10pm every weekday",
-        "before 5am every weekday",
-        "every weekend"
-    ],
+    "schedule": ["after 10pm every weekday", "before 5am every weekday", "every weekend"],
     "ignorePaths": [
         "**/node_modules/**",
         "**/bower_components/**",
@@ -21,12 +17,12 @@
         "**/tests/**",
         "**/__fixtures__/**"
     ],
-    "ignoreDeps": [
-        "neo4j",
-        "@graphiql/plugin-doc-explorer",
-        "@​graphiql/react"
-    ],
+    "ignoreDeps": ["neo4j", "@graphiql/plugin-doc-explorer", "@​graphiql/react"],
     "packageRules": [
+        {
+            "matchDatasources": ["npm"],
+            "minimumReleaseAge": "3 days"
+        },
         {
             "matchPackageNames": ["@neo4j/graphql-toolbox"],
             "extends": [":pinAllExceptPeerDependencies"]
