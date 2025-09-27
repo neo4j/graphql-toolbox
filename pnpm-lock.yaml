@@ -63,8 +63,8 @@ importers:
         specifier: 3.9.17
         version: 3.9.17(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.13)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@neo4j/graphql':
-        specifier: 7.2.11
-        version: 7.2.11(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)
+        specifier: 7.2.12
+        version: 7.2.12(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)
       '@neo4j/introspector':
         specifier: 5.0.0
         version: 5.0.0(neo4j-driver@5.28.2)
@@ -977,8 +977,8 @@ packages:
     resolution: {integrity: sha512-sKFc423KxeMbEfRTCh0HH6dOMG7BgEa82YRO3CTZv91DcX9FjvV60PeaIZI8T8U9uKPWwwl8Dj1MteSvnQZOzw==}
     engines: {node: '>=16.0.0'}
 
-  '@neo4j/graphql@7.2.11':
-    resolution: {integrity: sha512-fUhdKR0YBj3nhWbabAYx3ITkbjBr7iYhB5Y52wEF2rfXhWK2NDUHNojV3jml/Q14p+YekkisxITF1p9ag8hZLw==}
+  '@neo4j/graphql@7.2.12':
+    resolution: {integrity: sha512-0egf5oeSJfgXeaOp1+MynOBZUSCRxQEkedOkmrd3Bw1bDG57bYKG6xDSJ//p21jZC43vKkEpdIGpW5QQJn06zg==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       graphql: ^16.0.0
@@ -6219,7 +6219,7 @@ snapshots:
 
   '@neo4j/cypher-builder@2.8.0': {}
 
-  '@neo4j/graphql@7.2.11(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)':
+  '@neo4j/graphql@7.2.12(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)':
     dependencies:
       '@apollo/subgraph': 2.11.0(graphql@16.11.0)
       '@as-integrations/express4': 1.1.2(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)
