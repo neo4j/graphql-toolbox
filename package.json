@@ -58,7 +58,7 @@
         "@graphiql/react": "0.32.1",
         "@graphiql/toolkit": "0.11.3",
         "@mjfwebb/thememirror": "2.0.2",
-        "@neo4j-ndl/base": "3.7.6",
+        "@neo4j-ndl/base": "3.7.31",
         "@neo4j-ndl/react": "3.9.18",
         "@neo4j/graphql": "7.2.12",
         "@neo4j/introspector": "5.0.0",
