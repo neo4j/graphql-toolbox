@@ -57,11 +57,11 @@ importers:
         specifier: 2.0.2
         version: 2.0.2(@codemirror/language@6.11.3)(@codemirror/state@6.5.2)(@codemirror/view@6.37.1)
       '@neo4j-ndl/base':
-        specifier: 3.7.6
-        version: 3.7.6
+        specifier: 3.7.31
+        version: 3.7.31
       '@neo4j-ndl/react':
         specifier: 3.9.18
-        version: 3.9.18(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.14)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 3.9.18(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.31)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.14)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@neo4j/graphql':
         specifier: 7.2.12
         version: 7.2.12(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)
@@ -960,8 +960,8 @@ packages:
   '@neo4j-devtools/word-color@0.0.8':
     resolution: {integrity: sha512-0fC2PXU1M0wL72lVil/2JnUccpEoPaiNJsNAc8fgRUysVeZ/OLKFvZAeOnufJ4X5OKkImaL1lvoGyhfKfOKfzw==}
 
-  '@neo4j-ndl/base@3.7.6':
-    resolution: {integrity: sha512-SKrsnCH1Cmdn+AtS91ZRxBXqsQ7W3UliPQJh9//mcJVgqlQKmKXk9XlhAK0uAAvhuG77rqWftDP4Zi5oT16ApA==}
+  '@neo4j-ndl/base@3.7.31':
+    resolution: {integrity: sha512-hjZRrvYwJjZlFGy68pmdko+xrwnEQZPmQ22pLJlj4c8STV600gDRAFVzbrQw0VFRgcl3I8mgv0x9k15jXiD0bA==}
 
   '@neo4j-ndl/react@3.9.18':
     resolution: {integrity: sha512-pWDyZ+sWb8hUED0wEe8D2jZfzXiAJzDKeySyFhZwGRch4A9Ucg9sVRI5SLXWuXPeyZ4+B7HikAWcs3mr9pP4wA==}
@@ -3966,10 +3966,6 @@ packages:
   lowlight@1.20.0:
     resolution: {integrity: sha512-8Ktj+prEb1RoCPkEOrPMYUN/nCggB7qAWe3a7OpMjWQkh3l2RD5wKRQ+o8Q8YuI9RG/xs95waaI/E6ym/7NsTw==}
 
-  lru-cache@11.1.0:
-    resolution: {integrity: sha512-QIXZUBJUx+2zHUdQujWejBkcD9+cs94tLn0+YL8UrCh+D5sCXZ4c7LaEH48pNwRY3MLDgqUFyhlCyjJPf1WP0A==}
-    engines: {node: 20 || >=22}
-
   lru-cache@11.2.2:
     resolution: {integrity: sha512-F9ODfyqML2coTIsQpSkRHnLSZMtkU8Q+mSfcaIyKwy58u+8k5nvAYeiNhsyMARvzNcXJ9QfWVrcPsC9e9rAxtg==}
     engines: {node: 20 || >=22}
@@ -5377,7 +5373,7 @@ snapshots:
       finalhandler: 2.1.0
       graphql: 16.11.0
       loglevel: 1.9.2
-      lru-cache: 11.1.0
+      lru-cache: 11.2.2
       negotiator: 1.0.0
       uuid: 11.1.0
       whatwg-mimetype: 4.0.0
@@ -5410,7 +5406,7 @@ snapshots:
   '@apollo/utils.keyvaluecache@4.0.0':
     dependencies:
       '@apollo/utils.logger': 3.0.0
-      lru-cache: 11.1.0
+      lru-cache: 11.2.2
 
   '@apollo/utils.logger@3.0.0': {}
 
@@ -6166,9 +6162,9 @@ snapshots:
       '@types/chroma-js': 2.1.4
       chroma-js: 2.4.2
 
-  '@neo4j-ndl/base@3.7.6': {}
+  '@neo4j-ndl/base@3.7.31': {}
 
-  '@neo4j-ndl/react@3.9.18(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.6)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.14)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@neo4j-ndl/react@3.9.18(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.31)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.14)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
@@ -6176,7 +6172,7 @@ snapshots:
       '@floating-ui/react-dom': 2.1.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@heroicons/react': 2.1.5(react@19.1.1)
       '@neo4j-devtools/word-color': 0.0.8
-      '@neo4j-ndl/base': 3.7.6
+      '@neo4j-ndl/base': 3.7.31
       '@neo4j-nvl/base': 0.3.9(neo4j-driver@5.28.2)
       '@neo4j-nvl/interaction-handlers': 0.3.9(neo4j-driver@5.28.2)
       '@neo4j-nvl/react': 0.3.9(neo4j-driver@5.28.2)
@@ -9900,8 +9896,6 @@ snapshots:
     dependencies:
       fault: 1.0.4
       highlight.js: 10.7.3
-
-  lru-cache@11.1.0: {}
 
   lru-cache@11.2.2: {}
 
