@@ -75,7 +75,7 @@
         "react": "19.1.1",
         "react-dom": "19.1.1",
         "react-use": "17.6.0",
-        "tailwindcss": "4.1.10",
+        "tailwindcss": "4.1.13",
         "zustand": "5.0.8"
     },
     "devDependencies": {
