@@ -57,11 +57,11 @@ importers:
         specifier: 2.0.2
         version: 2.0.2(@codemirror/language@6.11.3)(@codemirror/state@6.5.2)(@codemirror/view@6.38.4)
       '@neo4j-ndl/base':
-        specifier: 3.7.31
-        version: 3.7.31
+        specifier: 3.7.32
+        version: 3.7.32
       '@neo4j-ndl/react':
-        specifier: 3.9.18
-        version: 3.9.18(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.31)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.16)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: 3.9.19
+        version: 3.9.19(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.32)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.16)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@neo4j/graphql':
         specifier: 7.2.12
         version: 7.2.12(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)
@@ -951,13 +951,13 @@ packages:
   '@neo4j-devtools/word-color@0.0.8':
     resolution: {integrity: sha512-0fC2PXU1M0wL72lVil/2JnUccpEoPaiNJsNAc8fgRUysVeZ/OLKFvZAeOnufJ4X5OKkImaL1lvoGyhfKfOKfzw==}
 
-  '@neo4j-ndl/base@3.7.31':
-    resolution: {integrity: sha512-hjZRrvYwJjZlFGy68pmdko+xrwnEQZPmQ22pLJlj4c8STV600gDRAFVzbrQw0VFRgcl3I8mgv0x9k15jXiD0bA==}
+  '@neo4j-ndl/base@3.7.32':
+    resolution: {integrity: sha512-ermoSYaQXv+y4xSF5vnGn8Cm/HXXNvX2V4tvWBYYPqVoXjZEqBjW9uv4Lu5PthauEoBQyvuV7NWt7QiRaR1g6w==}
 
-  '@neo4j-ndl/react@3.9.18':
-    resolution: {integrity: sha512-pWDyZ+sWb8hUED0wEe8D2jZfzXiAJzDKeySyFhZwGRch4A9Ucg9sVRI5SLXWuXPeyZ4+B7HikAWcs3mr9pP4wA==}
+  '@neo4j-ndl/react@3.9.19':
+    resolution: {integrity: sha512-7jVCpw2E/axk6MiLZ05wvWzyHQ91A/MxtzEDvyhiAfZOyyJwH3c/tgRo0/0PeXCG7MxsmCcZutf0b3O0J0tmjA==}
     peerDependencies:
-      '@neo4j-ndl/base': ^3.7.31
+      '@neo4j-ndl/base': ^3.7.32
       '@tanstack/react-table': 8.21.3
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -6141,9 +6141,9 @@ snapshots:
       '@types/chroma-js': 2.1.4
       chroma-js: 2.4.2
 
-  '@neo4j-ndl/base@3.7.31': {}
+  '@neo4j-ndl/base@3.7.32': {}
 
-  '@neo4j-ndl/react@3.9.18(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.31)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.16)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@neo4j-ndl/react@3.9.19(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.32)(@tanstack/react-table@8.21.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@types/react@19.1.16)(neo4j-driver@5.28.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
@@ -6151,7 +6151,7 @@ snapshots:
       '@floating-ui/react-dom': 2.1.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@heroicons/react': 2.1.5(react@19.1.1)
       '@neo4j-devtools/word-color': 0.0.8
-      '@neo4j-ndl/base': 3.7.31
+      '@neo4j-ndl/base': 3.7.32
       '@neo4j-nvl/base': 0.3.9(neo4j-driver@5.28.2)
       '@neo4j-nvl/interaction-handlers': 0.3.9(neo4j-driver@5.28.2)
       '@neo4j-nvl/react': 0.3.9(neo4j-driver@5.28.2)
