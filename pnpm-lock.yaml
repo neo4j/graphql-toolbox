@@ -60,8 +60,8 @@ importers:
         specifier: 3.7.33
         version: 3.7.33
       '@neo4j-ndl/react':
-        specifier: 3.9.20
-        version: 3.9.20(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.33)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 3.9.21
+        version: 3.9.21(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.33)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@neo4j/graphql':
         specifier: 7.2.13
         version: 7.2.13(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)
@@ -954,8 +954,8 @@ packages:
   '@neo4j-ndl/base@3.7.33':
     resolution: {integrity: sha512-I5Vc6q6dwgTKFEZujm3t/TcdFSVHj1wTVfosJ72Qc39JBsC29HL05lpvF+2KMTAWa0JuxDnmQNog77PgTd0/MA==}
 
-  '@neo4j-ndl/react@3.9.20':
-    resolution: {integrity: sha512-w/oHW0RTgXjvluJJcnnD3Rzk6ITqucn0yniaI40SyIYHtc+p9Lsc6tnUb87gfIEUMS3oBySQvIY8i1oQ7LyJLw==}
+  '@neo4j-ndl/react@3.9.21':
+    resolution: {integrity: sha512-+swoRxjcDcq5zCUjNLnkJATvXosNZVbObXcNKtkr2cVtaEFAsZOAakJ1W7drqUsxYdew453UETlvQ45ToDcw9A==}
     peerDependencies:
       '@neo4j-ndl/base': ^3.7.33
       '@tanstack/react-table': 8.21.3
@@ -6140,7 +6140,7 @@ snapshots:
 
   '@neo4j-ndl/base@3.7.33': {}
 
-  '@neo4j-ndl/react@3.9.20(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.33)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@neo4j-ndl/react@3.9.21(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.33)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
