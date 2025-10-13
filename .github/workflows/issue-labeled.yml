@@ -6,7 +6,7 @@ on:
 
 jobs:
   bug_report_label:
-    if: ${{ github.event.label.name == 'bug report' }}
+    if: ${{ github.event.label.name == 'bug' }}
 
     runs-on: ubuntu-latest
 
