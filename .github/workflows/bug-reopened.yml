@@ -6,7 +6,7 @@ on:
 
 jobs:
   add-reopened-bugs-to-triage:
-    if: contains(github.event.issue.labels.*.name, 'bug report')
+    if: contains(github.event.issue.labels.*.name, 'bug')
 
     runs-on: ubuntu-latest
 
