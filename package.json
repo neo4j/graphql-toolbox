@@ -75,14 +75,14 @@
         "react": "19.2.0",
         "react-dom": "19.2.0",
         "react-use": "17.6.0",
-        "tailwindcss": "4.1.14",
+        "tailwindcss": "4.1.15",
         "zustand": "5.0.8"
     },
     "devDependencies": {
         "@eslint/js": "9.38.0",
         "@playwright/test": "1.56.1",
         "@stylistic/eslint-plugin": "5.5.0",
-        "@tailwindcss/vite": "4.1.14",
+        "@tailwindcss/vite": "4.1.15",
         "@types/codemirror": "5.60.16",
         "@types/node": "22.18.12",
         "@types/prettier": "3.0.0",
