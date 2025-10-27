@@ -127,8 +127,8 @@ importers:
         specifier: 4.1.16
         version: 4.1.16(vite@7.1.12(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2))
       '@types/codemirror':
-        specifier: 5.60.16
-        version: 5.60.16
+        specifier: 5.60.17
+        version: 5.60.17
       '@types/node':
         specifier: 22.18.12
         version: 22.18.12
@@ -2140,8 +2140,8 @@ packages:
   '@types/codemirror@0.0.90':
     resolution: {integrity: sha512-8Z9+tSg27NPRGubbUPUCrt5DDG/OWzLph5BvcDykwR5D7RyZh5mhHG0uS1ePKV1YFCA+/cwc4Ey2AJAEFfV3IA==}
 
-  '@types/codemirror@5.60.16':
-    resolution: {integrity: sha512-V/yHdamffSS075jit+fDxaOAmdP2liok8NSNJnAZfDJErzOheuygHZEhAJrfmk5TEyM32MhkZjwo/idX791yxw==}
+  '@types/codemirror@5.60.17':
+    resolution: {integrity: sha512-AZq2FIsUHVMlp7VSe2hTfl5w4pcUkoFkM3zVsRKsn1ca8CXRDYvnin04+HP2REkwsxemuHqvDofdlhUWNpbwfw==}
 
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
@@ -5937,7 +5937,7 @@ snapshots:
       '@radix-ui/react-dropdown-menu': 2.1.15(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@radix-ui/react-tooltip': 1.2.7(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@radix-ui/react-visually-hidden': 1.2.3(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@types/codemirror': 5.60.16
+      '@types/codemirror': 5.60.17
       clsx: 1.2.1
       codemirror: 5.65.19
       codemirror-graphql: 2.2.2(@codemirror/language@6.11.3)(codemirror@5.65.19)(graphql@16.11.0)
@@ -7730,7 +7730,7 @@ snapshots:
     dependencies:
       '@types/tern': 0.23.9
 
-  '@types/codemirror@5.60.16':
+  '@types/codemirror@5.60.17':
     dependencies:
       '@types/tern': 0.23.9
 

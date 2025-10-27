@@ -83,7 +83,7 @@
         "@playwright/test": "1.56.1",
         "@stylistic/eslint-plugin": "5.5.0",
         "@tailwindcss/vite": "4.1.16",
-        "@types/codemirror": "5.60.16",
+        "@types/codemirror": "5.60.17",
         "@types/node": "22.18.12",
         "@types/prettier": "3.0.0",
         "@types/randomstring": "1.3.0",
