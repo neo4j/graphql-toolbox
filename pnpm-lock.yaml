@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@codemirror/autocomplete':
-        specifier: 6.19.1
-        version: 6.19.1
+        specifier: 6.19.0
+        version: 6.19.0
       '@codemirror/commands':
-        specifier: 6.10.0
-        version: 6.10.0
+        specifier: 6.9.0
+        version: 6.9.0
       '@codemirror/lang-javascript':
         specifier: 6.2.4
         version: 6.2.4
@@ -21,8 +21,8 @@ importers:
         specifier: 6.11.3
         version: 6.11.3
       '@codemirror/lint':
-        specifier: 6.9.1
-        version: 6.9.1
+        specifier: 6.9.0
+        version: 6.9.0
       '@codemirror/search':
         specifier: 6.5.11
         version: 6.5.11
@@ -76,7 +76,7 @@ importers:
         version: 2.5.1
       cm6-graphql:
         specifier: 0.2.1
-        version: 0.2.1(@codemirror/autocomplete@6.19.1)(@codemirror/language@6.11.3)(@codemirror/lint@6.9.1)(@codemirror/state@6.5.2)(@codemirror/view@6.38.6)(@lezer/highlight@1.2.1)(graphql@16.11.0)
+        version: 0.2.1(@codemirror/autocomplete@6.19.0)(@codemirror/language@6.11.3)(@codemirror/lint@6.9.0)(@codemirror/state@6.5.2)(@codemirror/view@6.38.6)(@lezer/highlight@1.2.1)(graphql@16.11.0)
       codemirror:
         specifier: 6.0.2
         version: 6.0.2
@@ -414,11 +414,11 @@ packages:
     resolution: {integrity: sha512-bkFqkLhh3pMBUQQkpVgWDWq/lqzc2678eUyDlTBhRqhCHFguYYGM0Efga7tYk4TogG/3x0EEl66/OQ+WGbWB/Q==}
     engines: {node: '>=6.9.0'}
 
-  '@codemirror/autocomplete@6.19.1':
-    resolution: {integrity: sha512-q6NenYkEy2fn9+JyjIxMWcNjzTL/IhwqfzOut1/G3PrIFkrbl4AL7Wkse5tLrQUUyqGoAKU5+Pi5jnnXxH5HGw==}
+  '@codemirror/autocomplete@6.19.0':
+    resolution: {integrity: sha512-61Hfv3cF07XvUxNeC3E7jhG8XNi1Yom1G0lRC936oLnlF+jrbrv8rc/J98XlYzcsAoTVupfsf5fLej1aI8kyIg==}
 
-  '@codemirror/commands@6.10.0':
-    resolution: {integrity: sha512-2xUIc5mHXQzT16JnyOFkh8PvfeXuIut3pslWGfsGOhxP/lpgRm9HOl/mpzLErgt5mXDovqA0d11P21gofRLb9w==}
+  '@codemirror/commands@6.9.0':
+    resolution: {integrity: sha512-454TVgjhO6cMufsyyGN70rGIfJxJEjcqjBG2x2Y03Y/+Fm99d3O/Kv1QDYWuG6hvxsgmjXmBuATikIIYvERX+w==}
 
   '@codemirror/lang-javascript@6.2.4':
     resolution: {integrity: sha512-0WVmhp1QOqZ4Rt6GlVGwKJN3KW7Xh4H2q8ZZNGZaP6lRdxXJzmjm4FqvmOojVj6khWJHIb9sp7U/72W7xQgqAA==}
@@ -426,8 +426,8 @@ packages:
   '@codemirror/language@6.11.3':
     resolution: {integrity: sha512-9HBM2XnwDj7fnu0551HkGdrUrrqmYq/WC5iv6nbY2WdicXdGbhR/gfbZOH73Aqj4351alY1+aoG9rCNfiwS1RA==}
 
-  '@codemirror/lint@6.9.1':
-    resolution: {integrity: sha512-te7To1EQHePBQQzasDKWmK2xKINIXpk+xAiSYr9ZN+VB4KaT+/Hi2PEkeErTk5BV3PTz1TLyQL4MtJfPkKZ9sw==}
+  '@codemirror/lint@6.9.0':
+    resolution: {integrity: sha512-wZxW+9XDytH3SKvS8cQzMyQCaaazH8XL1EMHleHe00wVzsv7NBQKVW2yzEHrRhmM7ZOhVdItPbvlRBvMp9ej7A==}
 
   '@codemirror/search@6.5.11':
     resolution: {integrity: sha512-KmWepDE6jUdL6n8cAAqIpRmLPBZ5ZKnicE8oGU/s3QrAVID+0VhLFrzUucVKHG5035/BSykhExDL/Xm7dHthiA==}
@@ -5535,14 +5535,14 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@codemirror/autocomplete@6.19.1':
+  '@codemirror/autocomplete@6.19.0':
     dependencies:
       '@codemirror/language': 6.11.3
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.38.6
       '@lezer/common': 1.2.3
 
-  '@codemirror/commands@6.10.0':
+  '@codemirror/commands@6.9.0':
     dependencies:
       '@codemirror/language': 6.11.3
       '@codemirror/state': 6.5.2
@@ -5551,9 +5551,9 @@ snapshots:
 
   '@codemirror/lang-javascript@6.2.4':
     dependencies:
-      '@codemirror/autocomplete': 6.19.1
+      '@codemirror/autocomplete': 6.19.0
       '@codemirror/language': 6.11.3
-      '@codemirror/lint': 6.9.1
+      '@codemirror/lint': 6.9.0
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.38.6
       '@lezer/common': 1.2.3
@@ -5568,7 +5568,7 @@ snapshots:
       '@lezer/lr': 1.4.2
       style-mod: 4.1.2
 
-  '@codemirror/lint@6.9.1':
+  '@codemirror/lint@6.9.0':
     dependencies:
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.38.6
@@ -8467,11 +8467,11 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  cm6-graphql@0.2.1(@codemirror/autocomplete@6.19.1)(@codemirror/language@6.11.3)(@codemirror/lint@6.9.1)(@codemirror/state@6.5.2)(@codemirror/view@6.38.6)(@lezer/highlight@1.2.1)(graphql@16.11.0):
+  cm6-graphql@0.2.1(@codemirror/autocomplete@6.19.0)(@codemirror/language@6.11.3)(@codemirror/lint@6.9.0)(@codemirror/state@6.5.2)(@codemirror/view@6.38.6)(@lezer/highlight@1.2.1)(graphql@16.11.0):
     dependencies:
-      '@codemirror/autocomplete': 6.19.1
+      '@codemirror/autocomplete': 6.19.0
       '@codemirror/language': 6.11.3
-      '@codemirror/lint': 6.9.1
+      '@codemirror/lint': 6.9.0
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.38.6
       '@lezer/highlight': 1.2.1
@@ -8490,10 +8490,10 @@ snapshots:
 
   codemirror@6.0.2:
     dependencies:
-      '@codemirror/autocomplete': 6.19.1
-      '@codemirror/commands': 6.10.0
+      '@codemirror/autocomplete': 6.19.0
+      '@codemirror/commands': 6.9.0
       '@codemirror/language': 6.11.3
-      '@codemirror/lint': 6.9.1
+      '@codemirror/lint': 6.9.0
       '@codemirror/search': 6.5.11
       '@codemirror/state': 6.5.2
       '@codemirror/view': 6.38.6
