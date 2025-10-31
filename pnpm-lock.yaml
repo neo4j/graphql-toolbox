@@ -66,8 +66,8 @@ importers:
         specifier: 7.3.0
         version: 7.3.0(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)
       '@neo4j/introspector':
-        specifier: 5.0.0
-        version: 5.0.0(neo4j-driver@5.28.2)
+        specifier: 5.0.1
+        version: 5.0.1(neo4j-driver@5.28.2)
       '@tanstack/react-table':
         specifier: 8.21.3
         version: 8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -986,8 +986,8 @@ packages:
       graphql: ^16.0.0
       neo4j-driver: ^5.8.0
 
-  '@neo4j/introspector@5.0.0':
-    resolution: {integrity: sha512-KT/s/Qrys7/SrYcf+f8ZJKersc9kTqLFzjmur+1X56IBTHD+ZwaS+NImAo67GV10DU9xuWT9iufkaUYqqu3YGA==}
+  '@neo4j/introspector@5.0.1':
+    resolution: {integrity: sha512-vCPT1d/O6u8vB0aUPJWHlYE2hSt2mFDyRUvXN3Z/IJzUBiTAuhbT1aex4W8w/wkTgE8sEvTAl8wOc7oKj6ZdNg==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       neo4j-driver: ^5.8.0
@@ -6228,7 +6228,7 @@ snapshots:
       - express
       - supports-color
 
-  '@neo4j/introspector@5.0.0(neo4j-driver@5.28.2)':
+  '@neo4j/introspector@5.0.1(neo4j-driver@5.28.2)':
     dependencies:
       camelcase: 6.3.0
       debug: 4.4.1
