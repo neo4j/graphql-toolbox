@@ -92,7 +92,7 @@ export const Main = () => {
         return (
             <div className="flex">
                 <div className="flex w-full h-full flex-col">
-                    <Banner />
+                    <Banner></Banner>
                     <Login />
                 </div>
             </div>
@@ -104,7 +104,7 @@ export const Main = () => {
             <EditorContextProvider>
                 <StorageContextProvider>
                     <NeedleThemeProvider theme="dark">
-                        <Banner />
+                        <Banner></Banner>
                         <TopBar />
                     </NeedleThemeProvider>
                     <ViewSelector hasSchema={!!schema} />

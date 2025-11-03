@@ -32,24 +32,26 @@ export const SchemaErrorDisplay = () => {
 
     return (
         <Banner
-            icon
-            closeable
+            hasIcon
+            isCloseable
             onClose={() => useSessionStore.getState().setSchemaViewError(null)}
-            type="danger"
-            title="Errors"
+            variant="danger"
         >
-            <ol>
-                {errors.map((error, index) => (
-                    <li key={index}>
-                        {error.locations ? (
-                            <span>
-                                <code>{JSON.stringify(error.locations)}</code>:{" "}
-                            </span>
-                        ) : null}
-                        {error.message}
-                    </li>
-                ))}
-            </ol>
+            <Banner.Header>Errors</Banner.Header>
+            <Banner.Description>
+                <ol>
+                    {errors.map((error, index) => (
+                        <li key={index}>
+                            {error.locations ? (
+                                <span>
+                                    <code>{JSON.stringify(error.locations)}</code>:{" "}
+                                </span>
+                            ) : null}
+                            {error.message}
+                        </li>
+                    ))}
+                </ol>
+            </Banner.Description>
         </Banner>
     );
 };

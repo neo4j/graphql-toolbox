@@ -46,7 +46,7 @@ export const ConnectionMenu = ({
             <Menu.Items>
                 {auth.databases?.length ? (
                     <>
-                        <Menu.Subheader title="Databases" />
+                        <Menu.CategoryItem>Databases</Menu.CategoryItem>
                         {auth.databases.map((db) => {
                             return (
                                 <Menu.Item
@@ -56,7 +56,9 @@ export const ConnectionMenu = ({
                                     }}
                                     title={db.name.length > 50 ? `${db.name.substring(0, 48)}...` : db.name}
                                     isDisabled={screen.view !== Screen.TYPEDEFS}
-                                    icon={db.name === auth.selectedDatabaseName ? <CheckIconOutline /> : <span />}
+                                    leadingVisual={
+                                        db.name === auth.selectedDatabaseName ? <CheckIconOutline /> : <span />
+                                    }
                                     onClick={() => onNextSelectedDatabaseName(db.name)}
                                 />
                             );

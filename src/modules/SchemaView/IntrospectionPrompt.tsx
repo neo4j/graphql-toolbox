@@ -18,7 +18,7 @@
  */
 
 import { tokens } from "@neo4j-ndl/base";
-import { Button, Dialog } from "@neo4j-ndl/react";
+import { Dialog, FilledButton, OutlinedButton } from "@neo4j-ndl/react";
 
 interface Props {
     open: boolean;
@@ -43,42 +43,39 @@ export const IntrospectionPrompt = ({ open, onClose, onDisconnect, onIntrospect 
                 definitions automatically?
             </Dialog.Description>
             <Dialog.Actions className="flex w-full">
-                <Button
+                <OutlinedButton
                     htmlAttributes={{
                         "data-test-introspect-prompt-cancel": "true",
                     }}
-                    fill="outlined"
-                    color="neutral"
+                    variant="neutral"
                     aria-label="Close introspection prompt"
                     onClick={() => onClose()}
                 >
                     Cancel
-                </Button>
+                </OutlinedButton>
                 <div className="mr-0 ml-auto">
-                    <Button
+                    <OutlinedButton
                         htmlAttributes={{
                             "data-test-introspect-prompt-logout": "true",
                         }}
                         className="mr-3"
-                        fill="outlined"
-                        color="primary"
+                        variant="primary"
                         aria-label="Switch connection"
                         onClick={() => onDisconnect()}
                     >
                         Switch connection
-                    </Button>
-                    <Button
+                    </OutlinedButton>
+                    <FilledButton
                         htmlAttributes={{
                             "data-test-introspect-prompt-introspect": "true",
                         }}
-                        style={{ backgroundColor: tokens.colors.baltic[50] }}
-                        fill="filled"
-                        color="primary"
+                        style={{ backgroundColor: tokens.palette.baltic[50] }}
+                        variant="primary"
                         aria-label="Introspect database"
                         onClick={() => onIntrospect()}
                     >
                         Introspect
-                    </Button>
+                    </FilledButton>
                 </div>
             </Dialog.Actions>
         </Dialog>

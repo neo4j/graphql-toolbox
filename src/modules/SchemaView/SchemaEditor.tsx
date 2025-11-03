@@ -34,7 +34,7 @@ import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
 import { EditorState, Prec, StateEffect } from "@codemirror/state";
 import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
 import { dracula, tomorrow } from "@mjfwebb/thememirror";
-import { Button, IconButton, Tooltip } from "@neo4j-ndl/react";
+import { FilledButton, IconButton, OutlinedButton, Tooltip } from "@neo4j-ndl/react";
 import { StarIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
 import { graphql } from "cm6-graphql";
@@ -186,14 +186,13 @@ export const SchemaEditor = ({
                 extension={Extension.GRAPHQL}
                 name="type-definitions"
                 rightButtons={
-                    <Button
+                    <FilledButton
                         htmlAttributes={{
                             "data-test-schema-editor-build-button": "true",
                         }}
                         aria-label="Build schema"
                         className={classNames(theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}
-                        color="primary"
-                        fill="filled"
+                        variant="primary"
                         size="small"
                         onClick={() => {
                             setBuilding(true);
@@ -206,13 +205,13 @@ export const SchemaEditor = ({
                         isLoading={building}
                     >
                         Build schema
-                    </Button>
+                    </FilledButton>
                 }
                 leftButtons={
                     <>
                         <Tooltip type="simple" placement="bottom">
                             <Tooltip.Trigger hasButtonWrapper>
-                                <Button
+                                <OutlinedButton
                                     htmlAttributes={{
                                         "data-test-schema-editor-introspect-button": "true",
                                     }}
@@ -221,22 +220,21 @@ export const SchemaEditor = ({
                                         "mr-2",
                                         theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                                     )}
-                                    color="primary"
-                                    fill="outlined"
+                                    variant="primary"
                                     size="small"
                                     onClick={introspect}
                                     isDisabled={loading}
                                     isLoading={isIntrospecting}
                                 >
                                     Introspect
-                                </Button>
+                                </OutlinedButton>
                             </Tooltip.Trigger>
                             <Tooltip.Content style={{ width: "19rem" }}>
                                 This will overwrite your current type definitions!
                             </Tooltip.Content>
                         </Tooltip>
 
-                        <Button
+                        <OutlinedButton
                             htmlAttributes={{
                                 "data-test-schema-editor-prettify-button": "true",
                             }}
@@ -245,14 +243,13 @@ export const SchemaEditor = ({
                                 "mr-2",
                                 theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                             )}
-                            color="neutral"
-                            fill="outlined"
+                            variant="neutral"
                             size="small"
                             onClick={formatTheCode}
                             isDisabled={loading}
                         >
                             Prettify
-                        </Button>
+                        </OutlinedButton>
 
                         <Tooltip type="rich" placement="bottom">
                             <Tooltip.Trigger hasButtonWrapper>
@@ -260,7 +257,7 @@ export const SchemaEditor = ({
                                     htmlAttributes={{
                                         "data-test-schema-editor-favourite-button": "true",
                                     }}
-                                    ariaLabel="Save as favorite"
+                                    description="Save as favorite"
                                     className={classNames(
                                         theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                                     )}

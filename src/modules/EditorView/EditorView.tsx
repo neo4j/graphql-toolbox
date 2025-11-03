@@ -129,7 +129,7 @@ export const EditorView = ({ schema }: Props) => {
                                             buttonStyle: {
                                                 display: "block",
                                                 fontWeight: "bold",
-                                                backgroundColor: tokens.colors.neutral[40],
+                                                backgroundColor: tokens.palette.neutral[40],
                                                 margin: "5px 5px 5px 10px",
                                             },
                                             explorerActionsStyle: {

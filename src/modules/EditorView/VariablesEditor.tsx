@@ -27,7 +27,7 @@ import { Annotation, Prec, StateEffect } from "@codemirror/state";
 import type { ViewUpdate } from "@codemirror/view";
 import { drawSelection, dropCursor, EditorView, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
 import { dracula, tomorrow } from "@mjfwebb/thememirror";
-import { Button } from "@neo4j-ndl/react";
+import { OutlinedButton } from "@neo4j-ndl/react";
 import classNames from "classnames";
 import { useMount } from "react-use";
 
@@ -162,21 +162,20 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
                 name={fileName}
                 borderRadiusTop={borderRadiusTop}
                 rightButtons={
-                    <Button
+                    <OutlinedButton
                         aria-label="Prettify code"
                         data-testid="variables-editor-prettify-button"
                         className={classNames(
                             "mr-2",
                             theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                         )}
-                        color="neutral"
-                        fill="outlined"
+                        variant="neutral"
                         size="small"
                         onClick={formatTheCode}
                         isDisabled={loading}
                     >
                         Prettify
-                    </Button>
+                    </OutlinedButton>
                 }
             />
             <div

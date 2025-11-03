@@ -70,7 +70,7 @@ export const EditorTabs = () => {
                             "data-test-query-editor-tab": tab.title,
                         }}
                         key={idx.toString()}
-                        tabId={idx.toString()}
+                        id={idx.toString()}
                         className={theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"}
                     >
                         <div className="flex justify-center items-center">
@@ -80,14 +80,17 @@ export const EditorTabs = () => {
 
                             {useStore.getState().tabs.length > 1 && (
                                 <XMarkIconOutline
-                                    data-test-close-icon-query-editor-tab
                                     className={classNames(
                                         "h-5 w-5 ml-2",
                                         theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "hover:bg-neutral-50"
                                     )}
-                                    aria-label="Close Icon"
-                                    onClick={(event) => {
-                                        handleCloseTab(event, idx);
+                                    htmlAttributes={{
+                                        "data-test-close-icon-query-editor-tab": true,
+                                        "aria-label": "Close Icon",
+
+                                        onClick: (event) => {
+                                            handleCloseTab(event, idx);
+                                        },
                                     }}
                                 />
                             )}
@@ -100,7 +103,7 @@ export const EditorTabs = () => {
                     "data-test-new-query-editor-tab": "true",
                 }}
                 key="new"
-                tabId="new"
+                id="new"
                 className="vertical-align-bottom"
             >
                 <PlusIconOutline
@@ -108,8 +111,10 @@ export const EditorTabs = () => {
                         "h-5 w-5",
                         theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "text-neutral-10 hover:bg-neutral-50"
                     )}
-                    aria-label="Add tab Icon"
-                    onClick={handleAddTab}
+                    htmlAttributes={{
+                        "aria-label": "Add tab Icon",
+                        onClick: handleAddTab,
+                    }}
                 />
             </Tabs.Tab>
         </Tabs>

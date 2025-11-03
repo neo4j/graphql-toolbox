@@ -19,7 +19,7 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 
-import { Button, IconButton, StatusIndicator, Tooltip, useNeedleTheme } from "@neo4j-ndl/react";
+import { CleanIconButton, OutlinedButton, StatusIndicator, Tooltip, useNeedleTheme } from "@neo4j-ndl/react";
 import {
     ChatBubbleOvalLeftEllipsisIconOutline,
     ChevronDownIconOutline,
@@ -113,7 +113,7 @@ export const TopBar = () => {
                             ref={menuButtonRef}
                         >
                             <p className="mr-2">
-                                <StatusIndicator type={auth?.isConnected ? "success" : "danger"} />
+                                <StatusIndicator variant={auth?.isConnected ? "success" : "danger"} />
                             </p>
                             <div className="items-center hidden lg:flex">
                                 <div className="flex items-center">{constructDbmsUrlWithUsername()}</div>
@@ -159,58 +159,54 @@ export const TopBar = () => {
             </div>
             <div className="flex-1 flex justify-end">
                 <div className="flex items-center text-sm">
-                    <Button
+                    <OutlinedButton
                         htmlAttributes={{
                             "data-test-send-feedback-topbar": "true",
                         }}
                         className={classNames(themeClassName, "mr-2 hidden lg:block")}
-                        color="primary"
-                        fill="outlined"
+                        variant="primary"
                         onClick={handleSendFeedbackClick}
                     >
                         Send feedback
-                    </Button>
-                    <IconButton
+                    </OutlinedButton>
+                    <CleanIconButton
                         htmlAttributes={{
                             "data-test-send-feedback-topbar-icon": "true",
                         }}
                         className={classNames(themeClassName, "flex lg:hidden")}
-                        ariaLabel="Send feedback"
+                        description="Send feedback"
                         onClick={handleSendFeedbackClick}
                         size="large"
-                        isClean
                     >
                         <ChatBubbleOvalLeftEllipsisIconOutline />
-                    </IconButton>
+                    </CleanIconButton>
                     <div className="flex items-center mr-6">
                         <div className="canny-indication-wrapper pb-8 pl-10 pointer-events-none absolute">
                             {/* This element is not clickable as we do not want to show the changelog here */}
                             <span data-canny-changelog></span>
                         </div>
-                        <IconButton
+                        <CleanIconButton
                             htmlAttributes={{
                                 "data-test-topbar-help-button": "true",
                             }}
                             className={themeClassName}
-                            ariaLabel="Help and learn drawer"
+                            description="Help and learn drawer"
                             onClick={handleHelpClick}
                             size="large"
-                            isClean
                         >
                             <QuestionMarkCircleIconOutline />
-                        </IconButton>
-                        <IconButton
-                            isClean
+                        </CleanIconButton>
+                        <CleanIconButton
                             htmlAttributes={{
                                 "data-test-topbar-settings-button": "true",
                             }}
                             className={themeClassName}
-                            ariaLabel="Application settings"
+                            description="Application settings"
                             onClick={handleSettingsClick}
                             size="large"
                         >
                             <Cog8ToothIconOutline />
-                        </IconButton>
+                        </CleanIconButton>
                     </div>
                 </div>
             </div>

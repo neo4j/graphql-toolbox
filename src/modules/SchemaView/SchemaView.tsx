@@ -261,19 +261,21 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                                 <Banner
                                     className="absolute bottom-7 ml-4 w-[44rem] z-[60]"
                                     isCloseable
-                                    name="ProductUsageMessage"
-                                    title={<strong>Product analytics</strong>}
-                                    description={
-                                        <>
-                                            <p>
-                                                To help make the Neo4j GraphQL Toolbox better we collect data on product
-                                                usage.
-                                            </p>
-                                            <p>Review your settings at any time.</p>
-                                        </>
-                                    }
                                     onClose={() => appSettings.setHideProductUsageMessage(true)}
-                                />
+                                >
+                                    <Banner.Header>{<strong>Product analytics</strong>}</Banner.Header>
+                                    <Banner.Description>
+                                        {
+                                            <>
+                                                <p>
+                                                    To help make the Neo4j GraphQL Toolbox better we collect data on
+                                                    product usage.
+                                                </p>
+                                                <p>Review your settings at any time.</p>
+                                            </>
+                                        }
+                                    </Banner.Description>
+                                </Banner>
                             ) : null}
                         </div>
                     </div>
