@@ -61,13 +61,13 @@ importers:
         version: 3.7.36
       '@neo4j-ndl/react':
         specifier: 3.9.24
-        version: 3.9.24(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.36)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 3.9.24(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.36)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@6.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@neo4j/graphql':
         specifier: 7.3.0
-        version: 7.3.0(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)
+        version: 7.3.0(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@6.0.0)
       '@neo4j/introspector':
         specifier: 5.0.1
-        version: 5.0.1(neo4j-driver@5.28.2)
+        version: 5.0.1(neo4j-driver@6.0.0)
       '@tanstack/react-table':
         specifier: 8.21.3
         version: 8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -90,8 +90,8 @@ importers:
         specifier: 1.1.0
         version: 1.1.0(graphql@16.11.0)
       neo4j-driver:
-        specifier: 5.28.2
-        version: 5.28.2
+        specifier: 6.0.0
+        version: 6.0.0
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -4104,14 +4104,15 @@ packages:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
 
-  neo4j-driver-bolt-connection@5.28.2:
-    resolution: {integrity: sha512-dEX06iNPEo9iyCb0NssxJeA3REN+H+U/Y0MdAjJBEoil4tGz5PxBNZL6/+noQnu2pBJT5wICepakXCrN3etboA==}
+  neo4j-driver-bolt-connection@6.0.0:
+    resolution: {integrity: sha512-JrNKz0YGqfjBgyVv6s1pI1YN0QHabCt1pZSrAqMRg1q9YDNnvNxUYEEux+xHNcHQN+VJ2hWgqvmz0A1iJlbNMg==}
 
-  neo4j-driver-core@5.28.2:
-    resolution: {integrity: sha512-fBMk4Ox379oOz4FcfdS6ZOxsTEypjkcAelNm9LcWQZ981xCdOnGMzlWL+qXECvL0qUwRfmZxoqbDlJzuzFrdvw==}
+  neo4j-driver-core@6.0.0:
+    resolution: {integrity: sha512-D2SDlhCKKn/4JoiPOePq5UsjxFQzu+ef7oKBzwI1tuhNoBIisIeODSAPVnWzMy7a8efkB2ZfE0mMAIDFD63Olw==}
 
-  neo4j-driver@5.28.2:
-    resolution: {integrity: sha512-nix4Canllf7Tl4FZL9sskhkKYoCp40fg7VsknSRTRgbm1JaE2F1Ej/c2nqlM06nqh3WrkI0ww3taVB+lem7w7w==}
+  neo4j-driver@6.0.0:
+    resolution: {integrity: sha512-9GPnRI5lEMcmATUDTEEUdHtj5IojUQLTl83M/IveR+D1zWPex9xv0UDhtxj4fDGeSJoFtpj4ClPAV1sKcwKCNw==}
+    engines: {node: '>=18.0.0'}
 
   new-date@1.0.3:
     resolution: {integrity: sha512-0fsVvQPbo2I18DT2zVHpezmeeNYV2JaJSrseiHLc17GNOxJzUdx5mvSigPu8LtIfZSij5i1wXnXFspEs2CD6hA==}
@@ -6112,7 +6113,7 @@ snapshots:
 
   '@neo4j-ndl/base@3.7.36': {}
 
-  '@neo4j-ndl/react@3.9.24(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.36)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@neo4j-ndl/react@3.9.24(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.36)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.2)(neo4j-driver@6.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@dnd-kit/sortable': 8.0.0(@dnd-kit/core@6.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
@@ -6121,9 +6122,9 @@ snapshots:
       '@heroicons/react': 2.1.5(react@19.2.0)
       '@neo4j-devtools/word-color': 0.0.8
       '@neo4j-ndl/base': 3.7.36
-      '@neo4j-nvl/base': 1.0.0(neo4j-driver@5.28.2)
-      '@neo4j-nvl/interaction-handlers': 1.0.0(neo4j-driver@5.28.2)
-      '@neo4j-nvl/react': 1.0.0(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@neo4j-nvl/base': 1.0.0(neo4j-driver@6.0.0)
+      '@neo4j-nvl/interaction-handlers': 1.0.0(neo4j-driver@6.0.0)
+      '@neo4j-nvl/react': 1.0.0(neo4j-driver@6.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@tanstack/react-table': 8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@uiw/react-color': 2.5.4(@babel/runtime@7.27.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       chromatic: 6.5.1
@@ -6152,7 +6153,7 @@ snapshots:
       - neo4j-driver
       - supports-color
 
-  '@neo4j-nvl/base@1.0.0(neo4j-driver@5.28.2)':
+  '@neo4j-nvl/base@1.0.0(neo4j-driver@6.0.0)':
     dependencies:
       '@neo4j-nvl/layout-workers': 1.0.0
       '@segment/analytics-next': 1.81.0
@@ -6163,7 +6164,7 @@ snapshots:
       lodash: 4.17.21
       loglevel: 1.9.2
       mobx: 3.6.2
-      neo4j-driver: 5.28.2
+      neo4j-driver: 6.0.0
       node-pid-controller: 1.0.1
       resizelistener: 1.1.0
       tinycolor2: 1.6.0
@@ -6171,9 +6172,9 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@neo4j-nvl/interaction-handlers@1.0.0(neo4j-driver@5.28.2)':
+  '@neo4j-nvl/interaction-handlers@1.0.0(neo4j-driver@6.0.0)':
     dependencies:
-      '@neo4j-nvl/base': 1.0.0(neo4j-driver@5.28.2)
+      '@neo4j-nvl/base': 1.0.0(neo4j-driver@6.0.0)
       concaveman: 1.2.1
       lodash: 4.17.21
     transitivePeerDependencies:
@@ -6188,10 +6189,10 @@ snapshots:
       cytoscape-cose-bilkent: 4.1.0(cytoscape@3.32.0)
       graphlib: 2.1.8
 
-  '@neo4j-nvl/react@1.0.0(neo4j-driver@5.28.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@neo4j-nvl/react@1.0.0(neo4j-driver@6.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@neo4j-nvl/base': 1.0.0(neo4j-driver@5.28.2)
-      '@neo4j-nvl/interaction-handlers': 1.0.0(neo4j-driver@5.28.2)
+      '@neo4j-nvl/base': 1.0.0(neo4j-driver@6.0.0)
+      '@neo4j-nvl/interaction-handlers': 1.0.0(neo4j-driver@6.0.0)
       lodash: 4.17.21
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -6201,7 +6202,7 @@ snapshots:
 
   '@neo4j/cypher-builder@2.8.1': {}
 
-  '@neo4j/graphql@7.3.0(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@5.28.2)':
+  '@neo4j/graphql@7.3.0(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)(graphql@16.11.0)(neo4j-driver@6.0.0)':
     dependencies:
       '@apollo/subgraph': 2.11.0(graphql@16.11.0)
       '@as-integrations/express4': 1.1.2(@apollo/server@5.0.0(graphql@16.11.0))(express@4.21.2)
@@ -6219,7 +6220,7 @@ snapshots:
       graphql-query-complexity: 1.1.0(graphql@16.11.0)
       graphql-relay: 0.10.2(graphql@16.11.0)
       jose: 5.10.0
-      neo4j-driver: 5.28.2
+      neo4j-driver: 6.0.0
       pluralize: 8.0.0
       semver: 7.7.2
       typescript-memoize: 1.1.1
@@ -6228,11 +6229,11 @@ snapshots:
       - express
       - supports-color
 
-  '@neo4j/introspector@5.0.1(neo4j-driver@5.28.2)':
+  '@neo4j/introspector@5.0.1(neo4j-driver@6.0.0)':
     dependencies:
       camelcase: 6.3.0
       debug: 4.4.1
-      neo4j-driver: 5.28.2
+      neo4j-driver: 6.0.0
       pluralize: 8.0.0
     transitivePeerDependencies:
       - supports-color
@@ -9967,18 +9968,18 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  neo4j-driver-bolt-connection@5.28.2:
+  neo4j-driver-bolt-connection@6.0.0:
     dependencies:
       buffer: 6.0.3
-      neo4j-driver-core: 5.28.2
+      neo4j-driver-core: 6.0.0
       string_decoder: 1.3.0
 
-  neo4j-driver-core@5.28.2: {}
+  neo4j-driver-core@6.0.0: {}
 
-  neo4j-driver@5.28.2:
+  neo4j-driver@6.0.0:
     dependencies:
-      neo4j-driver-bolt-connection: 5.28.2
-      neo4j-driver-core: 5.28.2
+      neo4j-driver-bolt-connection: 6.0.0
+      neo4j-driver-core: 6.0.0
       rxjs: 7.8.2
 
   new-date@1.0.3:
