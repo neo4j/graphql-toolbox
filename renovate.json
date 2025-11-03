@@ -17,7 +17,7 @@
         "**/tests/**",
         "**/__fixtures__/**"
     ],
-    "ignoreDeps": ["neo4j", "@graphiql/plugin-doc-explorer", "@​graphiql/react", "@codemirror/lint"],
+    "ignoreDeps": ["neo4j", "@graphiql/plugin-doc-explorer", "@​graphiql/react"],
     "packageRules": [
         {
             "matchDatasources": ["npm"],
