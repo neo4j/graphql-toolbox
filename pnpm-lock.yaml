@@ -63,8 +63,8 @@ importers:
         specifier: 3.9.24
         version: 3.9.24(@babel/runtime@7.27.6)(@neo4j-ndl/base@3.7.36)(@tanstack/react-table@8.21.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@types/react@19.2.3)(neo4j-driver@6.0.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@neo4j/graphql':
-        specifier: 7.3.0
-        version: 7.3.0(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)
+        specifier: 7.3.1
+        version: 7.3.1(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)
       '@neo4j/introspector':
         specifier: 5.0.1
         version: 5.0.1(neo4j-driver@6.0.1)
@@ -991,12 +991,12 @@ packages:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
 
-  '@neo4j/cypher-builder@2.8.1':
-    resolution: {integrity: sha512-gKbA24SO+H56PmGNbIshrd/lNMk/1kWBNWpxHQjpKxdMgXyH5c1xjaPuQxjxYW9/0ca5IRz/9wZEvP4YSD+w9w==}
+  '@neo4j/cypher-builder@2.10.0':
+    resolution: {integrity: sha512-6R7X/OEc9Q2OzUUIHFeTTmXg6jOLyiYikc04NTGIE5sKhWRsySPpcx4dxrEWS9Qk+Ag8Wmv6aR5bKYuJm7YNvw==}
     engines: {node: '>=16.0.0'}
 
-  '@neo4j/graphql@7.3.0':
-    resolution: {integrity: sha512-h/uJIDSDbHu5/mbEsZWqB0yxASMtaa8JyNnAKtxL76SOnCsgLo/aj/fUXmRqp9pR3NpOBQkn+Ok98sBQFrouDw==}
+  '@neo4j/graphql@7.3.1':
+    resolution: {integrity: sha512-zmS4AUVicmgxs8x7npAadT6v41v8pJsMduJCBLjs8d4nFmCKL+Il8vuvewydRICtjEcUEYEyvU6l50HMAD0mMQ==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       graphql: ^16.0.0
@@ -6188,9 +6188,9 @@ snapshots:
       - encoding
       - neo4j-driver
 
-  '@neo4j/cypher-builder@2.8.1': {}
+  '@neo4j/cypher-builder@2.10.0': {}
 
-  '@neo4j/graphql@7.3.0(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)':
+  '@neo4j/graphql@7.3.1(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)':
     dependencies:
       '@apollo/subgraph': 2.11.0(graphql@16.12.0)
       '@as-integrations/express4': 1.1.2(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)
@@ -6198,9 +6198,9 @@ snapshots:
       '@graphql-tools/resolvers-composition': 7.0.18(graphql@16.12.0)
       '@graphql-tools/schema': 10.0.23(graphql@16.12.0)
       '@graphql-tools/utils': 10.9.1(graphql@16.12.0)
-      '@neo4j/cypher-builder': 2.8.1
+      '@neo4j/cypher-builder': 2.10.0
       camelcase: 6.3.0
-      debug: 4.4.1
+      debug: 4.4.3
       dot-prop: 6.0.1
       graphql: 16.12.0
       graphql-compose: 9.1.0(graphql@16.12.0)
