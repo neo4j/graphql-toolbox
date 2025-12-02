@@ -19,22 +19,21 @@
 
 import { forwardRef } from "react";
 
-import { IconButton } from "@neo4j-ndl/react";
+import { CleanIconButton } from "@neo4j-ndl/react";
 import { DragIcon } from "@neo4j-ndl/react/icons";
 
 export const DragHandle = forwardRef<HTMLButtonElement>(function DragHandle(props, ref) {
     const { ...rest } = props;
 
     return (
-        <IconButton
-            ariaLabel="Reorder favorite snippet"
+        <CleanIconButton
+            description="Reorder favorite snippet"
             ref={ref}
-            isClean
             size="small"
             style={{ cursor: "grab" }}
             {...rest}
         >
             <DragIcon />
-        </IconButton>
+        </CleanIconButton>
     );
 });

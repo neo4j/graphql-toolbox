@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { Button, Dialog } from "@neo4j-ndl/react";
+import { Dialog, FilledButton, OutlinedButton } from "@neo4j-ndl/react";
 
 interface DeleteFavoritesDialogProps {
     showConfirm: boolean;
@@ -31,14 +31,14 @@ export const DeleteFavoritesDialog = ({
     deleteSelectedFavorites,
 }: DeleteFavoritesDialogProps) => {
     return (
-        <Dialog isOpen={showConfirm} ndl-id="default-menu" type="danger">
+        <Dialog isOpen={showConfirm} ndl-id="default-menu" variant="danger">
             <Dialog.Header>Delete selected favorites?</Dialog.Header>
             <Dialog.Content>Deleting saved favorites can not be undone.</Dialog.Content>
             <Dialog.Actions>
-                <Button color="neutral" fill="outlined" onClick={() => setShowConfirm(false)} size="large">
+                <OutlinedButton variant="neutral" onClick={() => setShowConfirm(false)} size="large">
                     Cancel
-                </Button>
-                <Button
+                </OutlinedButton>
+                <FilledButton
                     onClick={() => {
                         deleteSelectedFavorites();
                         setShowConfirm(false);
@@ -46,7 +46,7 @@ export const DeleteFavoritesDialog = ({
                     size="large"
                 >
                     Delete
-                </Button>
+                </FilledButton>
             </Dialog.Actions>
         </Dialog>
     );

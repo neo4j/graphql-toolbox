@@ -8,6 +8,10 @@
   --color-dracula-dark: #282A36;
 }
 
+#root {
+    height: 100%;
+}
+
 /* ----------------------*/
 
 /* Login window */

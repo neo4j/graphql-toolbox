@@ -35,7 +35,7 @@ import type { ViewUpdate } from "@codemirror/view";
 import { drawSelection, dropCursor, highlightSpecialChars, keymap, lineNumbers } from "@codemirror/view";
 import { dracula, tomorrow } from "@mjfwebb/thememirror";
 import { tokens } from "@neo4j-ndl/base";
-import { Button, IconButton } from "@neo4j-ndl/react";
+import { CleanIconButton, OutlinedButton } from "@neo4j-ndl/react";
 import { PlayIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
 import { graphql as graphqlExtension } from "cm6-graphql";
@@ -201,37 +201,35 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
                 extension={Extension.GRAPHQL}
                 rightButtons={
                     <>
-                        <Button
+                        <OutlinedButton
                             aria-label="Prettify code"
                             className={classNames(
                                 "mr-2",
                                 theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"
                             )}
-                            color="neutral"
-                            fill="outlined"
+                            variant="neutral"
                             size="small"
                             onClick={formatTheCode}
                             isDisabled={loading}
                         >
                             Prettify
-                        </Button>
-                        <IconButton
+                        </OutlinedButton>
+                        <CleanIconButton
                             htmlAttributes={{
                                 "data-test-editor-query-button": "true",
                             }}
-                            ariaLabel="Execute query"
+                            description="Execute query"
                             style={{ height: "1.7rem" }}
                             className={classNames(theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark")}
-                            isClean
                             onClick={() => onSubmit()}
                             isDisabled={!schema || loading}
                         >
                             <PlayIconOutline
                                 style={{
-                                    color: tokens.colors.baltic[50],
+                                    color: tokens.palette.baltic[50],
                                 }}
                             />
-                        </IconButton>
+                        </CleanIconButton>
                     </>
                 }
                 borderRadiusTop={false}

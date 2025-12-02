@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-import type { TextInputProps } from "@neo4j-ndl/react";
 import { TextInput } from "@neo4j-ndl/react";
+import type { ComponentProps } from "react";
 
-export const FormInput = (props: TextInputProps) => {
+export const FormInput = (props: ComponentProps<typeof TextInput>) => {
     return <TextInput className="w-full" size="large" aria-label={props.htmlAttributes?.name} isFluid {...props} />;
 };

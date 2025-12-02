@@ -71,7 +71,7 @@ export const SchemaSettings = () => {
 
     return (
         <div className="pl-10 pr-6 py-6">
-            <span className="h5">Schema options</span>
+            <span className="n-title-3">Schema options</span>
             <div className="mb-1 mt-3 flex items-baseline">
                 <Checkbox
                     className="my-2"
@@ -122,7 +122,7 @@ export const SchemaSettings = () => {
             </div>
             <div className="mt-3 flex flex-col">
                 <div className="flex items-center">
-                    <span className="h5">Constraints</span>{" "}
+                    <span className="n-title-3">Constraints</span>
                     <InfoToolTip
                         text={
                             <span>
@@ -138,7 +138,7 @@ export const SchemaSettings = () => {
                         }
                     />
                 </div>
-                <div className="mt-2">
+                <div className="mt-2 flex flex-col">
                     <Radio
                         label="Check"
                         className="my-3"

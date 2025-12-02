@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { Button, Dialog } from "@neo4j-ndl/react";
+import { Dialog, OutlinedButton } from "@neo4j-ndl/react";
 
 interface Props {
     selectedDatabaseName: string | undefined;
@@ -32,7 +32,7 @@ export const SwitchDatabasePrompt = ({ selectedDatabaseName, onClose, onSwitchDa
             htmlAttributes={{
                 "data-test-switch-database-prompt": "true",
             }}
-            type="warning"
+            variant="warning"
             isOpen={!!selectedDatabaseName}
             onClose={() => onClose()}
         >
@@ -43,28 +43,26 @@ export const SwitchDatabasePrompt = ({ selectedDatabaseName, onClose, onSwitchDa
                 <p>To save the current editor content, cancel this prompt and save the editor content as a favorite.</p>
             </Dialog.Description>
             <Dialog.Actions className="flex w-full">
-                <Button
+                <OutlinedButton
                     htmlAttributes={{
                         "data-test-switch-database-prompt-cancel": "true",
                     }}
-                    fill="outlined"
-                    color="neutral"
+                    variant="neutral"
                     aria-label="Close switch database prompt"
                     onClick={() => onClose()}
                 >
                     Cancel
-                </Button>
-                <Button
+                </OutlinedButton>
+                <OutlinedButton
                     htmlAttributes={{
                         "data-test-switch-database-prompt-switch-db": "true",
                     }}
-                    fill="outlined"
-                    color="neutral"
+                    variant="neutral"
                     aria-label="Switch database"
                     onClick={() => onSwitchDatabase()}
                 >
                     Switch to database: {selectedDatabaseName}
-                </Button>
+                </OutlinedButton>
             </Dialog.Actions>
         </Dialog>
     );

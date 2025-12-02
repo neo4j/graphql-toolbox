@@ -33,7 +33,7 @@ import { restrictToVerticalAxis, restrictToWindowEdges } from "@dnd-kit/modifier
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { tokens } from "@neo4j-ndl/base";
-import { IconButton } from "@neo4j-ndl/react";
+import { CleanIconButton } from "@neo4j-ndl/react";
 import { ArrowDownTrayIconOutline, StarIconOutline, TrashIconOutline } from "@neo4j-ndl/react/icons";
 import classNames from "classnames";
 import type { JSX } from "react";
@@ -119,7 +119,7 @@ export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
                     <StarIconOutline
                         className="h-5 w-5 mx-1"
                         style={{
-                            color: tokens.colors.neutral[60],
+                            color: tokens.palette.neutral[60],
                         }}
                     />{" "}
                     to save type
@@ -196,29 +196,26 @@ export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
                 showConfirm={showConfirm}
                 setShowConfirm={setShowConfirm}
             />
-
             <div className="flex flex-col w-full pl-4 pr-5 pt-6">
                 <div className="flex h-9 justify-between">
                     <span className="h5 pl-6">Favorites</span>{" "}
                     <div>
-                        <IconButton
-                            ariaLabel="Download selected favorites"
+                        <CleanIconButton
+                            description="Download selected favorites"
                             className="border-none h-5 w-5 ml-3"
-                            isClean
                             isDisabled={selectedFavorites.length === 0}
                             onClick={() => downloadSelectedFavorites()}
                         >
                             <ArrowDownTrayIconOutline />
-                        </IconButton>
-                        <IconButton
-                            ariaLabel="Delete selected favorites"
+                        </CleanIconButton>
+                        <CleanIconButton
+                            description="Delete selected favorites"
                             className="border-none h-5 w-5 text-hibiscus-45 ml-3"
-                            isClean
                             isDisabled={selectedFavorites.length === 0}
                             onClick={() => setShowConfirm(true)}
                         >
                             <TrashIconOutline />
-                        </IconButton>
+                        </CleanIconButton>
                     </div>
                 </div>
                 {favorites?.length ? (

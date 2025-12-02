@@ -4,7 +4,6 @@ module.exports = {
         extend: {
             height: {
                 "login-container": "calc(100vh - 2rem)",
-                "content-container": "calc(100vh - 9rem)",
                 "content-docs-container": "calc(100vh - 9rem - 10px)",
             },
             width: {

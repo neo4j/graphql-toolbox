@@ -36,32 +36,30 @@ export const ViewSelector = ({ hasSchema }: Props) => {
     };
 
     return (
-        <>
-            <Tabs className="h-12 pl-4" fill="underline" onChange={handleOnScreenChange} value={screen.view.toString()}>
-                <Tabs.Tab
-                    htmlAttributes={{
-                        "data-test-view-selector-type-defs": "true",
-                    }}
-                    tabId={Screen.TYPEDEFS.toString()}
-                >
-                    Type definitions
-                </Tabs.Tab>
-                <Tooltip placement="right" type="simple">
-                    <Tooltip.Trigger>
-                        <Tabs.Tab
-                            htmlAttributes={{
-                                "data-test-view-selector-editor": "true",
-                            }}
-                            tabId={Screen.EDITOR.toString()}
-                            as="div"
-                            isDisabled={!hasSchema}
-                        >
-                            Query editor
-                        </Tabs.Tab>
-                    </Tooltip.Trigger>
-                    {!hasSchema && <Tooltip.Content>Build the schema to use the Query editor</Tooltip.Content>}
-                </Tooltip>
-            </Tabs>
-        </>
+        <Tabs fill="underline" onChange={handleOnScreenChange} value={screen.view.toString()} className="pt-3">
+            <Tabs.Tab
+                htmlAttributes={{
+                    "data-test-view-selector-type-defs": "true",
+                }}
+                id={Screen.TYPEDEFS.toString()}
+            >
+                Type definitions
+            </Tabs.Tab>
+            <Tooltip placement="right" type="simple">
+                <Tooltip.Trigger>
+                    <Tabs.Tab
+                        htmlAttributes={{
+                            "data-test-view-selector-editor": "true",
+                        }}
+                        id={Screen.EDITOR.toString()}
+                        as="div"
+                        isDisabled={!hasSchema}
+                    >
+                        Query editor
+                    </Tabs.Tab>
+                </Tooltip.Trigger>
+                {!hasSchema && <Tooltip.Content>Build the schema to use the Query editor</Tooltip.Content>}
+            </Tooltip>
+        </Tabs>
     );
 };

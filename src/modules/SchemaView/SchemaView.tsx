@@ -23,6 +23,7 @@ import type { EditorView } from "@codemirror/view";
 import { Neo4jGraphQL } from "@neo4j/graphql";
 import { toGraphQLTypeDefs } from "@neo4j/introspector";
 import { Banner } from "@neo4j-ndl/react";
+import classNames from "classnames";
 import { updateSchema } from "cm6-graphql";
 import type { GraphQLError, GraphQLSchema } from "graphql";
 import * as neo4j from "neo4j-driver";
@@ -214,7 +215,7 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
     };
 
     return (
-        <div className="w-full flex">
+        <div className="h-full w-full flex">
             {auth.showIntrospectionPrompt ? (
                 <IntrospectionPrompt
                     open={showIntrospectionModal}
@@ -235,9 +236,9 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                     }}
                 />
             ) : null}
-            <div className={`flex flex-col ${showRightPanel ? "w-content-container" : "w-full"}`}>
-                <div className="flex">
-                    <div className="h-content-container flex justify-start w-96 bg-neutral-10 border-t border-neutral-20 overflow-y-auto">
+            <div className={classNames("flex flex-col", showRightPanel ? "w-content-container" : "w-full")}>
+                <div className="h-full flex">
+                    <div className="flex justify-start w-96 bg-neutral-10 border-t border-neutral-20 overflow-y-auto">
                         <div className="w-full">
                             <SchemaSettings />
                             <hr className="border-neutral-20" />
@@ -261,26 +262,28 @@ export const SchemaView = ({ onSchemaChange }: Props) => {
                                 <Banner
                                     className="absolute bottom-7 ml-4 w-[44rem] z-[60]"
                                     isCloseable
-                                    name="ProductUsageMessage"
-                                    title={<strong>Product analytics</strong>}
-                                    description={
-                                        <>
-                                            <p>
-                                                To help make the Neo4j GraphQL Toolbox better we collect data on product
-                                                usage.
-                                            </p>
-                                            <p>Review your settings at any time.</p>
-                                        </>
-                                    }
                                     onClose={() => appSettings.setHideProductUsageMessage(true)}
-                                />
+                                >
+                                    <Banner.Header>{<strong>Product analytics</strong>}</Banner.Header>
+                                    <Banner.Description>
+                                        {
+                                            <>
+                                                <p>
+                                                    To help make the Neo4j GraphQL Toolbox better we collect data on
+                                                    product usage.
+                                                </p>
+                                                <p>Review your settings at any time.</p>
+                                            </>
+                                        }
+                                    </Banner.Description>
+                                </Banner>
                             ) : null}
                         </div>
                     </div>
                 </div>
             </div>
             {showRightPanel ? (
-                <div className="h-content-container flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-40">
+                <div className="flex justify-start w-96 bg-neutral-10 border-l border-neutral-20 z-40">
                     {settings.isShowHelpDrawer ? (
                         <HelpDrawer onClickClose={() => settings.setIsShowHelpDrawer(false)} />
                     ) : null}

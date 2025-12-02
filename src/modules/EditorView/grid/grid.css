@@ -3,6 +3,7 @@
   bottom: 0;
   right: 0;
   width: 15px;
+  height: 100%;
   background-color: transparent;
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -15,6 +16,7 @@
   left: 0;
   top: 0;
   height: 15px;
+  width: 100%;
   background-color: transparent;
   background-repeat: no-repeat;
   background-origin: content-box;

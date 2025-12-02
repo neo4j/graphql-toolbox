@@ -129,7 +129,7 @@ export const EditorView = ({ schema }: Props) => {
                                             buttonStyle: {
                                                 display: "block",
                                                 fontWeight: "bold",
-                                                backgroundColor: tokens.colors.neutral[40],
+                                                backgroundColor: tokens.palette.neutral[40],
                                                 margin: "5px 5px 5px 10px",
                                             },
                                             explorerActionsStyle: {
@@ -158,7 +158,7 @@ export const EditorView = ({ schema }: Props) => {
                         </div>
                     ) : null}
 
-                    <div className="w-content-container h-content-container flex flex-col justify-start p-4">
+                    <div className="w-content-container flex flex-col justify-start p-4">
                         <EditorTabs />
                         <Grid
                             queryEditor={

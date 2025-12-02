@@ -19,7 +19,7 @@
 
 import { useCallback, useContext, useState } from "react";
 
-import { Banner, Button, Tooltip } from "@neo4j-ndl/react";
+import { Banner, FilledButton, Tooltip } from "@neo4j-ndl/react";
 import { ExclamationTriangleIconOutline } from "@neo4j-ndl/react/icons";
 import type { JSX } from "react";
 
@@ -82,14 +82,10 @@ export const Login = () => {
                 <h2 className="h2 text-3xl text-center mt-16 mb-8">Neo4j GraphQL Toolbox</h2>
 
                 {error && (
-                    <Banner
-                        className="mb-8"
-                        title="Neo4j Error"
-                        description={error}
-                        hasIcon
-                        type="danger"
-                        isCloseable={false}
-                    />
+                    <Banner className="mb-8" hasIcon variant="danger" isCloseable={false}>
+                        <Banner.Header>Neo4j Error</Banner.Header>
+                        <Banner.Description>{error}</Banner.Description>
+                    </Banner>
                 )}
 
                 <form onSubmit={onSubmit} className="flex flex-col items-center gap-4 mt-auto mb-24">
@@ -154,19 +150,18 @@ export const Login = () => {
                         isDisabled={loading}
                     />
 
-                    <Button
+                    <FilledButton
                         htmlAttributes={{
                             "data-test-login-button": "true",
                         }}
                         className="w-60 mt-8"
-                        fill="filled"
                         type="submit"
                         size="large"
                         isLoading={loading}
                         isDisabled={loading || !url || !username || !password}
                     >
                         Connect
-                    </Button>
+                    </FilledButton>
                 </form>
             </div>
         </div>

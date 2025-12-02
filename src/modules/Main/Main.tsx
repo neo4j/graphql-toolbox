@@ -92,7 +92,7 @@ export const Main = () => {
         return (
             <div className="flex">
                 <div className="flex w-full h-full flex-col">
-                    <Banner />
+                    <Banner></Banner>
                     <Login />
                 </div>
             </div>
@@ -104,11 +104,11 @@ export const Main = () => {
             <EditorContextProvider>
                 <StorageContextProvider>
                     <NeedleThemeProvider theme="dark">
-                        <Banner />
+                        <Banner></Banner>
                         <TopBar />
                     </NeedleThemeProvider>
                     <ViewSelector hasSchema={!!schema} />
-                    <div className="h-content-container w-full overflow-y-auto bg-neutral-15">
+                    <div className="h-full w-full overflow-y-auto bg-neutral-15">
                         {screen.view === Screen.TYPEDEFS ? (
                             <SchemaView
                                 onSchemaChange={(schema) => {

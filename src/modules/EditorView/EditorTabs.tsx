@@ -46,7 +46,7 @@ export const EditorTabs = () => {
         tracking.trackAddQueryTab({ screen: Screen.EDITOR });
     };
 
-    const handleCloseTab = (event: React.MouseEvent<SVGSVGElement, MouseEvent>, idx: number) => {
+    const handleCloseTab = (event: React.MouseEvent<HTMLElement, MouseEvent>, idx: number) => {
         event.stopPropagation();
         closeTab(idx);
         tracking.trackDeleteQueryTab({ screen: Screen.EDITOR });
@@ -59,58 +59,57 @@ export const EditorTabs = () => {
             value={useStore.getState().activeTabIndex.toString()}
             onChange={handleTabsChange}
             className={classNames(
-                "w-full h-12 pt-2 px-1 mb-[0.1rem] overflow-x-auto whitespace-nowrap rounded-t-xl border-b-0 z-0",
+                "w-full pt-2 px-1 overflow-hidden whitespace-nowrap rounded-t-xl border-b-0 z-0",
                 theme.theme === Theme.LIGHT ? "bg-neutral-10" : "bg-draculaDark"
             )}
         >
             {useStore.getState().tabs?.map((tab, idx) => {
                 return (
                     <Tabs.Tab
-                        htmlAttributes={{
-                            "data-test-query-editor-tab": tab.title,
-                        }}
                         key={idx.toString()}
-                        tabId={idx.toString()}
+                        id={idx.toString()}
                         className={theme.theme === Theme.LIGHT ? "ndl-theme-light" : "ndl-theme-dark"}
                     >
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-center items-center" data-test-query-editor-tab={tab.title}>
                             <span className="truncate" style={{ maxWidth: "7rem" }} title={tab.title}>
                                 {tab.title}
                             </span>
 
                             {useStore.getState().tabs.length > 1 && (
-                                <XMarkIconOutline
-                                    data-test-close-icon-query-editor-tab
-                                    className={classNames(
-                                        "h-5 w-5 ml-2",
-                                        theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "hover:bg-neutral-50"
-                                    )}
+                                <button
+                                    data-test-close-icon-query-editor-tab="true"
                                     aria-label="Close Icon"
                                     onClick={(event) => {
                                         handleCloseTab(event, idx);
                                     }}
-                                />
+                                    className="flex items-center bg-transparent border-0 p-0 cursor-pointer"
+                                >
+                                    <XMarkIconOutline
+                                        className={classNames(
+                                            "h-5 w-5 ml-2",
+                                            theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "hover:bg-neutral-50"
+                                        )}
+                                    />
+                                </button>
                             )}
                         </div>
                     </Tabs.Tab>
                 );
             })}
-            <Tabs.Tab
-                htmlAttributes={{
-                    "data-test-new-query-editor-tab": "true",
-                }}
-                key="new"
-                tabId="new"
-                className="vertical-align-bottom"
-            >
-                <PlusIconOutline
-                    className={classNames(
-                        "h-5 w-5",
-                        theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "text-neutral-10 hover:bg-neutral-50"
-                    )}
+            <Tabs.Tab key="new" id="new" className="vertical-align-bottom">
+                <button
+                    data-test-new-query-editor-tab="true"
                     aria-label="Add tab Icon"
                     onClick={handleAddTab}
-                />
+                    className="flex items-center bg-transparent border-0 p-0 cursor-pointer"
+                >
+                    <PlusIconOutline
+                        className={classNames(
+                            "h-5 w-5",
+                            theme.theme === Theme.LIGHT ? "hover:bg-neutral-10" : "text-neutral-10 hover:bg-neutral-50"
+                        )}
+                    />
+                </button>
             </Tabs.Tab>
         </Tabs>
     );

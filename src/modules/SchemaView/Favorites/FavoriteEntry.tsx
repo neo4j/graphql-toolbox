@@ -20,7 +20,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { tokens } from "@neo4j-ndl/base";
-import { Checkbox, IconButton, TextInput } from "@neo4j-ndl/react";
+import { Checkbox, CleanIconButton, TextInput } from "@neo4j-ndl/react";
 import { CheckIconOutline, PencilIconOutline, PlayCircleIconOutline } from "@neo4j-ndl/react/icons";
 import type { JSX } from "react";
 
@@ -99,40 +99,37 @@ export const FavoriteEntry = ({ dragHandle, onSelectFavorite, favorite, updateNa
                     <Checkbox
                         onChange={handleCheckboxChange}
                         isChecked={useFavoritesStore.getState().selectedFavorites.includes(favorite.id)}
-                        className="w-full"
                         label={favorite.name}
                     />
                 )}
             </div>
-
-            <IconButton
-                ariaLabel="Delete favorite"
-                isClean
+            <CleanIconButton
+                description="Delete favorite"
                 onClick={() => onSelectFavorite(favorite.typeDefs)}
-                onKeyDown={() => onSelectFavorite(favorite.typeDefs)}
                 className="show-on-hover"
             >
-                <PlayCircleIconOutline color={tokens.colors.baltic[50]} />
-            </IconButton>
-
+                <PlayCircleIconOutline
+                    htmlAttributes={{
+                        color: tokens.palette.baltic[50],
+                    }}
+                />
+            </CleanIconButton>
             {editMode ? (
-                <IconButton
-                    ariaLabel="Finish editing favorite name"
+                <CleanIconButton
+                    description="Finish editing favorite name"
                     className={`show-on-hover border-none h-5 w-5`}
-                    isClean
                     onClick={() => finishEditingName()}
                 >
                     <CheckIconOutline />
-                </IconButton>
+                </CleanIconButton>
             ) : (
-                <IconButton
-                    ariaLabel="Edit favorite name"
+                <CleanIconButton
+                    description="Edit favorite name"
                     className={`show-on-hover border-none h-5 w-5`}
-                    isClean
                     onClick={() => setEditMode(true)}
                 >
                     <PencilIconOutline />
-                </IconButton>
+                </CleanIconButton>
             )}
         </li>
     );
