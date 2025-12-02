@@ -65,20 +65,22 @@ export const AppSettings = ({ onClickClose }: Props) => {
             <div>
                 <span className="h6">Editors</span>
                 <div className="pt-3">
-                    <Radio
-                        htmlAttributes={{ id: Theme.LIGHT.toString() }}
-                        className="cursor-pointer"
-                        label="Light theme"
-                        isChecked={theme.theme === Theme.LIGHT}
-                        onChange={handleOnChangeEditorTheme}
-                    />
-                    <Radio
-                        htmlAttributes={{ id: Theme.DARK.toString() }}
-                        className="cursor-pointer"
-                        label="Dark theme"
-                        isChecked={theme.theme === Theme.DARK}
-                        onChange={handleOnChangeEditorTheme}
-                    />
+                    <div className="flex flex-col">
+                        <Radio
+                            htmlAttributes={{ id: Theme.LIGHT.toString() }}
+                            className="cursor-pointer"
+                            label="Light theme"
+                            isChecked={theme.theme === Theme.LIGHT}
+                            onChange={handleOnChangeEditorTheme}
+                        />
+                        <Radio
+                            htmlAttributes={{ id: Theme.DARK.toString() }}
+                            className="cursor-pointer"
+                            label="Dark theme"
+                            isChecked={theme.theme === Theme.DARK}
+                            onChange={handleOnChangeEditorTheme}
+                        />
+                    </div>
                     <div className="mt-3">
                         <Checkbox
                             htmlAttributes={{

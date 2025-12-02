@@ -36,7 +36,7 @@ export const ViewSelector = ({ hasSchema }: Props) => {
     };
 
     return (
-        <Tabs fill="underline" onChange={handleOnScreenChange} value={screen.view.toString()}>
+        <Tabs fill="underline" onChange={handleOnScreenChange} value={screen.view.toString()} className="pt-3">
             <Tabs.Tab
                 htmlAttributes={{
                     "data-test-view-selector-type-defs": "true",

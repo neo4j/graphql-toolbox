@@ -158,7 +158,7 @@ export const EditorView = ({ schema }: Props) => {
                         </div>
                     ) : null}
 
-                    <div className="w-content-container h-content-container flex flex-col justify-start p-4">
+                    <div className="w-content-container flex flex-col justify-start p-4">
                         <EditorTabs />
                         <Grid
                             queryEditor={

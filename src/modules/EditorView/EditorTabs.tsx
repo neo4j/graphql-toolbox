@@ -59,7 +59,7 @@ export const EditorTabs = () => {
             value={useStore.getState().activeTabIndex.toString()}
             onChange={handleTabsChange}
             className={classNames(
-                "w-full h-12 pt-2 px-1 mb-[0.1rem] overflow-x-auto whitespace-nowrap rounded-t-xl border-b-0 z-0",
+                "w-full pt-2 px-1 overflow-hidden whitespace-nowrap rounded-t-xl border-b-0 z-0",
                 theme.theme === Theme.LIGHT ? "bg-neutral-10" : "bg-draculaDark"
             )}
         >

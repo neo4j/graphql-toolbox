@@ -108,7 +108,7 @@ export const Main = () => {
                         <TopBar />
                     </NeedleThemeProvider>
                     <ViewSelector hasSchema={!!schema} />
-                    <div className="h-content-container w-full overflow-y-auto bg-neutral-15">
+                    <div className="h-full w-full overflow-y-auto bg-neutral-15">
                         {screen.view === Screen.TYPEDEFS ? (
                             <SchemaView
                                 onSchemaChange={(schema) => {

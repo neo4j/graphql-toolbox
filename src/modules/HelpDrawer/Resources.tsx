@@ -157,7 +157,8 @@ const ResourceLinksBlock = ({ listBlockTitle, links, screen }: ResourceLinksBloc
                                             tabIndex: 0,
                                             "data-canny-changelog": "true",
                                         }}
-                                        type="internal">
+                                        type="internal"
+                                    >
                                         <p className="p-0 m-0">{link.label}</p>
                                     </TextLink>
                                 </div>
