@@ -40,28 +40,34 @@ export function ThemeProvider(props: React.PropsWithChildren) {
             return editorTheme === Theme.LIGHT.toString() ? Theme.LIGHT : Theme.DARK;
         }
 
-        return Theme.DARK;
+        // If no theme is saved, use system preference
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.DARK : Theme.LIGHT;
     };
 
-    const [value, setValue] = useState<State>({
-        theme: loadEditorTheme(),
-        setTheme: (theme: Theme) => _setTheme(theme),
-    });
+    const [theme, setThemeState] = useState<Theme>(loadEditorTheme());
+
+    const setTheme = (newTheme: Theme) => {
+        setThemeState(newTheme);
+        useStore.setState({ editorTheme: newTheme.toString() });
+    };
 
     // Automatically detect if the user changed the color scheme/theme, also on OS level.
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-        _setTheme(event.matches ? Theme.DARK : Theme.LIGHT);
-    });
-
     useEffect(() => {
-        if (!useStore.getState().editorTheme) {
-            _setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? Theme.DARK : Theme.LIGHT);
-        }
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const handleChange = (event: MediaQueryListEvent) => {
+            setTheme(event.matches ? Theme.DARK : Theme.LIGHT);
+        };
+
+        mediaQuery.addEventListener("change", handleChange);
+
+        return () => {
+            mediaQuery.removeEventListener("change", handleChange);
+        };
     }, []);
 
-    const _setTheme = (theme: Theme) => {
-        setValue((values) => ({ ...values, theme }));
-        useStore.setState({ editorTheme: theme.toString() });
+    const value: State = {
+        theme,
+        setTheme,
     };
 
     return <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>;

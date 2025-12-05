@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import * as neo4j from "neo4j-driver";
 
@@ -59,83 +59,101 @@ export interface State {
 export const AuthContext = React.createContext({} as State);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    let intervalId: number;
+    const intervalIdRef = useRef<number | undefined>(undefined);
     const store = useStore();
     const sessionStore = useSessionStore();
 
-    const [value, setValue] = useState<State>({
-        login: async (options: LoginOptions) => {
+    const [driver, setDriver] = useState<neo4j.Driver | undefined>();
+    const [connectUrl, setConnectUrl] = useState<string | undefined>();
+    const [username, setUsername] = useState<string | undefined>();
+    const [isConnected, setIsConnected] = useState<boolean | undefined>();
+    const [isNeo4jDesktop, setIsNeo4jDesktop] = useState<boolean | undefined>();
+    const [databases, setDatabases] = useState<Neo4jDatabase[] | undefined>();
+    const [databaseInformation, setDatabaseInformation] = useState<Neo4jDatabaseInfo | undefined>();
+    const [selectedDatabaseName, setSelectedDatabaseNameState] = useState<string | undefined>();
+    const [showIntrospectionPrompt, setShowIntrospectionPrompt] = useState<boolean | undefined>();
+
+    const checkForDatabaseUpdates = useCallback(async (driver: neo4j.Driver) => {
+        try {
+            await driver.verifyConnectivity();
+            const databases = await getDatabases(driver);
+            setIsConnected(true);
+            setDatabases(databases || []);
+        } catch {
+            setIsConnected(false);
+        }
+    }, []);
+
+    const login = useCallback(
+        async (options: LoginOptions) => {
             const auth = neo4j.auth.basic(options.username, options.password);
             const protocol = getURLProtocolFromText(options.url);
             sessionStore.setAuraDbId(getAuraDBIdFromText(options.url));
             // Manually set the encryption to off if it's not specified in the Connection URI to avoid implicit encryption in https domain
-            const driver = protocol.includes("+s")
+            const newDriver = protocol.includes("+s")
                 ? neo4j.driver(options.url, auth)
                 : neo4j.driver(options.url, auth, { encrypted: "ENCRYPTION_OFF" });
 
-            await driver.verifyConnectivity();
+            await newDriver.verifyConnectivity();
 
-            const databases = await getDatabases(driver);
-            const databaseInformation = await getDatabaseInformation(driver);
-            const selectedDatabaseName = resolveSelectedDatabaseName(databases || []);
+            const dbs = await getDatabases(newDriver);
+            const dbInfo = await getDatabaseInformation(newDriver);
+            const selectedDb = resolveSelectedDatabaseName(dbs || []);
 
             let isShowIntrospectionPrompt = false;
             if (!store.hideIntrospectionPrompt) {
-                isShowIntrospectionPrompt = await checkDatabaseHasData(driver, selectedDatabaseName);
+                isShowIntrospectionPrompt = await checkDatabaseHasData(newDriver, selectedDb);
                 store.setHideIntrospectionPrompt(true);
             }
 
             store.setConnectionUsername(options.username);
             store.setConnectionUrl(options.url);
 
-            intervalId = window.setInterval(async () => {
-                await checkForDatabaseUpdates(driver, setValue);
+            intervalIdRef.current = window.setInterval(async () => {
+                await checkForDatabaseUpdates(newDriver);
             }, VERIFY_CONNECTION_INTERVAL_MS);
 
-            setValue((values) => ({
-                ...values,
-                driver,
-                username: options.username,
-                connectUrl: options.url,
-                isConnected: true,
-                showIntrospectionPrompt: isShowIntrospectionPrompt,
-                databases,
-                databaseInformation,
-                selectedDatabaseName,
-            }));
+            setDriver(newDriver);
+            setUsername(options.username);
+            setConnectUrl(options.url);
+            setIsConnected(true);
+            setShowIntrospectionPrompt(isShowIntrospectionPrompt);
+            setDatabases(dbs);
+            setDatabaseInformation(dbInfo);
+            setSelectedDatabaseNameState(selectedDb);
         },
-        logout: () => {
-            store.setConnectionUsername(null);
-            store.setConnectionUrl(null);
-            store.setHideIntrospectionPrompt(false);
-            sessionStore.clearAuraDbId();
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
+        [store, sessionStore, checkForDatabaseUpdates]
+    );
 
-            setValue((values) => ({
-                ...values,
-                driver: undefined,
-                connectUrl: undefined,
-                isConnected: false,
-                showIntrospectionPrompt: false,
-            }));
-        },
-        setSelectedDatabaseName: (databaseName: string) => {
+    const logout = useCallback(() => {
+        store.setConnectionUsername(null);
+        store.setConnectionUrl(null);
+        store.setHideIntrospectionPrompt(false);
+        sessionStore.clearAuraDbId();
+        if (intervalIdRef.current) {
+            clearInterval(intervalIdRef.current);
+        }
+
+        setDriver(undefined);
+        setConnectUrl(undefined);
+        setIsConnected(false);
+        setShowIntrospectionPrompt(false);
+    }, [store, sessionStore]);
+
+    const setSelectedDatabaseName = useCallback(
+        (databaseName: string) => {
             store.setSelectedDatabaseName(databaseName);
-            setValue((values) => ({ ...values, selectedDatabaseName: databaseName }));
+            setSelectedDatabaseNameState(databaseName);
         },
-        setShowIntrospectionPrompt: (nextState: boolean) => {
-            setValue((values) => ({ ...values, showIntrospectionPrompt: nextState }));
-        },
-    });
+        [store]
+    );
 
     const processLoginPayload = useCallback(
-        (value: State | undefined, loginPayloadFromDesktop: LoginPayload | null) => {
+        (loginPayloadFromDesktop: LoginPayload | null) => {
             let loginPayload: LoginPayload | null = null;
             if (loginPayloadFromDesktop) {
                 loginPayload = loginPayloadFromDesktop;
-                setValue((values) => ({ ...values, isNeo4jDesktop: true }));
+                setIsNeo4jDesktop(true);
             } else {
                 if (store.connectionUrl && store.connectionUsername) {
                     loginPayload = {
@@ -144,35 +162,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     };
                 }
             }
-            if (loginPayload?.password && value && !value.driver) {
-                value
-                    .login({
-                        username: loginPayload.username,
-                        password: loginPayload.password,
-                        url: loginPayload.url,
-                    })
-                    .catch((error) => console.log(error));
+            if (loginPayload?.password && !driver) {
+                login({
+                    username: loginPayload.username,
+                    password: loginPayload.password,
+                    url: loginPayload.url,
+                }).catch((error) => console.log(error));
             }
         },
-        [store.connectionUrl, store.connectionUsername]
+        [store.connectionUrl, store.connectionUsername, driver, login]
     );
 
     useEffect(() => {
-        resolveNeo4jDesktopLoginPayload().then(processLoginPayload.bind(null, value)).catch(console.error);
-    }, [processLoginPayload, value]);
+        resolveNeo4jDesktopLoginPayload().then(processLoginPayload).catch(console.error);
+    }, [processLoginPayload]);
 
-    const checkForDatabaseUpdates = async (
-        driver: neo4j.Driver,
-        setValue: React.Dispatch<React.SetStateAction<State>>
-    ) => {
-        try {
-            await driver.verifyConnectivity();
-            const databases = await getDatabases(driver);
-            setValue((values) => ({ ...values, isConnected: true, databases: databases || [] }));
-        } catch {
-            setValue((values) => ({ ...values, isConnected: false }));
-        }
-    };
-
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider
+            value={{
+                driver,
+                connectUrl,
+                username,
+                isConnected,
+                isNeo4jDesktop,
+                databases,
+                databaseInformation,
+                selectedDatabaseName,
+                showIntrospectionPrompt,
+                login,
+                logout,
+                setSelectedDatabaseName,
+                setShowIntrospectionPrompt,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 }
