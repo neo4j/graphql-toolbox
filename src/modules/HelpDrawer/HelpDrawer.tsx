@@ -33,25 +33,25 @@ interface Props {
     schema?: GraphQLSchema;
 }
 
+const CannyFeedbackButton = ({ screen }: { screen: Screen }): JSX.Element => {
+    return (
+        <a
+            data-test-help-drawer-canny-button
+            className="flex justify-start items-center"
+            href="https://feedback.neo4j.com/graphql"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => tracking.trackHelpLearnFeatureLinks({ screen, actionLabel: "Send Feedback" })}
+        >
+            <ChatBubbleOvalLeftEllipsisIconOutline className="h-6 w-6 mr-2" />
+            <p className="p-0 m-0">Send feedback</p>
+        </a>
+    );
+};
+
 export const HelpDrawer = ({ onClickClose, schema }: Props) => {
     const screen = useContext(ScreenContext);
     const [showSubComponent, setShowSubComponent] = useState<boolean>(false);
-
-    const CannyFeedbackButton = ({ screen }: { screen: Screen }): JSX.Element => {
-        return (
-            <a
-                data-test-help-drawer-canny-button
-                className="flex justify-start items-center"
-                href="https://feedback.neo4j.com/graphql"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => tracking.trackHelpLearnFeatureLinks({ screen, actionLabel: "Send Feedback" })}
-            >
-                <ChatBubbleOvalLeftEllipsisIconOutline className="h-6 w-6 mr-2" />
-                <p className="p-0 m-0">Send feedback</p>
-            </a>
-        );
-    };
 
     return (
         <div className="w-full p-6 flex flex-col overflow-y-auto" data-test-help-drawer>

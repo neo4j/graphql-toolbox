@@ -46,26 +46,29 @@ export const Grid = ({ queryEditor, resultView, variablesEditor }: Props) => {
         defaultSizeRelation: 3,
     });
 
+    const { firstRef: editorFirstRef, dragBarRef: editorDragBarRef, secondRef: editorSecondRef } = editorResize;
+    const { firstRef: toolsFirstRef, dragBarRef: toolsDragBarRef, secondRef: toolsSecondRef } = editorToolsResize;
+
     return (
         <div className="flex w-full h-full">
             <div className="flex flex-1">
-                <div ref={editorResize.firstRef as React.RefObject<HTMLDivElement>}>
+                <div ref={editorFirstRef}>
                     <div className="flex flex-1 flex-col">
-                        <div ref={editorToolsResize.firstRef as React.RefObject<HTMLDivElement>}>
+                        <div ref={toolsFirstRef}>
                             <div className="w-full h-full">{queryEditor}</div>
                         </div>
-                        <div ref={editorToolsResize.dragBarRef as React.RefObject<HTMLDivElement>}>
+                        <div ref={toolsDragBarRef}>
                             <div className="vertical-drag-bar" style={{ backgroundImage: `url(${unionHorizontal})` }} />
                         </div>
-                        <div ref={editorToolsResize.secondRef as React.RefObject<HTMLDivElement>}>
+                        <div ref={toolsSecondRef}>
                             <div className="w-full h-full">{variablesEditor}</div>
                         </div>
                     </div>
                 </div>
-                <div ref={editorResize.dragBarRef as React.RefObject<HTMLDivElement>}>
+                <div ref={editorDragBarRef}>
                     <div className="horizontal-drag-bar" style={{ backgroundImage: `url(${unionVertical})` }} />
                 </div>
-                <div ref={editorResize.secondRef as React.RefObject<HTMLDivElement>}>
+                <div ref={editorSecondRef}>
                     <div className="w-full h-full">{resultView}</div>
                 </div>
             </div>

@@ -34,6 +34,26 @@ import { Login } from "../Login/Login";
 import { SchemaView } from "../SchemaView/SchemaView";
 import { TopBar } from "../TopBar/TopBar";
 
+const Banner = () => {
+    return (
+        <div className="h-8 w-full bg-lavender-45 text-neutral-10 text-center leading-8">
+            GraphQL for Neo4j AuraDB is now released.{` `}
+            <a
+                href="https://neo4j.com/docs/graphql/current/aura-graphql/"
+                className="underline"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => {
+                    tracking.trackBannerLinkClick();
+                }}
+            >
+                See Developer documentation for details
+            </a>
+            .
+        </div>
+    );
+};
+
 export const Main = () => {
     const auth = useContext(AuthContext);
     const screen = useContext(ScreenContext);
@@ -67,26 +87,6 @@ export const Main = () => {
                 window.CannyIsLoaded = false;
             });
     }, []);
-
-    const Banner = () => {
-        return (
-            <div className="h-8 w-full bg-lavender-45 text-neutral-10 text-center leading-8">
-                GraphQL for Neo4j AuraDB is now released.{` `}
-                <a
-                    href="https://neo4j.com/docs/graphql/current/aura-graphql/"
-                    className="underline"
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={() => {
-                        tracking.trackBannerLinkClick();
-                    }}
-                >
-                    See Developer documentation for details
-                </a>
-                .
-            </div>
-        );
-    };
 
     if (!auth.driver) {
         return (
