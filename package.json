@@ -91,7 +91,7 @@
         "@typescript-eslint/eslint-plugin": "8.48.1",
         "@typescript-eslint/parser": "8.48.1",
         "@vitejs/plugin-basic-ssl": "2.1.0",
-        "@vitejs/plugin-react": "5.1.1",
+        "@vitejs/plugin-react": "5.1.2",
         "cross-env": "10.1.0",
         "dotenv": "17.2.3",
         "eslint": "9.39.1",
