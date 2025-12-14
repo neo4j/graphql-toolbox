@@ -57,11 +57,11 @@ importers:
         specifier: 2.0.2
         version: 2.0.2(@codemirror/language@6.11.3)(@codemirror/state@6.5.2)(@codemirror/view@6.39.2)
       '@neo4j-ndl/base':
-        specifier: 4.2.3
-        version: 4.2.3
+        specifier: 4.2.4
+        version: 4.2.4
       '@neo4j-ndl/react':
-        specifier: 4.2.11
-        version: 4.2.11(@babel/runtime@7.28.4)(@neo4j-ndl/base@4.2.3)(@tanstack/react-table@8.21.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@types/mdast@4.0.4)(@types/react@19.2.7)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+        specifier: 4.2.12
+        version: 4.2.12(@babel/runtime@7.28.4)(@neo4j-ndl/base@4.2.4)(@tanstack/react-table@8.21.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@types/mdast@4.0.4)(@types/react@19.2.7)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@neo4j/graphql':
         specifier: 7.3.3
         version: 7.3.3(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)
@@ -400,10 +400,6 @@ packages:
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
-
-  '@babel/runtime@7.27.6':
-    resolution: {integrity: sha512-vbavdySgbTTrmFE+EsiqUTzlOr5bzlnJtUv9PynGCAKvfQqjIXbvFdumPM/GxMDfyuGMJaJAU6TO4zc1Jf1i8Q==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.28.4':
     resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
@@ -952,13 +948,13 @@ packages:
   '@neo4j-devtools/word-color@0.0.8':
     resolution: {integrity: sha512-0fC2PXU1M0wL72lVil/2JnUccpEoPaiNJsNAc8fgRUysVeZ/OLKFvZAeOnufJ4X5OKkImaL1lvoGyhfKfOKfzw==}
 
-  '@neo4j-ndl/base@4.2.3':
-    resolution: {integrity: sha512-tm2uLpVKz+V1x5CuZhI3BmHjXUsMWNu4iNQffXxx1TLXGRy8pL26PYoIjq6bDXWGIKozLVafPn2EGyhckiG8nQ==}
+  '@neo4j-ndl/base@4.2.4':
+    resolution: {integrity: sha512-70pP5gsMrivr1jrJHchpOe9eucwyI3q4g1+zTgWapSm46Mio08ouzlaQmakfgd0/D4n53snwATZV7thl8VuzqA==}
 
-  '@neo4j-ndl/react@4.2.11':
-    resolution: {integrity: sha512-nMmktdNVNvWt4U1cUaOdf/+fdvtAHaVw5dzi4BIxPaacKPzscpZSTOFk3bGsypvEeFDcjHAAqooCVKjtGDaC1A==}
+  '@neo4j-ndl/react@4.2.12':
+    resolution: {integrity: sha512-TKnbbJJAp6SwDBCOauq3ubWQjRvg0OJbAf/0z45jiwkgk9F5XUCG3zQRUSZfSKD0uGnb/gLctiKnsw2AilaCKg==}
     peerDependencies:
-      '@neo4j-ndl/base': ^4.2.3
+      '@neo4j-ndl/base': ^4.2.4
       '@tanstack/react-table': 8.21.3
       react: '>=19.0.0'
       react-dom: '>=19.0.0'
@@ -6137,8 +6133,6 @@ snapshots:
       '@babel/core': 7.28.5
       '@babel/helper-plugin-utils': 7.27.1
 
-  '@babel/runtime@7.27.6': {}
-
   '@babel/runtime@7.28.4': {}
 
   '@babel/template@7.27.2':
@@ -6737,9 +6731,9 @@ snapshots:
       '@types/chroma-js': 2.1.4
       chroma-js: 2.4.2
 
-  '@neo4j-ndl/base@4.2.3': {}
+  '@neo4j-ndl/base@4.2.4': {}
 
-  '@neo4j-ndl/react@4.2.11(@babel/runtime@7.28.4)(@neo4j-ndl/base@4.2.3)(@tanstack/react-table@8.21.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@types/mdast@4.0.4)(@types/react@19.2.7)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
+  '@neo4j-ndl/react@4.2.12(@babel/runtime@7.28.4)(@neo4j-ndl/base@4.2.4)(@tanstack/react-table@8.21.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@types/mdast@4.0.4)(@types/react@19.2.7)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)
@@ -6747,7 +6741,7 @@ snapshots:
       '@floating-ui/react-dom': 2.1.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@heroicons/react': 2.2.0(react@19.2.1)
       '@neo4j-devtools/word-color': 0.0.8
-      '@neo4j-ndl/base': 4.2.3
+      '@neo4j-ndl/base': 4.2.4
       '@tanstack/react-table': 8.21.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@uiw/react-color': 2.8.0(@babel/runtime@7.28.4)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       classnames: 2.5.1
@@ -12226,7 +12220,7 @@ snapshots:
 
   rtl-css-js@1.16.1:
     dependencies:
-      '@babel/runtime': 7.27.6
+      '@babel/runtime': 7.28.4
 
   rw@1.3.3: {}
 
