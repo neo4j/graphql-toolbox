@@ -63,8 +63,8 @@ importers:
         specifier: 4.3.1
         version: 4.3.1(@babel/runtime@7.28.4)(@neo4j-ndl/base@4.3.1)(@tanstack/react-table@8.21.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/mdast@4.0.4)(@types/react@19.2.7)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@neo4j/graphql':
-        specifier: 7.3.3
-        version: 7.3.3(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)
+        specifier: 7.4.0
+        version: 7.4.0(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)
       '@neo4j/introspector':
         specifier: 5.0.1
         version: 5.0.1(neo4j-driver@6.0.1)
@@ -969,8 +969,8 @@ packages:
     resolution: {integrity: sha512-4egNORSKT/dKzWydHFSksNCjTwxKfzOkUyfVo0dUc6lsnQV4KtlgboF1v8q7uRLQ7oyoQFQO8Sy1BWgRoViwlg==}
     engines: {node: '>=16.0.0'}
 
-  '@neo4j/graphql@7.3.3':
-    resolution: {integrity: sha512-kdpZMci0ftMf7IhdESWgaI8O9psyFe9aMe7EIORo9EAbpR4ccV592u2xeQg+WME6FI8JMfRBKHGQiP7cHFubFQ==}
+  '@neo4j/graphql@7.4.0':
+    resolution: {integrity: sha512-Q74MmMe6ttw3I2c2yJChXLx9C7Tp//zZ7MEI8XGRA26VzuVF7AA6Ch1CAruiDDttxnOH/ChXk9cVBPEBvM+RKw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       graphql: ^16.0.0
@@ -6781,7 +6781,7 @@ snapshots:
 
   '@neo4j/cypher-builder@2.11.0': {}
 
-  '@neo4j/graphql@7.3.3(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)':
+  '@neo4j/graphql@7.4.0(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)(graphql@16.12.0)(neo4j-driver@6.0.1)':
     dependencies:
       '@apollo/subgraph': 2.11.0(graphql@16.12.0)
       '@as-integrations/express4': 1.1.2(@apollo/server@5.0.0(graphql@16.12.0))(express@4.21.2)
