@@ -120,7 +120,7 @@ export const AppSettings = ({ onClickClose }: Props) => {
                 <div className="flex flex-col">
                     <span>Made by Neo4j, Inc</span>
                     {/* explicitly hard coded values for copyright */}
-                    <span data-test-copyright-information>Copyright &copy; 2002-2025</span>
+                    <span data-test-copyright-information>Copyright &copy; 2002-2026</span>
                     <div className="flex">
                         <span>Neo4j GraphQL version:</span>&nbsp;
                         <pre>{(import.meta.env.NEO4J_GRAPHQL_VERSION || "").replace(/\^|~/g, "")}</pre>
