@@ -27,11 +27,11 @@ importers:
         specifier: 6.6.0
         version: 6.6.0
       '@codemirror/state':
-        specifier: 6.5.3
-        version: 6.5.3
+        specifier: 6.5.4
+        version: 6.5.4
       '@codemirror/view':
-        specifier: 6.39.10
-        version: 6.39.10
+        specifier: 6.39.11
+        version: 6.39.11
       '@dnd-kit/core':
         specifier: 6.3.1
         version: 6.3.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -55,7 +55,7 @@ importers:
         version: 0.11.3(@types/node@24.10.8)(graphql-ws@6.0.6(graphql@16.12.0)(ws@8.18.3))(graphql@16.12.0)
       '@mjfwebb/thememirror':
         specifier: 2.0.2
-        version: 2.0.2(@codemirror/language@6.12.1)(@codemirror/state@6.5.3)(@codemirror/view@6.39.10)
+        version: 2.0.2(@codemirror/language@6.12.1)(@codemirror/state@6.5.4)(@codemirror/view@6.39.11)
       '@neo4j-ndl/base':
         specifier: 4.3.3
         version: 4.3.3
@@ -76,7 +76,7 @@ importers:
         version: 2.5.1
       cm6-graphql:
         specifier: 0.2.1
-        version: 0.2.1(@codemirror/autocomplete@6.20.0)(@codemirror/language@6.12.1)(@codemirror/lint@6.9.2)(@codemirror/state@6.5.3)(@codemirror/view@6.39.10)(@lezer/highlight@1.2.1)(graphql@16.12.0)
+        version: 0.2.1(@codemirror/autocomplete@6.20.0)(@codemirror/language@6.12.1)(@codemirror/lint@6.9.2)(@codemirror/state@6.5.4)(@codemirror/view@6.39.11)(@lezer/highlight@1.2.1)(graphql@16.12.0)
       codemirror:
         specifier: 6.0.2
         version: 6.0.2
@@ -453,11 +453,11 @@ packages:
   '@codemirror/search@6.6.0':
     resolution: {integrity: sha512-koFuNXcDvyyotWcgOnZGmY7LZqEOXZaaxD/j6n18TCLx2/9HieZJ5H6hs1g8FiRxBD0DNfs0nXn17g872RmYdw==}
 
-  '@codemirror/state@6.5.3':
-    resolution: {integrity: sha512-MerMzJzlXogk2fxWFU1nKp36bY5orBG59HnPiz0G9nLRebWa0zXuv2siH6PLIHBvv5TH8CkQRqjBs0MlxCZu+A==}
+  '@codemirror/state@6.5.4':
+    resolution: {integrity: sha512-8y7xqG/hpB53l25CIoit9/ngxdfoG+fx+V3SHBrinnhOtLvKHRyAJJuHzkWrR4YXXLX8eXBsejgAAxHUOdW1yw==}
 
-  '@codemirror/view@6.39.10':
-    resolution: {integrity: sha512-QfT/PXhiiP76PxMnX0RQVPDQrqfRt9wr9QhInNHnEUu4PWoNS8QwwcIDEneXFChJv22y+Yu/Cz5lFMTPz+h16w==}
+  '@codemirror/view@6.39.11':
+    resolution: {integrity: sha512-bWdeR8gWM87l4DB/kYSF9A+dVackzDb/V56Tq7QVrQ7rn86W0rgZFtlL3g3pem6AeGcb9NQNoy3ao4WpW4h5tQ==}
 
   '@csstools/color-helpers@5.1.0':
     resolution: {integrity: sha512-S11EXWJyy0Mz5SYvRmY8nJYTFFd1LCNV+7cXyAgQtOOuzb4EsgfqDufL+9esx72/eLhsRdGZwaldu/h+E4t4BA==}
@@ -6205,15 +6205,15 @@ snapshots:
   '@codemirror/autocomplete@6.20.0':
     dependencies:
       '@codemirror/language': 6.12.1
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
       '@lezer/common': 1.2.3
 
   '@codemirror/commands@6.10.1':
     dependencies:
       '@codemirror/language': 6.12.1
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
       '@lezer/common': 1.2.3
 
   '@codemirror/lang-javascript@6.2.4':
@@ -6221,15 +6221,15 @@ snapshots:
       '@codemirror/autocomplete': 6.20.0
       '@codemirror/language': 6.12.1
       '@codemirror/lint': 6.9.2
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
       '@lezer/common': 1.2.3
       '@lezer/javascript': 1.5.1
 
   '@codemirror/language@6.12.1':
     dependencies:
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
       '@lezer/common': 1.5.0
       '@lezer/highlight': 1.2.1
       '@lezer/lr': 1.4.2
@@ -6237,23 +6237,23 @@ snapshots:
 
   '@codemirror/lint@6.9.2':
     dependencies:
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
       crelt: 1.0.6
 
   '@codemirror/search@6.6.0':
     dependencies:
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
       crelt: 1.0.6
 
-  '@codemirror/state@6.5.3':
+  '@codemirror/state@6.5.4':
     dependencies:
       '@marijn/find-cluster-break': 1.0.2
 
-  '@codemirror/view@6.39.10':
+  '@codemirror/view@6.39.11':
     dependencies:
-      '@codemirror/state': 6.5.3
+      '@codemirror/state': 6.5.4
       crelt: 1.0.6
       style-mod: 4.1.2
       w3c-keyname: 2.2.8
@@ -6757,11 +6757,11 @@ snapshots:
     dependencies:
       langium: 3.3.1
 
-  '@mjfwebb/thememirror@2.0.2(@codemirror/language@6.12.1)(@codemirror/state@6.5.3)(@codemirror/view@6.39.10)':
+  '@mjfwebb/thememirror@2.0.2(@codemirror/language@6.12.1)(@codemirror/state@6.5.4)(@codemirror/view@6.39.11)':
     dependencies:
       '@codemirror/language': 6.12.1
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
 
   '@n1ru4l/push-pull-async-iterable-iterator@3.2.0': {}
 
@@ -9293,13 +9293,13 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  cm6-graphql@0.2.1(@codemirror/autocomplete@6.20.0)(@codemirror/language@6.12.1)(@codemirror/lint@6.9.2)(@codemirror/state@6.5.3)(@codemirror/view@6.39.10)(@lezer/highlight@1.2.1)(graphql@16.12.0):
+  cm6-graphql@0.2.1(@codemirror/autocomplete@6.20.0)(@codemirror/language@6.12.1)(@codemirror/lint@6.9.2)(@codemirror/state@6.5.4)(@codemirror/view@6.39.11)(@lezer/highlight@1.2.1)(graphql@16.12.0):
     dependencies:
       '@codemirror/autocomplete': 6.20.0
       '@codemirror/language': 6.12.1
       '@codemirror/lint': 6.9.2
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
       '@lezer/highlight': 1.2.1
       graphql: 16.12.0
       graphql-language-service: 5.4.0(graphql@16.12.0)
@@ -9321,8 +9321,8 @@ snapshots:
       '@codemirror/language': 6.12.1
       '@codemirror/lint': 6.9.2
       '@codemirror/search': 6.6.0
-      '@codemirror/state': 6.5.3
-      '@codemirror/view': 6.39.10
+      '@codemirror/state': 6.5.4
+      '@codemirror/view': 6.39.11
 
   color-convert@2.0.1:
     dependencies:
