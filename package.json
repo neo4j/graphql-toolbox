@@ -70,7 +70,7 @@
         "graphql": "16.12.0",
         "graphql-query-complexity": "1.1.0",
         "neo4j-driver": "6.0.1",
-        "prettier": "3.7.4",
+        "prettier": "3.8.0",
         "process": "0.11.10",
         "react": "19.2.3",
         "react-dom": "19.2.3",
