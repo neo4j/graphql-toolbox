@@ -63,8 +63,8 @@ importers:
         specifier: 4.9.29
         version: 4.9.29(@babel/runtime@7.29.2)(@neo4j-ndl/base@4.9.16)(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/mdast@4.0.4)(@types/react@19.2.14)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@neo4j/graphql':
-        specifier: 7.4.4
-        version: 7.4.4(@apollo/server@5.4.0(graphql@16.13.2))(express@4.22.1)(graphql@16.13.2)(neo4j-driver@6.0.1)
+        specifier: 7.5.0
+        version: 7.5.0(@apollo/server@5.4.0(graphql@16.13.2))(express@4.22.1)(graphql@16.13.2)(neo4j-driver@6.0.1)
       '@neo4j/introspector':
         specifier: 5.0.1
         version: 5.0.1(neo4j-driver@6.0.1)
@@ -978,12 +978,12 @@ packages:
       react: '>=19.0.0'
       react-dom: '>=19.0.0'
 
-  '@neo4j/cypher-builder@3.0.0':
-    resolution: {integrity: sha512-QPARnshVj6feJnC2obx13zYdCQOyEcxJfaxc3eSBRVBmcjSFwG+x/nP2cZs3hnqij2O3Aw9qeAG7MLp9+GW93A==}
+  '@neo4j/cypher-builder@3.0.1':
+    resolution: {integrity: sha512-NAPWN4cbnDRujz4PIj9FHx+JTCe3jPoCLjRZPfRMpT1+UjH7hF1NMaBlKCvWecAx3a8hpxQ31tbYj3k0Lnl6sA==}
     engines: {node: '>=20.0.0'}
 
-  '@neo4j/graphql@7.4.4':
-    resolution: {integrity: sha512-X9MiKXu42KO9S9dRO5G4r88+ZIzbP79k7efTRwoYIinTX46JK5QiS81vy/VtbmAgzhQAEDR1G/4iy2zfnJHS5A==}
+  '@neo4j/graphql@7.5.0':
+    resolution: {integrity: sha512-nGGKrrBLkB9O6YJZybD2jg2ZEtkdq23h7xfd2eWIJDW8u72npYNwBs3pc7VrB1WnWZsbjoycZd4MQx+rMJ35UA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       graphql: ^16.0.0
@@ -6834,9 +6834,9 @@ snapshots:
       - micromark-util-types
       - supports-color
 
-  '@neo4j/cypher-builder@3.0.0': {}
+  '@neo4j/cypher-builder@3.0.1': {}
 
-  '@neo4j/graphql@7.4.4(@apollo/server@5.4.0(graphql@16.13.2))(express@4.22.1)(graphql@16.13.2)(neo4j-driver@6.0.1)':
+  '@neo4j/graphql@7.5.0(@apollo/server@5.4.0(graphql@16.13.2))(express@4.22.1)(graphql@16.13.2)(neo4j-driver@6.0.1)':
     dependencies:
       '@apollo/subgraph': 2.13.3(graphql@16.13.2)
       '@as-integrations/express4': 1.1.2(@apollo/server@5.4.0(graphql@16.13.2))(express@4.22.1)
@@ -6844,7 +6844,7 @@ snapshots:
       '@graphql-tools/resolvers-composition': 7.0.28(graphql@16.13.2)
       '@graphql-tools/schema': 10.0.31(graphql@16.13.2)
       '@graphql-tools/utils': 11.0.0(graphql@16.13.2)
-      '@neo4j/cypher-builder': 3.0.0
+      '@neo4j/cypher-builder': 3.0.1
       camelcase: 6.3.0
       debug: 4.4.3
       dot-prop: 6.0.1
