@@ -22,12 +22,12 @@ import { useCallback, useContext, useState } from "react";
 import { tokens } from "@neo4j-ndl/base";
 import { Switch } from "@neo4j-ndl/react";
 import classNames from "classnames";
-import GraphiQLExplorer from "graphiql-explorer";
 import type { GraphQLSchema } from "graphql";
 import { graphql } from "graphql";
 
 import { tracking } from "../../analytics/tracking";
 import { Extension } from "../../components/Filename";
+import GraphiQLExplorer from "../../components/GraphiQLExplorer/Explorer";
 import { DEFAULT_DATABASE_NAME, EDITOR_PARAMS_INPUT, EDITOR_RESPONSE_OUTPUT } from "../../constants";
 import { AuthContext } from "../../contexts/auth";
 import { Screen } from "../../contexts/screen";
@@ -61,7 +61,7 @@ export const EditorView = ({ schema }: Props) => {
     };
 
     const onSubmit = useCallback(
-        async (override?: string) => {
+        async (override?: string | null) => {
             let result: string;
 
             setLoading(true);
@@ -123,8 +123,12 @@ export const EditorView = ({ schema }: Props) => {
                                         onEdit={(query: string) => {
                                             store.updateQuery(query, useStore.getState().activeTabIndex);
                                         }}
-                                        onRunOperation={onSubmit}
+                                        onRunOperation={(name) => {
+                                            void onSubmit(name);
+                                        }}
                                         explorerIsOpen={true}
+                                        onToggleExplorer={() => {}}
+                                        showAttribution={false}
                                         styles={{
                                             buttonStyle: {
                                                 display: "block",
