@@ -51,8 +51,8 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1(@codemirror/language@6.12.3)(@types/node@24.12.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(graphql-ws@6.0.8(graphql@16.13.2))(graphql@16.13.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@graphiql/react':
-        specifier: 0.32.1
-        version: 0.32.1(@codemirror/language@6.12.3)(@types/node@24.12.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(graphql-ws@6.0.8(graphql@16.13.2))(graphql@16.13.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.37.3
+        version: 0.37.3(@types/node@24.12.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(graphql-ws@6.0.8(graphql@16.13.2))(graphql@16.13.2)(react-compiler-runtime@19.1.0-rc.1(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4))
       '@graphiql/toolkit':
         specifier: 0.11.3
         version: 0.11.3(@types/node@24.12.0)(graphql-ws@6.0.8(graphql@16.13.2))(graphql@16.13.2)
@@ -206,7 +206,7 @@ importers:
         version: 8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(jiti@2.6.1)
       vite-plugin-node-polyfills:
         specifier: 0.26.0
-        version: 0.26.0(rollup@4.60.0)(vite@7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0))
+        version: 0.26.0(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(jiti@2.6.1))
       vitest:
         specifier: 4.1.2
         version: 4.1.2(@types/node@24.12.0)(jsdom@29.0.1)(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(jiti@2.6.1))
@@ -769,6 +769,14 @@ packages:
     peerDependencies:
       graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
       react: ^18 || ^19
+      react-dom: ^18 || ^19
+
+  '@graphiql/react@0.37.3':
+    resolution: {integrity: sha512-rNJjwsYGhcZRdZ2FnyU6ss06xQaZ4UordyvOhp7+b/bEqQiEBpMOLJjuUr48Z6T7zEbZBnzCJpIJyXNqlcfQeA==}
+    peerDependencies:
+      graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
+      react: ^18 || ^19
+      react-compiler-runtime: 19.1.0-rc.1
       react-dom: ^18 || ^19
 
   '@graphiql/toolkit@0.11.3':
@@ -5335,6 +5343,9 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  jsonc-parser@3.3.1:
+    resolution: {integrity: sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==}
+
   jsonfile@3.0.1:
     resolution: {integrity: sha512-oBko6ZHlubVB5mRFkur5vgYR1UyqX+S6Y/oCfLhqNdcc2fYFlDpIoNc7AfKS1KOGcnNAkvsr0grLck9ANM815w==}
 
@@ -5911,6 +5922,16 @@ packages:
     engines: {node: '>= 0.6'}
     hasBin: true
 
+  monaco-editor@0.52.2:
+    resolution: {integrity: sha512-GEQWEZmfkOGLdd3XK8ryrfWz3AIP8YymVXiPHEdewrUq7mh0qrKrfHLNCXcbB6sTnMLnOZ3ztSiKcciFUkIJwQ==}
+
+  monaco-graphql@1.7.3:
+    resolution: {integrity: sha512-6LAIcg/vT2NGLjHnT+5iIZONsZCaCuz2orbg7qD/u4Ry9R7rDotLh0HAzIF/yKdzEA5fTZC+TofSx2O+Zi+0ow==}
+    peerDependencies:
+      graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
+      monaco-editor: '>= 0.20.0 < 0.53'
+      prettier: ^2.8.0 || ^3.0.0
+
   mothership@0.2.0:
     resolution: {integrity: sha512-J9Ejuj3Y0/oKdRnjhK9r4xhSBt/h7xDhunVKCQbSyPWZ27/wCMNuw/ysFSX9Zl5iPZKNO8hM9I/fWUwnARvBPQ==}
 
@@ -6289,6 +6310,10 @@ packages:
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
+
+  picomatch-browser@2.2.6:
+    resolution: {integrity: sha512-0ypsOQt9D4e3hziV8O4elD9uN0z/jtUEfxVRtNaAAtXIyUx9m/SzlO020i8YNL2aL/E6blOvvHQcin6HZlFy/w==}
+    engines: {node: '>=8.6'}
 
   picomatch@2.3.2:
     resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
@@ -8684,6 +8709,37 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
       - graphql-ws
+
+  '@graphiql/react@0.37.3(@types/node@24.12.0)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(graphql-ws@6.0.8(graphql@16.13.2))(graphql@16.13.2)(react-compiler-runtime@19.1.0-rc.1(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4))':
+    dependencies:
+      '@graphiql/toolkit': 0.11.3(@types/node@24.12.0)(graphql-ws@6.0.8(graphql@16.13.2))(graphql@16.13.2)
+      '@radix-ui/react-dialog': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@radix-ui/react-dropdown-menu': 2.1.16(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@radix-ui/react-tooltip': 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@radix-ui/react-visually-hidden': 1.2.4(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      clsx: 1.2.1
+      framer-motion: 12.38.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      get-value: 3.0.1
+      graphql: 16.13.2
+      graphql-language-service: 5.5.0(graphql@16.13.2)
+      jsonc-parser: 3.3.1
+      markdown-it: 14.1.1
+      monaco-editor: 0.52.2
+      monaco-graphql: 1.7.3(graphql@16.13.2)(monaco-editor@0.52.2)(prettier@3.8.1)
+      prettier: 3.8.1
+      react: 19.2.4
+      react-compiler-runtime: 19.1.0-rc.1(react@19.2.4)
+      react-dom: 19.2.4(react@19.2.4)
+      set-value: 4.1.0
+      zustand: 5.0.12(@types/react@19.2.14)(react@19.2.4)(use-sync-external-store@1.6.0(react@19.2.4))
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - '@types/node'
+      - '@types/react'
+      - '@types/react-dom'
+      - graphql-ws
+      - immer
+      - use-sync-external-store
 
   '@graphiql/toolkit@0.11.3(@types/node@24.12.0)(graphql-ws@6.0.8(graphql@16.13.2))(graphql@16.13.2)':
     dependencies:
@@ -14446,6 +14502,8 @@ snapshots:
 
   json5@2.2.3: {}
 
+  jsonc-parser@3.3.1: {}
+
   jsonfile@3.0.1:
     optionalDependencies:
       graceful-fs: 4.2.11
@@ -15306,6 +15364,16 @@ snapshots:
       through2: 2.0.5
       xtend: 4.0.2
 
+  monaco-editor@0.52.2: {}
+
+  monaco-graphql@1.7.3(graphql@16.13.2)(monaco-editor@0.52.2)(prettier@3.8.1):
+    dependencies:
+      graphql: 16.13.2
+      graphql-language-service: 5.5.0(graphql@16.13.2)
+      monaco-editor: 0.52.2
+      picomatch-browser: 2.2.6
+      prettier: 3.8.1
+
   mothership@0.2.0:
     dependencies:
       find-parent-dir: 0.3.1
@@ -15739,6 +15807,8 @@ snapshots:
   performance-now@2.1.0: {}
 
   picocolors@1.1.1: {}
+
+  picomatch-browser@2.2.6: {}
 
   picomatch@2.3.2: {}
 
@@ -17555,7 +17625,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-node-polyfills@0.26.0(rollup@4.60.0)(vite@7.3.1(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)):
+  vite-plugin-node-polyfills@0.26.0(vite@8.0.3(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)(@types/node@24.12.0)(jiti@2.6.1)):
     dependencies:
       '@rollup/plugin-inject': 5.0.5
       node-stdlib-browser: 1.3.1

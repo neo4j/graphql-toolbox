@@ -55,7 +55,7 @@
         "@dnd-kit/sortable": "10.0.0",
         "@dnd-kit/utilities": "^3.2.2",
         "@graphiql/plugin-doc-explorer": "^0.0.1",
-        "@graphiql/react": "0.32.1",
+        "@graphiql/react": "0.37.3",
         "@graphiql/toolkit": "0.11.3",
         "@mjfwebb/thememirror": "2.0.2",
         "@neo4j-ndl/base": "4.9.16",
