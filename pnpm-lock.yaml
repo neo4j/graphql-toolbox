@@ -63,8 +63,8 @@ importers:
         specifier: 4.9.16
         version: 4.9.16
       '@neo4j-ndl/react':
-        specifier: 4.9.31
-        version: 4.9.31(@babel/runtime@7.29.2)(@neo4j-ndl/base@4.9.16)(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/mdast@4.0.4)(@types/react@19.2.14)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 4.9.32
+        version: 4.9.32(@babel/runtime@7.29.2)(@neo4j-ndl/base@4.9.16)(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/mdast@4.0.4)(@types/react@19.2.14)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@neo4j/graphql':
         specifier: 7.5.0
         version: 7.5.0(@apollo/server@5.5.0(graphql@16.13.2))(express@4.22.1)(graphql@16.13.2)(neo4j-driver@6.0.1)
@@ -912,8 +912,8 @@ packages:
   '@neo4j-ndl/base@4.9.16':
     resolution: {integrity: sha512-00JhRhsIYS19X6gxo/gg23uF6oWSCsLGZldtigvsCTbzoGZm0b5VOoyld2hPXAwVziPOedNXKEdobfTgqsyu4g==}
 
-  '@neo4j-ndl/react@4.9.31':
-    resolution: {integrity: sha512-6CQMQ8WUzWYvq6mp1h7o7AH8RWdCVZz6ZNsNRnYy0myqosLSXbzOOZBC0ZV+i9w3Y5A80Z2DMm6Tn86ZhNjuVg==}
+  '@neo4j-ndl/react@4.9.32':
+    resolution: {integrity: sha512-9olK9qdRgcOT9p8milre939u8jFxJJMQC1P/Y2CtFTZMgRU08dWE+7J0BA+LFfXEZ4U21o2bqKw+XBFikuVQeg==}
     peerDependencies:
       '@neo4j-ndl/base': ^4.9.16
       '@tanstack/react-table': 8.21.3
@@ -8837,7 +8837,7 @@ snapshots:
 
   '@neo4j-ndl/base@4.9.16': {}
 
-  '@neo4j-ndl/react@4.9.31(@babel/runtime@7.29.2)(@neo4j-ndl/base@4.9.16)(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/mdast@4.0.4)(@types/react@19.2.14)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@neo4j-ndl/react@4.9.32(@babel/runtime@7.29.2)(@neo4j-ndl/base@4.9.16)(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/mdast@4.0.4)(@types/react@19.2.14)(micromark-util-types@2.0.2)(micromark@4.0.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
