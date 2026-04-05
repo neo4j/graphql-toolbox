@@ -60,7 +60,7 @@
         "@mjfwebb/thememirror": "2.0.2",
         "@neo4j-ndl/base": "4.9.17",
         "@neo4j-ndl/react": "4.9.35",
-        "@neo4j/graphql": "7.5.0",
+        "@neo4j/graphql": "7.5.1",
         "@neo4j/introspector": "5.0.1",
         "@tanstack/react-table": "8.21.3",
         "classnames": "2.5.1",
