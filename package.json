@@ -59,7 +59,7 @@
         "@graphiql/toolkit": "0.11.3",
         "@mjfwebb/thememirror": "2.0.2",
         "@neo4j-ndl/base": "4.9.18",
-        "@neo4j-ndl/react": "4.9.37",
+        "@neo4j-ndl/react": "4.9.40",
         "@neo4j/graphql": "7.5.1",
         "@neo4j/introspector": "5.0.1",
         "@tanstack/react-table": "8.21.3",
