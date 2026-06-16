@@ -17,7 +17,7 @@
         "**/tests/**",
         "**/__fixtures__/**"
     ],
-    "ignoreDeps": ["neo4j", "@graphiql/plugin-doc-explorer", "@​graphiql/react"],
+    "ignoreDeps": ["neo4j", "@graphiql/plugin-doc-explorer", "@graphiql/react"],
     "packageRules": [
         {
             "matchDatasources": ["npm"],
@@ -29,7 +29,7 @@
         },
         {
             "extends": [":pinOnlyDevDependencies"],
-            "matchPackageNames": ["*", "!@neo4j/graphql-toolbox"]
+            "matchPackageNames": ["!@neo4j/graphql-toolbox"]
         },
         {
             "groupName": "neo4j-ndl",
