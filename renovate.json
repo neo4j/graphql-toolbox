@@ -21,7 +21,7 @@
     "packageRules": [
         {
             "matchDatasources": ["npm"],
-            "minimumReleaseAge": "3 days"
+            "minimumReleaseAge": "7 days"
         },
         {
             "matchPackageNames": ["@neo4j/graphql-toolbox"],
