@@ -6,6 +6,7 @@
     "major": {
         "automerge": false
     },
+    "minimumReleaseAge": "3 days",
     "timezone": "Europe/London",
     "schedule": ["* 0-4 1,15 * *"],
     "ignorePaths": [
@@ -19,10 +20,6 @@
     ],
     "ignoreDeps": ["neo4j", "@graphiql/plugin-doc-explorer", "@graphiql/react"],
     "packageRules": [
-        {
-            "matchDatasources": ["npm"],
-            "minimumReleaseAge": "3 days"
-        },
         {
             "matchPackageNames": ["@neo4j/graphql-toolbox"],
             "extends": [":pinAllExceptPeerDependencies"]
