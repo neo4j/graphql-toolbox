@@ -48,9 +48,12 @@ export class Editor extends Screen {
         await this.page.click("[data-test-editor-query-button]");
     }
 
+    public get output() {
+        return this.page.locator(`#${EDITOR_RESPONSE_OUTPUT} .cm-content`);
+    }
+
     public async getOutput(): Promise<string> {
-        const text = (await this.page.locator(`#${EDITOR_RESPONSE_OUTPUT} .cm-content`).innerText()).valueOf();
-        return text;
+        return this.output.innerText();
     }
 
     public async showSchemaDocs() {

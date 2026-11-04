@@ -46,11 +46,7 @@ const test = base.test.extend<Pages>({
     },
     loginPage: async ({ page }, use) => {
         await page.goto("/");
-        const loginPage = new Login(page);
-        await use(loginPage);
-        if (!loginPage.getIsLoginWindowVisible) {
-            await loginPage.logout();
-        }
+        await use(new Login(page));
     },
     schemaEditorPage: async ({ page }, use) => {
         await use(new SchemaEditor(page));

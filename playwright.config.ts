@@ -19,16 +19,20 @@
 
 import { defineConfig, devices } from "@playwright/test";
 
+// CI serves a production build. The dev server re-bundles dependencies on a cold
+// start and reloads the page, which leaves the first tests waiting for the login form.
+const port = process.env.CI ? 4173 : 5173;
+
 export default defineConfig({
     webServer: {
-        command: "pnpm dev",
-        url: "http://localhost:5173",
+        command: process.env.CI ? `pnpm build && pnpm preview --port ${port} --strictPort` : "pnpm dev",
+        url: `http://localhost:${port}`,
         timeout: 120 * 1000,
         reuseExistingServer: !process.env.CI,
     },
     use: {
         trace: "retain-on-failure",
-        baseURL: "http://localhost:5173",
+        baseURL: `http://localhost:${port}`,
     },
     testDir: "tests",
     timeout: process.env.CI ? 120 * 1000 : 30 * 1000,

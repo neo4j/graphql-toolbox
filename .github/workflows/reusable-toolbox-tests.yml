@@ -7,6 +7,17 @@ jobs:
   ui-e2e-tests:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        # WebKit is CPU-bound on a 4 vCPU runner, so it takes about three times as
+        # long as the other browsers. Two shards keep it in step with them.
+        include:
+          - { browser: chromium, shard: 1, shards: 1 }
+          - { browser: firefox, shard: 1, shards: 1 }
+          - { browser: webkit, shard: 1, shards: 2 }
+          - { browser: webkit, shard: 2, shards: 2 }
+
     services:
       neo4j:
         image: neo4j:5-enterprise
@@ -22,13 +33,14 @@ jobs:
       - uses: ./.github/actions/reusable-setup/
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
+        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
 
       - name: Run @neo4j/graphql-toolbox unit tests
-        run: pnpm test:unit
+        if: matrix.browser == 'chromium'
+        run: pnpm test:unit --run
 
       - name: Run @neo4j/graphql-toolbox e2e tests
-        run: pnpm test
+        run: pnpm test --project=${{ matrix.browser }} --shard=${{ matrix.shard }}/${{ matrix.shards }}
         env:
           NEO_USER: neo4j
           NEO_PASSWORD: password
@@ -39,6 +51,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: playwright-test-failure-report
+          name: playwright-test-failure-report-${{ matrix.browser }}-${{ matrix.shard }}
           path: tests/artifacts
           retention-days: 4

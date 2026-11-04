@@ -37,7 +37,7 @@ test.describe("introspection", () => {
         await driver.close();
     });
 
-    test("should introspect database and output result", async ({ page, loginPage, schemaEditorPage }) => {
+    test("should introspect database and output result", async ({ loginPage, schemaEditorPage }) => {
         await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         const sessionFactory = () => driver?.session({ defaultAccessMode: neo4j.session.WRITE });
@@ -52,9 +52,7 @@ test.describe("introspection", () => {
         }
 
         await schemaEditorPage.introspect();
-        await page.waitForTimeout(4000);
-        const generatedTypeDefs = await schemaEditorPage.getTypeDefs();
 
-        expect(generatedTypeDefs).toContain(`type MyMovie`);
+        await expect(schemaEditorPage.typeDefs).toContainText("type MyMovie");
     });
 });
