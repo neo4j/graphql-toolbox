@@ -48,7 +48,7 @@ test.describe("workflow", () => {
 
     const queryWithVariables = /* GraphQL */ `
         query ($moviesWhere: MovieWhere) {
-            movies(where: $moviesWhere) {
+            moviesWithVariables: movies(where: $moviesWhere) {
                 id
             }
         }
@@ -80,7 +80,7 @@ test.describe("workflow", () => {
         await driver.close();
     });
 
-    test("should perform workflow end-to-end", async ({ page, loginPage, schemaEditorPage, editorPage }) => {
+    test("should perform workflow end-to-end", async ({ loginPage, schemaEditorPage, editorPage }) => {
         await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
 
         await schemaEditorPage.setTypeDefs(typeDefs);
@@ -89,7 +89,7 @@ test.describe("workflow", () => {
         await editorPage.setQuery(query);
 
         await editorPage.submitQuery();
-        await page.waitForTimeout(2000);
+        await expect(editorPage.output).toContainText(id);
 
         const outputQuery = await editorPage.getOutput();
 
@@ -104,13 +104,14 @@ test.describe("workflow", () => {
         await editorPage.setParams(variables);
 
         await editorPage.submitQuery();
-        await page.waitForTimeout(2000);
+        // The alias tells this response apart from the previous one, which has the same id.
+        await expect(editorPage.output).toContainText("moviesWithVariables");
 
         const outputQueryWithVariables = await editorPage.getOutput();
 
         expect(JSON.parse(outputQueryWithVariables)).toMatchObject({
             data: {
-                movies: [{ id }],
+                moviesWithVariables: [{ id }],
             },
         });
     });

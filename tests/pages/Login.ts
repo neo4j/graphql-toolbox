@@ -73,6 +73,10 @@ export class Login extends Screen {
         await this.page.waitForSelector("[data-test-schema-editor-build-button]");
     }
 
+    public get errorBanner() {
+        return this.page.getByText("Neo4j Error");
+    }
+
     public async getIsLoginWindowVisible() {
         return this.page.isVisible("[data-test-login-form]");
     }
@@ -92,10 +96,5 @@ export class Login extends Screen {
         await this.setURL(url);
         await this.submit();
         await this.awaitSuccess();
-    }
-
-    public async logout() {
-        await this.page.waitForSelector("[data-test-topbar-disconnect-button]");
-        await this.page.click("[data-test-topbar-disconnect-button]");
     }
 }

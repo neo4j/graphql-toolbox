@@ -60,11 +60,7 @@ test.describe("Introspection prompt", () => {
         }
     });
 
-    test("should log in and introspect via introspection prompt button", async ({
-        page,
-        loginPage,
-        schemaEditorPage,
-    }) => {
+    test("should log in and introspect via introspection prompt button", async ({ loginPage, schemaEditorPage }) => {
         await loginPage.setUsername(NEO_USER);
         await loginPage.setPassword(NEO_PASSWORD);
         await loginPage.setURL(NEO_URL);
@@ -72,10 +68,6 @@ test.describe("Introspection prompt", () => {
         await loginPage.introspectionPromptIntrospect();
         await loginPage.awaitSuccess();
 
-        // wait for introspection to finish
-        await page.waitForTimeout(4000);
-
-        const generatedTypeDefs = await schemaEditorPage.getTypeDefs();
-        expect(generatedTypeDefs).toContain(`type ${label} @node`);
+        await expect(schemaEditorPage.typeDefs).toContainText(`type ${label} @node`);
     });
 });

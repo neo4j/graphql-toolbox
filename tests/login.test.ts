@@ -35,28 +35,27 @@ test.describe("login", () => {
         await loginPage.awaitSuccess();
     });
 
-    test("should display error message with invalid credentials", async ({ loginPage, page }) => {
+    test("should display error message with invalid credentials", async ({ loginPage }) => {
         await loginPage.setUsername("invalid_user");
         await loginPage.setPassword("invalid_password");
         await loginPage.setURL(NEO_URL);
         await loginPage.submit();
 
-        // Wait for error message to appear
-        await page.waitForTimeout(2000);
+        await expect(loginPage.errorBanner).toBeVisible();
 
         // Verify login form is still visible
         const isLoginVisible = await loginPage.getIsLoginWindowVisible();
         expect(isLoginVisible).toBeTruthy();
     });
 
-    test("should display error message with invalid connection URL", async ({ loginPage, page }) => {
+    test("should display error message with invalid connection URL", async ({ loginPage }) => {
         await loginPage.setUsername(NEO_USER);
         await loginPage.setPassword(NEO_PASSWORD);
         await loginPage.setURL("neo4j://invalid-host:7687");
         await loginPage.submit();
 
-        // Wait for error to appear
-        await page.waitForTimeout(3000);
+        // The driver can take a while to give up on a host that does not resolve.
+        await expect(loginPage.errorBanner).toBeVisible({ timeout: 30_000 });
 
         // Verify login form is still visible
         const isLoginVisible = await loginPage.getIsLoginWindowVisible();
