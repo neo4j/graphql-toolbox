@@ -52,7 +52,6 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
     const store = useStore();
     const elementRef = useRef<HTMLDivElement | null>(null);
     const [editorView, setEditorView] = useState<EditorView | null>(null);
-    const [value, setValue] = useState<string>();
 
     const formatTheCode = useCallback((): void => {
         if (!editorView) return;
@@ -113,7 +112,7 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
         }
 
         const view = new EditorView({
-            doc: value,
+            doc: "",
             extensions: [],
             parent: elementRef.current,
         });
@@ -132,24 +131,20 @@ export const VariablesEditor = ({ id, loading, fileExtension, fileName, borderRa
         }
     }, [theme.theme, extensions, editorView]);
 
-    useEffect(() => {
-        if (value === undefined) {
-            return;
-        }
-        const currentValue = editorView ? editorView.state.doc.toString() : "";
-        if (editorView && value !== currentValue) {
-            editorView.dispatch({
-                changes: { from: 0, to: currentValue.length, insert: value || "" },
-                annotations: [External.of(true)],
-            });
-        }
-    }, [value, editorView]);
-
     const activeTabVariables = useStore.getState().getActiveTab().variables;
 
     useEffect(() => {
-        setValue(activeTabVariables);
-    }, [activeTabVariables]);
+        if (activeTabVariables === undefined) {
+            return;
+        }
+        const currentValue = editorView ? editorView.state.doc.toString() : "";
+        if (editorView && activeTabVariables !== currentValue) {
+            editorView.dispatch({
+                changes: { from: 0, to: currentValue.length, insert: activeTabVariables || "" },
+                annotations: [External.of(true)],
+            });
+        }
+    }, [activeTabVariables, editorView]);
 
     useEffect(() => {
         handleEditorDisableState(elementRef.current, loading);

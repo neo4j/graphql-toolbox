@@ -65,7 +65,6 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
     const theme = useContext(ThemeContext);
     const appSettings = useContext(AppSettingsContext);
     const elementRef = useRef<HTMLDivElement | null>(null);
-    const [value, setValue] = useState<string>();
     const [editorView, setEditorView] = useState<CodeMirrorEditorView | null>(null);
 
     const formatTheCode = (): void => {
@@ -171,24 +170,20 @@ export const QueryEditor = ({ loading, onSubmit, schema }: Props) => {
         }
     }, [theme.theme, appSettings.showLintMarkers, extensions, editorView]);
 
-    useEffect(() => {
-        if (value === undefined) {
-            return;
-        }
-        const currentValue = editorView ? editorView.state.doc.toString() : "";
-        if (editorView && value !== currentValue) {
-            editorView.dispatch({
-                changes: { from: 0, to: currentValue.length, insert: value || "" },
-                annotations: [External.of(true)],
-            });
-        }
-    }, [value, editorView]);
-
     const activeTabQuery = useStore.getState().getActiveTab().query;
 
     useEffect(() => {
-        setValue(activeTabQuery);
-    }, [activeTabQuery]);
+        if (activeTabQuery === undefined) {
+            return;
+        }
+        const currentValue = editorView ? editorView.state.doc.toString() : "";
+        if (editorView && activeTabQuery !== currentValue) {
+            editorView.dispatch({
+                changes: { from: 0, to: currentValue.length, insert: activeTabQuery || "" },
+                annotations: [External.of(true)],
+            });
+        }
+    }, [activeTabQuery, editorView]);
 
     useEffect(() => {
         handleEditorDisableState(elementRef.current, loading);

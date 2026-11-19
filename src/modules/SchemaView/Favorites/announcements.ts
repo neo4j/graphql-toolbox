@@ -19,16 +19,13 @@
 
 import type { Announcements, UniqueIdentifier } from "@dnd-kit/core";
 
-interface AnnouncementsProps {
-    isFirstAnnouncement: React.MutableRefObject<boolean>;
-    items: UniqueIdentifier[];
-}
-
-export const announcements = ({ isFirstAnnouncement, items }: AnnouncementsProps): Announcements => {
+export const announcements = (items: UniqueIdentifier[]): Announcements => {
+    let isFirstDragOver = false;
     const getIndex = (id: UniqueIdentifier) => items.indexOf(id);
     const getPosition = (id: UniqueIdentifier) => getIndex(id) + 1;
     return {
         onDragStart({ active: { id } }) {
+            isFirstDragOver = true;
             return `Picked up sortable item ${String(id)}. Sortable item ${id} is in position ${getPosition(id)} of ${
                 items.length
             }`;
@@ -37,8 +34,8 @@ export const announcements = ({ isFirstAnnouncement, items }: AnnouncementsProps
             // In this specific use-case, the picked up item's `id` is always the same as the first `over` id.
             // The first `onDragOver` event therefore doesn't need to be announced, because it is called
             // immediately after the `onDragStart` announcement and is redundant.
-            if (isFirstAnnouncement.current === true) {
-                isFirstAnnouncement.current = false;
+            if (isFirstDragOver) {
+                isFirstDragOver = false;
                 return;
             }
 
