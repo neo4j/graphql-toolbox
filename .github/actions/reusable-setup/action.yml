@@ -1,8 +1,8 @@
-name: 'Reusable Setup'
-description: 'Install node, pnpm and local node packages'
+name: "Reusable Setup"
+description: "Install node, pnpm and local node packages"
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: Install pnpm
       uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6
@@ -10,9 +10,9 @@ runs:
     - name: Install Node.js
       uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
       with:
-        node-version-file: 'package.json'
-        registry-url: 'https://registry.npmjs.org'
-        cache: 'pnpm'
+        node-version-file: "package.json"
+        registry-url: "https://registry.npmjs.org"
+        cache: "pnpm"
 
     - name: Install Packages
       shell: bash

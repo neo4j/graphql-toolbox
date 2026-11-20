@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/reusable-toolbox-tests.yml
 
   toolbox-deploy:
-    needs: 
+    needs:
       - toolbox-tests
 
     runs-on: ubuntu-latest

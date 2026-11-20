@@ -10,18 +10,19 @@ on:
       - dev
 
 jobs:
-  reviewdog-eslint:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
       - uses: ./.github/actions/reusable-setup/
 
-      - uses: reviewdog/action-eslint@556a3fdaf8b4201d4d74d406013386aa4f7dab96 # v1.34.0
-        with:
-          fail_on_error: true
-          eslint_flags: "."
-          node_options: "--max_old_space_size=4096"
+      - name: Lint
+        run: pnpm lint --deny-warnings --format github
+
+      - name: Format check
+        if: ${{ !cancelled() }}
+        run: pnpm format:check
 
   code-scanning:
     uses: ./.github/workflows/reusable-codeql-analysis.yml
@@ -62,11 +63,10 @@ jobs:
   toolbox-tests:
     uses: ./.github/workflows/reusable-toolbox-tests.yml
 
-
   quality-gate:
     if: ${{ always() }}
     needs:
-      - reviewdog-eslint
+      - lint
       - code-scanning
       - toolbox-tests
 
@@ -75,7 +75,7 @@ jobs:
     steps:
       - name: Check Job Status
         run: |
-          if [ ${{ needs.reviewdog-eslint.result }} != 'success' ] || 
+          if [ ${{ needs.lint.result }} != 'success' ] || 
             [ ${{ needs.code-scanning.result }} != 'success' ] ||
             [ ${{ needs.toolbox-tests.result }} != 'success' ]; then
             echo "One or more jobs failed"

@@ -30,6 +30,19 @@ import { getConnectUrlSearchParamValue } from "../../contexts/utils";
 import { getURLProtocolFromText } from "../../utils/utils";
 import { FormInput } from "./FormInput";
 
+const WarningToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
+    return (
+        <Tooltip type="rich" placement="right">
+            <Tooltip.Trigger hasButtonWrapper>
+                <ExclamationTriangleIconOutline className="text-lemon-55 h-7 w-7" />
+            </Tooltip.Trigger>
+            <Tooltip.Content style={{ width: "20rem" }}>
+                <Tooltip.Body>{text}</Tooltip.Body>
+            </Tooltip.Content>
+        </Tooltip>
+    );
+};
+
 export const Login = () => {
     const auth = useContext(AuthContext);
     const [loading, setLoading] = useState<boolean>(false);
@@ -60,19 +73,6 @@ export const Login = () => {
         },
         [url, username, password, auth]
     );
-
-    const WarningToolTip = ({ text }: { text: React.ReactNode }): JSX.Element => {
-        return (
-            <Tooltip type="rich" placement="right">
-                <Tooltip.Trigger hasButtonWrapper>
-                    <ExclamationTriangleIconOutline className="text-lemon-55 h-7 w-7" />
-                </Tooltip.Trigger>
-                <Tooltip.Content style={{ width: "20rem" }}>
-                    <Tooltip.Body>{text}</Tooltip.Body>
-                </Tooltip.Content>
-            </Tooltip>
-        );
-    };
 
     return (
         <div data-test-login-form className="grid place-items-center h-login-container bg-neutral-30 login-bg">

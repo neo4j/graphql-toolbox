@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 @theme {
-  --color-dracula-dark: #282A36;
+    --color-dracula-dark: #282a36;
 }
 
 #root {
@@ -30,7 +30,13 @@
     height: 100%;
     position: inherit;
     font-size: 1rem;
-    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+    font-family:
+        Consolas,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
         Courier New;
     border-bottom-right-radius: 0.75rem;
     border-bottom-left-radius: 0.75rem;
@@ -398,7 +404,6 @@ a.graphiql-doc-explorer-back > svg {
 }
 
 /* ----------------------*/
-
 
 /* Query Explorer (OneGraph) */
 .docExplorerWrap {

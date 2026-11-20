@@ -38,7 +38,9 @@
         "test:debug": "cross-env NODE_ENV=test playwright test --headed --project=chromium",
         "test:inspector-mode": "cross-env NODE_ENV=test PWDEBUG=1 playwright test --project=chromium",
         "test:unit": "cross-env NODE_ENV=test vitest src",
-        "lint": "eslint src/"
+        "lint": "oxlint . --report-unused-disable-directives-severity=warn",
+        "format": "oxfmt",
+        "format:check": "oxfmt --check"
     },
     "author": "Neo4j",
     "dependencies": {
@@ -78,7 +80,6 @@
         "zustand": "5.0.12"
     },
     "devDependencies": {
-        "@eslint/js": "9.39.5",
         "@playwright/test": "1.64.1",
         "@stylistic/eslint-plugin": "5.10.0",
         "@tailwindcss/vite": "4.2.4",
@@ -87,26 +88,18 @@
         "@types/randomstring": "1.3.0",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "@typescript-eslint/eslint-plugin": "8.59.1",
-        "@typescript-eslint/parser": "8.59.1",
         "@vitejs/plugin-basic-ssl": "2.3.0",
         "@vitejs/plugin-react": "6.0.5",
         "cross-env": "10.1.0",
         "dotenv": "17.4.2",
-        "eslint": "9.39.5",
-        "eslint-config-prettier": "10.1.8",
-        "eslint-plugin-jsx-a11y": "6.10.2",
-        "eslint-plugin-prettier": "5.5.6",
         "eslint-plugin-react": "7.37.5",
-        "eslint-plugin-react-hooks": "7.1.1",
-        "eslint-plugin-react-refresh": "0.5.7",
         "eslint-plugin-simple-import-sort": "13.0.0",
-        "globals": "17.5.0",
         "graphql-ws": "6.0.8",
         "jsdom": "29.0.2",
+        "oxfmt": "0.79.0",
+        "oxlint": "1.94.0",
         "randomstring": "1.3.1",
-        "typescript": "6.0.3",
-        "typescript-eslint": "8.59.1",
+        "typescript": "7.0.2",
         "vite": "8.1.6",
         "vite-plugin-node-polyfills": "0.28.0",
         "vitest": "4.1.11"

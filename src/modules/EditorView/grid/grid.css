@@ -1,25 +1,25 @@
 .horizontal-drag-bar {
-  cursor: col-resize;
-  bottom: 0;
-  right: 0;
-  width: 15px;
-  height: 100%;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-origin: content-box;
-  box-sizing: border-box;
-  background-position: center;
+    cursor: col-resize;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    box-sizing: border-box;
+    background-position: center;
 }
 
 .vertical-drag-bar {
-  cursor: row-resize;
-  left: 0;
-  top: 0;
-  height: 15px;
-  width: 100%;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-origin: content-box;
-  box-sizing: border-box;
-  background-position: center;
+    cursor: row-resize;
+    left: 0;
+    top: 0;
+    height: 15px;
+    width: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    box-sizing: border-box;
+    background-position: center;
 }

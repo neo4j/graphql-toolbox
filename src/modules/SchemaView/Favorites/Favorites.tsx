@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 import type { DragEndEvent, UniqueIdentifier } from "@dnd-kit/core";
 import {
@@ -57,13 +57,73 @@ function favoritesToUniqueIdentifier(favorites: Favorite[] | null) {
     return favorites === null ? [] : favorites.map((favorite) => favorite.id);
 }
 
+const EmptyState = (): JSX.Element => {
+    return (
+        <div className="flex flex-col items-center justify-center leading-6 text-neutral-60">
+            <p>No favorites to display.</p>
+            <p className="flex">
+                Click{" "}
+                <StarIconOutline
+                    className="h-5 w-5 mx-1"
+                    style={{
+                        color: tokens.palette.neutral[60],
+                    }}
+                />{" "}
+                to save type
+            </p>
+            <p>definitions as favorite.</p>
+        </div>
+    );
+};
+
+interface SortableItemProps {
+    id: UniqueIdentifier;
+    activeId: UniqueIdentifier | null;
+    favorites: Favorite[] | null;
+    onSelectFavorite: (typeDefs: string) => void;
+    updateName: (newName: string, id: string) => void;
+}
+
+const SortableItem = ({ id, activeId, favorites, onSelectFavorite, updateName }: SortableItemProps) => {
+    const { attributes, listeners, setNodeRef, transform, setActivatorNodeRef, transition } = useSortable({ id });
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
+
+    const favorite = favorites?.find((favorite) => favorite.id === id);
+
+    if (!favorite) {
+        return null;
+    }
+
+    return (
+        <div className={classNames(activeId === id && "item-dragging")} ref={setNodeRef} style={style} {...attributes}>
+            <FavoriteEntry
+                dragHandle={
+                    favorites && favorites.length > 1 ? (
+                        <DragHandle {...listeners} ref={setActivatorNodeRef} />
+                    ) : (
+                        <div className="w-6"></div>
+                    )
+                }
+                onSelectFavorite={onSelectFavorite}
+                updateName={updateName}
+                key={favorite.id}
+                favorite={favorite}
+            />
+        </div>
+    );
+};
+
 export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
     const favorites = useStore((store) => store.favorites);
     const selectedFavorites = useFavoritesStore((store) => store.selectedFavorites);
     const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-    const [items, setItems] = useState<UniqueIdentifier[]>(favoritesToUniqueIdentifier(favorites));
+    const items = useMemo<UniqueIdentifier[]>(() => favoritesToUniqueIdentifier(favorites), [favorites]);
     const [showConfirm, setShowConfirm] = useState<boolean>(false);
-    const isFirstAnnouncement = useRef(true);
+    const dragAnnouncements = useMemo(() => announcements(items), [items]);
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -100,35 +160,6 @@ export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
         tracking.trackDownloadFavorites({ screen: Screen.TYPEDEFS, numberOfFiles: favoritesToDownload.length });
     };
 
-    useEffect(() => {
-        if (!activeId) {
-            isFirstAnnouncement.current = true;
-        }
-    }, [activeId]);
-
-    useEffect(() => {
-        setItems(favoritesToUniqueIdentifier(favorites));
-    }, [favorites]);
-
-    const EmptyState = (): JSX.Element => {
-        return (
-            <div className="flex flex-col items-center justify-center leading-6 text-neutral-60">
-                <p>No favorites to display.</p>
-                <p className="flex">
-                    Click{" "}
-                    <StarIconOutline
-                        className="h-5 w-5 mx-1"
-                        style={{
-                            color: tokens.palette.neutral[60],
-                        }}
-                    />{" "}
-                    to save type
-                </p>
-                <p>definitions as favorite.</p>
-            </div>
-        );
-    };
-
     const handleDragEnd = (event: DragEndEvent) => {
         setActiveId(null);
 
@@ -147,46 +178,7 @@ export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
                 }
             }
             useStore.setState({ favorites: newFavorites });
-            setItems(newOrder);
         }
-    };
-
-    const SortableItem = ({ id }: { id: UniqueIdentifier }) => {
-        const { attributes, listeners, setNodeRef, transform, setActivatorNodeRef, transition } = useSortable({ id });
-
-        const style = {
-            transform: CSS.Transform.toString(transform),
-            transition,
-        };
-
-        const favorite = favorites?.find((favorite) => favorite.id === id);
-
-        if (!favorite) {
-            return null;
-        }
-
-        return (
-            <div
-                className={classNames(activeId === id && "item-dragging")}
-                ref={setNodeRef}
-                style={style}
-                {...attributes}
-            >
-                <FavoriteEntry
-                    dragHandle={
-                        favorites && favorites.length > 1 ? (
-                            <DragHandle {...listeners} ref={setActivatorNodeRef} />
-                        ) : (
-                            <div className="w-6"></div>
-                        )
-                    }
-                    onSelectFavorite={onSelectFavorite}
-                    updateName={updateName}
-                    key={favorite.id}
-                    favorite={favorite}
-                />
-            </div>
-        );
     };
 
     return (
@@ -221,7 +213,7 @@ export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
                 {favorites?.length ? (
                     <DndContext
                         accessibility={{
-                            announcements: announcements({ isFirstAnnouncement, items }),
+                            announcements: dragAnnouncements,
                             screenReaderInstructions,
                         }}
                         sensors={sensors}
@@ -240,7 +232,14 @@ export const Favorites = ({ onSelectFavorite }: FavoritesProps) => {
                         <ul className="pb-4 h-favorite">
                             <SortableContext items={items}>
                                 {items.map((id) => (
-                                    <SortableItem key={id} id={id} />
+                                    <SortableItem
+                                        key={id}
+                                        id={id}
+                                        activeId={activeId}
+                                        favorites={favorites}
+                                        onSelectFavorite={onSelectFavorite}
+                                        updateName={updateName}
+                                    />
                                 ))}
                             </SortableContext>
                         </ul>
