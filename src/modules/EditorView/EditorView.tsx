@@ -118,6 +118,10 @@ export const EditorView = ({ schema }: Props) => {
                                         />
                                     </div>
                                     <GraphiQLExplorer
+                                        // A new Explorer whenever the active tab changes, so that it never shows another
+                                        // tab's query. Adding or closing a tab changes the length, switching changes the
+                                        // index. Closing the first tab, for example, keeps the index at 0.
+                                        key={`${store.activeTabIndex}-${store.tabs.length}`}
                                         schema={schema}
                                         query={useStore.getState().getActiveTab().query}
                                         onEdit={(query: string) => {

@@ -19,6 +19,7 @@
 
 import * as dotenv from "dotenv";
 
+import { EDITOR_QUERY_INPUT } from "../src/constants";
 import { expect, test } from "./utils/pagemodel";
 
 dotenv.config();
@@ -108,5 +109,111 @@ test.describe("query editor tabs", () => {
 
         const currentQuery = await editorPage.getQuery();
         expect(currentQuery.replace(/\s/g, "")).toContain("queryTestQuery{movies{id}}");
+    });
+
+    // https://github.com/neo4j/graphql-toolbox/issues/9
+    test("should not carry an argument from the previous tab's query into a new tab", async ({
+        page,
+        loginPage,
+        schemaEditorPage,
+        editorPage,
+    }) => {
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
+
+        await schemaEditorPage.setTypeDefs(typeDefs);
+        await schemaEditorPage.buildSchema();
+
+        await editorPage.setQuery(`query WithLimit { movies(limit: 10) { id } }`);
+        await editorPage.addNewTab();
+        await page.locator(`#${EDITOR_QUERY_INPUT} .cm-content`).click();
+        // A partial query does not parse, so the explorer falls back to the last query it parsed.
+        await page.keyboard.type("query NewTab");
+
+        const currentQuery = await editorPage.getQuery();
+        expect(currentQuery.trim()).toBe("query NewTab");
+        // The explorer shows nothing of the previous tab's query either.
+        await expect(page.locator(".graphiql-explorer-root input[type='text']")).toHaveCount(0);
+    });
+
+    test("should keep focus in the query editor when a typed query adds an argument", async ({
+        page,
+        loginPage,
+        schemaEditorPage,
+        editorPage,
+    }) => {
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
+
+        await schemaEditorPage.setTypeDefs(typeDefs);
+        await schemaEditorPage.buildSchema();
+
+        await editorPage.setQuery("");
+        await page.locator(`#${EDITOR_QUERY_INPUT} .cm-content`).click();
+        // The query parses once "1" is typed (closeBrackets supplies the closing brackets), which
+        // shows an input for the argument in the explorer.
+        await page.keyboard.type("query Typed { movies(limit: 1) { id } }");
+
+        const currentQuery = await editorPage.getQuery();
+        expect(currentQuery.trim()).toBe("query Typed { movies(limit: 1) { id } }");
+    });
+
+    test("should not show a closed tab's query in the explorer of the tab that takes its place", async ({
+        page,
+        loginPage,
+        schemaEditorPage,
+        editorPage,
+    }) => {
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
+
+        await schemaEditorPage.setTypeDefs(typeDefs);
+        await schemaEditorPage.buildSchema();
+
+        await editorPage.setQuery(`query WithLimit { movies(limit: 10) { id } }`);
+        await editorPage.addNewTab();
+        await editorPage.setQuery("query NewTab");
+        await editorPage.selectTabByTabName("WithLimit");
+        // Closing the active first tab makes the other tab active at the same index.
+        await editorPage.closeTabByTabName("WithLimit");
+
+        await expect(page.getByRole("tab", { name: "WithLimit" })).not.toBeVisible();
+        expect((await editorPage.getQuery()).trim()).toBe("query NewTab");
+        await expect(page.locator(".graphiql-explorer-root input[type='text']")).toHaveCount(0);
+    });
+
+    test("should not move focus into the explorer when switching to a tab whose query has an argument", async ({
+        page,
+        loginPage,
+        schemaEditorPage,
+        editorPage,
+    }) => {
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
+
+        await schemaEditorPage.setTypeDefs(typeDefs);
+        await schemaEditorPage.buildSchema();
+
+        await editorPage.setQuery(`query First { movies(limit: 10) { id } }`);
+        await editorPage.addNewTab();
+        await editorPage.setQuery(`query Second { movies(limit: 5) { id } }`);
+        await editorPage.selectTabByTabName("First");
+
+        await expect(page.locator(".graphiql-explorer-root input[type='text']")).toHaveValue("10");
+        await expect(page.locator(".graphiql-explorer-root input:focus")).toHaveCount(0);
+    });
+
+    test("should focus the input of an argument added in the explorer", async ({
+        page,
+        loginPage,
+        schemaEditorPage,
+        editorPage,
+    }) => {
+        await loginPage.loginDismissIntrospection(NEO_USER, NEO_PASSWORD, NEO_URL);
+
+        await schemaEditorPage.setTypeDefs(typeDefs);
+        await schemaEditorPage.buildSchema();
+
+        await editorPage.setQuery(`query AddArg { movies { id } }`);
+        await page.locator(".graphiql-explorer-root [data-arg-name='limit'] > span").first().click();
+
+        await expect(page.locator(".graphiql-explorer-root input:focus")).toHaveCount(1);
+        expect((await editorPage.getQuery()).replace(/\s/g, "")).toContain("movies(limit:");
     });
 });
