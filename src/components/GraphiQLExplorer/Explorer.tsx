@@ -768,7 +768,12 @@ class ScalarInput extends React.PureComponent<ScalarInputProps> {
     componentDidMount() {
         const input = this._ref;
         const activeElement = document.activeElement;
-        if (input && activeElement && !(activeElement instanceof HTMLTextAreaElement)) {
+        // Take focus only when the user is working in the explorer, for example after adding this
+        // argument there. Taking it from the query editor or a tab would send the next keystrokes
+        // into this input.
+        const isUserInExplorer =
+            !!activeElement && !!input?.closest(".graphiql-explorer-root")?.contains(activeElement);
+        if (input && isUserInExplorer) {
             input.focus();
             input.setSelectionRange(0, input.value.length);
         }
@@ -1870,23 +1875,26 @@ const DEFAULT_DOCUMENT = {
     kind: Kind.DOCUMENT,
     definitions: [DEFAULT_OPERATION],
 };
-let parseQueryMemoize: [string, DocumentNode] | null | undefined = null;
-function memoizeParseQuery(query: string): DocumentNode {
-    if (parseQueryMemoize && parseQueryMemoize[0] === query) {
-        return parseQueryMemoize[1];
+// Holds the last query that parsed, so that an invalid query shows the last valid one while
+// the user types. Each Explorer owns one, so that a remounted Explorer never shows a query it
+// did not see.
+type ParseQueryMemo = { current: [string, DocumentNode] | null };
+function memoizeParseQuery(memo: ParseQueryMemo, query: string): DocumentNode {
+    if (memo.current && memo.current[0] === query) {
+        return memo.current[1];
     } else {
         const result = parseQuery(query);
         if (!result) {
             return DEFAULT_DOCUMENT;
         } else if (result instanceof Error) {
-            if (parseQueryMemoize) {
+            if (memo.current) {
                 // Most likely a temporarily invalid query while they type
-                return parseQueryMemoize[1];
+                return memo.current[1];
             } else {
                 return DEFAULT_DOCUMENT;
             }
         } else {
-            parseQueryMemoize = [query, result];
+            memo.current = [query, result];
             return result;
         }
     }
@@ -2176,6 +2184,7 @@ class Explorer extends React.PureComponent<Props, State> {
         operationToScrollTo: null,
     };
 
+    _parseQueryMemo: ParseQueryMemo = { current: null };
     _ref: unknown | null | undefined;
     _resetScroll = () => {
         const container = this._ref;
@@ -2237,7 +2246,7 @@ class Explorer extends React.PureComponent<Props, State> {
         const mutationFields = mutationType && mutationType.getFields();
         const subscriptionFields = subscriptionType && subscriptionType.getFields();
 
-        const parsedQuery: DocumentNode = memoizeParseQuery(query);
+        const parsedQuery: DocumentNode = memoizeParseQuery(this._parseQueryMemo, query);
         const getDefaultFieldNames = this.props.getDefaultFieldNames || defaultGetDefaultFieldNames;
         const getDefaultScalarArgValue = this.props.getDefaultScalarArgValue || defaultGetDefaultScalarArgValue;
 
